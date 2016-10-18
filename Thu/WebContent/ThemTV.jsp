@@ -187,7 +187,7 @@
 													style="text-align: right; padding-top: 10px; padding-bottom: 10px">
 													<a href="#" class="btn btn-success" role="button"
 														id="btntao" onclick="reset()"> Tạo </a> <a
-														href="quantri.html" class="btn btn-danger" role="button">
+														href="QuanTriVien.jsp" class="btn btn-danger" role="button">
 														Hủy Bỏ </a>
 												</div>
 											</div>

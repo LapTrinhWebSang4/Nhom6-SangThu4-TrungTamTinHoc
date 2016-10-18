@@ -342,7 +342,7 @@
 								</div>
 							</div>
 							<div class="col-xs-2">
-								<a href="qtndtbthem.html">
+								<a href="QTNDThem.jsp">
 									<button type="button" class="btn btn btn-warning">
 										Thêm Thông báo <i class="ace-icon fa fa-plus-square - 160"></i>
 									</button>
