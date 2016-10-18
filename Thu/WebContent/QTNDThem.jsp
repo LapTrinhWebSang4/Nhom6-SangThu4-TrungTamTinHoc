@@ -205,7 +205,7 @@
 									<div class="form-group"
 										style="text-align: left; padding-top: 10px; padding-bottom: 10px">
 										<a href="#" class="btn btn-success" role="button" id="btntao">
-											Tạo Thông báo </a> <a href="qtndthongbao.html"
+											Tạo Thông báo </a> <a href="QTNDThongBao.jsp"
 											class="btn btn-danger" role="button"> Hủy bỏ </a>
 									</div>
 								</div>

@@ -325,7 +325,7 @@
 								</div>
 							</div>
 							<div class="col-xs-2">
-								<a href="themtv.html">
+								<a href="Themtv.jsp">
 									<button type="button" class="btn btn btn-warning">
 										Thêm Thành Viên <i class="ace-icon fa fa-plus-square - 160"></i>
 									</button>

@@ -183,8 +183,8 @@
 
 												<div class="form-group"
 													style="text-align: right; padding-top: 10px; padding-bottom: 10px">
-													<a href="quantri.html" class="btn btn-success"
-														role="button"> Sửa </a> <a href="quantri.html"
+													<a href="QuanTriVien.jsp" class="btn btn-success"
+														role="button"> Sửa </a> <a href="QuanTriVien.jsp"
 														class="btn btn-danger" role="button"> Hủy Bỏ </a>
 												</div>
 											</div>
