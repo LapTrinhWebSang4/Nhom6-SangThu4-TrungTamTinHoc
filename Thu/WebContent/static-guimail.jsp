@@ -381,15 +381,7 @@
 												</div>
 											</div>
 										</div>
-
-											<div class="align-right">
-												<button id="id-add-attachment" type="button" class="btn btn-sm btn-danger">
-													<i class="ace-icon fa fa-paperclip bigger-140"></i>
-													Add Attachment
-												</button>
-											</div>
-
-											<div class="space"></div>
+								<div class="space"></div>
 										</div>
 									</form>
 					</div><!--End message container-->
