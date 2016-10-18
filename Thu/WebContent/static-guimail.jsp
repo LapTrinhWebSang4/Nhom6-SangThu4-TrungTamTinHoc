@@ -94,7 +94,7 @@
 					try{ace.settings.loadState('sidebar')}catch(e){}
 				</script>
 				<ul class="nav nav-list">
-					<li class="active">
+					<li class="">
 						<a href="static-dashboard.jsp">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>

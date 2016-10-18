@@ -95,7 +95,7 @@
 						class="menu-icon fa fa fa-commenting-o"></i> <span
 						class="menu-text"> Tin nhắn </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="#"> <i
+				<li class=""><a href="static-login.jsp"> <i
 						class="menu-icon fa fa-sign-out"></i> <span class="menu-text">Đăng
 							xuất</span>
 				</a> <b class="arrow"></b></li>
@@ -137,7 +137,7 @@
 
 							<li><a href="tuvan-send.html"><strong>Tư
 										vấn-hỏi đáp</strong></a></li>
-							<li><a href="#"><strong>Đăng xuất</strong></a></li>
+							<li><a href="static-login.jsp"><strong>Đăng xuất</strong></a></li>
 						</ul>
 					</div>
 				</div>

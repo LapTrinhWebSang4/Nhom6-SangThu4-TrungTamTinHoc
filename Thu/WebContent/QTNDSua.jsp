@@ -102,7 +102,7 @@
 						class="menu-icon fa fa-user"></i> <span class="menu-text">
 							Thông tin cá nhân </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="#"> <i
+				<li class=""><a href="static-login.jsp"> <i
 						class="menu-icon fa fa-sign-out"></i> <span class="menu-text">
 							Đăng xuất </span>
 				</a> <b class="arrow"></b></li>
@@ -146,7 +146,7 @@
 								</ul></li>
 
 							<li><a href="tuvan-send.html">Tư vấn-hỏi đáp</a></li>
-							<li><a href="#">Đăng xuất</a></li>
+							<li><a href="static-login.jsp">Đăng xuất</a></li>
 						</ul>
 					</div>
 				</div>

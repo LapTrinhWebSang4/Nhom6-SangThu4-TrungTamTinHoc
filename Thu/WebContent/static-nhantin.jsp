@@ -950,25 +950,25 @@
 															<form class="form-horizontal" role="form" style="width: 100%">
 															<div style="padding-top: 20px;">
 																<div class="form-group" style="width: 100%;">
-																	<label class="col-sm-2 control-label" for="form-field-1"> Tiêu đề </label>
+																	<label class="col-sm-2 control-label" for="tieude"> Tiêu đề </label>
 
 																	<div class="col-sm-9" >
-																		<input type="text" id="form-field-1-1" placeholder="Title" class="form-control">
+																		<input type="text" id="tieude" placeholder="Title" class="form-control">
 																	</div>
 
 																</div>
 																<div class="form-group" style="width: 100%">
-																		<label class="col-sm-2 control-label" for="form-field-1-1">Người nhận </label>
+																		<label class="col-sm-2 control-label" for="nguoinhan">Người nhận </label>
 
 																		<div class="col-sm-9" >
-																			<input type="text" id="form-field-1-1" placeholder="To" class="form-control">
+																			<input type="text" id="nguoinhan" placeholder="To" class="form-control">
 																		</div>
 																	</div>
 																<div class="form-group"  style="width: 100%">
-																		<label class="col-sm-2 control-label " for="form-field-1-1">Nội dung </label>
+																		<label class="col-sm-2 control-label " for="noidung">Nội dung </label>
 
 																		<div class="col-sm-9">
-																			<textarea name="" id="input" class="form-control" rows="7" required="required"></textarea>
+																			<textarea name="" id="noidung" class="form-control" rows="7" required="required"></textarea>
 																		</div>
 																	</div>
 																	<div class="form-group"  style="width: 100%">
@@ -976,7 +976,7 @@
 
 																		<div class="col-sm-9">
 																			<div>
-																				<button type="button" class="btn btn-success" style="float:right;width: 100%">Gửi</button>
+																				<button type="submit" id="button-send" class="btn btn-success" style="float:right;width: 100%">Gửi</button>
 																			</div>
 																			
 																		</div>
@@ -1086,6 +1086,57 @@
 		<!--Script-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript">
+			function validateText(id){
+				if($("#"+id).val()==null||$("#"+id).val()==""){
+					var div =$("#"+id).closest("div");
+					div.removeClass("has-success");
+					$("#glypcn"+id).remove();
+					div.addClass("has-error has-feedback");
+					div.append('<span id="glypcn'+id+'"class="glyphicon glyphicon-remove form-control-feedback"></span>');
+					return false;
+				}
+				else{
+					var div = $("#"+id).closest("div");
+					div.removeClass("has-error");
+					div.addClass("has-success has-feedback");
+					$("#glypcn"+id).remove();
+					div.append('<span id="glypcn'+id+'"class="glyphicon glyphicon-ok form-control-feedback"></span>');
+					return true;
+				}
+			}
+			$(document).ready(
+					function(){
+						$("#button-send").click(function(){
+							if(!validateText("tieude")){
+								return false;
+							}
+							if(!validateText("nguoinhan")){
+								return false;
+							}
+							
+						});
+					}
+					);
+			$(document).ready(
+					function(){
+						$("#button-modal1").click(function(){
+							if(!validateText("input_id")){
+								return false;
+							}
+							if(!validateText("input_tenkh")){
+								return false;
+							}
+							if(!validateText("input_nkg")){
+								return false;
+							}
+							if(!validateText("input_ml")){
+								return false;
+							}
+						});
+					}
+					);
+			</script>
     	<script type="text/javascript" src="js/bootstrap.min.js"></script>
     	<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
