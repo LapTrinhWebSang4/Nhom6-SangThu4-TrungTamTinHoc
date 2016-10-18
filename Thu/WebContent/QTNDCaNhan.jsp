@@ -196,7 +196,7 @@
 													<div class="profile-info-value">
 														<div class="align-left">
 															<span class="editable editable-click" id="username">Nguyễn
-																Văn T </span> <a href="#" class="tooltip-success"
+																Văn T </span> <a href="#" class="tooltip-success pull-right"
 																data-rel="tooltip" title="" data-original-title="Edit">
 																<span class="green"> <i
 																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
@@ -223,7 +223,7 @@
 														<div class="align-left">
 															<span class="editable editable-click" id="country">Việt
 																Nam</span> <span class="editable editable-click" id="city">TP.Hồ
-																Chí Minh</span> <a href="#" class="tooltip-success"
+																Chí Minh</span> <a href="#" class="tooltip-success pull-right"
 																data-rel="tooltip" title="" data-original-title="Edit">
 																<span class="green"> <i
 																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
@@ -239,7 +239,7 @@
 													<div class="profile-info-value">
 														<div class="align-left">
 															<span class="editable editable-click" id="age">38</span>
-															<a href="#" class="tooltip-success" data-rel="tooltip"
+															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
 																title="" data-original-title="Edit"> <span
 																class="green"> <i
 																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
@@ -254,7 +254,7 @@
 													<div class="profile-info-value">
 														<div class="align-left">
 															<span class="editable editable-click" id="signup">07986878</span>
-															<a href="#" class="tooltip-success" data-rel="tooltip"
+															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
 																title="" data-original-title="Edit"> <span
 																class="green"> <i
 																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
@@ -269,7 +269,7 @@
 													<div class="profile-info-value">
 														<div class="align-left">
 															<span class="editable editable-click" id="signup">1996/06/20</span>
-															<a href="#" class="tooltip-success" data-rel="tooltip"
+															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
 																title="" data-original-title="Edit"> <span
 																class="green"> <i
 																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
@@ -285,7 +285,7 @@
 													<div class="profile-info-value">
 														<div class="align-left">
 															<span class="editable editable-click" id="signup">2010/06/20</span>
-															<a href="#" class="tooltip-success" data-rel="tooltip"
+															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
 																title="" data-original-title="Edit"> <span
 																class="green"> <i
 																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
@@ -300,7 +300,7 @@
 													<div class="profile-info-value">
 														<div class="align-left">
 															<span class="editable editable-click" id="signup">2625634525</span>
-															<a href="#" class="tooltip-success" data-rel="tooltip"
+															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
 																title="" data-original-title="Edit"> <span
 																class="green"> <i
 																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
@@ -315,7 +315,7 @@
 													<div class="profile-info-value">
 														<div class="align-left">
 															<span class="editable editable-click" id="signup">NVT@gmail.com</span>
-															<a href="#" class="tooltip-success" data-rel="tooltip"
+															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
 																title="" data-original-title="Edit"> <span
 																class="green"> <i
 																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
