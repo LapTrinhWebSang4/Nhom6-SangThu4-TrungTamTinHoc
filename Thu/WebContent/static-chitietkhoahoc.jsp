@@ -308,7 +308,7 @@
 				</ul>						
 				</div>				
 					<div class="row" style="margin-left: 1%;margin-top: 1%">	
-					<div class="col-sm-5">
+					<div class="col-sm-11">
 						<div class="widget-box">
 							<div class="widget-header">
 								<h4 class="widget-title lighter smaller">

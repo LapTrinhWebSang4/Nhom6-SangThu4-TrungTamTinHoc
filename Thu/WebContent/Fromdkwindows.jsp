@@ -9,11 +9,6 @@
 <title>Đăng kí online</title>
 <meta charset="UTF-8">
 <title>Trung Tam tin hoc</title>
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/ttth" user="root" password="1234" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -177,11 +172,7 @@ myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.ph
 		</select> <input type="submit" value=Query>
 	</form>
 
-	<%
-  String k=request.getParameter("usrname");
-  String s=k+request.getParameter("car");
-  out.println(s);
-   %>
+	
 	<footer
 		style="background-color: #4d004d; color: white; padding-top: 25px;">
 	<div class="container">
