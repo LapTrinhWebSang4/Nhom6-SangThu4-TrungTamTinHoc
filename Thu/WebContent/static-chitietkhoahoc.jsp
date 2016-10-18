@@ -313,7 +313,7 @@
 						<div class="widget-box">
 							<div class="widget-header">
 								<h4 class="widget-title lighter smaller">
-									<i></i><h4>Giới thiệu khóa học</h4><i></i>
+									<i></i><h4 class="text-center">Giới thiệu khóa học</h4><i></i>
 								</h4>
 								
 							</div>
@@ -370,7 +370,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Sửa khóa học</h4>
+                    <h4 class="modal-title">Thêm khóa học</h4>
                 </div>
                 <div class="modal-body">
                 	<form id="sua_form" method="post" action="" role="form" >
@@ -426,11 +426,11 @@
                 	<form id="sua_form" method="post" action="" role="form" >
                     <div class="form-group">
                     	<label for="input_id">Khóa học ID :</label>
-                    	<input type="text" name="" id="input_id" class="form-control" value="" required="required" pattern="" title="">
+                    	<input type="text" name="" id="input_id1" class="form-control" value="" required="required" pattern="" title="">
                     </div>
                     <div class="form-group">
                     	<label for="input_id">Tên khóa học :</label>
-                    	<input type="text" name="" id="input_tenkh" class="form-control" value="" required="required" pattern="" title="">
+                    	<input type="text" name="" id="input_tenkh1" class="form-control" value="" required="required" pattern="" title="">
                     </div>
                     <div class="form-group">
                     	<label for="input_id">Giới thiệu :</label>
@@ -442,11 +442,11 @@
                   	</div>
                   	<div class="form-group">
                   		<label for="input_id">Ngày khai giảng :</label>
-                  		<input type="email" name="" id="input_nkg" class="form-control" value="" required="required" title="">
+                  		<input type="email" name="" id="input_nkg1" class="form-control" value="" required="required" title="">
                   	</div>
                   	<div class="form-group">
                   		<label for="input_id">Mã Loại :</label>
-                  		<input type="text" name="" id="input_ml" class="form-control" value="" required="required" title="">
+                  		<input type="text" name="" id="input_ml1" class="form-control" value="" required="required" title="">
                   	</div>                                                   	
                     <button type="submit" class="btn btn-primary" id="button-modal2"  style="text-align: center;width: 120px;margin-left: 450px;margin-top: 10px">Lưu</button>
                      </form>
@@ -519,7 +519,7 @@
 			}
 			$(document).ready(
 					function(){
-						$("#button-modal2").click(function(){
+						$("#button-modal1").click(function(){
 							if(!validateText("input_id")){
 								return false;
 							}
@@ -537,17 +537,17 @@
 					);
 			$(document).ready(
 					function(){
-						$("#button-modal1").click(function(){
-							if(!validateText("input_id")){
+						$("#button-modal2").click(function(){
+							if(!validateText("input_id1")){
 								return false;
 							}
-							if(!validateText("input_tenkh")){
+							if(!validateText("input_tenkh1")){
 								return false;
 							}
-							if(!validateText("input_nkg")){
+							if(!validateText("input_nkg1")){
 								return false;
 							}
-							if(!validateText("input_ml")){
+							if(!validateText("input_ml1")){
 								return false;
 							}
 						});
