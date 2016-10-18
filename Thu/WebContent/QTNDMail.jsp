@@ -112,29 +112,29 @@
 				<div class="row">
 					<div class="container-fluid">
 						<ul class="nav nav-justified w3-pale-blue">
-							<li><a href="home.html"><strong>Trang chủ</strong></a></li>
-							<li><a href="thongbao.html"><strong>Thông báo</strong></a></li>
+							<li><a href="Home.jsp"><strong>Trang chủ</strong></a></li>
+							<li><a href="thongbao.jsp"><strong>Thông báo</strong></a></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"><strong>Giới thiệu</strong><span
 									class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="thungo.html"><strong>Thư ngỏ</strong></a></li>
-									<li><a href="giangvien.html"><strong>Đội ngủ
+									<li><a href="thungo.jsp"><strong>Thư ngỏ</strong></a></li>
+									<li><a href="giangvien.jsp"><strong>Đội ngủ
 												giản viên</strong></a></li>
-									<li><a href="nhiemvu.html"><strong>Chức năng
+									<li><a href="nhiemvu.jsp"><strong>Chức năng
 												nhiệm vụ</strong></a></li>
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"><strong>Lịch khai
 										giảng</strong><span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="Dangkiwindows-win.html"><strong>Windows
+									<li><a href="Dangkiwindows-win.jsp"><strong>Windows
 												1 tháng 10</strong></a></li>
-									<li><a href="Dangkiandroid-cban.html"><strong>Android
+									<li><a href="Dangkiandroid-cban.jsp"><strong>Android
 												1 tháng 10</strong></a></li>
 								</ul></li>
 
-							<li><a href="tuvan-send.html"><strong>Tư
+							<li><a href="tuvan-send.jsp"><strong>Tư
 										vấn-hỏi đáp</strong></a></li>
 							<li><a href="static-login.jsp"><strong>Đăng xuất</strong></a></li>
 						</ul>

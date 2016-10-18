@@ -273,21 +273,21 @@
 					<div class="container-fluid">
 						<ul class="nav nav-justified w3-pale-blue">
 					<li><a href="Home.jsp">Trang chủ</a></li>
-					<li><a href="thongbao.html">Thông báo</a></li>
+					<li><a href="thongbao.jsp">Thông báo</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Giới thiệu<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="thungo.html">Thư ngỏ</a></li>
-							<li><a href="giangvien.html">Đội ngủ giản viên</a></li>
-							<li><a href="nhiemvu.html">Chức năng nhiệm vụ</a></li>
+							<li><a href="thungo.jsp">Thư ngỏ</a></li>
+							<li><a href="giangvien.jsp">Đội ngủ giản viên</a></li>
+							<li><a href="nhiemvu.jsp">Chức năng nhiệm vụ</a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Lịch khai giảng<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="Dangkiwindows-win.html">Windows 1 tháng 10</a></li>
-							<li><a href="Dangkiandroid-cban.html">Android 1 tháng 10</a></li>
+							<li><a href="Dangkiwindows-win.jsp">Windows 1 tháng 10</a></li>
+							<li><a href="Dangkiandroid-cban.jsp">Android 1 tháng 10</a></li>
 						</ul>
 					</li>
 					
-					<li><a href="tuvan-send.html">Tư vấn-hỏi đáp</a></li>
+					<li><a href="tuvan-send.jsp">Tư vấn-hỏi đáp</a></li>
 					<li><a href="static-login.jsp">Đăng xuất</a></li>
 				</ul>						
 				</div>				

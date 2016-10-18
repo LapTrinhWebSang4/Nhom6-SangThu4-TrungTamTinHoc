@@ -60,7 +60,7 @@ body {
 			<div class="containner">
 				<ul class="nav nav-justified"
 					style="background-color: #4d004d; color: white;">
-					<li><a href="home.jsp">Trang chủ</a></li>
+					<li><a href="Home.jsp">Trang chủ</a></li>
 					<li><a href="thongbao.jsp">Thông báo</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Giới thiệu<span class="caret"></span></a>

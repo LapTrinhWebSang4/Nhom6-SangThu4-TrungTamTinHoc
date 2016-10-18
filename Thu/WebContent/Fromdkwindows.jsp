@@ -145,7 +145,7 @@ myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.ph
 								</div>
 								<div class="modal-body">Bạn có muốn đăng kí</div>
 								<div class="modal-footer">
-									<a href="home.html"><button type="button"
+									<a href="Home.jsp"><button type="button"
 											class="btn btn-block btn-primary">Xác nhận</button></a>
 									<button type="button" class="btn btn-block btn-default"
 										data-dismiss="modal">Hủy</button>
