@@ -48,7 +48,7 @@
 		</div>
 			<div class="container-fluid">
 					<ul class="nav nav-justified w3-pale-blue">
-					<li><a href="home.html">Trang chủ</a></li>
+					<li><a href="Home.jsp">Trang chủ</a></li>
 					<li><a href="thongbao.html">Thông báo</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Giới thiệu<span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -142,7 +142,7 @@
 						<input type="password" class="form-control" id="" placeholder="password">
 					</div>
 					<div class="form-group">
-						<a href="" class="btn btn-primary col-sm-offset-9 btn-lg">Đăng nhập</a>
+						<a href="" id="link" class="btn btn-primary col-sm-offset-9 btn-lg">Đăng nhập</a>
 					</div>	
 	
 						

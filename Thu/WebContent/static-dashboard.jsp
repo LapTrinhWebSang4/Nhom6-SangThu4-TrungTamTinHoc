@@ -77,6 +77,11 @@
 		
 	</head>
 	<body class="no-skin">
+	
+	
+	
+	
+	
 	<!--nav-->
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<img src="Asset/header ttth.jpg" style="width: 100%;height: 120px">
@@ -108,7 +113,7 @@
 
 				<ul class="nav nav-list">
 					<li class="active">
-						<a href="#">
+						<a href="static-dashboard.jsp">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
@@ -139,7 +144,7 @@
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="chi tiet khoa hoc.html">
+								<a href="static-chitietkhoahoc.jsp">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 1
 								</a>
@@ -148,7 +153,7 @@
 							</li>
 
 							<li class="">
-								<a href="typography.html">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 2
 								</a>
@@ -157,7 +162,7 @@
 							</li>
 
 							<li class="">
-								<a href="elements.html">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 3
 								</a>
@@ -166,7 +171,7 @@
 							</li>
 
 							<li class="">
-								<a href="buttons.html">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 4
 								</a>
@@ -175,7 +180,7 @@
 							</li>
 
 							<li class="">
-								<a href="content-slider.html">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 5
 								</a>
@@ -184,7 +189,7 @@
 							</li>
 
 							<li class="">
-								<a href="treeview.html">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 6
 								</a>
@@ -193,7 +198,7 @@
 							</li>
 
 							<li class="">
-								<a href="jquery-ui.html">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 7
 								</a>
@@ -215,7 +220,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="Danh sach hoc vien.html">
+								<a href="static-danhsachhocvien.jsp">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Danh sách học viên khóa 1
 								</a>
@@ -224,7 +229,7 @@
 							</li>
 
 							<li class="">
-								<a href="jqgrid.html">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Danh sách học viên khóa 2
 								</a>
@@ -232,7 +237,7 @@
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="jqgrid.html">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Danh sách học viên khóa 3
 								</a>
@@ -240,7 +245,7 @@
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="jqgrid.html">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Danh sách học viên khóa 4
 								</a>
@@ -251,7 +256,7 @@
 					</li>
 
 					<li class="">
-						<a href="Gui mail.html">
+						<a href="static-guimail.jsp">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Gửi mail </span>
 
@@ -260,7 +265,7 @@
 					</li>
 
 					<li class="">
-						<a href="Thong tin ca nhan.html">
+						<a href="static-thongtincanhan.jsp">
 							<i class="menu-icon fa fa-list-alt"></i>
 							<span class="menu-text"> Thông tin cá nhân </span>
 						</a>
@@ -269,7 +274,7 @@
 					</li>
 
 					<li class="">
-						<a href="Nhan tin.html">
+						<a href="static-nhantin.jsp">
 							<i class="menu-icon fa fa-envelope"></i>
 							<span class="menu-text"> Tin nhắn </span>
 						</a>
@@ -278,7 +283,7 @@
 					</li>
 			
 					<li class="">
-						<a href="">
+						<a href="static-login.jsp">
 							<i class="menu-icon fa fa-sign-out"></i>
 							<span class="menu-text"> Thoát </span>
 						</a>
@@ -299,7 +304,7 @@
 					<div class="main-content-inner" >
 						<div class="container-fluid">
 						<ul class="nav nav-justified w3-pale-blue">
-					<li><a href="home.html">Trang chủ</a></li>
+					<li><a href="Home.jsp">Trang chủ</a></li>
 					<li><a href="thongbao.html">Thông báo</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Giới thiệu<span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -315,10 +320,9 @@
 					</li>
 					
 					<li><a href="tuvan-send.html">Tư vấn-hỏi đáp</a></li>
-					<li><a href="#">Đăng xuất</a></li>
-				</ul>		
-				
-				</div>
+					<li><a href="static-login.jsp">Đăng xuất</a></li>
+				</ul>						
+				</div>			
 					<div class="page-content" >										
 						<div class="page-header" style="margin-top: 0%">
 							<h1>
@@ -904,6 +908,19 @@
 				</div>
 				</div><!--End content-->
 		</div> <!-- /.main-container -->
+		
+		<div style="right: 0px; bottom: 125px; position: fixed;" id="icon-chat">
+		<img src="element/chat.gif"  class="img-responsive" style="height:100px; width:100px">
+	</div>
+<div style="bottom: 40px; right: 50px; position: fixed; width: 170px; height: 240px; display: none;" id="chat-box">
+		<div style="background-color: lightblue; height: 20px;">
+			<h4 align="center">Tư vấn</h4>
+		</div>
+		<div style="background-color: white; height: 200px; border: solid 1px blue">
+			</div>
+
+		<input type="text" name="chat" style="height: 20px; width: 170px; border: solid 1px blue;" placeholder="chat">
+	</div>
 
 
 <script src="assets/js/jquery-2.1.4.min.js"></script>
@@ -956,6 +973,8 @@
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 		<script src="assets/js/bootstrap.min.js"></script>
+		
+		
 
 		<!-- page specific plugin scripts -->
 
@@ -975,6 +994,13 @@
 		<script src="assets/js/ace.min.js"></script>
 
 		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("#icon-chat").click(function(event) {
+				$("#chat-box").toggle("slow");
+			});
+		});
+		</script>
 		<script type="text/javascript">
 			jQuery(function($) {
 				$('.easy-pie-chart.percentage').each(function(){
@@ -1148,7 +1174,7 @@
 			
 			})
 		</script>
-
+		
 
     	
 		<!--End Script-->

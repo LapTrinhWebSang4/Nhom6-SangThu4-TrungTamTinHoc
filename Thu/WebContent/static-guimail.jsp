@@ -94,8 +94,8 @@
 					try{ace.settings.loadState('sidebar')}catch(e){}
 				</script>
 				<ul class="nav nav-list">
-					<li class="">
-						<a href="Dashboard.html">
+					<li class="active">
+						<a href="static-dashboard.jsp">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
@@ -126,7 +126,7 @@
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="chi tiet khoa hoc.html">
+								<a href="static-chitietkhoahoc.jsp">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 1
 								</a>
@@ -135,7 +135,7 @@
 							</li>
 
 							<li class="">
-								<a href="#">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 2
 								</a>
@@ -144,7 +144,7 @@
 							</li>
 
 							<li class="">
-								<a href="#">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 3
 								</a>
@@ -153,7 +153,7 @@
 							</li>
 
 							<li class="">
-								<a href="#">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 4
 								</a>
@@ -162,7 +162,7 @@
 							</li>
 
 							<li class="">
-								<a href="#">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 5
 								</a>
@@ -171,7 +171,7 @@
 							</li>
 
 							<li class="">
-								<a href="#">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 6
 								</a>
@@ -180,7 +180,7 @@
 							</li>
 
 							<li class="">
-								<a href="#">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Khóa học 7
 								</a>
@@ -202,7 +202,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="Danh sach hoc vien.html">
+								<a href="static-danhsachhocvien.jsp">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Danh sách học viên khóa 1
 								</a>
@@ -211,7 +211,7 @@
 							</li>
 
 							<li class="">
-								<a href="#">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Danh sách học viên khóa 2
 								</a>
@@ -219,7 +219,7 @@
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="#">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Danh sách học viên khóa 3
 								</a>
@@ -227,7 +227,7 @@
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="#">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Danh sách học viên khóa 4
 								</a>
@@ -238,7 +238,7 @@
 					</li>
 
 					<li class="active">
-						<a href="Gui mail.html">
+						<a href="static-guimail.jsp">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Gửi mail </span>
 
@@ -247,7 +247,7 @@
 					</li>
 
 					<li class="">
-						<a href="Thong tin ca nhan.html">
+						<a href="static-thongtincanhan.jsp">
 							<i class="menu-icon fa fa-list-alt"></i>
 							<span class="menu-text"> Thông tin cá nhân </span>
 						</a>
@@ -256,7 +256,7 @@
 					</li>
 
 					<li class="">
-						<a href="Nhan tin.html">
+						<a href="static-nhantin.jsp">
 							<i class="menu-icon fa fa-envelope"></i>
 							<span class="menu-text"> Tin nhắn </span>
 						</a>
@@ -265,7 +265,7 @@
 					</li>
 			
 					<li class="">
-						<a href="">
+						<a href="static-login.jsp">
 							<i class="menu-icon fa fa-sign-out"></i>
 							<span class="menu-text"> Thoát </span>
 						</a>
@@ -288,25 +288,25 @@
 					<div class="row">
 					<div class="container-fluid">
 						<ul class="nav nav-justified w3-pale-blue">
-							<li><a href="home.html">Trang chủ</a></li>
-							<li><a href="thongbao.html">Thông báo</a></li>
-								<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Giới thiệu<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="thungo.html">Thư ngỏ</a></li>
-										<li><a href="giangvien.html">Đội ngủ giản viên</a></li>
-										<li><a href="nhiemvu.html">Chức năng nhiệm vụ</a></li>
-									</ul></li>
-								<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Lịch khai giảng<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="Dangkiwindows-win.html">Windows 1 tháng 10</a></li>
-										<li><a href="Dangkiandroid-cban.html">Android 1 tháng 10</a></li>
-									</ul>
-								</li>
-								
-								<li><a href="tuvan-send.html">Tư vấn-hỏi đáp</a></li>
-								<li><a href="#">Đăng xuất</a></li>
-							</ul>						
-						</div>				
+					<li><a href="Home.jsp">Trang chủ</a></li>
+					<li><a href="thongbao.html">Thông báo</a></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Giới thiệu<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="thungo.html">Thư ngỏ</a></li>
+							<li><a href="giangvien.html">Đội ngủ giản viên</a></li>
+							<li><a href="nhiemvu.html">Chức năng nhiệm vụ</a></li>
+						</ul></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Lịch khai giảng<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="Dangkiwindows-win.html">Windows 1 tháng 10</a></li>
+							<li><a href="Dangkiandroid-cban.html">Android 1 tháng 10</a></li>
+						</ul>
+					</li>
+					
+					<li><a href="tuvan-send.html">Tư vấn-hỏi đáp</a></li>
+					<li><a href="static-login.jsp">Đăng xuất</a></li>
+				</ul>						
+				</div>						
 					</div>
 					<div class="row" style="padding-top: 10px;padding-left: 30px;padding-right: 20px;">
 								<div class="message-container">	

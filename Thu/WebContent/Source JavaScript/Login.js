@@ -22,11 +22,11 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$("#link").click(function() {		
 		if($("#box1").prop('checked')==true){
-			$("#link").attr('href', '/Bài%20tập/bootstrap/Admin%20Page.html');
+			$("#link").attr('href', '/Thu/QuanTriVien.jsp');
 		}else if($("#box2").prop('checked')==true){
-			$("#link").attr('href', '/Bài%20tập/bootstrap/Quản%20trị%20nội%20dung.html');
+			$("#link").attr('href', '/Thu/QTNDPT.jsp');
 		}else{
-			$("#link").attr('href', '/Bài%20tập/bootstrap/Tư%20vấn%20viên.html');
+			$("#link").attr('href', '/Thu/static-dashboard.jsp');
 		}
 	});	
 });
