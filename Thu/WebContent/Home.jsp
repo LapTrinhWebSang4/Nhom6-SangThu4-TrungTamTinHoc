@@ -50,7 +50,7 @@ body {
 <body>
 	<div class="ad-flt-right"
 		style="position: fixed; right: 0; bottom: 74px;">
-		<a id="dangky" href="/dang-ky"> <img class="dang-ky-desktop"
+		<a id="dangky" href="list-mon-windows.jsp"> <img class="dang-ky-desktop"
 			src="Hinh/dktt.gif" alt="" width="100px" height="100px">
 		</a>
 	</div>
@@ -124,7 +124,7 @@ body {
 						</ul>
 					</div></li>
 				<li><a href="tuvan-send.jsp">Tư vấn-hỏi đáp</a></li>
-				<li><a href="list-mon-windows.jsp">Đăng kí online</a></li>
+				<li><a href="static-login.jsp">Đăng nhập</a></li>
 			</ul>
 
 		</div>
@@ -209,25 +209,25 @@ body {
 								<!-- Wrapper for slides -->
 								<div class="carousel-inner" role="listbox">
 									<div class="item">
-										<a href="thuchanh.jsp"> <img src="Hinh/android.png"
+										<a href="list-mon-windows.jsp"> <img src="Hinh/android.png"
 											alt="Chania" width="1000" height="500">
 										</a>
 									</div>
 
 									<div class="item">
-										<a href="#"> <img src="Hinh/ios.jpg" alt="Chania"
+										<a href="list-mon-windows.jsp"> <img src="Hinh/ios.jpg" alt="Chania"
 											width="1000" height="500">
 										</a>
 									</div>
 
 									<div class="item">
-										<a href="#"> <img src="Hinh/web.png" alt="Flower"
+										<a href="list-mon-windows.jsp"> <img src="Hinh/web.png" alt="Flower"
 											width="1000" height="500">
 										</a>
 									</div>
 
 									<div class="item active">
-										<a href="#"> <img src="Hinh/pts.jpg" alt="Flower"
+										<a href="list-mon-windows.jsp"> <img src="Hinh/pts.jpg" alt="Flower"
 											width="1000" height="500">
 										</a>
 									</div>

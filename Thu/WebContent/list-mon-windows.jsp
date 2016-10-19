@@ -150,7 +150,7 @@ body {
 			<table class="table table-condensed">
 				<caption></caption>
 				<thead>
-					<tr>
+					<tr >
 						<th>Tên môn học</th>
 						<th>Mã học phần</th>
 						<th>Ngày khai giảng</th>
@@ -160,7 +160,7 @@ body {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr style="height: 100px;">
 						<td>Lập trình windows</td>
 						<td>wp-001</td>
 						<td>1 tháng 10</td>
@@ -169,7 +169,7 @@ body {
 						<td><a href="Dangkiwindows-win.jsp"><button
 									class="btn btn-primary">Đăng kí</button></a>
 					</tr>
-					<tr>
+					<tr style="height: 100px;">
 						<td>Lập trình web</td>
 						<td>wp-002</td>
 						<td>1 tháng 10</td>
@@ -195,7 +195,7 @@ body {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr style="height: 100px;">
 						<td>Lập trình Android cơ bản</td>
 						<td>wp-001</td>
 						<td>1 tháng 10</td>
@@ -204,7 +204,7 @@ body {
 						<td><a href="Dangkiandroid-cban.jsp"><button
 									class="btn btn-primary">Đăng kí</button></a>
 					</tr>
-					<tr>
+					<tr style="height: 100px;">
 						<td>Lập trình Android nâng cao</td>
 						<td>wp-002</td>
 						<td>1 tháng 10</td>
