@@ -142,7 +142,7 @@
 						<input type="password" class="form-control" id="" placeholder="password">
 					</div>
 					<div class="form-group">
-						<a href="" id="link" class="btn btn-primary col-sm-offset-9 btn-lg">Đăng nhập</a>
+						<a href="" id="link" class="btn btn-primary col-sm-offset-9 btn-sm">Đăng nhập</a>
 					</div>	
 	
 						
