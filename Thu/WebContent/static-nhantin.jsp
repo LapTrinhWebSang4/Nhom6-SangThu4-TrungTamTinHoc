@@ -303,7 +303,7 @@
 
 						<div class="page-header">
 							<h1>
-								Send Email
+								Message
 							</h1>
 						</div><!-- /.page-header -->
 
