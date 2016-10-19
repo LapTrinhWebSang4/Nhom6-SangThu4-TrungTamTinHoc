@@ -6,3 +6,9 @@
 	margin-top: 100px;
 	margin-bottom:50px;
 }
+li.active{
+	background-color:#337ab7;
+}
+.navbar-nav > li.active > a{
+    color: red;
+}
