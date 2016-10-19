@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="css/w3.css">
 <style type="text/css">
 body {
-	background-color: #999966;
+	background-color: lightgrey;
 }
 
 .footer-nav {
@@ -53,46 +53,38 @@ body {
 </style>
 </head>
 <body>
-	<div class="container">
-		<nav class="navbar">
-			<img src="element/header ttth.jpg" style="width: 100%;">
-			<div class="containner">
-				<ul class="nav nav-justified"
-					style="background-color: #4d004d; color: white;">
+	<div class="container-fluid">
+		<nav class="navbar"> <img src="element/header ttth.jpg"
+			style="width: 100%;">
+		
+					<ul class="nav nav-justified w3-pale-blue">
 					<li><a href="Home.jsp">Trang chủ</a></li>
 					<li><a href="thongbao.jsp">Thông báo</a></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Giới thiệu<span class="caret"></span></a>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Giới thiệu<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="thungo.jsp">Thư ngỏ</a></li>
 							<li><a href="giangvien.jsp">Đội ngủ giản viên</a></li>
 							<li><a href="nhiemvu.jsp">Chức năng nhiệm vụ</a></li>
 						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Lịch khai giảng<span
-							class="caret"></span></a>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Lịch khai giảng<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="Dangkiwindows-win.jsp">Windows 1 tháng 10</a></li>
 							<li><a href="Dangkiandroid-cban.jsp">Android 1 tháng 10</a></li>
 						</ul></li>
-					<li><div class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown"> xem điểm <span
-								class="caret"></span>
+					<li>
+							<a class="dropdown-toggle" data-toggle="dropdown"> xem điểm <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li class="dropdown-submenu"><a class="test" tabindex="-1"
-									href="#">Khóa 100 <span class="caret"></span></a>
+								<li class="dropdown-submenu"><a class="test" tabindex="-1" href="#">Khóa 100 <span class="caret" style="float:right;margin-top: 6px;"></span></a>
 									<ul class="dropdown-menu">
-										<li class="dropdown-submenu"><a class="test" href="#">Windows<span
-												class="caret"></span>
+										<li class="dropdown-submenu"><a class="test" href="#">Windows<span class="caret" style="float:right;margin-top: 6px;"></span>
 										</a>
 											<ul class="dropdown-menu">
 												<li><a href="#">Lớp lập trình windows 01</a></li>
 												<li><a href="#">Lớp lập trình web 01</a></li>
 												<li><a href="#">Lớp lập trình web 02</a></li>
 											</ul></li>
-										<li class="dropdown-submenu"><a class="test" href="#">Android<span
-												class="caret"></span>
+										<li class="dropdown-submenu"><a class="test" href="#">Android<span class="caret" style="float:right;margin-top: 6px;"></span>
 										</a>
 											<ul class="dropdown-menu">
 												<li><a href="#">Lớp lập trình Android cơ bản 01</a></li>
@@ -100,18 +92,15 @@ body {
 												<li><a href="#">Lớp lập trình Android nâng cao 01</a></li>
 											</ul></li>
 									</ul></li>
-								<li class="dropdown-submenu"><a class="test" tabindex="-1"
-									href="#">Khóa 99 <span class="caret"></span></a>
+								<li class="dropdown-submenu"><a class="test" tabindex="-1" href="#">Khóa 99 <span class="caret" style="float:right;margin-top: 6px;"></span></a>
 									<ul class="dropdown-menu">
-										<li class="dropdown-submenu"><a class="test" href="#">Windows<span
-												class="caret"></span>
+										<li class="dropdown-submenu"><a class="test" href="#">Windows<span class="caret" style="float:right;margin-top: 6px;"></span>
 										</a>
 											<ul class="dropdown-menu">
 												<li><a href="#">Lớp lập trình windows 01</a></li>
 												<li><a href="#">Lớp lập trình web 01</a></li>
 											</ul></li>
-										<li class="dropdown-submenu"><a class="test" href="#">Android<span
-												class="caret"></span>
+										<li class="dropdown-submenu"><a class="test" href="#">Android<span class="caret" style="float:right;margin-top: 6px;"></span>
 										</a>
 											<ul class="dropdown-menu">
 												<li><a href="#">Lớp lập trình Android cơ bản 01</a></li>
@@ -119,12 +108,12 @@ body {
 											</ul></li>
 									</ul></li>
 							</ul>
-						</div></li>
+						</li>
 					<li><a href="tuvan-send.jsp">Tư vấn-hỏi đáp</a></li>
 					<li><a href="list-mon-windows.jsp">Đăng kí online</a></li>
-				</ul>
-
-			</div>
+				</ul>	
+				
+				
 		</nav>
 	</div>
 	<div id="home-gv">
