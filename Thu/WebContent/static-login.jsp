@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/cssfornav2.css">
 <link rel="stylesheet" type="text/css" href="Asset/Login.css"/>
 
-<style>
+<style type="text/css">
 	#custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(255, 255, 255, 1);
 }
@@ -59,23 +59,51 @@
 		display:none;
 	}
 }
-@media screen and (min-width:800px){
-	.navbar.navbar-default.navbar-fixed-top{
-		margin-top:120px;	
-	}
+
+
+.footer-nav {
+	text-align: right;
+	list-style: none;
 }
 
+.footer-nav li {
+	display: inline;
+}
+
+.footer-nav li:before {
+	contain: '|';
+	padding: 0px 10px;
+}
+.navbar.navbar-default{
+	padding-top:0px;
+}
+
+
+img{
+	height:120px;	
+	z-index:3;
+}
+
+
+
+#login-form{
+	padding-bottom:200px;
+}
+.footer-nav>li>a{
+	color:white;
+}
 </style>
 </head>
 <body>
 	
-	<div id="navbar-img" class="navbar navbar-default          ace-save-state">
-		<img src="Asset/header ttth.jpg" style="width: 100%; height: 120px">
-		<div class="navbar-container ace-save-state" id="navbar-container">
-		</div>
+	
+	<div id="navbar-img" >
+		<img src="Asset/header ttth.jpg" style="width: 100%;" >
 	</div>
+	
+	
 	<!-- Navbar -->
-	<div class="navbar navbar-default navbar-fixed-top" id="custom-bootstrap-menu" role="navigation">
+	<div class="navbar navbar-default " id="custom-bootstrap-menu" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -137,6 +165,11 @@
 		<!--/.nav-collapse -->
 		</div>
 	</div>
+		
+	
+	
+	
+	
 
 
 
@@ -149,8 +182,7 @@
 
 
 
-
-	<div class="container">
+		<div class="container bs-callout bs-callout-info" id="login-form">
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
 				<div class="whole-form">
@@ -191,6 +223,32 @@
 		</div>
 
 	</div>
+	
+	
+	<footer
+		style="background-color: #0082c8; color: white; padding-top: 25px;">
+	<div class="container">
+
+		<div class="bottom-footer"
+			style="border-top: 1px solid #b2b2b2; margin-top: 10px; padding-top: 10px; corlor: red;">
+			<div class="col-md-5">
+				<p>developed by G6</p>
+				<span class="glyphicon glyphicon-home"></span> Cơ sở chính: XX/XX,
+				đường ss, Q.qq, TH. HCM <br> <span
+					class="glyphicon glyphicon-phone-alt"></span> Đt: xx50 43x 8xx
+			</div>
+			<div class="col-md-7">
+				<ul class="footer-nav">
+					<li><a href="Home.jsp">Home</a></li>
+					<li><a href="giangvien.jsp">Contract</a></li>
+					<li><a href="thungo.jsp">About us</a></li>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+	</footer>
 
 
 
@@ -203,12 +261,35 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	  
+	  $(window).scroll(function () {
+	      //if you hard code, then use console
+	      //.log to determine when you want the 
+	      //nav bar to stick.  
+	      console.log($(window).scrollTop())
+	    if($(window).width()>800){
+	    	if ($(window).scrollTop() > 120) {
+	  	      $('.navbar-default').addClass('navbar-fixed-top');
+	  	    }
+	  	    if ($(window).scrollTop() < 121) {
+	  	      $('.navbar-default').removeClass('navbar-fixed-top');
+	  	    }
+	    }else{
+	    	$('.navbar-default').addClass('navbar-fixed-top');
+	    	
+	    }
+	  });
+	});
+</script>
 
 <!-- SmartMenus jQuery plugin -->
 <script type="text/javascript" src="js/jsfornav2.js"></script>
 
 <!-- SmartMenus jQuery Bootstrap Addon -->
 <script type="text/javascript" src="js/jsfornav2-1.js"></script>
+
 
 
 
