@@ -59,7 +59,9 @@
 		display:none;
 	}
 }
-
+.panel-default{
+	box-shadow: 10px 10px 5px black;
+}
 
 .footer-nav {
 	text-align: right;
@@ -83,6 +85,17 @@ img{
 	height:120px;	
 	z-index:3;
 }
+body{
+	background-color:lightgrey;
+	background-image:url("Asset/tntt.jpg");
+	width:100%;
+	height:100%;
+	background-repeat:no-repeat;
+	z-index:-1;
+	opactity:.5;
+	 rgba(255,255,255,0.4);
+	 background-position: 50% 60%; 
+}
 
 
 
@@ -92,6 +105,33 @@ img{
 .footer-nav>li>a{
 	color:white;
 }
+a>.glyphicon{
+	padding-right:10px;
+}
+.inner-addon { 
+    position: relative; 
+    
+}
+.blur{
+	
+}
+
+
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
 </style>
 </head>
 <body>
@@ -103,7 +143,7 @@ img{
 	
 	
 	<!-- Navbar -->
-	<div class="navbar navbar-default " id="custom-bootstrap-menu" role="navigation">
+	<div class="navbar navbar-default " id="custom-bootstrap-menu" role="navigation"">
 		<div class="container">
 			<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -114,50 +154,58 @@ img{
 				<span class="icon-bar" ></span> 
 				
 			</button>
-			<a class="navbar-brand" href="#">Project name</a>
+			<a class="navbar-brand" href="Home.jsp"><span class="glyphicon glyphicon-home"></span>Trang chủ</a>
 		</div>
 		<div class="navbar-collapse collapse">
 
 			<!-- Left nav -->
 			<ul class="nav navbar-nav">
-				<li><a href="#">Link</a></li>
-				<li><a href="#">Link</a></li>
-				<li><a href="#">Link</a></li>
-				<li><a href="">Dropdown <span class="caret"></span></a>
-					<ul class="dropdown-menu" id="sub1">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li class="dropdown-header">Nav header</li>
-						<li><a href="#">Separated link</a></li>
-						<li><a href="#">One more separated link <span
-								class="caret"></span></a>
-							<ul class="dropdown-menu" id="sub2">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">A long sub menu <span class="caret"></span></a>
-									<ul class="dropdown-menu" id="sub3">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="disabled"><a class="disabled" href="#">Disabled
-												item</a></li>
-										<li><a href="#">One more link</a></li>
-										<li><a href="#">Menu item 1</a></li>
-										<li><a href="#">Menu item 2</a></li>
-										<li><a href="#">Menu item 3</a></li>
-										<li><a href="#">Menu item 4</a></li>
-										<li><a href="#">Menu item 5</a></li>
-										<li><a href="#">Menu item 6</a></li>
-									
-									
-									
-									</ul></li>
-								<li><a href="#">Another link</a></li>
-								<li><a href="#">One more link</a></li>
-							</ul></li>
-					</ul></li>
-			</ul>
+					
+					<li><a href="#" id="thongbaolink"><span class="glyphicon glyphicon-pushpin"></span>Thông báo</a></li>
+					
+					<li><a href="#" id="gioithieulink"><span class="glyphicon glyphicon-info-sign"></span>Giới thiệu <span class="caret"></span></a>
+						<ul class="dropdown-menu" id="sub1">
+							<li><a href="giangvien.jsp">Đội ngủ giảng viên</a></li>
+							<li><a href="nhiemvu.jsp">Chức năng - Nhiệm vụ </a></li>
+							
+							
+						</ul></li>
+						<li><a href="#"><span class="glyphicon glyphicon-calendar"></span>Lịch khai giảng <span class="caret"></span></a>
+						<ul class="dropdown-menu" id="sub1">
+							<li><a href="Dangkiwindows-win.jsp">Windows 1 tháng 10</a></li>
+							<li><a href="Dangkiandroid-cban.jsp">Android 1 tháng 10</a></li>
+							
+							
+						</ul></li>
+						<li><a href=""><span class="glyphicon glyphicon-list-alt"></span>Xem điểm <span class="caret"></span></a>
+						<ul class="dropdown-menu" id="sub1">
+		
+							<li><a href="#">Khóa 101<span
+									class="caret"></span></a>
+								<ul class="dropdown-menu" id="sub2">
+									<li><a href="#">Lớp lập trình windows 01</a></li>
+									<li><a href="#">Lớp lập trình web 01</a></li>
+									<li><a href="#">Lớp lập trình web 02</a></li>
+								</ul></li>
+								<li><a href="#">Khóa 100<span
+									class="caret"></span></a>
+								<ul class="dropdown-menu" id="sub2">
+									<li><a href="#">Lớp lập trình windows 01</a></li>
+									<li><a href="#">Lớp lập trình web 01</a></li>
+									<li><a href="#">Lớp lập trình web 02</a></li>
+								</ul></li>
+								<li><a href="#">Khóa 99<span
+									class="caret"></span></a>
+								<ul class="dropdown-menu" id="sub2">
+									<li><a href="#">Lớp lập trình windows 01</a></li>
+									<li><a href="#">Lớp lập trình web 01</a></li>
+									<li><a href="#">Lớp lập trình web 02</a></li>
+								</ul></li>
+						</ul></li>
+						<li><a href="tuvan-send.jsp"><span class="glyphicon glyphicon-question-sign"></span>Tư vấn- hỏi đáp</a></li>
+						<li><a href="list-mon-windows.jsp"><span class="glyphicon glyphicon-edit"></span>Đăng kí online</a></li>
+				</ul>
+
 
 			
 			
@@ -167,28 +215,19 @@ img{
 		</div>
 	</div>
 		
-	
-	
-	
+		
 	
 
-
-
-
-
-
-
-
-
-
-
-
-		<div class="container bs-callout bs-callout-info" id="login-form">
+		
+			
+				<div class="container " id="login-form" style="padding-top:100px;z-index:10;">
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
-				<div class="whole-form">
+				<div class="panel panel-default">					
+					<div class="panel-body">
+						<h3>Login</h3>
+						<div class="whole-form">
 					<form action="" method="post" role="form">
-						<legend>Login</legend>
 						<div class="form-group">
 							<div class="checkbox">
 								<label> <input type="checkbox" value="tvv" name="kien"
@@ -200,12 +239,23 @@ img{
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="">Tài khoản</label> <input type="text"
+							<label for="">Tài khoản</label> 
+							<div class="inner-addon left-addon">
+								<i class="glyphicon glyphicon-user">
+								</i>
+								<input type="text"
 								class="form-control" id="" placeholder="username">
+							</div>
+							
 						</div>
 						<div class="form-group">
-							<label for="">Mật khẩu</label> <input type="password"
+							<label for="">Mật khẩu</label>
+							<div class=" inner-addon left-addon">
+							<i class="glyphicon glyphicon-lock" style="color:black"></i>
+								<input type="password"
 								class="form-control" id="" placeholder="password">
+							</div> 
+							
 						</div>
 						<div class="form-group">
 							<a href="" id="link"
@@ -220,10 +270,14 @@ img{
 					</form>
 
 				</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
 	</div>
+	
+		
 	
 	
 	<footer

@@ -1118,24 +1118,7 @@
 						});
 					}
 					);
-			$(document).ready(
-					function(){
-						$("#button-modal1").click(function(){
-							if(!validateText("input_id")){
-								return false;
-							}
-							if(!validateText("input_tenkh")){
-								return false;
-							}
-							if(!validateText("input_nkg")){
-								return false;
-							}
-							if(!validateText("input_ml")){
-								return false;
-							}
-						});
-					}
-					);
+			
 			</script>
     	<script type="text/javascript" src="js/bootstrap.min.js"></script>
     	<script src="assets/js/ace-elements.min.js"></script>

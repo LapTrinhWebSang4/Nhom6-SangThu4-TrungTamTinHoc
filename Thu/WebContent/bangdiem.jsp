@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
 <link rel="stylesheet" type="text/css" href="css/cssfornav2.css">
+<link rel="stylesheet" type="text/css" href="assets/font-awesome/4.5.0/css/font-awesome.min.css">
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
@@ -17,6 +18,9 @@
 
 
 <style type="text/css">
+ul>li{
+	list-style:none;
+}
 	body {
 	background-color: lightgrey;
 }
@@ -106,6 +110,10 @@ a>.glyphicon{
 	color:#0082c8;
 	 text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px black;
 }
+hr {
+  border: 0;
+  border-top: 3px double #8c8c8c;
+}
 </style>
 <link rel="stylesheet" href="css/w3.css">
 
@@ -188,66 +196,124 @@ a>.glyphicon{
 		<!--/.nav-collapse -->
 		</div>
 	</div>
-		
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Lớp a0001-01</div>
-  <div class="panel-body">
-  </div>
+	<div class="container">
+			<div class="row">
+				<div class="col-md-8 " style="background-color:white">
+					
+						<table class="table table-hover">
+						<thead>
+							<h3>Lớp Access</h3>
+							<hr style="border: 0; border-top: 3px double #0082c8;"/>
+				
+						</thead>
+						<tbody>
+							<tr>
+								<td>#</td>
+								<td>HoTen</td>
+								<td>MaHV</td>
+								<td>Diem</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Kien</td>
+								<td>2345</td>
+								<td>1</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Huy</td>
+								<td>3242</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Hoang</td>
+								<td>2348</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Kien</td>
+								<td>2345</td>
+								<td>1</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Huy</td>
+								<td>3242</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Hoang</td>
+								<td>2348</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Kien</td>
+								<td>2345</td>
+								<td>1</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Huy</td>
+								<td>3242</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Hoang</td>
+								<td>2348</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Kien</td>
+								<td>2345</td>
+								<td>1</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Huy</td>
+								<td>3242</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Hoang</td>
+								<td>2348</td>
+								<td>10</td>
+							</tr>
+						</tbody>
+					</table>
+					<hr style="border: 0; border-top: 3px double #0082c8;"/>
+					<h4>Các khóa học khác</h4>
+						<ul>
+							<li>&#x2749<a> xcvz</a></li>
+							<li>&#x2749<a> zxcvcxv</a></li>
+							<li>&#x2749<a> xcbxzc</a></li>
+							<li>&#x2749<a> xcbzv</a></li>
+							<li>&#x2749<a> xcvx</a></li>
+						</ul>
+				</div>
+				<div class="col-md-4 pull-right" style="background-color:white">
+					<h4>Các lớp cùng khóa học</h4>
+						<ul>
+						<li>&#x2749<a> MS SQL</a></li>
+						<li>&#x2749<a> Oracle SQL</a></li>
+						<li>&#x2749<a> MySQL</a></li>
+						<li>&#x2749<a> Mongo DB</a></li>
+						<li>&#x2749<a> posgre</a></li>
+						<li>&#x2749<a> Django</a></li>
+					</ul>
+					
 
-  <!-- Table -->
-  <table class="table">
-    <thead>
-    <tr>
-    <td>Mã học viên</td>
-    <td>Họ tên</td>
-    <td>Điểm</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td>h213</td>
-    <td>Nguyễn H</td>
-    <td>9.5</td>
-    </tr>
-    <tr>
-    <td>h213</td>
-    <td>Nguyễn H</td>
-    <td>9.5</td>
-    </tr>
-    <tr>
-    <td>h213</td>
-    <td>Nguyễn H</td>
-    <td>9.5</td>
-    </tr>
-    <tr>
-    <td>h213</td>
-    <td>Nguyễn H</td>
-    <td>9.5</td>
-    </tr>
-    <tr>
-    <td>h213</td>
-    <td>Nguyễn H</td>
-    <td>9.5</td>
-    </tr>
-    <tr>
-    <td>h213</td>
-    <td>Nguyễn H</td>
-    <td>9.5</td>
-    </tr>
-    <tr>
-    <td>h213</td>
-    <td>Nguyễn H</td>
-    <td>9.5</td>
-    </tr>
-    <tr>
-    <td>h213</td>
-    <td>Nguyễn H</td>
-    <td>9.5</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+			
+
+				</div>
+			</div>
+			</div>
 
 	<footer
 		style="background-color: #0082c8; color: white; padding-top: 25px;">
@@ -283,7 +349,7 @@ a>.glyphicon{
 	        scrollTop: $("#"+id).offset().top},
 	        'slow');
 	}
-
+	
 	
 $(document).ready(function() {
 	  
