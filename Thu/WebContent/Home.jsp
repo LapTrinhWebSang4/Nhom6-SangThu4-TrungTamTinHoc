@@ -6,44 +6,21 @@
 <meta charset="UTF-8">
 <title>Trung Tam tin hoc</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
+<link rel="stylesheet" type="text/css" href="css/cssfornav2.css">
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
+
+
+
 <style type="text/css">
-.footer-nav {
-	text-align: right;
-	list-style: none;
-}
-
-.footer-nav li {
-	display: inline;
-}
-
-.footer-nav li:before {
-	contain: '|';
-	padding: 0px 10px;
-}
-
-.dropdown-submenu {
-	position: relative;
-}
-
-.dropdown-submenu>.dropdown-menu {
-	top: 0;
-	left: 100%;
-	margin-top: -1px;
-}
-
-.dropdown-submenu:hover>.dropdown-menu {
-	display: block;
-}
-</style>
-<style>
-body {
+	body {
 	background-color: lightgrey;
 }
-#custom-bootstrap-menu.navbar-default .navbar-brand {
+	#custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(255, 255, 255, 1);
 }
 #custom-bootstrap-menu.navbar-default {
@@ -81,7 +58,7 @@ body {
  {
     background-color: #0082c8;
 }
-@media screen and (max-width:800px){
+@media only screen (min-width:500px)and (max-width:700px){
 	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
 	color:white;
 	}
@@ -89,37 +66,78 @@ body {
 		display:none;
 	}
 }
+
+
+.footer-nav {
+	text-align: right;
+	list-style: none;
+}
+
+.footer-nav li {
+	display: inline;
+}
+
+.footer-nav li:before {
+	contain: '|';
+	padding: 0px 10px;
+}
+.navbar.navbar-default{
+	padding-top:0px;
+}
+
+
+#header-img{
+	height:120px;	
+	z-index:3;
+}
+
+
+
+#login-form{
+	padding-bottom:200px;
+}
+.footer-nav>li>a{
+	color:white;
+}
+a>.glyphicon{
+	padding-right:10px;
+}
+#head-text{
+	color:#0082c8;
+	 text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px black;
+}
 </style>
 <link rel="stylesheet" href="css/w3.css">
 
 </head>
 <body>
-	
-
-	<div id="navbar-img">
-		<img src="Asset/header ttth.jpg" style="width: 100%;">
+	<div id="navbar-img" >
+		<img src="Asset/header ttth.jpg" id="header-img" style="width: 100%;" >
 	</div>
-	<div class="navbar navbar-default " id="custom-bootstrap-menu"
-		role="navigation">
+	
+	
+	<!-- Navbar -->
+	<div class="navbar navbar-default " id="custom-bootstrap-menu" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span> 
+				<span class="icon-bar" ></span>
+				<span class="icon-bar" ></span>
+				<span class="icon-bar" ></span> 
+				
+			</button>
+			<a class="navbar-brand" href="Home.jsp"><span class="glyphicon glyphicon-home"></span>Trang chủ</a>
+		</div>
+		<div class="navbar-collapse collapse">
 
-				</button>
-				<a class="navbar-brand" href="#">Project name</a>
-			</div>
-			<div class="navbar-collapse collapse">
-
-				<!-- Left nav -->
-				<ul class="nav navbar-nav">
-					<li><a href="Home.jsp"><span class="glyphicon glyphicon-home"></span>Trang chủ</a></li>
-					<li><a href="#pan-tb"><span class="glyphicon glyphicon-pushpin"></span>Thông báo</a></li>
+			<!-- Left nav -->
+			<ul class="nav navbar-nav">
 					
-					<li><a href="#"><span class="glyphicon glyphicon-info-sign"></span>Giới thiệu <span class="caret"></span></a>
+					<li><a href="#" id="thongbaolink"><span class="glyphicon glyphicon-pushpin"></span>Thông báo</a></li>
+					
+					<li><a href="#" id="gioithieulink"><span class="glyphicon glyphicon-info-sign"></span>Giới thiệu <span class="caret"></span></a>
 						<ul class="dropdown-menu" id="sub1">
 							<li><a href="giangvien.jsp">Đội ngủ giảng viên</a></li>
 							<li><a href="nhiemvu.jsp">Chức năng - Nhiệm vụ </a></li>
@@ -163,18 +181,26 @@ body {
 				</ul>
 
 
+			
+			
 
-
-			</div>
-			<!--/.nav-collapse -->
+		</div>
+		<!--/.nav-collapse -->
 		</div>
 	</div>
+		
+	
 
+	
+	
 	<div class="container" style="background-color: white;">
-
-		<div class="panel panel-default">
+		<div class="row">
+			<h2 class="text-center" id="head-text">&lt Giới thiệu &gt</h2>
+		</div>
+		<div class="panel panel-default" id="gioithieu">
 			<div class="panel-body">
-				<div class="col-md-9">
+				<div class="row">
+					<div class="col-md-9">
 					<img src="Hinh/ttth.jpg" class="img-rounded" alt="Cinque Terre"
 						width="100%">
 				</div>
@@ -194,6 +220,7 @@ body {
 							communications." Business/IT was one level of the ICT hierarchy</p>
 					</marquee>
 
+				</div>
 				</div>
 
 
@@ -248,8 +275,9 @@ body {
 			</a>
 		</div>
 
-		<div class="container" id="pan-TB">
-			<div class="col-md-6">
+		<div class="container" id="thongbao" >
+			<div class="row">
+				<div class="col-md-6" style="padding-top:10px;padding-left:1px">
 
 				<div class="panel panel-primary">
 					<div class="panel-heading">
@@ -360,6 +388,118 @@ body {
 
 
 			</div>
+			<div class="col-md-6" style="padding-top:10px;">
+
+				<div class="panel panel-default">
+					<div class="panel-heading" style="background-color:red">
+						<h3 class="panel-title">Thông Báo</h3>
+					</div>
+					<div class="panel-body">
+						<div>
+							<img alt="" src="Hinh/THONGBAO.png" style="width: 100%;">
+						</div>
+						<div class="panel-group" id="accordion" role="tablist"
+							aria-multiselectable="true">
+
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingTwo">
+									<h4 class="panel-title"
+										style="font: Arial Black; color: #800080;">
+
+										<a class="collapsed" role="button" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseTwo"
+											aria-expanded="false" aria-controls="collapseTwo"><span
+											class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
+											ưu đãi giảm giá cho tân sinh viên 2016 </a>
+									</h4>
+								</div>
+								<div id="collapseTwo" class="panel-collapse collapse"
+									role="tabpanel" aria-labelledby="headingTwo">
+									<div class="panel-body">Anim pariatur cliche
+										reprehenderit, enim eiusmod high life accusamus terry
+										richardson ad squid. 3 wolf moon officia aute, non cupidatat
+										skateboard dolor brunch. Food truck quinoa nesciunt laborum
+										eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
+										it squid single-origin coffee nulla assumenda shoreditch et.
+										Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+										cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+										vice lomo. Leggings occaecat craft beer farm-to-table, raw
+										denim aesthetic synth nesciunt you probably haven't heard of
+										them accusamus labore sustainable VHS.</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingThree">
+									<h4 class="panel-title"
+										style="font: Arial Black; color: #800080;">
+										<a class="collapsed" role="button" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseThree"
+											aria-expanded="false" aria-controls="collapseThree"><span
+											class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
+											Học tin học cơ sở miễn phí </a>
+									</h4>
+								</div>
+								<div id="collapseThree" class="panel-collapse collapse"
+									role="tabpanel" aria-labelledby="headingThree">
+									<div class="panel-body">Anim pariatur cliche
+										reprehenderit, enim eiusmod high life accusamus terry
+										richardson ad squid. 3 wolf moon officia aute, non cupidatat
+										skateboard dolor brunch. Food truck quinoa nesciunt laborum
+										eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
+										it squid single-origin coffee nulla assumenda shoreditch et.
+										Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+										cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+										vice lomo. Leggings occaecat craft beer farm-to-table, raw
+										denim aesthetic synth nesciunt you probably haven't heard of
+										them accusamus labore sustainable VHS.</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingThree">
+									<h4 class="panel-title"
+										style="font: Arial Black; color: #800080;">
+										<a class="collapsed" role="button" data-toggle="collapse"
+											data-parent="#accordion" href="#collapse4"
+											aria-expanded="false" aria-controls="collapseThree"><span
+											class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
+											Lịch Khai Giảng tháng 11</a>
+									</h4>
+								</div>
+								<div id="collapse4" class="panel-collapse collapse"
+									role="tabpanel" aria-labelledby="headingThree">
+									<div class="panel-body">Anim pariatur cliche
+										reprehenderit, enim eiusmod high life accusamus terry
+										richardson ad squid. 3 wolf moon officia aute, non cupidatat
+										skateboard dolor brunch. Food truck quinoa nesciunt laborum
+										eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
+										it squid single-origin coffee nulla assumenda shoreditch et.
+										Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+										cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+										vice lomo. Leggings occaecat craft beer farm-to-table, raw
+										denim aesthetic synth nesciunt you probably haven't heard of
+										them accusamus labore sustainable VHS.</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<nav aria-label="...">
+					<ul class="pager">
+						<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>Mới
+								hơn</a></li>
+						<li class="next"><a href="#">Cũ hơn<span
+								aria-hidden="true">&rarr;</span></a></li>
+					</ul>
+					</nav>
+
+
+
+				</div>
+
+
+
+			</div>
+			</div>
 		</div>
 
 	</div>
@@ -389,6 +529,21 @@ body {
 	</footer>
 	
 	<script type="text/javascript">
+	function goToByScroll(id){
+	      // Remove "link" from the ID
+	    id = id.replace("link", "");
+	      // Scroll
+	    $('html,body').animate({
+	        scrollTop: $("#"+id).offset().top},
+	        'slow');
+	}
+
+	$(".navbar-nav>li>a").click(function(e) { 
+	      // Prevent a page reload when a link is pressed
+	    e.preventDefault(); 
+	      // Call the scroll function
+	    goToByScroll(this.id);           
+	});
 $(document).ready(function() {
 	  
 	  $(window).scroll(function () {
