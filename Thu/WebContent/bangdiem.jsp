@@ -62,14 +62,7 @@ ul>li{
  {
     background-color: #0082c8;
 }
-@media only screen (min-width:500px)and (max-width:700px){
-	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
-	color:white;
-	}
-	#navbar-img{
-		display:none;
-	}
-}
+
 
 
 .footer-nav {
@@ -151,16 +144,22 @@ dt{
 		display:none;
 	}
 }
+@media screen and (max-width:800px){
+	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
+	color:white;
+	}
+}
 </style>
 <link rel="stylesheet" href="css/w3.css">
 
 </head>
 <body>
-	<div id="navbar-img" >
-		<img src="Asset/header ttth.jpg" id="header-img" style="width: 100%;" >
+	<div id="navbar-img" style="position:relative;">
+		<img src="Asset/header ttth.jpg" id="header-img" style="width: 100%;">
 	</div>
-	
-	
+
+
+
 	<!-- Navbar -->
 	<div class="navbar navbar-default " id="custom-bootstrap-menu" role="navigation">
 		<div class="container">
@@ -233,7 +232,7 @@ dt{
 		<!--/.nav-collapse -->
 		</div>
 	</div>
-	<div class="container" style="margin-top:-18px;">
+	<div class="container" >
 			<div class="row" >
 				<div class="col-md-8 " style="background-color:white;" >
 					
@@ -335,7 +334,7 @@ dt{
 							<li>&#x27A3;<a> xcvx</a></li>
 						</ul>
 				</div>
-				<div class="col-md-4 pull-right" id="list-img-maximize" style="margin-top:-10px;">
+				<div class="col-md-4 pull-right" id="list-img-maximize" >
 					<div style="width:100%;background-color:white;top:0;" id="outer-div">
 						<div id="inner-div">
 							<div style="width:100%;border-bottom:1px solid lightgrey">
@@ -425,8 +424,6 @@ dt{
 	        scrollTop: $("#"+id).offset().top},
 	        'slow');
 	}
-	
-	
 	$(document).ready(function() {
 		$(window).scroll(function (event) {
 		      //if you hard code, then use console
@@ -436,18 +433,31 @@ dt{
 		    if($(window).width()>800){
 		    	if ($(window).scrollTop() > 120) {
 		  	      $('.navbar-default').addClass('navbar-fixed-top');
+		  	      
 		  	    }
 		  	    if ($(window).scrollTop() < 121) {
 		  	      $('.navbar-default').removeClass('navbar-fixed-top');
-		  	    }	  	    
+		  	      
+		  	    }
+		  	 
 		    }else{
-		    	$('.navbar-default').addClass('navbar-fixed-top');		    	
+		    	
+		    	if ($(window).scrollTop() > 120) {
+			  	      $('.navbar-default').addClass('navbar-fixed-top');
+			  	      
+			  	    }
+			  	    if ($(window).scrollTop() < 121) {
+			  	      $('.navbar-default').removeClass('navbar-fixed-top');
+			  	      
+			  	    }
 		    }
 		    
 		  });
 		 	
 		
 		});
+	
+	
 </script>
 <script type="text/javascript" src="js/jsfornav2.js"></script>
 
