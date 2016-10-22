@@ -94,7 +94,9 @@ ul>li{
 	height:120px;	
 	z-index:3;
 }
-
+hr{
+	margin-top:0px;
+}
 
 
 #login-form{
@@ -110,9 +112,44 @@ a>.glyphicon{
 	color:#0082c8;
 	 text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px black;
 }
-hr {
-  border: 0;
-  border-top: 3px double #8c8c8c;
+#list-link{
+	padding:0;
+	list-style-type:none;
+}
+#list-link>li{
+	color:#0082c8;
+	
+}
+#inner-div{
+	padding-left:12px;
+	padding-right:12px;
+}
+#list-hinh-anh>ul>li{
+	display:inline-block;
+	padding:2px 2px 2px 2px;
+}
+dl{
+	padding-top:20px;
+	padding-bottom:5px;
+}
+dd{
+	padding-top:10px;
+}
+dt{
+	padding-bottom:20px;
+}
+.col-md-8>dl{
+	margin-left:0px;
+}
+@media only screen and (max-width:1000px){
+	#list-img-maximize{
+		display:none;
+	}
+}
+@media only screen and (min-width:1000px){
+	#list-img-minimize{
+		display:none;
+	}
 }
 </style>
 <link rel="stylesheet" href="css/w3.css">
@@ -196,9 +233,9 @@ hr {
 		<!--/.nav-collapse -->
 		</div>
 	</div>
-	<div class="container">
-			<div class="row">
-				<div class="col-md-8 " style="background-color:white">
+	<div class="container" style="margin-top:-18px;">
+			<div class="row" >
+				<div class="col-md-8 " style="background-color:white;" >
 					
 						<table class="table table-hover">
 						<thead>
@@ -289,35 +326,74 @@ hr {
 					</table>
 					<hr style="border: 0; border-top: 3px double #0082c8;"/>
 					<h4>Các khóa học khác</h4>
-						<ul>
-							<li>&#x2749<a> xcvz</a></li>
-							<li>&#x2749<a> zxcvcxv</a></li>
-							<li>&#x2749<a> xcbxzc</a></li>
-							<li>&#x2749<a> xcbzv</a></li>
-							<li>&#x2749<a> xcvx</a></li>
+					<hr style="bordor:0;border-top:2px dotted">
+						<ul id="list-link">
+							<li>&#x27A3;<a> xcvz</a></li>							
+							<li>&#x27A3;<a> zxcvcxv</a></li>
+							<li>&#x27A3;<a> xcbxzc</a></li>
+							<li>&#x27A3;<a> xcbzv</a></li>
+							<li>&#x27A3;<a> xcvx</a></li>
 						</ul>
 				</div>
-				<div class="col-md-4 pull-right" style="background-color:white">
-					<h4>Các lớp cùng khóa học</h4>
-						<ul>
-						<li>&#x2749<a> MS SQL</a></li>
-						<li>&#x2749<a> Oracle SQL</a></li>
-						<li>&#x2749<a> MySQL</a></li>
-						<li>&#x2749<a> Mongo DB</a></li>
-						<li>&#x2749<a> posgre</a></li>
-						<li>&#x2749<a> Django</a></li>
+				<div class="col-md-4 pull-right" id="list-img-maximize" style="margin-top:-10px;">
+					<div style="width:100%;background-color:white;top:0;" id="outer-div">
+						<div id="inner-div">
+							<div style="width:100%;border-bottom:1px solid lightgrey">
+								<h4>Các lớp cùng khóa học</h4>
+							</div>
+						<ul id="list-link">
+						<li>&#x27A3;<a> MS SQL</a></li>
+						<li>&#x27A3;<a> Oracle SQL</a></li>
+						<li>&#x27A3;<a> MySQL</a></li>
+						<li>&#x27A3;<a> Mongo DB</a></li>
+						<li>&#x27A3;<a> posgre</a></li>
+						<li>&#x27A3;<a> Django</a></li>
 					</ul>
+					<div style="width:100%;border-top:1px solid lightgrey;">
+						<div>
+							<h4>Khóa học hot</h4> 
+						</div>
+						<div id="list-hinh-anh" style="padding-bottom:10px">
+							
+							<ul id="list-link">
+								<li><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="124" height="300"></a></li>
+								<li><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="124" height="300"></a></li>
+								<li><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="124" height="300"></a></li>
+								<li><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="124" height="300"></a></li>
+							</ul>
+						</div>
+					</div>
+						</div>
 					
+					</div>
 
 			
 
+				</div>
+			</div>
+			
+			<div class="row" style="margin-top:5px;">
+				<div class="col-md-8" style="background-color:white;" id="list-img-minimize">
+					<div style="border-bottom:1px solid lightgrey;">
+						<h4>Khóa học hot</h4>
+					</div>
+					<dl class="dl-horizontal">
+						<dt><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="124" height="300"></a></dt>
+						<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</dd> 
+						<dt><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="124" height="300"></a></dt>
+						<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</dd> 
+						<dt><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="124" height="300"></a></dt>
+						<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</dd> 
+						<dt><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="124" height="300"></a></dt>
+						<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</dd> 
+					</dl>
 				</div>
 			</div>
 			</div>
 
 	<footer
 		style="background-color: #0082c8; color: white; padding-top: 25px;">
-	<div class="container">
+	<div class="container" style="padding-bottom:50px;">
 
 		<div class="bottom-footer"
 			style="border-top: 1px solid #b2b2b2; margin-top: 10px; padding-top: 10px; corlor: red;">
@@ -351,26 +427,27 @@ hr {
 	}
 	
 	
-$(document).ready(function() {
-	  
-	  $(window).scroll(function () {
-	      //if you hard code, then use console
-	      //.log to determine when you want the 
-	      //nav bar to stick.  
-	      console.log($(window).scrollTop())
-	    if($(window).width()>800){
-	    	if ($(window).scrollTop() > 120) {
-	  	      $('.navbar-default').addClass('navbar-fixed-top');
-	  	    }
-	  	    if ($(window).scrollTop() < 121) {
-	  	      $('.navbar-default').removeClass('navbar-fixed-top');
-	  	    }
-	    }else{
-	    	$('.navbar-default').addClass('navbar-fixed-top');
-	    	
-	    }
-	  });
-	});
+	$(document).ready(function() {
+		$(window).scroll(function (event) {
+		      //if you hard code, then use console
+		      //.log to determine when you want the 
+		      //nav bar to stick.
+		      console.log($(window).scrollTop())
+		    if($(window).width()>800){
+		    	if ($(window).scrollTop() > 120) {
+		  	      $('.navbar-default').addClass('navbar-fixed-top');
+		  	    }
+		  	    if ($(window).scrollTop() < 121) {
+		  	      $('.navbar-default').removeClass('navbar-fixed-top');
+		  	    }	  	    
+		    }else{
+		    	$('.navbar-default').addClass('navbar-fixed-top');		    	
+		    }
+		    
+		  });
+		 	
+		
+		});
 </script>
 <script type="text/javascript" src="js/jsfornav2.js"></script>
 
