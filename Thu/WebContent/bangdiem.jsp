@@ -232,7 +232,7 @@ dt{
 		<!--/.nav-collapse -->
 		</div>
 	</div>
-	<div class="container" >
+	<div class="container"  style="margin-top:-20px;">
 			<div class="row" >
 				<div class="col-md-8 " style="background-color:white;" >
 					
@@ -334,7 +334,7 @@ dt{
 							<li>&#x27A3;<a> xcvx</a></li>
 						</ul>
 				</div>
-				<div class="col-md-4 pull-right" id="list-img-maximize" >
+				<div class="col-md-4 pull-right" id="list-img-maximize" style="margin-top:-10px;">
 					<div style="width:100%;background-color:white;top:0;" id="outer-div">
 						<div id="inner-div">
 							<div style="width:100%;border-bottom:1px solid lightgrey">
@@ -396,7 +396,8 @@ dt{
 
 		<div class="bottom-footer"
 			style="border-top: 1px solid #b2b2b2; margin-top: 10px; padding-top: 10px; corlor: red;">
-			<div class="col-md-5">
+			<div class="row">
+				<div class="col-md-5">
 				<p>developed by G6</p>
 				<span class="glyphicon glyphicon-home"></span> Cơ sở chính: XX/XX,
 				đường ss, Q.qq, TH. HCM <br> <span
@@ -408,6 +409,7 @@ dt{
 					<li><a href="giangvien.jsp">Contract</a></li>
 					<li><a href="thungo.jsp">About us</a></li>
 				</ul>
+			</div>
 			</div>
 
 		</div>

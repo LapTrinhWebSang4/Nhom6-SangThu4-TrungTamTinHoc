@@ -55,9 +55,6 @@
 	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
 	color:white;
 	}
-	#navbar-img{
-		display:none;
-	}
 }
 .panel-default{
 	box-shadow: 10px 10px 5px black;
@@ -92,9 +89,10 @@ body{
 	height:100%;
 	background-repeat:no-repeat;
 	z-index:-1;
-	opactity:.5;
 	 rgba(255,255,255,0.4);
 	 background-position: 50% 60%; 
+	 position:relative;
+	 opactity:.1;
 }
 
 
@@ -220,8 +218,8 @@ a>.glyphicon{
 
 		
 			
-				<div class="container " id="login-form" style="padding-top:100px;z-index:10;">
-		<div class="row">
+				<div class="container " id="login-form" >
+		<div class="row" style="margin-top:50px;">
 			<div class="col-sm-6 col-sm-offset-3">
 				<div class="panel panel-default">					
 					<div class="panel-body">
@@ -286,7 +284,8 @@ a>.glyphicon{
 
 		<div class="bottom-footer"
 			style="border-top: 1px solid #b2b2b2; margin-top: 10px; padding-top: 10px; corlor: red;">
-			<div class="col-md-5">
+			<div class="row">
+				<div class="col-md-5" style="padding-bottom:45px;">
 				<p>developed by G6</p>
 				<span class="glyphicon glyphicon-home"></span> Cơ sở chính: XX/XX,
 				đường ss, Q.qq, TH. HCM <br> <span
@@ -298,6 +297,7 @@ a>.glyphicon{
 					<li><a href="giangvien.jsp">Contract</a></li>
 					<li><a href="thungo.jsp">About us</a></li>
 				</ul>
+			</div>
 			</div>
 
 		</div>
@@ -332,7 +332,12 @@ $(document).ready(function() {
 	  	      $('.navbar-default').removeClass('navbar-fixed-top');
 	  	    }
 	    }else{
-	    	$('.navbar-default').addClass('navbar-fixed-top');
+	    	if ($(window).scrollTop() > 120) {
+		  	      $('.navbar-default').addClass('navbar-fixed-top');
+		  	    }
+		  	    if ($(window).scrollTop() < 121) {
+		  	      $('.navbar-default').removeClass('navbar-fixed-top');
+		  	    }
 	    	
 	    }
 	  });
