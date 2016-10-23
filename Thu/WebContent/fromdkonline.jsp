@@ -62,9 +62,7 @@
 	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
 	color:white;
 	}
-	#navbar-img{
-		display:none;
-	}
+	
 }
 
 
@@ -369,7 +367,12 @@ $(document).ready(function() {
 	  	      $('.navbar-default').removeClass('navbar-fixed-top');
 	  	    }
 	    }else{
-	    	$('.navbar-default').addClass('navbar-fixed-top');
+	    	if ($(window).scrollTop() > 120) {
+		  	      $('.navbar-default').addClass('navbar-fixed-top');
+		  	    }
+		  	    if ($(window).scrollTop() < 121) {
+		  	      $('.navbar-default').removeClass('navbar-fixed-top');
+		  	    }
 	    	
 	    }
 	  });

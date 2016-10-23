@@ -7,11 +7,13 @@
 <title>Câu hỏi-tư vấn</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <style type="text/css">
 	body {
 	background-color: lightgrey;
+	position:relative;
 }
 	#custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(255, 255, 255, 1);
@@ -55,9 +57,7 @@
 	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
 	color:white;
 	}
-	#navbar-img{
-		display:none;
-	}
+	
 }
 
 
@@ -83,12 +83,6 @@
 	height:120px;	
 	z-index:3;
 }
-
-
-
-#login-form{
-	padding-bottom:200px;
-}
 .footer-nav>li>a{
 	color:white;
 }
@@ -99,6 +93,114 @@ a>.glyphicon{
 	color:#0082c8;
 	 text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px black;
 }
+ul>li{
+	list-style:none;
+	
+}
+.header-content-ask{
+	
+}
+.content-ask{
+	height:auto;
+	background-color:lightgrey;
+	padding-top:5px;
+	margin-top:10px;
+	box-shadow: 10px 10px 5px black;
+}
+.content-answer{
+	border-right:3px solid red;
+	direction:rtl;
+	padding-right:4px;
+}
+.content-question{
+	border-left:3px solid #0082c8;
+	left:0;
+	padding-left:4px;
+}
+.name-user-ask{
+	color:lightgrey;display:inline;padding-right:6px;
+}
+.time-ask{
+	color:lightgrey;display:inline;padding-left:6px;padding-right:6px;
+}
+.show-content-ask{
+	display:inline-block;padding-left:6px;
+}
+a {
+    text-decoration: none;
+}
+.signnature{
+	margin-right:16px;
+	padding-left:6px;
+	font-size:18px;
+	color:Blue;
+	font-style: italic;
+	
+	
+}
+.div-per-field-1 .header-content-ask{
+height:auto;
+	 background-color:#0082c8;
+	 color:white;
+	 box-shadow: 10px 10px 5px black;
+	 margin-bottom:30px;
+	
+}
+.div-per-field-2 .header-content-ask{
+height:auto;
+	 background-color:#009688;
+	 color:white;
+	 box-shadow: 10px 10px 5px black;
+	 margin-bottom:30px;
+}
+.div-per-field-3 .header-content-ask{
+height:auto;
+	 background-color:#673ab7;
+	 color:white;
+	 box-shadow: 10px 10px 5px black;
+	 margin-bottom:30px;
+}
+.div-per-field-4 .header-content-ask{
+			height:auto;
+	 background-color:#ff9800;
+	 color:white;
+	 box-shadow: 10px 10px 5px black;
+	 margin-bottom:30px;
+}
+li>span{
+	padding-right:3px;
+}
+/* For the "inset" look only */
+
+
+/* Let's get this party started */
+ 
+  ul.nav-pills {
+      position: fixed;
+  }
+  
+  @media screen and (max-width: 810px) {
+  	.content-ask,.header-content-ask{
+        margin-left: 150px;
+    }
+  }
+  #myScrollspy .nav-stacked .active{
+  	border-left:2px solid #CCFF00;
+  	background-color:white;
+  	background:lightgrey;
+  }
+   #myScrollspy .nav-stacked .active>a,#myScrollspy .nav-stacked .active>a:focus,
+   #myScrollspy .nav-stacked .active>a:hover{
+  	border-left:2px solid #CCFF00;
+  	background-color:white;
+  	background:lightgrey;
+  }
+  .nav-pills{
+  	background-color:white;
+  }
+  .nav-pills>li{
+  	border:1px solid black;
+  }
 </style>
 
 <script
@@ -130,28 +232,18 @@ a>.glyphicon{
 </script>
 <link rel="stylesheet" href="css/w3.css">
 </head>
-<body>
-	<div style="right: 0px; bottom: 125px; position: fixed;" id="icon-chat">
-		<img src="element/chat.gif" height="100" width="100" />
-	</div>
-	<div
-		style="bottom: 40px; right: 50px; position: fixed; display: none; width: 170px; height: 240px;"
-		id="chat-box">
-		<div style="background-color: lightblue; height: 20px;">
-			<h4 align="center">Tư vấn</h4>
-		</div>
-		<div
-			style="background-color: white; height: 200px; border: solid 1px blue">
-			TTV: Xin chào, tôi có thể giúp gì cho bạn</div>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="220">
 
-		<input type="text" name="chat"
-			style="height: 20px; width: 170px; border: solid 1px blue;"
-			placeholder="chat" />
+	
+	
+	
+	<div id="navbar-img" style="position:relative;">
+		<img src="Asset/header ttth.jpg" id="header-img" style="width: 100%;">
 	</div>
-	<div class="container-fluid">
-	<div id="navbar-img" >
-		<img src="Asset/header ttth.jpg" id="header-img" style="width: 100%;" >
-	</div>
+	
+	
+	
+	
 		<div class="navbar navbar-default " id="custom-bootstrap-menu" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
@@ -223,127 +315,309 @@ a>.glyphicon{
 		<!--/.nav-collapse -->
 		</div>
 	</div>
-
-		<nav class="navbar w3-light-grey">
+	
+	<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="navbar w3-light-grey">
 			<ul class="nav nav-tabs">
 				<li><a id="btn-send"><button class="btn btn-info active">Đặt
 							câu hỏi</button></a></li>
 				<li><a id="btn-list"><button class="btn btn-info">danh
 							sách câu hỏi</button></a></li>
 			</ul>
-		</nav>
-		<div class="jumbotron" id="send-q" >
-					<form ng-app="myApp" ng-controller="validateCtrl"
-					name="myForm" novalidate>
-			<h3>Đặt câu hỏi</h3>
-			<label>Đối tượng</label><select class="form-control">
-				<option>Sinh viên</option>
-				<option>Giảng viên</option>
-				<option>Khác</option>
-			</select> <label for="name">Họ tên</label> <input type="text"
-				class="form-control input-lg" id="name" placeholder="Nhập họ tên" name="user"
-								ng-model="user" required><span
-								style="color: red"
-								ng-show="myForm.user.$dirty && myForm.user.$invalid"> <span
-									ng-show="myForm.user.$error.required">Name is
-										required.</span></span><br>
-				 <label
-				for="name">Email</label> <input
-								class="form-control" type="email" name="email" ng-model="email"
-								required> <span style="color: red"
-								ng-show="myForm.email.$dirty && myForm.email.$invalid"> <span
-									ng-show="myForm.email.$error.required">Email is
-										required.</span> <span ng-show="myForm.email.$error.email">Invalid
-										email address.</span>
-							</span>
-							<br>
-				 <label>Lĩnh vực</label><select
-				class="form-control">
-				<option>Chế độ Chính sách - Học bổng</option>
-				<option>Học phí và kỷ luật về HP</option>
-				<option>Chứng chỉ</option>
-			</select> <br>
-			<label for="name">Tiêu đề</label> <input type="text"
-				class="form-control" id="tieude" placeholder="Tiêu đề" name="lable"
-								ng-model="lable" required> <span
-								style="color: red"
-								ng-show="myForm.lable.$dirty && myForm.lable.$invalid"> <span
-									ng-show="myForm.lable.$error.required">Lable is
-										required.</span></span>
-			<br>
-			<label
-				for="name">Nội dung</label>
-			<textarea class="form-control" rows="6" name="txtara"
-								ng-model="txtara" required></textarea>
-								<span
-								style="color: red"
-								ng-show="myForm.txtara.$dirty && myForm.txtara.$invalid"> <span
-									ng-show="myForm.txtara.$error.required">Question is
-										required.</span></span>
-										<br>
-
-			<button class="btn btn-success" data-toggle="modal"
-				data-target="#myModal" ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
-myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.phone.$invalid || myForm.phone.$error.required || myForm.lable.$error.required || myForm.txtara.$error.required">Gửi câu hỏi</button>
-
-			<!-- Modal -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-				aria-labelledby="" aria-hidden="false">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">&times;</button>
-							<h2 class="modal-title" id="myModalLabel" align="center">Thành
-								công</h2>
-						</div>
-						<div class="modal-body">Bạn sẽ nhận được câu trả lời qua
-							email trong thời gian sớm nhất</div>
-						<div class="modal-footer">
-
-							<button type="button" class="btn btn-block btn-success"
-								data-dismiss="modal">OK</button>
-
-						</div>
-					</div>
-					<!-- /.modal-content -->
+		</div>
 				</div>
-			</div>
-			</form>
-		</div>
+		
 
-		<div id="list-q" style="display: none;">
-			<div class="jumbotron">
-				<h3>Tiêu đề 1</h3>
-				<label>Câu hỏi</label>
-				<p>câu hỏi 1</p>
-				<label>Trả lời</label>
-				<p>Câu trả lời 1</p>
+		
 			</div>
-			<div class="jumbotron">
-				<h3>Tiêu đề 2</h3>
-				<label>Câu hỏi</label>
-				<p>câu hỏi 2</p>
-				<label>Trả lời</label>
-				<p>Câu trả lời 2</p>
-			</div>
-			<div class="jumbotron">
-				<h3>Tiêu đề 3</h3>
-				<label>Câu hỏi</label>
-				<p>câu hỏi 3</p>
-				<label>Trả lời</label>
-				<p>Câu trả lời 3</p>
-			</div>
-			<div class="jumbotron">
-				<h3>Tiêu đề 4</h3>
-				<label>Câu hỏi</label>
-				<p>câu hỏi 4</p>
-				<label>Trả lời</label>
-				<p>Câu trả lời 4</p>
-			</div>
-
 		</div>
+		
+		
+		
+			
+		
+
+
+	<div class="container-fluid" id="list-q" style="" >		
+		<div class="row">
+				<nav class="col-md-2" id="myScrollspy">
+				<ul class="nav nav-pills nav-stacked"  >
+					<li class="active"><a href="#div-per-field-11">Chứng chỉ</a></li>
+					<li><a href="#div-per-field-21">Quan hệ hợp tác</a></li>
+					<li><a href="#div-per-field-31">Chế độ miễn giảm</a></li>
+					<li><a href="#div-per-field-41">Khác</a></li>
+					
+				</ul>
+			</nav>
+			<div class="col-md-8" >
+				<!-- field 1 -->
+				<div class="div-per-field-1" id="div-per-field-11">
+					<div class="header-content-ask" >
+        <div style="float:left;" id="area-contain-icon"><img class="img-responsive" width="70" height="70"  src="Asset/faqicon.png" alt="Chania"></div>
+					<div style="word-break: break-all;" id="area-contain-tittle">
+						<p style="top: 0px; word-break: break-all;">Lorem ipsum dolor
+							sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+							diam sagittis scelerisque. Pellentesque molestie laoreet neque
+					
+							</p>
+						<p class="name-user-ask">Tên người hỏi</p>
+						<span>-</span>
+						<p class="time-ask">1 giờ trước</p>
+						<span>-</span><a class="show-content-ask" href="#"
+							data-toggle="collapse" data-target=".content-ask">Detail</a>
+					</div>
+				</div>
+      <div class="content-ask collapse">
+      	<div class="content-question">
+      		Lorem ipsum dolor
+			sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+			diam sagittis scelerisque. Pellentesque molestie laoreet neque
+			vitae tempus. Fusce at pretium erat. Fusce in dignissim lectus,
+			ac porttitor justo. Cras sed tortor nec enim maximus fringilla ut
+			ac urna. Curabitur et turpis ac nibh rutrum placerat. Sed
+			vehicula nunc et tincidunt lobortis. Sed sapien nunc, euismod
+			eget rutrum sit amet, elementum quis eros. Pellentesque
+			pellentesque faucibus turpis quis ornare. Mauris vitae libero in
+			nunc volutpat				
+      	</div>
+      	<div class="content-answer">
+      	xcvsadvdxv
+      		<p class="signnature">Kien</p>
+      	</div>
+      </div>
+      
+      
+      
+      	<div class="header-content-ask" >
+        <div style="float:left;" id="area-contain-icon"><img class="img-responsive" width="70" height="70"  src="Asset/faqicon.png" alt="Chania"></div>
+					<div style="word-break: break-all;" id="area-contain-tittle">
+						<p style="top: 0px; word-break: break-all;">Lorem ipsum dolor
+							sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+							diam sagittis scelerisque. Pellentesque molestie laoreet neque
+					
+							</p>
+						<p class="name-user-ask">Tên người hỏi</p>
+						<span>-</span>
+						<p class="time-ask">1 giờ trước</p>
+						<span>-</span><a class="show-content-ask" href="#"
+							data-toggle="collapse" data-target=".content-ask">Detail</a>
+					</div>
+				</div>
+      <div class="content-ask collapse">
+      	<div class="content-question">
+      		Lorem ipsum dolor
+			sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+			diam sagittis scelerisque. Pellentesque molestie laoreet neque
+			vitae tempus. Fusce at pretium erat. Fusce in dignissim lectus,
+			ac porttitor justo. Cras sed tortor nec enim maximus fringilla ut
+			ac urna. Curabitur et turpis ac nibh rutrum placerat. Sed
+			vehicula nunc et tincidunt lobortis. Sed sapien nunc, euismod
+			eget rutrum sit amet, elementum quis eros. Pellentesque
+			pellentesque faucibus turpis quis ornare. Mauris vitae libero in
+			nunc volutpat				
+      	</div>
+      	<div class="content-answer">
+      	xcvsadvdxv
+      		<p class="signnature">Kien</p>
+      	</div>
+      </div>
+      
+      
+      
+      <div class="header-content-ask" >
+        <div style="float:left;" id="area-contain-icon"><img class="img-responsive" width="70" height="70"  src="Asset/faqicon.png" alt="Chania"></div>
+					<div style="word-break: break-all;" id="area-contain-tittle">
+						<p style="top: 0px; word-break: break-all;">Lorem ipsum dolor
+							sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+							diam sagittis scelerisque. Pellentesque molestie laoreet neque
+					
+							</p>
+						<p class="name-user-ask">Tên người hỏi</p>
+						<span>-</span>
+						<p class="time-ask">1 giờ trước</p>
+						<span>-</span><a class="show-content-ask" href="#"
+							data-toggle="collapse" data-target=".content-ask">Detail</a>
+					</div>
+				</div>
+      <div class="content-ask collapse">
+      	<div class="content-question">
+      		Lorem ipsum dolor
+			sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+			diam sagittis scelerisque. Pellentesque molestie laoreet neque
+			vitae tempus. Fusce at pretium erat. Fusce in dignissim lectus,
+			ac porttitor justo. Cras sed tortor nec enim maximus fringilla ut
+			ac urna. Curabitur et turpis ac nibh rutrum placerat. Sed
+			vehicula nunc et tincidunt lobortis. Sed sapien nunc, euismod
+			eget rutrum sit amet, elementum quis eros. Pellentesque
+			pellentesque faucibus turpis quis ornare. Mauris vitae libero in
+			nunc volutpat				
+      	</div>
+      	<div class="content-answer">
+      	xcvsadvdxv
+      		<p class="signnature">Kien</p>
+      	</div>
+      </div>
+				</div>
+				
+				<!-- field 2 -->
+				<div class="div-per-field-2" id="div-per-field-21">
+					<div class="header-content-ask" >
+        <div style="float:left;" id="area-contain-icon"><img class="img-responsive" width="70" height="70"  src="Asset/faqicon.png" alt="Chania"></div>
+					<div style="word-break: break-all;" id="area-contain-tittle">
+						<p style="top: 0px; word-break: break-all;">Lorem ipsum dolor
+							sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+							diam sagittis scelerisque. Pellentesque molestie laoreet neque
+					
+							</p>
+						<p class="name-user-ask">Tên người hỏi</p>
+						<span>-</span>
+						<p class="time-ask">1 giờ trước</p>
+						<span>-</span><a class="show-content-ask" href="#"
+							data-toggle="collapse" data-target=".content-ask">Detail</a>
+					</div>
+				</div>
+      <div class="content-ask collapse">
+      	<div class="content-question">
+      		Lorem ipsum dolor
+			sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+			diam sagittis scelerisque. Pellentesque molestie laoreet neque
+			vitae tempus. Fusce at pretium erat. Fusce in dignissim lectus,
+			ac porttitor justo. Cras sed tortor nec enim maximus fringilla ut
+			ac urna. Curabitur et turpis ac nibh rutrum placerat. Sed
+			vehicula nunc et tincidunt lobortis. Sed sapien nunc, euismod
+			eget rutrum sit amet, elementum quis eros. Pellentesque
+			pellentesque faucibus turpis quis ornare. Mauris vitae libero in
+			nunc volutpat				
+      	</div>
+      	<div class="content-answer">
+      	xcvsadvdxv
+      		<p class="signnature">Kien</p>
+      	</div>
+      </div>
+      
+				</div>
+				
+				
+				
+				<!-- field 3 -->
+      			<div class="div-per-field-3" id="div-per-field-31">
+      			<div class="header-content-ask" >
+        <div style="float:left;" id="area-contain-icon"><img class="img-responsive" width="70" height="70"  src="Asset/faqicon.png" alt="Chania"></div>
+					<div style="word-break: break-all;" id="area-contain-tittle">
+						<p style="top: 0px; word-break: break-all;">Lorem ipsum dolor
+							sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+							diam sagittis scelerisque. Pellentesque molestie laoreet neque
+					
+							</p>
+						<p class="name-user-ask">Tên người hỏi</p>
+						<span>-</span>
+						<p class="time-ask">1 giờ trước</p>
+						<span>-</span><a class="show-content-ask" href="#"
+							data-toggle="collapse" data-target=".content-ask">Detail</a>
+					</div>
+				</div>
+      <div class="content-ask collapse">
+      	<div class="content-question">
+      		Lorem ipsum dolor
+			sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+			diam sagittis scelerisque. Pellentesque molestie laoreet neque
+			vitae tempus. Fusce at pretium erat. Fusce in dignissim lectus,
+			ac porttitor justo. Cras sed tortor nec enim maximus fringilla ut
+			ac urna. Curabitur et turpis ac nibh rutrum placerat. Sed
+			vehicula nunc et tincidunt lobortis. Sed sapien nunc, euismod
+			eget rutrum sit amet, elementum quis eros. Pellentesque
+			pellentesque faucibus turpis quis ornare. Mauris vitae libero in
+			nunc volutpat				
+      	</div>
+      	<div class="content-answer">
+      	xcvsadvdxv
+      		<p class="signnature">Kien</p>
+      	</div>
+      </div>
+      
+      			</div>
+      			
+      			
+      			
+      			
+      			<!-- field 4 -->
+      			<div class="div-per-field-4" id="div-per-field-41">
+      			<div class="header-content-ask" >
+        <div style="float:left;" id="area-contain-icon"><img class="img-responsive" width="70" height="70"  src="Asset/faqicon.png" alt="Chania"></div>
+					<div style="word-break: break-all;" id="area-contain-tittle">
+						<p style="top: 0px; word-break: break-all;">Lorem ipsum dolor
+							sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+							diam sagittis scelerisque. Pellentesque molestie laoreet neque
+					
+							</p>
+						<p class="name-user-ask">Tên người hỏi</p>
+						<span>-</span>
+						<p class="time-ask">1 giờ trước</p>
+						<span>-</span><a class="show-content-ask" href="#"
+							data-toggle="collapse" data-target=".content-ask">Detail</a>
+					</div>
+				</div>
+      <div class="content-ask collapse">
+      	<div class="content-question">
+      		Lorem ipsum dolor
+			sit amet, consectetur adipiscing elit. Aliquam ac dolor dapibus
+			diam sagittis scelerisque. Pellentesque molestie laoreet neque
+			vitae tempus. Fusce at pretium erat. Fusce in dignissim lectus,
+			ac porttitor justo. Cras sed tortor nec enim maximus fringilla ut
+			ac urna. Curabitur et turpis ac nibh rutrum placerat. Sed
+			vehicula nunc et tincidunt lobortis. Sed sapien nunc, euismod
+			eget rutrum sit amet, elementum quis eros. Pellentesque
+			pellentesque faucibus turpis quis ornare. Mauris vitae libero in
+			nunc volutpat				
+      	</div>
+      	<div class="content-answer">
+      	xcvsadvdxv
+      		<p class="signnature">Kien</p>
+      	</div>
+      </div>
+      
+      			</div>
+			</div>
+      
+      
+      
+      
+      
+			</div>
+		
+	
+		
 	</div>
+
+
+
+
+
+
+
+
+
+
+	<div
+		style="bottom: 40px; right: 50px; position: fixed; display: none; width: 170px; height: 240px;"
+		id="chat-box">
+		<div style="background-color: lightblue; height: 20px;">
+			<h4 align="center">Tư vấn</h4>
+		</div>
+		<div
+			style="background-color: white; height: 200px; border: solid 1px blue">
+			TTV: Xin chào, tôi có thể giúp gì cho bạn</div>
+
+		<input type="text" name="chat"
+			style="height: 20px; width: 170px; border: solid 1px blue;"
+			placeholder="chat" />
+	</div>
+	<div style="right: 0px; bottom: 125px; position: fixed;" id="icon-chat">
+		<img src="element/chat.gif" height="100" width="100" />
+	</div>
+	
 	<footer
 		style="background-color: #0082c8; color: white; padding-top: 25px;">
 	<div class="container">
@@ -368,6 +642,34 @@ myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.ph
 
 	</div>
 	</footer>
+	<script>
+$(document).ready(function(){
+  // Add scrollspy to <body>
+
+  // Add smooth scrolling on all links inside the navbar
+  $("#myScrollspy a").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    }  // End if
+  });
+});
+</script>
+	
 	<script type="text/javascript">
 	function goToByScroll(id){
 	      // Remove "link" from the ID
@@ -394,7 +696,12 @@ $(document).ready(function() {
 	  	      $('.navbar-default').removeClass('navbar-fixed-top');
 	  	    }
 	    }else{
-	    	$('.navbar-default').addClass('navbar-fixed-top');
+	    	if ($(window).scrollTop() > 120) {
+		  	      $('.navbar-default').addClass('navbar-fixed-top');
+		  	    }
+		  	    if ($(window).scrollTop() < 121) {
+		  	      $('.navbar-default').removeClass('navbar-fixed-top');
+		  	    }
 	    	
 	    }
 	  });
