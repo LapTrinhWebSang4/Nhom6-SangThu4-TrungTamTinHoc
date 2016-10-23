@@ -53,7 +53,7 @@
  {
     background-color: #0082c8;
 }
-@media only screen (min-width:500px)and (max-width:700px){
+@media only screen and (min-width:200px)and (max-width:700px){
 	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
 	color:white;
 	}
@@ -97,9 +97,7 @@ ul>li{
 	list-style:none;
 	
 }
-.header-content-ask{
-	
-}
+
 .content-ask{
 	height:auto;
 	background-color:lightgrey;
@@ -181,7 +179,7 @@ li>span{
   
   @media screen and (max-width: 810px) {
   	.content-ask,.header-content-ask{
-        margin-left: 150px;
+       
     }
   }
   #myScrollspy .nav-stacked .active{
@@ -201,6 +199,12 @@ li>span{
   .nav-pills>li{
   	border:1px solid black;
   }
+  @media only screen and (min-width: 200px) and (max-width: 1000px){
+  	#myScrollspy{
+  		display:none;
+  	}
+  }
+  
 </style>
 
 <script
@@ -690,11 +694,12 @@ $(document).ready(function() {
 	      console.log($(window).scrollTop())
 	    if($(window).width()>800){
 	    	if ($(window).scrollTop() > 120) {
-	  	      $('.navbar-default').addClass('navbar-fixed-top');
+	  	      $('.navbar-default').addClass('navbar-fixed-top');	  	      
 	  	    }
 	  	    if ($(window).scrollTop() < 121) {
 	  	      $('.navbar-default').removeClass('navbar-fixed-top');
 	  	    }
+	  	    
 	    }else{
 	    	if ($(window).scrollTop() > 120) {
 		  	      $('.navbar-default').addClass('navbar-fixed-top');
@@ -702,6 +707,7 @@ $(document).ready(function() {
 		  	    if ($(window).scrollTop() < 121) {
 		  	      $('.navbar-default').removeClass('navbar-fixed-top');
 		  	    }
+		  	  
 	    	
 	    }
 	  });

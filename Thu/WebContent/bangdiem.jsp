@@ -144,10 +144,11 @@ dt{
 		display:none;
 	}
 }
-@media screen and (max-width:800px){
+@media only screen and (min-width:200px)and (max-width:700px){
 	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
 	color:white;
 	}
+	
 }
 </style>
 <link rel="stylesheet" href="css/w3.css">

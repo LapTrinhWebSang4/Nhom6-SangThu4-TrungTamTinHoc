@@ -51,10 +51,11 @@
  {
     background-color: #0082c8;
 }
-@media screen and (max-width:800px){
+@media only screen and (min-width:200px)and (max-width:700px){
 	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
 	color:white;
 	}
+	
 }
 .panel-default{
 	box-shadow: 10px 10px 5px black;

@@ -58,10 +58,11 @@
  {
     background-color: #0082c8;
 }
-@media only screen (min-width:500px)and (max-width:700px){
+@media only screen and (min-width:200px)and (max-width:700px){
 	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
 	color:white;
 	}
+	
 }
 
 
