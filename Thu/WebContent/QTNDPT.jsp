@@ -80,7 +80,8 @@
 
 			<ul class="nav nav-list">
 				<div class="space-32"></div>
-
+				<div class="space-32"></div>
+				<div class="space-32"></div>
 				<li class="active"><a href="QTNDPT.jsp"> <i
 						class="menu-icon fa fa-picture-o"></i> <span class="menu-text">
 							Change Poster </span>
@@ -153,12 +154,16 @@
 				</div>
 
 				<div class="page-content">
-					<!--BEGIN PAGE CONTENT-->
+					<div class="page-header">
+							<h1 style="color: #e9573f ">
+								<strong>Cài đặt Poster </strong>
+							</h1>
+						</div>
 					<div class="containter-fluid" id="manhinhchinh1">
 
 						<div class="row">
 
-							<div class="col-md-6">
+							<div class="col-md-8">
 								<div role="tabpanel">
 									<!-- Nav tabs -->
 									<ul class="nav nav-tabs" role="tablist">
@@ -210,12 +215,12 @@
 								<input type="checkbox" value=""> Đã đăng lên trang chủ
 							</div>
 							<div class="col-md-3">
-								<div class="form-group" style="padding-top: 165px">
+								<div class="form-group" style="padding-top: 215px">
 									<div class="panel panel-default">
 										<div class="form-group" style="padding-left: 10px">
 
 
-											<span><strong>Change Poster</strong></span>
+											<span><strong>Đổi poster</strong></span>
 											<div class="fileUpload btn btn-default">
 												<input id="uploadBtn" type="file" class="upload">
 

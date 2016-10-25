@@ -70,7 +70,8 @@
 
 			<ul class="nav nav-list">
 				<div class="space-32"></div>
-
+				<div class="space-32"></div>
+				<div class="space-32"></div>
 				<li class=""><a href="QTNDPT.jsp"> <i
 						class="menu-icon fa fa-picture-o"></i> <span class="menu-text">
 							Change Poster </span>
@@ -108,6 +109,7 @@
 			</div>
 		</div>
 		<div class="main-content">
+		
 			<div class="main-content-inner">
 				<div class="row">
 					<div class="container-fluid">
@@ -142,6 +144,11 @@
 				</div>
 
 				<div class="page-content">
+				<div class="page-header" >
+							<h1  style="color: #e9573f ">
+								<strong>Gửi Mail</strong>
+							</h1>
+			</div>
 					<div class="form-group" style="padding-top: 25px">
 						<div class="col-sm-12 ">
 							<div style="padding-left: 20px; padding-right: 20px;">

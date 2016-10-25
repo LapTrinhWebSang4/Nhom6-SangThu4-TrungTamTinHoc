@@ -35,7 +35,11 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
 <link rel="stylesheet" type="text/css" href="Asset/headercss.css">
-
+<style>
+	.modal-header{
+	background-color: #4FC1E9;
+	}
+</style>
 
 </head>
 <body class="no-skin">
@@ -70,7 +74,8 @@
 
 			<ul class="nav nav-list">
 				<div class="space-32"></div>
-
+				<div class="space-32"></div>
+				<div class="space-32"></div>
 				<li class=""><a href="QTNDPT.jsp"> <i
 						class="menu-icon fa fa-picture-o"></i> <span class="menu-text">
 							Change Poster </span>
@@ -108,6 +113,7 @@
 			</div>
 		</div>
 		<div class="main-content">
+		
 			<div class="main-content-inner">
 				<div class="row">
 					<div class="container-fluid">
@@ -141,6 +147,12 @@
 					</div>
 				</div>
 				<div class="page-content">
+				
+					<div class="page-header" >
+							<h1  style="color: #e9573f ">
+								<strong>Thông tin cá nhân</strong>
+							</h1>
+						</div>
 					<div style="padding-left: 20px; padding-right: 20px;">
 						<div class="row">
 							<div class="col-xs-12">
@@ -187,7 +199,7 @@
 										<div class="col-xs-12 col-sm-9">
 
 
-											<div class="space-12"></div>
+											
 
 											<div class="profile-user-info profile-user-info-striped">
 												<div class="profile-info-row">
@@ -329,8 +341,48 @@
 											<div class="space-20"></div>
 											<div id="group-button" class="center">
 
-												<button type="button" class="btn btn-sm btn-success">Đổi
+												<button button type="button" class="btn btn-sm btn-success " data-toggle="modal" data-target="#myModal">Đổi
 													mật khẩu</button>
+													<div class="modal fade" id="myModal" role="dialog">
+													    <div class="modal-dialog">
+													    
+													      <!-- Modal content-->
+													      <div class="modal-content">
+													        <div class="modal-header">
+													          <button type="button" class="close" data-dismiss="modal">&times;</button>
+													          <h4 style="color: #f5f7fa;font-size: 20px;"><strong>Đổi mật khẩu </strong></h4>
+													        </div>
+													        <div class="modal-body">
+													        <form class="form-horizontal">
+													        
+													          <div class="form-group">
+																    <label for="input1" class="col-sm-3 control-label">Mật Khẩu cũ</label>
+																    <div class="col-sm-7">
+																      <input type="password" class="form-control" id="input1" >
+																    </div>
+																  </div>
+																  <div class="form-group">
+																    <label for="input2" class="col-sm-3 control-label">Mật Khẩu mới </label>
+																    <div class="col-sm-7">
+																      <input type="password" class="form-control" id="input2" >
+																    </div>
+																  </div>
+																  <div class="form-group">
+																    <label for="input3" class="col-sm-3 control-label">Xác nhận mật khẩu mới </label>
+																    <div class="col-sm-7">
+																      <input type="password" class="form-control" id="input3" >
+																    </div>
+																  </div>
+																  </form>
+													        </div>
+													        <div class="modal-footer">
+													        <button type="button" class="btn btn-info"  id="xn">Xác nhận</button>
+													          <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
+													        </div>
+													      </div>
+													      
+													    </div>
+													  </div>
 												<button type="button" class="btn btn-sm btn-success">Cập
 													nhật</button>
 											</div>
@@ -359,7 +411,50 @@
 			<script src="assets/js/ace-elements.min.js"></script>
 			<script src="assets/js/ace.min.js"></script>
 			<script type="text/javascript">
+			
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			function validate(id)
+			{
+				if($("#"+id).val()==null || $("#"+id).val()=="")
+				{
+					var div = $("#"+id).closest("div");
+					div.addClass(" has-error ")
+					
+					return false;
+				}else {
+					var div = $("#"+id).closest("div");
+					div.removeClass(" has-error ")
+					
+					return true;
+				}
+			}
+			
+			$(document).ready(
+					function()
+					{
+
+						$("#xn").click(function()
+						{
+
+							if(!validate("input1"))
+							{
+								return false;
+							}
+							if(!validate("input2"))
+							{
+								return false;
+							}
+							if(!validate("input3"))
+							{
+								return false;
+							}
+							$("#input1").val("");
+							$("#input2").val("");
+							$("#input3").val("");
+							
+						});
+					}
+				);
 		</script>
 </body>
 </html>

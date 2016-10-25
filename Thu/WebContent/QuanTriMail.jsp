@@ -70,7 +70,8 @@
 
 			<ul class="nav nav-list">
 				<div class="space-32"></div>
-
+				<div class="space-32"></div>
+				<div class="space-32"></div>
 				<li class="#"><a href="QuanTriVien.jsp"> <i
 						class="menu-icon fa fa-picture-o"></i> <span class="menu-text">
 							Quản Lí Thành Viên </span>
@@ -134,15 +135,20 @@
 					</div>
 				</div>
 				<div class="page-content">
-
+					<div class="page-header">
+							<h1 style="color: #e9573f ">
+								<strong>Gửi Mail </strong>
+							</h1>
+						</div>
 					<div class="form-group" style="padding-top: 25px">
 						<div class="col-sm-12 ">
-							<div style="padding-left: 20px; padding-right: 20px;">
+							<div style=" padding-right: 20px;">
 								<div class="message-container">
 
 									<form id="id-message-form"
 										class="form-horizontal message-form border col-xs-12"
-										style="border: solid 1px #a3eaf0">
+										style="border: solid 2px #37BC9B">
+										<!-- /.main-container -->
 										<div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"

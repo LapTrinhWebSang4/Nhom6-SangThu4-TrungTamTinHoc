@@ -81,7 +81,8 @@
 
 			<ul class="nav nav-list">
 				<div class="space-32"></div>
-
+				<div class="space-32"></div>
+				<div class="space-32"></div>
 				<li class=""><a href="QTNDPT.jsp"> <i
 						class="menu-icon fa fa-picture-o"></i> <span class="menu-text">
 							Change Poster </span>
@@ -151,6 +152,8 @@
 					</div>
 				</div>
 				<div class="page-content">
+				<div class="space-32"></div>
+			
 					<div class="form-group" style="padding-top: 25px">
 						<div class="col-sm-12 ">
 

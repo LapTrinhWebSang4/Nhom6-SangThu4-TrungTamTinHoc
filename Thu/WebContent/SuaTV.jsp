@@ -35,8 +35,13 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
 <link rel="stylesheet" type="text/css" href="Asset/headercss.css">
-
-
+<style>
+.panel-heading{
+    			background-color: #4CAF50;
+    			color: white;
+					}
+</style>
+	
 </head>
 <body class="no-skin">
 	<!--nav-->
@@ -70,7 +75,8 @@
 
 			<ul class="nav nav-list">
 				<div class="space-32"></div>
-
+				<div class="space-32"></div>
+				<div class="space-32"></div>
 				<li class="#"><a href="QuanTriVien.jsp"> <i
 						class="menu-icon fa fa-picture-o"></i> <span class="menu-text">
 							Quản Lí Tài Khoản </span>
@@ -135,8 +141,10 @@
 					</div>
 				</div>
 				<div class="page-content">
-					<div class="form-group" style="padding-top: 25px">
-						<div class="form-group" style="padding-left: 80px">
+				<div class="space-32"></div>
+				<div class="space-22"></div>
+					
+						<div class="form-group" style="padding-left: 50px">
 							<div class="col-md-11 ">
 								<div class="row">
 
@@ -158,7 +166,7 @@
 
 												<div class="form-group">
 													<label for="inputlg">Mật Khầu </label> <input
-														class="form-control" id="inputmk" type="text" value=""="123456789" >
+														class="form-control" id="inputmk" type="text" value="123456789" >
 												</div>
 
 												<div class="form-group">
@@ -192,7 +200,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>

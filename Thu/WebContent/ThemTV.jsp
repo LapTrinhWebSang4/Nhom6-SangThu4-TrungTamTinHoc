@@ -72,7 +72,8 @@
 
 			<ul class="nav nav-list">
 				<div class="space-32"></div>
-
+				<div class="space-32"></div>
+				<div class="space-32"></div>
 				<li class="#"><a href="QuanTriVien.jsp"> <i
 						class="menu-icon fa fa-picture-o"></i> <span class="menu-text">
 							Quản Lí Tài Khoản </span>
@@ -136,8 +137,9 @@
 					</div>
 				</div>
 				<div class="page-content">
+				<div class="space-32"></div>
 					<div class="form-group" style="padding-top: 25px">
-						<div class="form-group" style="padding-left: 80px">
+						<div class="form-group" style="padding-left: 50px">
 							<div class="col-md-11 ">
 								<div class="row">
 
