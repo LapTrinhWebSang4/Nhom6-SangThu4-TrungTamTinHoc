@@ -7,6 +7,7 @@
 <title>Câu hỏi-tư vấn</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="Asset/tuvan-send.css">
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -97,74 +98,6 @@ ul>li{
 	list-style:none;
 	
 }
-
-.content-ask{
-	height:auto;
-	background-color:lightgrey;
-	padding-top:5px;
-	margin-top:10px;
-	box-shadow: 10px 10px 5px black;
-}
-.content-answer{
-	border-right:3px solid red;
-	direction:rtl;
-	padding-right:4px;
-}
-.content-question{
-	border-left:3px solid #0082c8;
-	left:0;
-	padding-left:4px;
-}
-.name-user-ask{
-	color:lightgrey;display:inline;padding-right:6px;
-}
-.time-ask{
-	color:lightgrey;display:inline;padding-left:6px;padding-right:6px;
-}
-.show-content-ask{
-	display:inline-block;padding-left:6px;
-}
-a {
-    text-decoration: none;
-}
-.signnature{
-	margin-right:16px;
-	padding-left:6px;
-	font-size:18px;
-	color:Blue;
-	font-style: italic;
-	
-	
-}
-.div-per-field-1 .header-content-ask{
-height:auto;
-	 background-color:#0082c8;
-	 color:white;
-	 box-shadow: 10px 10px 5px black;
-	 margin-bottom:30px;
-	
-}
-.div-per-field-2 .header-content-ask{
-height:auto;
-	 background-color:#009688;
-	 color:white;
-	 box-shadow: 10px 10px 5px black;
-	 margin-bottom:30px;
-}
-.div-per-field-3 .header-content-ask{
-height:auto;
-	 background-color:#673ab7;
-	 color:white;
-	 box-shadow: 10px 10px 5px black;
-	 margin-bottom:30px;
-}
-.div-per-field-4 .header-content-ask{
-			height:auto;
-	 background-color:#ff9800;
-	 color:white;
-	 box-shadow: 10px 10px 5px black;
-	 margin-bottom:30px;
-}
 li>span{
 	padding-right:3px;
 }
@@ -173,15 +106,7 @@ li>span{
 
 /* Let's get this party started */
  
-  ul.nav-pills {
-      position: fixed;
-  }
   
-  @media screen and (max-width: 810px) {
-  	.content-ask,.header-content-ask{
-       
-    }
-  }
   #myScrollspy .nav-stacked .active{
   	border-left:2px solid #CCFF00;
   	background-color:white;
@@ -193,17 +118,7 @@ li>span{
   	background-color:white;
   	background:lightgrey;
   }
-  .nav-pills{
-  	background-color:white;
-  }
-  .nav-pills>li{
-  	border:1px solid black;
-  }
-  @media only screen and (min-width: 200px) and (max-width: 1000px){
-  	#myScrollspy{
-  		display:none;
-  	}
-  }
+  
   
 </style>
 
@@ -320,14 +235,17 @@ li>span{
 		</div>
 	</div>
 	
-	<div class="container">
+	<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-2 ">
+					
+				</div>
+				<div class="col-md-8">
 					<div class="navbar w3-light-grey">
 			<ul class="nav nav-tabs">
-				<li><a id="btn-send"><button class="btn btn-info active">Đặt
+				<li><a id="btn-send"><button class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span>Đặt
 							câu hỏi</button></a></li>
-				<li><a id="btn-list"><button class="btn btn-info">danh
+				<li><a id="btn-list"><button class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span>danh
 							sách câu hỏi</button></a></li>
 			</ul>
 		</div>
@@ -339,12 +257,147 @@ li>span{
 		</div>
 		
 		
-		
+	<div class="container-fluid" id="send-q">
+		<div class="row">
+			<div class="col-md-2" id="banner-left">
+				<div id="khoa-hoc-hot">
+					<div>
+					<h4>Khóa học hot</h4> 
+					<hr style="bordor:0;border-top:1px solid lightgrey">
+					</div>
+						<div id="list-hinh-anh" style="padding-bottom:10px">
+							
+							<ul id="list-link">
+								<li><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="100" height="300"></a></li>
+								<li><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="100" height="300"></a></li>
+								<li><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="100" height="300"></a></li>
+								<li><a href="#"><img alt="" src="element/Window.jpg" class="img-thumbnail" width="100" height="300"></a></li>
+							</ul>
+						</div>
+				</div>
+				<div id="su-kien">
+					<h4>Sự kiện</h4>
+					 <ul id="list-su-kien">
+					 	<li><a>Microsoft tuyên bố ung thư tuổi tôm</a></li>
+					 	<li><a>Bạn đã biết cách sạc smartphone đúng cách</a></li>
+					 	<li><a>Samsung thu hồi galaxy note 7</a></li>
+					 	<li><a>Boomphone 2 sắp xuất hiện</a></li>
+					 	<li><a>Google ra mắt smartphone tự sản xuất(google pixel)</a></li>
+					 	<li><a>Oppo Neo 9 giảm giá</a></li>
+					 	<li><a>Điện thoại tầm trung 6GB đầu tiên của SamSung</a></li>
+					 	<li><a>Bạn đã biết cách sạc smartphone đúng cách</a></li>
+					 	<li><a>Bạn đã biết cách sạc smartphone đúng cách</a></li>
+					 </ul>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="jumbotron" id="send-q" >
+					<form ng-app="myApp" ng-controller="validateCtrl"
+					name="myForm" novalidate>
+			<h3>Đặt câu hỏi</h3>
+			<label>Đối tượng</label><select class="form-control">
+				<option>Sinh viên</option>
+				<option>Giảng viên</option>
+				<option>Khác</option>
+			</select> <label for="name">Họ tên</label> <input type="text"
+				class="form-control " id="name" placeholder="Nhập họ tên" name="user"
+								ng-model="user" required><span
+								style="color: red"
+								ng-show="myForm.user.$dirty && myForm.user.$invalid"> <span
+									ng-show="myForm.user.$error.required">Name is
+										required.</span></span><br>
+				 <label
+				for="name">Email</label> <input
+								class="form-control" type="email" name="email" ng-model="email"
+								required> <span style="color: red"
+								ng-show="myForm.email.$dirty && myForm.email.$invalid"> <span
+									ng-show="myForm.email.$error.required">Email is
+										required.</span> <span ng-show="myForm.email.$error.email">Invalid
+										email address.</span>
+							</span>
+							<br>
+				 <label>Lĩnh vực</label><select
+				class="form-control">
+				<option>Chế độ Chính sách - Học bổng</option>
+				<option>Học phí và kỷ luật về HP</option>
+				<option>Chứng chỉ</option>
+			</select> <br>
+			<label for="name">Tiêu đề</label> <input type="text"
+				class="form-control" id="tieude" placeholder="Tiêu đề" name="lable"
+								ng-model="lable" required> <span
+								style="color: red"
+								ng-show="myForm.lable.$dirty && myForm.lable.$invalid"> <span
+									ng-show="myForm.lable.$error.required">Lable is
+										required.</span></span>
+			<br>
+			<label
+				for="name">Nội dung</label>
+			<textarea class="form-control" rows="6" name="txtara"
+								ng-model="txtara" required></textarea>
+								<span
+								style="color: red"
+								ng-show="myForm.txtara.$dirty && myForm.txtara.$invalid"> <span
+									ng-show="myForm.txtara.$error.required">Question is
+										required.</span></span>
+										<br>
+
+			<button class="btn btn-success" data-toggle="modal"
+				data-target="#myModal" ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.phone.$invalid || myForm.phone.$error.required || myForm.lable.$error.required || myForm.txtara.$error.required">Gửi câu hỏi</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+				aria-labelledby="" aria-hidden="false">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h2 class="modal-title" id="myModalLabel" align="center">Thành
+								công</h2>
+						</div>
+						<div class="modal-body">Bạn sẽ nhận được câu trả lời qua
+							email trong thời gian sớm nhất</div>
+						<div class="modal-footer">
+
+							<button type="button" class="btn btn-block btn-success"
+								data-dismiss="modal">OK</button>
+
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+			</div>
+			</form>
+		</div>
+			</div>
+			<div class="col-md-2" id="banner-right">
+				<div>
+					<h4>Ý kiến phản hồi</h4>
+					<div id="form-y-kien">
+						<form>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input type="email" placeholder="email" require="required" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="noidung">Ý kiến</label>
+								<textarea type="text" placeholder="Nội dung" rows="10" require="required" class="form-control"></textarea>
+							</div>
+							<div class="form-group text-right">
+								<button class=" btn btn-default">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
 			
 		
 
 
-	<div class="container-fluid" id="list-q" style="" >		
+	<div class="container-fluid" id="list-q" style="display:none;" >		
 		<div class="row">
 				<nav class="col-md-2" id="myScrollspy">
 				<ul class="nav nav-pills nav-stacked"  >
@@ -463,6 +516,19 @@ li>span{
       		<p class="signnature">Kien</p>
       	</div>
       </div>
+     
+     	 	<div class="text-right" style="">
+      	<ul class="pagination">
+      		<li><a href="#">Prev</a></li>
+      		<li class="active"><a href="#">1</a></li>
+      		<li><a href="#">2</a></li>
+      		<li><a href="#">3</a></li>
+      		<li><a href="#">4</a></li>
+      		<li><a href="#">Next</a></li>
+      	</ul>
+      </div>
+     	 
+      
 				</div>
 				
 				<!-- field 2 -->
@@ -499,6 +565,14 @@ li>span{
       	xcvsadvdxv
       		<p class="signnature">Kien</p>
       	</div>
+      </div>
+      
+      <div class="text-right" style="">
+      	<ul class="pagination">
+      		<li><a href="#">Prev</a></li>
+      		<li class="active"><a href="#">1</a></li>
+      		<li><a href="#">Next</a></li>
+      	</ul>
       </div>
       
 				</div>
@@ -541,6 +615,14 @@ li>span{
       	</div>
       </div>
       
+      <div class="text-right" style="">
+      	<ul class="pagination">
+      		<li><a href="#">Prev</a></li>
+      		<li class="active"><a href="#">1</a></li>
+      		<li><a href="#">Next</a></li>
+      	</ul>
+      </div>
+      
       			</div>
       			
       			
@@ -580,6 +662,15 @@ li>span{
       	xcvsadvdxv
       		<p class="signnature">Kien</p>
       	</div>
+      </div>
+      
+      
+      <div class="text-right" style="">
+      	<ul class="pagination">
+      		<li><a href="#">Prev</a></li>
+      		<li class="active"><a href="#">1</a></li>
+      		<li><a href="#">Next</a></li>
+      	</ul>
       </div>
       
       			</div>
