@@ -182,7 +182,7 @@
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="row">
 									<div class="col-xs-7">
-										<div class="tabbable">
+										<div class="tabbable" style="border: solid 2px #37BC9B">
 											
 
 											<div class="tab-content no-border no-padding">
@@ -487,7 +487,7 @@
 									<div class="col-xs-5">
 										
 													<div class=" message-container" >
-														<div class="widget-box" >
+														<div class="widget-box" style="border: solid 2px #37BC9B">
 															<form class="form-horizontal" role="form" style="width: 100%">
 															<div style="padding-top: 20px;">
 																<div class="form-group" style="width: 100%;">
