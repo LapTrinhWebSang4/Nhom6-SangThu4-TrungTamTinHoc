@@ -6,12 +6,15 @@
 <meta charset="UTF-8">
 <title>Trung Tam tin hoc</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
-<link rel="stylesheet" type="text/css" href="css/cssfornav2.css">
-<script src="js/jquery.min.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="css/cssfornav2.css"/>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-submenu.js"></script>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/jquery.min.js"></script>
 
 
 
@@ -542,7 +545,7 @@ a>.glyphicon{
 	      // Call the scroll function
 	    goToByScroll(this.id);           
 	});
-$(document).ready(function() {
+	$(document).ready(function() {
 	  
 	  $(window).scroll(function () {
 	      //if you hard code, then use console
@@ -571,8 +574,6 @@ $(document).ready(function() {
 	});
 </script>
 <script type="text/javascript" src="js/jsfornav2.js"></script>
-
-
 <script type="text/javascript" src="js/jsfornav2-1.js"></script>
 </body>
 </html>

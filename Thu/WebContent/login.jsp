@@ -5,10 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
-
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
 <link rel="stylesheet" type="text/css" href="css/cssfornav2.css">
 <link rel="stylesheet" type="text/css" href="Asset/Login.css"/>
 
@@ -51,16 +50,13 @@
  {
     background-color: #0082c8;
 }
-@media only screen and (min-width:200px)and (max-width:700px){
-	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
-	color:white;
-	}
-	
-}
+
 .panel-default{
 	box-shadow: 10px 10px 5px black;
 }
-
+.btn-primary{
+	background-color: #0082c8;
+}
 .footer-nav {
 	text-align: right;
 	list-style: none;
@@ -111,154 +107,83 @@ a>.glyphicon{
     position: relative; 
     
 }
-.blur{
-	
-}
-
-
-
 /* style icon */
 .inner-addon .glyphicon {
   position: absolute;
   padding: 10px;
   pointer-events: none;
 }
+input:focus + .glyphicon{
+	color:#0082c8;
+}
+
 
 /* align icon */
-.left-addon .glyphicon  { left:  0px;}
+.left-addon .glyphicon  { left:  0px;color:lightgrey}
 .right-addon .glyphicon { right: 0px;}
 
 /* add padding  */
 .left-addon input  { padding-left:  30px; }
 .right-addon input { padding-right: 30px; }
+
+@media screen and (min-width:200px)and (max-width:700px){
+	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
+		color:white;
+	}
+	
+}
 </style>
 </head>
 <body>
 	
 	
-	<div id="navbar-img" >
-		<img src="Asset/header ttth.jpg" style="width: 100%;" >
-	</div>
-	
-	
-	<!-- Navbar -->
-	<div class="navbar navbar-default " id="custom-bootstrap-menu" role="navigation"">
-		<div class="container">
-			<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target=".navbar-collapse">
-				<span class="sr-only">Toggle navigation</span> 
-				<span class="icon-bar" ></span>
-				<span class="icon-bar" ></span>
-				<span class="icon-bar" ></span> 
-				
-			</button>
-			<a class="navbar-brand" href="Home.jsp"><span class="glyphicon glyphicon-home"></span>Trang chủ</a>
-		</div>
-		<div class="navbar-collapse collapse">
-
-			<!-- Left nav -->
-			<ul class="nav navbar-nav">
-					
-					<li><a href="#" id="thongbaolink"><span class="glyphicon glyphicon-pushpin"></span>Thông báo</a></li>
-					
-					<li><a href="#" id="gioithieulink"><span class="glyphicon glyphicon-info-sign"></span>Giới thiệu <span class="caret"></span></a>
-						<ul class="dropdown-menu" id="sub1">
-							<li><a href="giangvien.jsp">Đội ngủ giảng viên</a></li>
-							<li><a href="nhiemvu.jsp">Chức năng - Nhiệm vụ </a></li>
-							
-							
-						</ul></li>
-						<li><a href="#"><span class="glyphicon glyphicon-calendar"></span>Lịch khai giảng <span class="caret"></span></a>
-						<ul class="dropdown-menu" id="sub1">
-							<li><a href="Dangkiwindows-win.jsp">Windows 1 tháng 10</a></li>
-							<li><a href="Dangkiandroid-cban.jsp">Android 1 tháng 10</a></li>
-							
-							
-						</ul></li>
-						<li><a href=""><span class="glyphicon glyphicon-list-alt"></span>Xem điểm <span class="caret"></span></a>
-						<ul class="dropdown-menu" id="sub1">
+	<jsp:include page="header.jsp" />
 		
-							<li><a href="#">Khóa 101<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu" id="sub2">
-									<li><a href="#">Lớp lập trình windows 01</a></li>
-									<li><a href="#">Lớp lập trình web 01</a></li>
-									<li><a href="#">Lớp lập trình web 02</a></li>
-								</ul></li>
-								<li><a href="#">Khóa 100<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu" id="sub2">
-									<li><a href="#">Lớp lập trình windows 01</a></li>
-									<li><a href="#">Lớp lập trình web 01</a></li>
-									<li><a href="#">Lớp lập trình web 02</a></li>
-								</ul></li>
-								<li><a href="#">Khóa 99<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu" id="sub2">
-									<li><a href="#">Lớp lập trình windows 01</a></li>
-									<li><a href="#">Lớp lập trình web 01</a></li>
-									<li><a href="#">Lớp lập trình web 02</a></li>
-								</ul></li>
-						</ul></li>
-						<li><a href="tuvan-send.jsp"><span class="glyphicon glyphicon-question-sign"></span>Tư vấn- hỏi đáp</a></li>
-						<li><a href="list-mon-windows.jsp"><span class="glyphicon glyphicon-edit"></span>Đăng kí online</a></li>
-				</ul>
-
-
-			
-			
-
-		</div>
-		<!--/.nav-collapse -->
-		</div>
-	</div>
-		
-		
-	
-
-		
-			
-				<div class="container " id="login-form" >
+	<div class="container " id="login-form" >
 		<div class="row" style="margin-top:50px;">
 			<div class="col-sm-6 col-sm-offset-3">
 				<div class="panel panel-default">					
 					<div class="panel-body">
 						<h3>Login</h3>
 						<div class="whole-form">
-					<form action="" method="post" role="form">
+					<form action="LoginServlet" method="post" role="form" >
 						<div class="form-group">
 							<div class="checkbox">
-								<label> <input type="checkbox" value="tvv" name="kien"
-									checked="checked"> Tư vấn viên </label> <label> <input
-									type="checkbox" value="nqtnd" name="kien" id="box2">
-										Người quản trị nội dung </label> <label> <input
-									type="checkbox" value="qtv" name="kien" id="box1"> Quản
-										trị viên </label>
-							</div>
+										<label> 
+										<input type="checkbox" value="tvv" name="box"
+											checked="checked" id="box1"> Tư vấn viên 
+										</label> 
+										<label>
+											<input type="checkbox" value="qtnd" name="box" id="box2">
+												Người quản trị nội dung 
+										</label> 
+										<label> 
+										<input type="checkbox" value="qtv"
+											name="box" id="box3"> Quản trị viên
+											 </label>
+									</div>
 						</div>
 						<div class="form-group">
 							<label for="">Tài khoản</label> 
 							<div class="inner-addon left-addon">
-								<i class="glyphicon glyphicon-user">
-								</i>
-								<input type="text"
-								class="form-control" id="" placeholder="username">
+							<input type="text" name="username"
+								class="form-control" id="username" placeholder="username">
+								<i class="glyphicon glyphicon-user"></i>							
 							</div>
 							
 						</div>
 						<div class="form-group">
 							<label for="">Mật khẩu</label>
 							<div class=" inner-addon left-addon">
-							<i class="glyphicon glyphicon-lock" style="color:black"></i>
-								<input type="password"
-								class="form-control" id="" placeholder="password">
+							<input type="password" name="password"
+								class="form-control" id="password" placeholder="password">
+							<i class="glyphicon glyphicon-lock"></i>
+								
 							</div> 
 							
 						</div>
 						<div class="form-group">
-							<a href="" id="link"
-								class="btn btn-primary col-sm-offset-9 btn-sm">Đăng nhập</a>
+							<input type="submit" class="btn btn-default col-sm-offset-9" id="link" value="Đăng Nhập" >
 						</div>
 
 
@@ -279,33 +204,7 @@ a>.glyphicon{
 		
 	
 	
-	<footer
-		style="background-color: #0082c8; color: white; padding-top: 25px;">
-	<div class="container">
-
-		<div class="bottom-footer"
-			style="border-top: 1px solid #b2b2b2; margin-top: 10px; padding-top: 10px; corlor: red;">
-			<div class="row">
-				<div class="col-md-5" style="padding-bottom:45px;">
-				<p>developed by G6</p>
-				<span class="glyphicon glyphicon-home"></span> Cơ sở chính: XX/XX,
-				đường ss, Q.qq, TH. HCM <br> <span
-					class="glyphicon glyphicon-phone-alt"></span> Đt: xx50 43x 8xx
-			</div>
-			<div class="col-md-7">
-				<ul class="footer-nav">
-					<li><a href="Home.jsp">Home</a></li>
-					<li><a href="giangvien.jsp">Contract</a></li>
-					<li><a href="thungo.jsp">About us</a></li>
-				</ul>
-			</div>
-			</div>
-
-		</div>
-
-	</div>
-	</footer>
-
+	<jsp:include page="/footer.jsp"/>
 
 
 	<!--Jquery-->
@@ -342,7 +241,27 @@ $(document).ready(function() {
 	    	
 	    }
 	  });
+	  
 	});
+$(document).ready(function() {
+	$("input:checkbox").on('click', function() {
+  // in the handler, 'this' refers to the box clicked on
+  var $box = $(this);
+  if ($box.is(":checked")) {
+    // the name of the box is retrieved using the .attr() method
+    // as it is assumed and expected to be immutable
+    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+    // the checked state of the group/box on the other hand will change
+    // and the current value is retrieved using .prop() method
+    $(group).prop("checked", false);
+    $box.prop("checked", true);
+  } else {
+    $box.prop("checked", false);
+  }
+});	
+});
+
+
 </script>
 
 <!-- SmartMenus jQuery plugin -->
