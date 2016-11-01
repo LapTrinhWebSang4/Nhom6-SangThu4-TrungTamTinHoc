@@ -6,17 +6,21 @@
 <meta charset="UTF-8">
 <title>Trung Tam tin hoc</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-<link rel="stylesheet" type="text/css" href="css/cssfornav2.css"/>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-submenu.js"></script>
-<script src="js/jquery-3.1.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
+<link rel="stylesheet" type="text/css" href="css/cssfornav2.css">
 <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
-
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+ 
+<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+     url="jdbc:mysql://localhost/ttth"
+     user="root"  password="1234"/>
 
 
 <style type="text/css">
@@ -147,35 +151,25 @@ a>.glyphicon{
 						</ul></li>
 						<li><a href="#"><span class="glyphicon glyphicon-calendar"></span>Lịch khai giảng <span class="caret"></span></a>
 						<ul class="dropdown-menu" id="sub1">
-							<li><a href="Dangkiwindows-win.jsp">Windows 1 tháng 10</a></li>
-							<li><a href="Dangkiandroid-cban.jsp">Android 1 tháng 10</a></li>
+						<sql:query dataSource="${snapshot}" var="result">
+SELECT * from khoahoc;
+</sql:query>
+<c:forEach var="row" items="${result.rows}">
+							<li><a href="Dangkiwindows-win.jsp"><c:out value="${row.TenKhoaHoc}"/> [<c:out value="${row.NgayKhaiGiang}"/>]</a></li>
 							
+							</c:forEach>
 							
 						</ul></li>
 						<li><a href=""><span class="glyphicon glyphicon-list-alt"></span>Xem điểm <span class="caret"></span></a>
 						<ul class="dropdown-menu" id="sub1">
-		
-							<li><a href="#">Khóa 101<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu" id="sub2">
-									<li><a href="#">Lớp lập trình windows 01</a></li>
-									<li><a href="#">Lớp lập trình web 01</a></li>
-									<li><a href="#">Lớp lập trình web 02</a></li>
-								</ul></li>
-								<li><a href="#">Khóa 100<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu" id="sub2">
-									<li><a href="#">Lớp lập trình windows 01</a></li>
-									<li><a href="#">Lớp lập trình web 01</a></li>
-									<li><a href="#">Lớp lập trình web 02</a></li>
-								</ul></li>
-								<li><a href="#">Khóa 99<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu" id="sub2">
-									<li><a href="#">Lớp lập trình windows 01</a></li>
-									<li><a href="#">Lớp lập trình web 01</a></li>
-									<li><a href="#">Lớp lập trình web 02</a></li>
-								</ul></li>
+		<sql:query dataSource="${snapshot}" var="result">
+SELECT * from hocvien where Diem != "NULL"
+GROUP by MaLop;
+</sql:query>
+<c:forEach var="row" items="${result.rows}">
+							<li><a href="bangdiem.jsp?classes=<c:out value="${row.MaLop}"/>">Lớp <c:out value="${row.MaLop}"/></a></li></c:forEach>
+								
+								
 						</ul></li>
 						<li><a href="tuvan-send.jsp"><span class="glyphicon glyphicon-question-sign"></span>Tư vấn- hỏi đáp</a></li>
 						<li><a href="list-mon-windows.jsp"><span class="glyphicon glyphicon-edit"></span>Đăng kí online</a></li>
@@ -286,90 +280,33 @@ a>.glyphicon{
 					</div>
 					<div class="panel-body">
 						<div>
-							<img alt="" src="Hinh/THONGBAO.png" style="width: 100%;">
+							<img alt="" src="Hinh/THONGBAO.png" style="width: 100%; height: 250px;">
 						</div>
 						<div class="panel-group" id="accordion" role="tablist"
 							aria-multiselectable="true">
-
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingTwo">
-									<h4 class="panel-title"
-										style="font: Arial Black; color: #800080;">
-
-										<a class="collapsed" role="button" data-toggle="collapse"
-											data-parent="#accordion" href="#collapseTwo"
-											aria-expanded="false" aria-controls="collapseTwo"><span
-											class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
-											ưu đãi giảm giá cho tân sinh viên 2016 </a>
-									</h4>
-								</div>
-								<div id="collapseTwo" class="panel-collapse collapse"
-									role="tabpanel" aria-labelledby="headingTwo">
-									<div class="panel-body">Anim pariatur cliche
-										reprehenderit, enim eiusmod high life accusamus terry
-										richardson ad squid. 3 wolf moon officia aute, non cupidatat
-										skateboard dolor brunch. Food truck quinoa nesciunt laborum
-										eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
-										it squid single-origin coffee nulla assumenda shoreditch et.
-										Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-										cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-										vice lomo. Leggings occaecat craft beer farm-to-table, raw
-										denim aesthetic synth nesciunt you probably haven't heard of
-										them accusamus labore sustainable VHS.</div>
-								</div>
-							</div>
+							
+							
+							<sql:query dataSource="${snapshot}" var="result">
+SELECT * from thongbao where LoaiThongBao = "Thong bao";
+</sql:query>
+<c:forEach var="row" items="${result.rows}">
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingThree">
 									<h4 class="panel-title"
 										style="font: Arial Black; color: #800080;">
 										<a class="collapsed" role="button" data-toggle="collapse"
-											data-parent="#accordion" href="#collapseThree"
-											aria-expanded="false" aria-controls="collapseThree"><span
+											data-parent="#accordion" href="#<c:out value="${row.MaThongBao}"/>"
+											aria-expanded="false" aria-controls="<c:out value="${row.MaThongBao}"/>"><span
 											class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
-											Học tin học cơ sở miễn phí </a>
+											<c:out value="${row.TieuDe}"/> [<c:out value="${row.Ngay}"/>]</a>
 									</h4>
 								</div>
-								<div id="collapseThree" class="panel-collapse collapse"
+								<div id="<c:out value="${row.MaThongBao}"/>" class="panel-collapse collapse"
 									role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body">Anim pariatur cliche
-										reprehenderit, enim eiusmod high life accusamus terry
-										richardson ad squid. 3 wolf moon officia aute, non cupidatat
-										skateboard dolor brunch. Food truck quinoa nesciunt laborum
-										eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
-										it squid single-origin coffee nulla assumenda shoreditch et.
-										Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-										cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-										vice lomo. Leggings occaecat craft beer farm-to-table, raw
-										denim aesthetic synth nesciunt you probably haven't heard of
-										them accusamus labore sustainable VHS.</div>
+									<div class="panel-body"><c:out value="${row.NoiDung}"/></div>
 								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingThree">
-									<h4 class="panel-title"
-										style="font: Arial Black; color: #800080;">
-										<a class="collapsed" role="button" data-toggle="collapse"
-											data-parent="#accordion" href="#collapse4"
-											aria-expanded="false" aria-controls="collapseThree"><span
-											class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
-											Lịch Khai Giảng tháng 11</a>
-									</h4>
-								</div>
-								<div id="collapse4" class="panel-collapse collapse"
-									role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body">Anim pariatur cliche
-										reprehenderit, enim eiusmod high life accusamus terry
-										richardson ad squid. 3 wolf moon officia aute, non cupidatat
-										skateboard dolor brunch. Food truck quinoa nesciunt laborum
-										eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
-										it squid single-origin coffee nulla assumenda shoreditch et.
-										Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-										cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-										vice lomo. Leggings occaecat craft beer farm-to-table, raw
-										denim aesthetic synth nesciunt you probably haven't heard of
-										them accusamus labore sustainable VHS.</div>
-								</div>
-							</div>
+							</div></c:forEach>
+							
 						</div>
 					</div>
 
@@ -393,94 +330,37 @@ a>.glyphicon{
 
 				<div class="panel panel-default">
 					<div class="panel-heading" style="background-color:red">
-						<h3 class="panel-title">Thông Báo</h3>
+						<h3 class="panel-title">Sự kiện</h3>
 					</div>
 					<div class="panel-body">
 						<div>
-							<img alt="" src="Hinh/THONGBAO.png" style="width: 100%;">
+							<img alt="" src="Hinh/sukien.jpg" style="width: 100%; height: 250px">
 						</div>
 						<div class="panel-group" id="accordion" role="tablist"
 							aria-multiselectable="true">
-
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingTwo">
-									<h4 class="panel-title"
-										style="font: Arial Black; color: #800080;">
-
-										<a class="collapsed" role="button" data-toggle="collapse"
-											data-parent="#accordion" href="#collapseTwo"
-											aria-expanded="false" aria-controls="collapseTwo"><span
-											class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
-											ưu đãi giảm giá cho tân sinh viên 2016 </a>
-									</h4>
-								</div>
-								<div id="collapseTwo" class="panel-collapse collapse"
-									role="tabpanel" aria-labelledby="headingTwo">
-									<div class="panel-body">Anim pariatur cliche
-										reprehenderit, enim eiusmod high life accusamus terry
-										richardson ad squid. 3 wolf moon officia aute, non cupidatat
-										skateboard dolor brunch. Food truck quinoa nesciunt laborum
-										eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
-										it squid single-origin coffee nulla assumenda shoreditch et.
-										Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-										cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-										vice lomo. Leggings occaecat craft beer farm-to-table, raw
-										denim aesthetic synth nesciunt you probably haven't heard of
-										them accusamus labore sustainable VHS.</div>
-								</div>
-							</div>
+							
+							
+							<sql:query dataSource="${snapshot}" var="result">
+SELECT * from thongbao where LoaiThongBao = "Su kien";
+</sql:query>
+<c:forEach var="row" items="${result.rows}">
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingThree">
 									<h4 class="panel-title"
 										style="font: Arial Black; color: #800080;">
 										<a class="collapsed" role="button" data-toggle="collapse"
-											data-parent="#accordion" href="#collapseThree"
-											aria-expanded="false" aria-controls="collapseThree"><span
+											data-parent="#accordion" href="#<c:out value="${row.MaThongBao}"/>"
+											aria-expanded="false" aria-controls="<c:out value="${row.MaThongBao}"/>"><span
 											class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
-											Học tin học cơ sở miễn phí </a>
+											<c:out value="${row.TieuDe}"/> [<c:out value="${row.Ngay}"/>]</a>
 									</h4>
 								</div>
-								<div id="collapseThree" class="panel-collapse collapse"
+								<div id="<c:out value="${row.MaThongBao}"/>" class="panel-collapse collapse"
 									role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body">Anim pariatur cliche
-										reprehenderit, enim eiusmod high life accusamus terry
-										richardson ad squid. 3 wolf moon officia aute, non cupidatat
-										skateboard dolor brunch. Food truck quinoa nesciunt laborum
-										eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
-										it squid single-origin coffee nulla assumenda shoreditch et.
-										Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-										cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-										vice lomo. Leggings occaecat craft beer farm-to-table, raw
-										denim aesthetic synth nesciunt you probably haven't heard of
-										them accusamus labore sustainable VHS.</div>
+									<div class="panel-body"><c:out value="${row.NoiDung}"/></div>
 								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingThree">
-									<h4 class="panel-title"
-										style="font: Arial Black; color: #800080;">
-										<a class="collapsed" role="button" data-toggle="collapse"
-											data-parent="#accordion" href="#collapse4"
-											aria-expanded="false" aria-controls="collapseThree"><span
-											class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
-											Lịch Khai Giảng tháng 11</a>
-									</h4>
-								</div>
-								<div id="collapse4" class="panel-collapse collapse"
-									role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body">Anim pariatur cliche
-										reprehenderit, enim eiusmod high life accusamus terry
-										richardson ad squid. 3 wolf moon officia aute, non cupidatat
-										skateboard dolor brunch. Food truck quinoa nesciunt laborum
-										eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
-										it squid single-origin coffee nulla assumenda shoreditch et.
-										Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-										cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-										vice lomo. Leggings occaecat craft beer farm-to-table, raw
-										denim aesthetic synth nesciunt you probably haven't heard of
-										them accusamus labore sustainable VHS.</div>
-								</div>
-							</div>
+							</div></c:forEach>
+							
 						</div>
 					</div>
 
@@ -545,7 +425,7 @@ a>.glyphicon{
 	      // Call the scroll function
 	    goToByScroll(this.id);           
 	});
-	$(document).ready(function() {
+$(document).ready(function() {
 	  
 	  $(window).scroll(function () {
 	      //if you hard code, then use console
@@ -574,6 +454,8 @@ a>.glyphicon{
 	});
 </script>
 <script type="text/javascript" src="js/jsfornav2.js"></script>
+
+
 <script type="text/javascript" src="js/jsfornav2-1.js"></script>
 </body>
 </html>
