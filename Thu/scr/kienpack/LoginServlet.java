@@ -54,10 +54,10 @@ public class LoginServlet extends HttpServlet {
 	        	   RequestDispatcher rd=request.getRequestDispatcher("static-dashboard.jsp");  
 		            rd.forward(request,response); 
 	           } else if(q=="qtnd"){
-	        	   RequestDispatcher rd=request.getRequestDispatcher("QTNDPT.jsp");  
+	        	   RequestDispatcher rd=request.getRequestDispatcher("static-dashboard.jsp");  
 		            rd.forward(request,response); 
 	           }else{
-	        	   RequestDispatcher rd=request.getRequestDispatcher("QuanTriVien.jsp");  
+	        	   RequestDispatcher rd=request.getRequestDispatcher("static-dashboard.jsp");  
 		            rd.forward(request,response); 
 	           }
 	        }  
