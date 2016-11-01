@@ -126,7 +126,7 @@ a>.glyphicon {
 </head>
 <body>
 	
-	<div class="container-fluid">
+	
 		<div id="navbar-img" >
 		<img src="Asset/header ttth.jpg" id="header-img" style="width: 100%;" >
 	</div>
