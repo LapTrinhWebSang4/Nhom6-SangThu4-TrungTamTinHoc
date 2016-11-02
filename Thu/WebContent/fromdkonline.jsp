@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+ 
+<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+     url="jdbc:mysql://localhost/ttth"
+     user="root"  password="1234"/>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -195,24 +203,56 @@ a>.glyphicon{
 		<!--/.nav-collapse -->
 		</div>
 	</div>
-		
+	
+	<script>
+     $(document).ready(function() {
+         $("#listmon").change(function() {
+             servletCall();
+         });
+
+     });
+     function servletCall() {
+    	 var fullname = $('#listmon').val();
+         $.post(
+             "DangkiServ",
+             {name : fullname}, //meaasge you want to send
+             function(result) {
+             $('#listlop').html(result); //message you want to show
+         });
+         $(document).ready(function() {
+             $("#listlop").click(function() {
+     			$("#btn-submit").show();
+             });
+
+         });
+     };
+   </script>
+	
+		<div class="container">
+		<form role="form" ng-app="myApp" ng-controller="validateCtrl" action="insertdbhocvien.jsp" method="post"
+					name="myForm" novalidate>
 <div class="jumbotron col-md-12">
+<% String monhoc = request.getParameter( "monhoc" ); %>
+<% String loaimonhoc = request.getParameter( "loaimonhoc" ); %>
 				<div class="col-md-6">
-					<label>Môn học</label><select class="form-control">
-						<option value="#">Lập trình window</option>
-						<option value="Dangkiwindows-web.jsp">Lập trình web</option>
+					<label>Môn học</label><select class="form-control" id="listmon"> <option></option>
+					<sql:query dataSource="${snapshot}" var="result">
+SELECT * from khoahoc where MaLoaiKhoaHoc="<%=loaimonhoc %>";
+</sql:query>
+<c:forEach var="row" items="${result.rows}">
+						<option value="<c:out value="${row.MaKhoaHoc}"/>"><c:out value="${row.TenKhoaHoc}"/></option>
+						
+						</c:forEach>
 					</select>
 				</div>
 				<div class="col-md-6">
-					<label>Lớp học</label><select class="form-control">
-						<option>Thu 3-5 (18h00-20h00) KG: 1 thang 10</option>
-						<option>Thu 2-4 (18h00-20h00) KG: 1 thang 10</option>
+					<label>Lớp học</label><select class="form-control" id="listlop" name="listlop">
+						
 					</select>
 				</div>
 			</div>
 			<div class="jumbotron">
-				<form role="form" ng-app="myApp" ng-controller="validateCtrl"
-					name="myForm" novalidate>
+				
 
 					<div class="panel panel-default">
 						<div class="panel-body">
@@ -257,16 +297,12 @@ a>.glyphicon{
 										<span ng-show="myForm.phone.$error.required">phone
 											number is required.</span>
 								</div>
-								<div class="col-md-6">
-									<input type="checkbox" style="margin-top: 40px;">Đang
-									là sinh viên
-								</div>
+								
 								</row>
 								<row>
 								<div class="col-md-8">
-									<label for="name" style="color: #00ff00;">Thông tin
-										khác</label>
-									<textarea class="form-control" rows="3" cols="12"></textarea>
+									<label for="name" style="color: #00ff00;">Địa chỉ</label>
+									<textarea class="form-control" rows="3" cols="12" name="address"></textarea>
 									<button
 										style="width: 50px; height: 30px; background-color: grey; color: white; float: right;">
 										<span class="glyphicon glyphicon-link"></span>
@@ -281,7 +317,7 @@ a>.glyphicon{
 						</div>
 					</div>
 
-					<div class="container">
+					<div class="container" style="display: none;" id="btn-submit">
 						<button class="btn btn-success btn-block" data-toggle="modal"
 							data-target="#myModal"
 							ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
@@ -301,8 +337,7 @@ myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.ph
 									</div>
 									<div class="modal-body">Bạn có muốn đăng kí</div>
 									<div class="modal-footer">
-										<a href="Home.jsp"><button type="button"
-												class="btn btn-block btn-primary">Xác nhận</button></a>
+										<input type="submit" value="Có" class="btn btn-block btn-success">
 										<button type="button" class="btn btn-block btn-default"
 											data-dismiss="modal">Hủy</button>
 
@@ -313,9 +348,9 @@ myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.ph
 						</div>
 					</div>
 
-				</form>
-			</div>
-
+				
+			</div></form>
+</div>
 	<footer
 		style="background-color: #0082c8; color: white; padding-top: 25px;">
 	<div class="container">
@@ -341,43 +376,7 @@ myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.ph
 	</div>
 	</footer>
 	
-	<script type="text/javascript">
-	function goToByScroll(id){
-	      // Remove "link" from the ID
-	    id = id.replace("link", "");
-	      // Scroll
-	    $('html,body').animate({
-	        scrollTop: $("#"+id).offset().top},
-	        'slow');
-	}
-
 	
-$(document).ready(function() {
-	  
-	  $(window).scroll(function () {
-	      //if you hard code, then use console
-	      //.log to determine when you want the 
-	      //nav bar to stick.  
-	      console.log($(window).scrollTop())
-	    if($(window).width()>800){
-	    	if ($(window).scrollTop() > 120) {
-	  	      $('.navbar-default').addClass('navbar-fixed-top');
-	  	    }
-	  	    if ($(window).scrollTop() < 121) {
-	  	      $('.navbar-default').removeClass('navbar-fixed-top');
-	  	    }
-	    }else{
-	    	if ($(window).scrollTop() > 120) {
-		  	      $('.navbar-default').addClass('navbar-fixed-top');
-		  	    }
-		  	    if ($(window).scrollTop() < 121) {
-		  	      $('.navbar-default').removeClass('navbar-fixed-top');
-		  	    }
-	    	
-	    }
-	  });
-	});
-</script>
 <script type="text/javascript" src="js/jsfornav2.js"></script>
 
 

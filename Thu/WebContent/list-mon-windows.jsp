@@ -1,14 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Danh sách các khóa học</title>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
+<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+	url="jdbc:mysql://localhost/ttth" user="root" password="1234" />
+
+<title>Câu hỏi-tư vấn</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/w3.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <style type="text/css">
+body {
+	background-color: lightgrey;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+	color: rgba(255, 255, 255, 1);
+}
+
+#custom-bootstrap-menu.navbar-default {
+	font-size: 14px;
+	background-color: rgba(0, 130, 200, 1);
+	border-width: 1px;
+	border-radius: 0px;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(0, 130, 200, 1);
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+	#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(51, 122, 183, 1);
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+	#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+	#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(51, 122, 183, 1);
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+	border-color: #337ab7;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+	#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+	background-color: #337ab7;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+	background-color: white;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar {
+	background-color: #0082c8;
+}
+
+@media only screen (min-width:500px)and (max-width:700px) {
+	#sub1.dropdown-menu>li>a, #sub2.dropdown-menu>li>a, #sub3.dropdown-menu>li>a
+		{
+		color: white;
+	}
+	#navbar-img {
+		display: none;
+	}
+}
+
 .footer-nav {
 	text-align: right;
 	list-style: none;
@@ -23,201 +91,191 @@
 	padding: 0px 10px;
 }
 
-body {
-	background-color: lightgrey;
+.navbar.navbar-default {
+	padding-top: 0px;
 }
 
-.dropdown-submenu {
-	position: relative;
+#header-img {
+	height: 120px;
+	z-index: 3;
 }
 
-.dropdown-submenu>.dropdown-menu {
-	top: 0;
-	left: 100%;
-	margin-top: -6px;
-	margin-left: -1px;
-	-webkit-border-radius: 0 6px 6px 6px;
-	-moz-border-radius: 0 6px 6px;
-	border-radius: 0 6px 6px 6px;
+#login-form {
+	padding-bottom: 200px;
 }
 
-.dropdown-submenu:hover>.dropdown-menu {
-	display: block;
+.footer-nav>li>a {
+	color: white;
 }
 
-.dropdown-submenu.pull-left>.dropdown-menu {
-	
+a>.glyphicon {
+	padding-right: 10px;
+}
+
+#head-text {
+	color: #0082c8;
+	text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px black;
 }
 </style>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#btn-wins").click(function(event) {
-			$("#list-andr").hide();
-			$("#list-wins").show();
-		});
-		$("#btn-andr").click(function(event) {
-			$("#list-andr").show();
-			$("#list-wins").hide();
-		});
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('validateCtrl', function($scope) {
+		$scope.user = 'John';
+		$scope.email = 'Example@gmail.com';
+		$scope.phone = '09';
+		$scope.lable = 'lable';
+		$scope.txtara = 'your question';
 	});
 </script>
+
+<link rel="stylesheet" href="css/w3.css">
 </head>
 <body>
+
 	<div class="container-fluid">
-		<nav class="navbar"> <img src="element/header ttth.jpg"
-			style="width: 100%;">
-		
-					<ul class="nav nav-justified w3-pale-blue">
-					<li><a href="Home.jsp">Trang chủ</a></li>
-					<li><a href="thongbao.jsp">Thông báo</a></li>
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Giới thiệu<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="thungo.jsp">Thư ngỏ</a></li>
-							<li><a href="giangvien.jsp">Đội ngủ giản viên</a></li>
-							<li><a href="nhiemvu.jsp">Chức năng nhiệm vụ</a></li>
-						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Lịch khai giảng<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="Dangkiwindows-win.jsp">Windows 1 tháng 10</a></li>
-							<li><a href="Dangkiandroid-cban.jsp">Android 1 tháng 10</a></li>
-						</ul></li>
-					<li>
-							<a class="dropdown-toggle" data-toggle="dropdown"> xem điểm <span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li class="dropdown-submenu"><a class="test" tabindex="-1" href="#">Khóa 100 <span class="caret" style="float:right;margin-top: 6px;"></span></a>
-									<ul class="dropdown-menu">
-										<li class="dropdown-submenu"><a class="test" href="#">Windows<span class="caret" style="float:right;margin-top: 6px;"></span>
-										</a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Lớp lập trình windows 01</a></li>
-												<li><a href="#">Lớp lập trình web 01</a></li>
-												<li><a href="#">Lớp lập trình web 02</a></li>
-											</ul></li>
-										<li class="dropdown-submenu"><a class="test" href="#">Android<span class="caret" style="float:right;margin-top: 6px;"></span>
-										</a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Lớp lập trình Android cơ bản 01</a></li>
-												<li><a href="#">Lớp lập trình Android cơ bản 02</a></li>
-												<li><a href="#">Lớp lập trình Android nâng cao 01</a></li>
-											</ul></li>
-									</ul></li>
-								<li class="dropdown-submenu"><a class="test" tabindex="-1" href="#">Khóa 99 <span class="caret" style="float:right;margin-top: 6px;"></span></a>
-									<ul class="dropdown-menu">
-										<li class="dropdown-submenu"><a class="test" href="#">Windows<span class="caret" style="float:right;margin-top: 6px;"></span>
-										</a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Lớp lập trình windows 01</a></li>
-												<li><a href="#">Lớp lập trình web 01</a></li>
-											</ul></li>
-										<li class="dropdown-submenu"><a class="test" href="#">Android<span class="caret" style="float:right;margin-top: 6px;"></span>
-										</a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Lớp lập trình Android cơ bản 01</a></li>
-												<li><a href="#">Lớp lập trình Android cơ bản 02</a></li>
-											</ul></li>
-									</ul></li>
-							</ul>
-						</li>
-					<li><a href="tuvan-send.jsp">Tư vấn-hỏi đáp</a></li>
-					<li><a href="list-mon-windows.jsp">Đăng kí online</a></li>
-				</ul>	
-				
-				
-		</nav>
-	</div>
-	<div class="container">
-		<nav class="navbar w3-light-grey">
-			<ul class="nav nav-tabs">
-				<li><a><button class="btn btn-info active" id="btn-wins">Windows</button></a></li>
-				<li><a><button class="btn btn-info" id="btn-andr">Android</button></a></li>
-			</ul>
-		</nav>
-		<div class="jumbotron" style="display: 1;" id="list-wins">
-			<table class="table table-condensed">
-				<caption></caption>
-				<thead>
-					<tr >
-						<th>Tên môn học</th>
-						<th>Mã học phần</th>
-						<th>Ngày khai giảng</th>
-						<th>Giá</th>
-						<th>Chính sách ưu đãi</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr style="height: 100px;">
-						<td>Lập trình windows</td>
-						<td>wp-001</td>
-						<td>1 tháng 10</td>
-						<td>800000</td>
-						<td>Giảm giá 15% cho sinh viên</td>
-						<td><a href="Dangkiwindows-win.jsp"><button
-									class="btn btn-primary">Đăng kí</button></a>
-					</tr>
-					<tr style="height: 100px;">
-						<td>Lập trình web</td>
-						<td>wp-002</td>
-						<td>1 tháng 10</td>
-						<td>800000</td>
-						<td>Giảm giá 15% cho sinh viên</td>
-						<td><a href="Dangkiwindows-web.jsp"><button
-									class="btn btn-primary">Đăng kí</button></a>
-					</tr>
-				</tbody>
-			</table>
+		<div id="navbar-img">
+			<img src="Asset/header ttth.jpg" id="header-img" style="width: 100%;">
 		</div>
-		<div class="jumbotron" style="display: none;" id="list-andr">
+
+
+		<!-- Navbar -->
+		<div class="navbar navbar-default " id="custom-bootstrap-menu"
+			role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+
+					</button>
+					<a class="navbar-brand" href="Home.jsp"><span
+						class="glyphicon glyphicon-home"></span>Trang chủ</a>
+				</div>
+				<div class="navbar-collapse collapse">
+
+					<!-- Left nav -->
+					<ul class="nav navbar-nav">
+
+						<li><a href="#" id="thongbaolink"><span
+								class="glyphicon glyphicon-pushpin"></span>Thông báo</a></li>
+
+						<li><a href="#" id="gioithieulink"><span
+								class="glyphicon glyphicon-info-sign"></span>Giới thiệu <span
+								class="caret"></span></a>
+							<ul class="dropdown-menu" id="sub1">
+								<li><a href="giangvien.jsp">Đội ngủ giảng viên</a></li>
+								<li><a href="nhiemvu.jsp">Chức năng - Nhiệm vụ </a></li>
+
+
+							</ul></li>
+						<li><a href="#"><span
+								class="glyphicon glyphicon-calendar"></span>Lịch khai giảng <span
+								class="caret"></span></a>
+							<ul class="dropdown-menu" id="sub1">
+								<sql:query dataSource="${snapshot}" var="result">
+SELECT * from khoahoc;
+</sql:query>
+								<c:forEach var="row" items="${result.rows}">
+									<li><a href="fromdkonline.jsp?loaimonhoc=<c:out value="${row.MaLoaiKhoaHoc}" />">
+									<c:out value="${row.TenKhoaHoc}" /> [<c:out
+												value="${row.NgayKhaiGiang}" />]</a></li>
+
+								</c:forEach>
+
+							</ul></li>
+						<li><a href=""><span class="glyphicon glyphicon-list-alt"></span>Xem
+								điểm <span class="caret"></span></a>
+							<ul class="dropdown-menu" id="sub1">
+								<sql:query dataSource="${snapshot}" var="result">
+SELECT * from hocvien where Diem != "NULL"
+GROUP by MaLop;
+</sql:query>
+								<c:forEach var="row" items="${result.rows}">
+									<li><a
+										href="bangdiem.jsp?classes=<c:out value="${row.MaLop}"/>">Lớp
+											<c:out value="${row.MaLop}" />
+									</a></li>
+								</c:forEach>
+
+
+							</ul></li>
+						<li><a href="tuvan-send.jsp"><span
+								class="glyphicon glyphicon-question-sign"></span>Tư vấn- hỏi đáp</a></li>
+						<li><a href="list-mon-windows.jsp"><span
+								class="glyphicon glyphicon-edit"></span>Đăng kí online</a></li>
+					</ul>
+
+
+
+
+
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+<script>
+     $(document).ready(function() {
+         $("#monhoc").change(function() {
+             servletCall();
+         });
+
+     });
+     function servletCall() {
+    	 var idmon = $('#monhoc').val();
+         $.post(
+             "Loadmonhoc", 
+             {name : idmon}, //meaasge you want to send
+             function(result) {
+             $('#bodytable').html(result); //message you want to show
+         });
+     };
+   </script>
+		<div class="jumbotron"  id="list-wins">
 			<table class="table table-condensed">
-				<caption></caption>
+				<caption>
+				<h3 style="color: green;">Chọn loại khóa học</h3>
+				<select id="monhoc" class="form-control">
+				<sql:query dataSource="${snapshot}" var="result">
+SELECT * from loaikhoahoc;
+</sql:query>
+					<c:forEach var="row" items="${result.rows}">
+				<option value=<c:out value="${row.MaLoaiKhoaHoc}"/>><c:out value="${row.TenLoaiKhoaHoc}"/></option>
+					</c:forEach>
+					</select>
+				</caption>
 				<thead>
 					<tr>
 						<th>Tên môn học</th>
 						<th>Mã học phần</th>
 						<th>Ngày khai giảng</th>
-						<th>Giá</th>
+						<th>Thông tin
 						<th>Chính sách ưu đãi</th>
 						<th></th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr style="height: 100px;">
-						<td>Lập trình Android cơ bản</td>
-						<td>wp-001</td>
-						<td>1 tháng 10</td>
-						<td>800000</td>
-						<td>Giảm giá 15% cho sinh viên</td>
-						<td><a href="Dangkiandroid-cban.jsp"><button
-									class="btn btn-primary">Đăng kí</button></a>
-					</tr>
-					<tr style="height: 100px;">
-						<td>Lập trình Android nâng cao</td>
-						<td>wp-002</td>
-						<td>1 tháng 10</td>
-						<td>900000</td>
-						<td>Giảm giá 15% cho sinh viên</td>
-						<td><a href="Dangkiandroid-ncao.jsp"><button
-									class="btn btn-primary">Đăng kí</button></a>
-					</tr>
+				<tbody id="bodytable">
+
+					
+
 				</tbody>
 			</table>
 		</div>
-	</div>
-	<footer
-		style="background-color: #4d004d; color: white; padding-top: 25px;">
+		<footer
+			style="background-color: #0082c8; color: white; padding-top: 25px;">
 		<div class="container">
-			
-			<div class="bottom-footer" style="border-top: 1px solid #b2b2b2; margin-top: 10px; padding-top: 10px; corlor: red;">
+
+			<div class="bottom-footer"
+				style="border-top: 1px solid #b2b2b2; margin-top: 10px; padding-top: 10px; corlor: red;">
 				<div class="col-md-5">
-				<p>developed by G6</p>
-				<span class="glyphicon glyphicon-home"></span>
-				Cơ sở chính: XX/XX, đường ss, Q.qq, TH. HCM
-				<br>
-				<span class="glyphicon glyphicon-phone-alt"></span>
-				Đt: xx50 43x 8xx
+					<p>developed by G6</p>
+					<span class="glyphicon glyphicon-home"></span> Cơ sở chính: XX/XX,
+					đường ss, Q.qq, TH. HCM <br> <span
+						class="glyphicon glyphicon-phone-alt"></span> Đt: xx50 43x 8xx
 				</div>
 				<div class="col-md-7">
 					<ul class="footer-nav">
@@ -226,10 +284,15 @@ body {
 						<li><a href="thungo.jsp">About us</a></li>
 					</ul>
 				</div>
-				
+
 			</div>
-						
+
 		</div>
-	</footer>
+		</footer>
+
+		<script type="text/javascript" src="js/jsfornav2.js"></script>
+
+
+		<script type="text/javascript" src="js/jsfornav2-1.js"></script>
 </body>
 </html>
