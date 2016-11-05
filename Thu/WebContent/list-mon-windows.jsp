@@ -158,7 +158,7 @@ a>.glyphicon {
 			<table class="table table-condensed">
 				<caption>
 				<h3 style="color: green;">Chọn loại khóa học</h3>
-				<select id="monhoc" class="form-control">
+				<select id="monhoc" class="form-control"><option></option>
 				<sql:query dataSource="${snapshot}" var="result">
 SELECT * from loaikhoahoc;
 </sql:query>
@@ -173,6 +173,7 @@ SELECT * from loaikhoahoc;
 						<th>Mã học phần</th>
 						<th>Ngày khai giảng</th>
 						<th>Thông tin
+						<th>Học phí
 						<th>Chính sách ưu đãi</th>
 						<th></th>
 					</tr>

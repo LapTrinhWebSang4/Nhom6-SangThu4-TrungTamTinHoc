@@ -57,10 +57,10 @@ public class DangkiServ extends HttpServlet {
 			while(rs.next()){
 				String lich = rs.getString("LichHoc");
 				String room = rs.getString("Phong");
-				String cost = rs.getString("HocPhi");
+				
 				String id = rs.getString("MaLop");
 				
-				out.println("<option value="+id+">"+lich+" room: "+room+"<br> cost: "+cost+"</option>");
+				out.println("<option value="+id+">"+lich+" room: "+room+"</option>");
 			}
 
 		} catch (Exception e2) {

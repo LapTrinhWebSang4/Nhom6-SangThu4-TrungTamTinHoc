@@ -40,7 +40,7 @@ public class Loadmonhoc extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		out.println("<tr><td< da vao sevlet </tr>");
+		
 
 		try {
 			
@@ -51,7 +51,9 @@ public class Loadmonhoc extends HttpServlet {
 			Statement stmt = conn.createStatement();
 			String sql;
 			String name = request.getParameter("name");
+			
 			sql = "SELECT * FROM khoahoc where MaLoaiKhoaHoc='"+name+"'";
+			
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				String ten = rs.getString("TenKhoaHoc");
@@ -59,14 +61,16 @@ public class Loadmonhoc extends HttpServlet {
 				String Tid = rs.getString("MaLoaiKhoaHoc");
 				String date = rs.getString("NgayKhaiGiang");
 				String info = rs.getString("GioiThieu");
-				String safe = rs.getString("CheDoMienGiam");
+				//String safe = rs.getString("CheDoMienGiam");
+				String cost = rs.getString("HocPhi");
 				String link = "fromdkonline.jsp?loaimonhoc="+Tid;
 				out.println("<tr>"
 						+ "<td>"+ten
 						+ "<td>"+ id
 						+ "<td>"+ date
 						+ "<td>"+ info
-						+ "<td>"+ safe
+						+ "<td>"+cost
+						//+ "<td>"+ safe
 						+ "<td> <a href="+link+"><button class='btn btn-success'>sign</button></a>"
 						+ "</tr>");
 			}
