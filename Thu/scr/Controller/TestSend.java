@@ -1,23 +1,27 @@
-package kienpack;
+package Controller;
+
 import java.io.IOException;
+
+import javax.mail.internet.InternetAddress;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONObject;
+
+import DAO.SendEmail;
 
 /**
- * Servlet implementation class MyServlet
+ * Servlet implementation class TestSend
  */
-@WebServlet("/MyServlet")
-public class MyServlet extends HttpServlet {
+@WebServlet("/TestSend")
+public class TestSend extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyServlet() {
+    public TestSend() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,10 +30,15 @@ public class MyServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String name = request.getParameter("name");
-		response.setContentType("text/plain");
-		response.getWriter().write(name);
+		String addresses[] ={"lkient2111@gmail.com","ltkien2111@gmail.com"};
+		boolean flag = SendEmail.sendMailToMany("dczsc", "zxczxc","lkient2111@gmail.com","kien2509",
+				addresses);
+		response.setContentType("text/html");
+		if(flag){
+			response.getWriter().write("success");
+		}else{
+			response.getWriter().write("fail");
+		}
 	}
 
 	/**

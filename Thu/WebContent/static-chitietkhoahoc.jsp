@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -36,7 +38,6 @@
     	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
-    	<link rel="stylesheet" type="text/css" href="Asset/headercss.css">
     	<style type="text/css">
 			.dropdown-submenu {
 				position: relative;
@@ -54,6 +55,12 @@
 
 
 			}
+			h2{
+				color:#669fca
+			}
+			ul{
+				list-style-type:none;
+			}
 		</style>
     	
 		
@@ -61,6 +68,9 @@
 		
 	</head>
 	<body class="no-skin">
+	<sql:setDataSource var="con" driver="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://Localhost/ttth" user="root" password="kien2509" />
+	
 
 
 	<!--nav-->
@@ -103,9 +113,9 @@
 						<b class="arrow"></b>
 					</li>
 
-					<li class="">
+					<li>
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
+							<i class="menu-icon fa fa-list"></i>
 							<span class="menu-text">
 								Danh sách khóa học
 							</span>
@@ -114,128 +124,121 @@
 						</a>
 
 						<b class="arrow"></b>
-
-						<ul class="submenu nav-show" style="display:block">
+						<sql:query var="result_nienkhoa" sql="select * from nienkhoa"
+							dataSource="${con }" />
+							<c:forEach var="rowsss" items="${result_nienkhoa.rows }">
+								<ul class="submenu nav-show">
+						
 							<li class="">
-								<a href="" data-toggle="modal" data-target="#myModal1">
-									<span class="glyphicon glyphicon-plus"></span>
+								<a href="#" class="dropdown-toggle">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Thêm khóa học
+
+									${rowsss.ThoiGian}
+									<b class="arrow fa fa-angle-down"></b>
 								</a>
 
 								<b class="arrow"></b>
-							</li>
-							<li class="active">
-								<a href="static-chitietkhoahoc.jsp">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 1
-								</a>
+								<sql:query var="result_loaikhoahoc" sql="select * from loaikhoahoc where MaNienKhoa=${rowsss.MaNienKhoa}"
+								dataSource="${con }" />
+								<c:forEach var="row_loaikhoahoc" items="${result_loaikhoahoc.rows }">
+									<ul class="submenu nav-hide" style="display: none;">									
+									<li class="">
+										<a href="#" class="dropdown-toggle">
+											<i class="menu-icon fa fa-pencil orange"></i>
 
-								<b class="arrow"></b>
-							</li>
+											${row_loaikhoahoc.TenLoaiKhoaHoc }
+											<b class="arrow fa fa-angle-down"></b>
+										</a>
 
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 2
-								</a>
+										<b class="arrow"></b>
+										<sql:query var="result_khoahoc" sql="select * from khoahoc where MaLoaiKhoaHoc='${row_loaikhoahoc.MaLoaiKhoaHoc}'"
+								dataSource="${con }" />
+										<c:forEach var="row_khoahoc" items="${result_khoahoc.rows }">
+											<ul class="submenu">
+											<li class="">
+												<a href="static-chitietkhoahoc.jsp?khoahoc=${row_khoahoc.MaKhoaHoc}">
+													<i class="menu-icon fa fa-plus purple"></i>
+													${row_khoahoc.TenKhoaHoc }
+												</a>
 
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 3
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 4
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 5
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 6
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 7
-								</a>
-
-								<b class="arrow"></b>
+												<b class="arrow"></b>
+											</li>											
+										</ul>
+										</c:forEach>
+									</li>
+								</ul>
+								</c:forEach>
+								
 							</li>
 						</ul>
+							</c:forEach>
+						
 					</li>
 
-					<li class="">
+					<li>
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Danh sách học viên </span>
+							<i class="menu-icon fa fa-desktop"></i>
+							<span class="menu-text">
+								Danh sách học viên
+							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
 						<b class="arrow"></b>
-
-						<ul class="submenu">
+						<sql:query var="result_nienkhoa" sql="select * from nienkhoa"
+							dataSource="${con }" />
+							<c:forEach var="rowsss" items="${result_nienkhoa.rows }">
+								<ul class="submenu nav-show">
+						
 							<li class="">
-								<a href="static-danhsachhocvien.jsp">
+								<a href="#" class="dropdown-toggle">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 1
+
+									${rowsss.ThoiGian}
+									<b class="arrow fa fa-angle-down"></b>
 								</a>
 
 								<b class="arrow"></b>
-							</li>
+								<sql:query var="result_loaikhoahoc" sql="select * from loaikhoahoc where MaNienKhoa=${rowsss.MaNienKhoa}"
+								dataSource="${con }" />
+								<c:forEach var="row_loaikhoahoc" items="${result_loaikhoahoc.rows }">
+									<ul class="submenu nav-hide" style="display: none;">									
+									<li class="">
+										<a href="#" class="dropdown-toggle">
+											<i class="menu-icon fa fa-pencil orange"></i>
 
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 2
-								</a>
+											${row_loaikhoahoc.TenLoaiKhoaHoc }
+											<b class="arrow fa fa-angle-down"></b>
+										</a>
 
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 3
-								</a>
+										<b class="arrow"></b>
+										<sql:query var="result_khoahoc" sql="select * from khoahoc where MaLoaiKhoaHoc='${row_loaikhoahoc.MaLoaiKhoaHoc}'"
+								dataSource="${con }" />
+										<c:forEach var="row_khoahoc" items="${result_khoahoc.rows }">
+											<ul class="submenu">
+											<li class="">
+												<a href="static-danhsachhocvien.jsp?khoahoc=${row_khoahoc.MaKhoaHoc}">
+													<i class="menu-icon fa fa-plus purple"></i>
+													${row_khoahoc.TenKhoaHoc }
+												</a>
 
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 4
-								</a>
-
-								<b class="arrow"></b>
+												<b class="arrow"></b>
+											</li>											
+										</ul>
+										</c:forEach>
+									</li>
+								</ul>
+								</c:forEach>
+								
 							</li>
 						</ul>
+							</c:forEach>
+						
 					</li>
+				
+
+					
 
 					<li class="">
 						<a href="static-guimail.jsp">
@@ -265,7 +268,7 @@
 					</li>
 			
 					<li class="">
-						<a href="static-login.jsp">
+						<a href="logout.jsp">
 							<i class="menu-icon fa fa-sign-out"></i>
 							<span class="menu-text"> Thoát </span>
 						</a>
@@ -307,9 +310,14 @@
 					<li><a href="tuvan-send.jsp">Tư vấn-hỏi đáp</a></li>
 					<li><a href="static-login.jsp">Đăng xuất</a></li>
 				</ul>						
-				</div>					
+				</div>			
+				
+				
+				<!--Region Giới thiệu -->	
+				<sql:query var="result_khoahoc" sql="select * from khoahoc where MaKhoaHoc ='${param.khoahoc}'" dataSource="${con}" />
+				<c:forEach var="row_khoahoc" items="${result_khoahoc.rows }">
 					<div class="row" style="margin-left: 1%;margin-top: 1%">	
-					<div class="col-sm-11">
+					<div class="col-sm-12">
 						<div class="widget-box">
 							<div class="widget-header">
 								<h4 class="widget-title lighter smaller">
@@ -321,34 +329,65 @@
 							<div class="widget-body">
 								<div class="widget-main no-padding">
 									<div class="jumbotron">
-									<div class="khoa-hoc-1" align="center" style="width:100%;height: 100%" id="manhinhchinh1">
+									<div class="row">								
+										<div class="col-md-6">
+											<img class="img-responsive img-thumbnail" src="${pageContext.servletContext.contextPath }/RetrieveImage?khoahoc=${row_khoahoc.MaKhoaHoc}"></img>
+										</div>																
+										<div class="col-md-6">
+											<h2>Giới Thiệu</h2>
+									<p>${row_khoahoc.GioiThieu}</p>
+									
+									
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="khoa-hoc-1" align="center" style="width:100%;height: 100%" id="manhinhchinh1">
 								<div>
-									<h2>Giới Thiệu</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</p>
-									<p>Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!</p>
-									<h2>Học phí</h2>
-									<div style="border: solid 1px black;"><h4>100.000Đ/3 Tháng</h4></div>
-									<h2>Chế độ miễn giảm</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</p>
-									<h2>Ngày khai giảng</h2>
-									<span style="border: solid 1px black;margin-right: 5px">hh mm</span><span style="border: solid 1px black;margin-left: 5px">dd/mm/yyyy</span>
-									<div style="border: solid 1px black; height:auto;margin:auto;">
+									
+									<h2 style="padding-left:10px;">${row_khoahoc.TenKhoaHoc}</h2>
+									<img src="Asset/ngoisao_cam.png"></img>
+									<div>
+										<span class="glyphicon glyphicon-calendar" style="color:#669fca;font-size:20px;padding-left:10px;"></span><h3 style="display:inline;color:#669fca;">Ngày khai giảng</h3><span style="display:block;font-size:20px;margin-left: 5px;margin-top:5px;">${row_khoahoc.NgayKhaiGiang}</span>
+									</div>
+									<sql:query var="result_miengiam" sql="select * from miengiam where MaKhoaHoc='${param.khoahoc }'" dataSource="${con}" />
+									<h2 style="padding-left:10px;">Chế độ miễn giảm</h2>
+									<ul>
+										<c:forEach var="row_miengiam" items="${result_miengiam.rows }">
+											<li>Giảm ${row_miengiam.TienGiam*100} cho ${row_miengiam.DoiTuong}</li>
+										</c:forEach>
+										</ul>
+									
+									<div style="padding-left:10px;">
 										<h2>Lịch học</h2>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</p>
+										<sql:query var="result_lichhoc" sql="select * from lophoc where MaKhoa='${param.khoahoc }'" dataSource="${con}" />
+										<ul>
+											<c:forEach var="row_lichhoc" items="${result_lichhoc.rows}">
+												<li>${row_lichhoc.MaLop}  :  ${row_lichhoc.LichHoc}</li>
+											</c:forEach>
+										</ul>
 									</div>
 									</div>							
-			              			<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#myModal2"></span> Sửa</button>
-			              			<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#myModal3"></span> Xóa</button>	
+			              			<div align="center">
+			              				<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#myModal2"></span> Sửa</button>
+			              			<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#myModal3"></span> Xóa</button>
+			              			</div>	
+									</div>
+										</div>
+										
 									</div>
 								</div>
 								</div>
 							</div><!--end widget body-->
 						</div><!--end widget box-->
-					</div><!--end col sm 6-->
-					<div class="col-sm-6">
+					</div><!--end col md 6-->
+					<div class="col-md-6">
 						
-					</div><!--end col sm 6-->
-				</div><!--End row-->				
+					</div><!--end col md 6-->
+				</div><!--End row-->		
+					
+				</c:forEach>
+							
 				
 				
 					

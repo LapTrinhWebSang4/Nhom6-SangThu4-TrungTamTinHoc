@@ -133,12 +133,12 @@
 
 						<b class="arrow"></b>
 					</li>
-
+					
 					<li>
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
+							<i class="menu-icon fa fa-list"></i>
 							<span class="menu-text">
-								UI &amp; Elements
+								Danh sách khóa học
 							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
@@ -161,25 +161,25 @@
 								<b class="arrow"></b>
 								<sql:query var="result_loaikhoahoc" sql="select * from loaikhoahoc where MaNienKhoa=${rowsss.MaNienKhoa}"
 								dataSource="${con }" />
-								<c:forEach var="rowssss" items="${result_loaikhoahoc.rows }">
+								<c:forEach var="row_loaikhoahoc" items="${result_loaikhoahoc.rows }">
 									<ul class="submenu nav-hide" style="display: none;">									
 									<li class="">
 										<a href="#" class="dropdown-toggle">
 											<i class="menu-icon fa fa-pencil orange"></i>
 
-											${rowssss.TenLoaiKhoaHoc }
+											${row_loaikhoahoc.TenLoaiKhoaHoc }
 											<b class="arrow fa fa-angle-down"></b>
 										</a>
 
 										<b class="arrow"></b>
-										<sql:query var="result_khoahoc" sql="select * from khoahoc"
+										<sql:query var="result_khoahoc" sql="select * from khoahoc where MaLoaiKhoaHoc='${row_loaikhoahoc.MaLoaiKhoaHoc}'"
 								dataSource="${con }" />
-										<c:forEach var="rowsss" items="${result_khoahoc.rows }">
+										<c:forEach var="row_khoahoc" items="${result_khoahoc.rows }">
 											<ul class="submenu">
 											<li class="">
-												<a href="#">
+												<a href="static-chitietkhoahoc.jsp?khoahoc=${row_khoahoc.MaKhoaHoc}">
 													<i class="menu-icon fa fa-plus purple"></i>
-													${rowsss.TenKhoaHoc }
+													${row_khoahoc.TenKhoaHoc }
 												</a>
 
 												<b class="arrow"></b>
@@ -195,54 +195,71 @@
 							</c:forEach>
 						
 					</li>
-					</li>
 
-					<li class="">
+					<li>
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Danh sách học viên </span>
+							<i class="menu-icon fa fa-desktop"></i>
+							<span class="menu-text">
+								Danh sách học viên
+							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
 						<b class="arrow"></b>
-
-						<ul class="submenu">
+						<sql:query var="result_nienkhoa" sql="select * from nienkhoa"
+							dataSource="${con }" />
+							<c:forEach var="rowsss" items="${result_nienkhoa.rows }">
+								<ul class="submenu nav-show">
+						
 							<li class="">
-								<a href="static-danhsachhocvien.jsp">
+								<a href="#" class="dropdown-toggle">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 1
+
+									${rowsss.ThoiGian}
+									<b class="arrow fa fa-angle-down"></b>
 								</a>
 
 								<b class="arrow"></b>
-							</li>
+								<sql:query var="result_loaikhoahoc" sql="select * from loaikhoahoc where MaNienKhoa=${rowsss.MaNienKhoa}"
+								dataSource="${con }" />
+								<c:forEach var="row_loaikhoahoc" items="${result_loaikhoahoc.rows }">
+									<ul class="submenu nav-hide" style="display: none;">									
+									<li class="">
+										<a href="#" class="dropdown-toggle">
+											<i class="menu-icon fa fa-pencil orange"></i>
 
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 2
-								</a>
+											${row_loaikhoahoc.TenLoaiKhoaHoc }
+											<b class="arrow fa fa-angle-down"></b>
+										</a>
 
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 3
-								</a>
+										<b class="arrow"></b>
+										<sql:query var="result_khoahoc" sql="select * from khoahoc where MaLoaiKhoaHoc='${row_loaikhoahoc.MaLoaiKhoaHoc}'"
+								dataSource="${con }" />
+										<c:forEach var="row_khoahoc" items="${result_khoahoc.rows }">
+											<ul class="submenu">
+											<li class="">
+												<a href="static-danhsachhocvien.jsp?khoahoc=${row_khoahoc.MaKhoaHoc}">
+													<i class="menu-icon fa fa-plus purple"></i>
+													${row_khoahoc.TenKhoaHoc }
+												</a>
 
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 4
-								</a>
-
-								<b class="arrow"></b>
+												<b class="arrow"></b>
+											</li>											
+										</ul>
+										</c:forEach>
+									</li>
+								</ul>
+								</c:forEach>
+								
 							</li>
 						</ul>
+							</c:forEach>
+						
 					</li>
+				
+
+					
 
 					<li class="">
 						<a href="static-guimail.jsp">
@@ -272,17 +289,13 @@
 					</li>
 			
 					<li class="">
-						<a href="static-login.jsp">
+						<a href="logout.jsp">
 							<i class="menu-icon fa fa-sign-out"></i>
 							<span class="menu-text"> Thoát </span>
 						</a>
 
 						<b class="arrow"></b>
-					</li>
-
-					
-						
-					</li>
+					</li>					
 				</ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -309,7 +322,7 @@
 					</li>
 					
 					<li><a href="tuvan-send.html">Tư vấn-hỏi đáp</a></li>
-					<li><a href="static-login.jsp">Đăng xuất</a></li>
+					<li><a href="logout.jsp">Đăng xuất</a></li>
 				</ul>						
 				</div>			
 					<div class="page-content" >										
@@ -454,11 +467,12 @@
 								</div><!-- /.row -->
 
 								<div class="hr hr32 hr-dotted"></div>
-
-								<div class="row">
-									<div class="col-sm-12">
+								
+								<div class="row">				
+								<div class="col-sm-12">
 										<div class="widget-box transparent">
 											<div class="widget-header widget-header-flat">
+											
 												<h4 class="widget-title lighter">
 													<i class="ace-icon fa fa-star orange"></i>
 													Danh sách câu hỏi chờ trả lời
@@ -630,221 +644,7 @@
 								</div><!-- /.row -->
 
 								<div class="hr hr32 hr-dotted"></div>
-								<div class="row">
-									<div class="col-sm-12">
-										<div class="widget-box transparent">
-											<div class="widget-header widget-header-flat">
-												<h4 class="widget-title lighter">
-													<i class="ace-icon fa fa-star orange"></i>
-													Danh sách câu hỏi đã trả lời
-												</h4>
-
-												<div class="widget-toolbar"  id="clickhere1">
-													<a href="#">
-														<i class="ace-icon fa fa-chevron-up" id="arrow1"></i>
-													</a>
-												</div>
-											</div>
-
-											<div class="widget-body" id="danh-sach-cau-hoi-da-tra-loi">
-												<div class="widget-main no-padding">
-													<table class="table table-bordered table-striped">
-														<thead class="thin-border-bottom">
-															<tr>
-																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Họ tên
-																</th>
-
-																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Chủ đề
-																</th>
-
-																<th class="hidden-480">
-																	<i class="ace-icon fa fa-caret-right blue"></i>Nội dung
-																</th>
-															</tr>
-														</thead>
-
-														<tbody>
-															<tr>
-																<td><small>Lệ Thị Riêng</small></td>
-
-																<td>
-																	<small>
-																		<b class="green">Chứng chỉ</b>
-																	</small>
-																	
-																</td>
-
-																<td>
-																	<small>
-																		<b class="blue"> Hạn sử dụng chứng chỉ ...</b>
-																	</small>
-																	<div class="pull-right action-buttons">
-																		<a href="#" class="blue">
-																			<i class="ace-icon fa fa-pencil bigger-130"></i>
-																		</a>
-
-																		<span class="vbar"></span>
-
-																		<a href="#" class="red">
-																			<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																		</a>
-
-																		<span class="vbar"></span>
-																		<a href="#" class="green">
-																			<i class="ace-icon fa fa-flag bigger-130"></i>
-																		</a>
-																	</div>
-																	
-																</td>
-															</tr>
-
-															<tr>
-																<td><small>Lê Văn A</small></td>
-
-																<td>
-																	<small>
-																		<b class="green">Chương trình ưu đãi</b>
-																	</small>
-																</td>
-
-																<td >
-																	<small>
-																		<b class="blue">Ưu đãi dành cho sinh viên ...?</b>
-																	</small>
-																	<div class="pull-right action-buttons">	
-																	<a href="#" class="blue">
-																			<i class="ace-icon fa fa-pencil bigger-130"></i>
-																		</a>
-
-																		<span class="vbar"></span>
-
-																		<a href="#" class="red">
-																			<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																		</a>
-															
-																	<span class="vbar"></span>
-
-																		<a href="#">
-																			<i class="ace-icon fa fa-flag bigger-130"></i>
-																		</a>
-																	</div>
-																	
-																</td>
-															</tr>
-
-															<tr>
-																<td><small>Trần B</small></td>
-
-																<td>
-																	<small>
-																		<b class="green">Chất lượng giảng dạy</b>
-																	</small>
-																	
-																</td>
-
-																<td>
-																	<small>
-																		<b class="blue">Chất lượng giảng viên của...?</b>
-																	</small>
-																	<div class="pull-right action-buttons">
-																		<a href="#" class="blue">
-																			<i class="ace-icon fa fa-pencil bigger-130"></i>
-																		</a>
-
-																		<span class="vbar"></span>
-
-																		<a href="#" class="red">
-																			<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																		</a>
-
-																		<span class="vbar"></span>
-
-																		<a href="#" class="green">
-																			<i class="ace-icon fa fa-flag bigger-130"></i>
-																		</a>
-																	</div>
-																	
-																</td>
-															</tr>
-
-															<tr>
-																<td><small>Hoàng Văn K</small></td>
-
-																<td>
-																	<small>
-																		<b class="green">Cơ sở vật chất</b>
-																	</small>
-																	
-																</td>
-
-																<td>
-																<small>
-																	<b class="blue">Cơ sở vật chất của trung tâm...?</b>
-																</small>
-																<div class="pull-right action-buttons">
-																		<a href="#" class="blue">
-																			<i class="ace-icon fa fa-pencil bigger-130"></i>
-																		</a>
-
-																		<span class="vbar"></span>
-
-																		<a href="#" class="red">
-																			<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																		</a>
-
-																		<span class="vbar"></span>
-																		<a href="#" class="green">
-																			<i class="ace-icon fa fa-flag bigger-130"></i>
-																		</a>
-																	</div>
-																	
-																</td>
-															</tr>
-
-															<tr>
-																<td><small>Đỗ Thị H</small></td>
-
-																<td>
-																<small>
-																	<b class="green">Các đối tác</b>
-																</small>
-																	
-																</td>
-
-																<td>
-																<small>
-																	<b class="blue">Trung tâm có hợp tác với...?</b>
-																</small>
-																<div class="pull-right action-buttons">
-																		<a href="#" class="blue">
-																			<i class="ace-icon fa fa-pencil bigger-130"></i>
-																		</a>
-
-																		<span class="vbar"></span>
-
-																		<a href="#" class="red">
-																			<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																		</a>
-
-																		<span class="vbar"></span>
-																		<a href="#">
-																			<i class="ace-icon fa fa-flag bigger-130"></i>
-																		</a>
-																	</div>
-																	
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</div><!-- /.widget-main -->
-											</div><!-- /.widget-body -->
-										</div><!-- /.widget-box -->
-									</div><!-- /.col -->
-
-									
-								</div><!-- /.row -->
+								
 
 				
 
@@ -953,21 +753,8 @@
 		</script>
 		<script type="text/javascript">
 			jQuery(function($) {
-				$('.easy-pie-chart.percentage').each(function(){
-					var $box = $(this).closest('.infobox');
-					var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
-					var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)' : '#E2E2E2';
-					var size = parseInt($(this).data('size')) || 50;
-					$(this).easyPieChart({
-						barColor: barColor,
-						trackColor: trackColor,
-						scaleColor: false,
-						lineCap: 'butt',
-						lineWidth: parseInt(size/10),
-						animate: ace.vars['old_ie'] ? false : 1000,
-						size: size
-					});
-				})
+				
+			
 			
 				
 			
@@ -1037,36 +824,7 @@
 			    });
 				
 				
-				//Android's default browser somehow is confused when tapping on label which will lead to dragging the task
-				//so disable dragging when clicking on label
-				var agent = navigator.userAgent.toLowerCase();
-				if(ace.vars['touch'] && ace.vars['android']) {
-				  $('#tasks').on('touchstart', function(e){
-					var li = $(e.target).closest('#tasks li');
-					if(li.length == 0)return;
-					var label = li.find('label.inline').get(0);
-					if(label == e.target || $.contains(label, e.target)) e.stopImmediatePropagation() ;
-				  });
-				}
-			
-				$('#tasks').sortable({
-					opacity:0.8,
-					revert:true,
-					forceHelperSize:true,
-					placeholder: 'draggable-placeholder',
-					forcePlaceholderSize:true,
-					tolerance:'pointer',
-					stop: function( event, ui ) {
-						//just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
-						$(ui.item).css('z-index', 'auto');
-					}
-					}
-				);
-				$('#tasks').disableSelection();
-				$('#tasks input:checkbox').removeAttr('checked').on('click', function(){
-					if(this.checked) $(this).closest('li').addClass('selected');
-					else $(this).closest('li').removeClass('selected');
-				});
+				
 			
 			
 				//show the dropdowns on top or bottom depending on window height and menu position

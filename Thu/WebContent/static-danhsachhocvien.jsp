@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -67,6 +69,12 @@
 		
 	</head>
 	<body class="no-skin">
+	
+	<!-- SQL statement -->
+	<sql:setDataSource var="con" driver="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://Localhost/ttth" user="root" password="kien2509"/>	
+	<!-- End SQL statement -->
+	
 	<!--nav-->
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<img src="Asset/header ttth.jpg" style="width: 100%;height: 120px">
@@ -114,9 +122,9 @@
 						<b class="arrow"></b>
 					</li>
 
-					<li class="">
+					<li>
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
+							<i class="menu-icon fa fa-list"></i>
 							<span class="menu-text">
 								Danh sách khóa học
 							</span>
@@ -125,127 +133,117 @@
 						</a>
 
 						<b class="arrow"></b>
-
-						<ul class="submenu">
+						<sql:query var="result_nienkhoa" sql="select * from nienkhoa"
+							dataSource="${con }" />
+							<c:forEach var="rowsss" items="${result_nienkhoa.rows }">
+								<ul class="submenu nav-show">
+						
 							<li class="">
-								<a href="" data-toggle="modal" data-target="#myModal1">
-									<span class="glyphicon glyphicon-plus"></span>
+								<a href="#" class="dropdown-toggle">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Thêm khóa học
+
+									${rowsss.ThoiGian}
+									<b class="arrow fa fa-angle-down"></b>
 								</a>
 
 								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="static-chitietkhoahoc.jsp">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 1
-								</a>
+								<sql:query var="result_loaikhoahoc" sql="select * from loaikhoahoc where MaNienKhoa=${rowsss.MaNienKhoa}"
+								dataSource="${con }" />
+								<c:forEach var="row_loaikhoahoc" items="${result_loaikhoahoc.rows }">
+									<ul class="submenu nav-hide" style="display: none;">									
+									<li class="">
+										<a href="#" class="dropdown-toggle">
+											<i class="menu-icon fa fa-pencil orange"></i>
 
-								<b class="arrow"></b>
-							</li>
+											${row_loaikhoahoc.TenLoaiKhoaHoc }
+											<b class="arrow fa fa-angle-down"></b>
+										</a>
 
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 2
-								</a>
+										<b class="arrow"></b>
+										<sql:query var="result_khoahoc" sql="select * from khoahoc where MaLoaiKhoaHoc='${row_loaikhoahoc.MaLoaiKhoaHoc}'"
+								dataSource="${con }" />
+										<c:forEach var="row_khoahoc" items="${result_khoahoc.rows }">
+											<ul class="submenu">
+											<li class="">
+												<a href="static-chitietkhoahoc.jsp?khoahoc=${row_khoahoc.MaKhoaHoc}">
+													<i class="menu-icon fa fa-plus purple"></i>
+													${row_khoahoc.TenKhoaHoc }
+												</a>
 
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 3
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 4
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 5
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 6
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 7
-								</a>
-
-								<b class="arrow"></b>
+												<b class="arrow"></b>
+											</li>											
+										</ul>
+										</c:forEach>
+									</li>
+								</ul>
+								</c:forEach>
+								
 							</li>
 						</ul>
+							</c:forEach>
+						
 					</li>
 
-					<li class="">
+					<li>
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Danh sách học viên </span>
+							<i class="menu-icon fa fa-desktop"></i>
+							<span class="menu-text">
+								Danh sách học viên
+							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
 						<b class="arrow"></b>
-
-						<ul class="submenu nav-show" style="display:block">
-							<li class="active">
-								<a href="static-danhsachhocvien.jsp">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 1
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
+						<sql:query var="result_nienkhoa" sql="select * from nienkhoa"
+							dataSource="${con }" />
+							<c:forEach var="rowsss" items="${result_nienkhoa.rows }">
+								<ul class="submenu nav-show">
+						
 							<li class="">
-								<a href="">
+								<a href="#" class="dropdown-toggle">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 2
+
+									${rowsss.ThoiGian}
+									<b class="arrow fa fa-angle-down"></b>
 								</a>
 
 								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 3
-								</a>
+								<sql:query var="result_loaikhoahoc" sql="select * from loaikhoahoc where MaNienKhoa=${rowsss.MaNienKhoa}"
+								dataSource="${con }" />
+								<c:forEach var="row_loaikhoahoc" items="${result_loaikhoahoc.rows }">
+									<ul class="submenu nav-hide" style="display: none;">									
+									<li class="">
+										<a href="#" class="dropdown-toggle">
+											<i class="menu-icon fa fa-pencil orange"></i>
 
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 4
-								</a>
+											${row_loaikhoahoc.TenLoaiKhoaHoc }
+											<b class="arrow fa fa-angle-down"></b>
+										</a>
 
-								<b class="arrow"></b>
+										<b class="arrow"></b>
+										<sql:query var="result_khoahoc" sql="select * from khoahoc where MaLoaiKhoaHoc='${row_loaikhoahoc.MaLoaiKhoaHoc}'"
+								dataSource="${con }" />
+										<c:forEach var="row_khoahoc" items="${result_khoahoc.rows }">
+											<ul class="submenu">
+											<li class="">
+												<a href="static-danhsachhocvien.jsp?khoahoc=${row_khoahoc.MaKhoaHoc}">
+													<i class="menu-icon fa fa-plus purple"></i>
+													${row_khoahoc.TenKhoaHoc }
+												</a>
+
+												<b class="arrow"></b>
+											</li>											
+										</ul>
+										</c:forEach>
+									</li>
+								</ul>
+								</c:forEach>
+								
 							</li>
 						</ul>
+							</c:forEach>
+						
 					</li>
 
 					<li class="">
@@ -276,7 +274,7 @@
 					</li>
 			
 					<li class="">
-						<a href="static-login.jsp">
+						<a href="logout.jsp">
 							<i class="menu-icon fa fa-sign-out"></i>
 							<span class="menu-text"> Thoát </span>
 						</a>
@@ -321,784 +319,11 @@
 				</ul>						
 				</div>				
 					</div>
-						<div class="row">
-									<div class="col-xs-12">
-										<div class="clearfix">
-												<div class="pull-right tableTools-container">
-												<div class="dt-buttons btn-overlap btn-group">
-													<a
-														class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-bold"
-														tabindex="0" aria-controls="dynamic-table" data-original-title=""
-														title=""><span><i class="fa fa-copy bigger-110 pink"></i>
-															<span class="hidden">Copy to clipboard</span></span></a><a
-														class="dt-button buttons-excel buttons-flash btn btn-white btn-primary btn-bold"
-														tabindex="0" aria-controls="dynamic-table"><span><i
-															class="fa fa-file-excel-o bigger-110 green"></i> <span
-															class="hidden">Export to Excel</span></span>
-													<div
-															style="position: absolute; left: 0px; top: 0px; width: 39px; height: 35px; z-index: 99;"
-															data-original-title="" title="">
-															<embed id="ZeroClipboard_TableToolsMovie_1"
-																src="assets/swf/flashExport.swf" loop="false" menu="false"
-																quality="best" bgcolor="#ffffff" width="39" height="35"
-																name="ZeroClipboard_TableToolsMovie_1" align="middle"
-																allowscriptaccess="always" allowfullscreen="false"
-																type="application/x-shockwave-flash"
-																pluginspage="http://www.macromedia.com/go/getflashplayer"
-																flashvars="id=1&amp;width=39&amp;height=35" wmode="transparent">
-														</div></a><a
-														class="dt-button buttons-pdf buttons-flash btn btn-white btn-primary btn-bold"
-														tabindex="0" aria-controls="dynamic-table"><span><i
-															class="fa fa-file-pdf-o bigger-110 red"></i> <span class="hidden">Export
-																to PDF</span></span>
-													<div
-															style="position: absolute; left: 0px; top: 0px; width: 39px; height: 35px; z-index: 99;"
-															data-original-title="" title="">
-															<embed id="ZeroClipboard_TableToolsMovie_2"
-																src="assets/swf/flashExport.swf" loop="false" menu="false"
-																quality="best" bgcolor="#ffffff" width="39" height="35"
-																name="ZeroClipboard_TableToolsMovie_2" align="middle"
-																allowscriptaccess="always" allowfullscreen="false"
-																type="application/x-shockwave-flash"
-																pluginspage="http://www.macromedia.com/go/getflashplayer"
-																flashvars="id=2&amp;width=39&amp;height=35" wmode="transparent">
-														</div></a>
-												</div>
-											</div>
-										</div>
-										<div class="table-header">
-											Lớp học 1
-										</div>
-
-										<!-- div.table-responsive -->
-
-										<!-- div.dataTables_borderWrap -->
-										<div>
-											<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row"><div class="col-xs-6"><div class="dataTables_length" id="dynamic-table_length"><label>Display <select name="dynamic-table_length" aria-controls="dynamic-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records</label></div></div><div class="col-xs-6"><div id="dynamic-table_filter" class="dataTables_filter"><label>Lọc:<input type="search" class="form-control input-sm" placeholder="" aria-controls="dynamic-table"></label></div></div></div><table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
-												<thead>
-													<tr role="row"><th class="center sorting_disabled" rowspan="1" colspan="1" aria-label="																																										
-														">
-															
-														</th><th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">Mã học viên</th><th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">Tên học viên</th><th class="hidden-480 sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Clicks: activate to sort column ascending">Ngày sinh</th><th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="
-															
-															Update
-														: activate to sort column ascending">
-															Địa chỉ
-														</th><th class="hidden-480 sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Số CMND</th><th class="sorting_disabled" rowspan="1" colspan="1" aria-label=""></th></tr>
-												</thead>
-
-												<tbody>
-													
-
-												<tr role="row" class="odd">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">1</a>
-														</td>
-														<td>Học viên 1</td>
-														<td class="hidden-480">17/09/1996</td>
-														<td>Quận 9 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															45141324
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="even">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">2</a>
-														</td>
-														<td>Học viên 1</td>
-														<td class="hidden-480">16/09/1996</td>
-														<td>Thủ đức TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															876757658
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="odd">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">3</a>
-														</td>
-														<td>Học viên 3</td>
-														<td class="hidden-480">18/09/1996</td>
-														<td>Quận 4 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															87657579
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="even">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">4</a>
-														</td>
-														<td>Học viên 4</td>
-														<td class="hidden-480">19/09/1996</td>
-														<td>Quận 8 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															87765875
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="odd">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">5</a>
-														</td>
-														<td>Học viên 5</td>
-														<td class="hidden-480">20/09/1996</td>
-														<td>Quận 1 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															578967578
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="even">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">6</a>
-														</td>
-														<td>Học viên 6</td>
-														<td class="hidden-480">21/09/1996</td>
-														<td>Quận 2 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															876968768
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="odd">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">7</a>
-														</td>
-														<td>Học viên 7</td>
-														<td class="hidden-480">22/09/1996</td>
-														<td>Quận 3 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															876987697
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="even">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">8</a>
-														</td>
-														<td>Học viên 8</td>
-														<td class="hidden-480">23/09/1996</td>
-														<td>Quận 4 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															8769695967
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="odd">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">9</a>
-														</td>
-														<td>Học viên 9</td>
-														<td class="hidden-480">24/09/1996</td>
-														<td>Quận 5 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															87689768
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="even">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">10</a>
-														</td>
-														<td>Học viên 10</td>
-														<td class="hidden-480">30/09/1996</td>
-														<td>Quận 6 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															7697859876
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr></tbody>
-											</table>
-												<div class="row">
-													<div class="col-xs-6">
-														<div class="dataTables_info" id="dynamic-table_info" role="status"
-															aria-live="polite">Showing 1 to 10 of 10 entries</div>
-													</div>
-													<div class="col-xs-6">
-														<div class="dataTables_paginate paging_simple_numbers"
-															id="dynamic-table_paginate">
-															<ul class="pagination">
-																<li class="paginate_button previous disabled"
-																	aria-controls="dynamic-table" tabindex="0"
-																	id="dynamic-table_previous"><a href="#">Previous</a></li>
-																<li class="paginate_button active" aria-controls="dynamic-table"
-																	tabindex="0"><a href="#">1</a></li>
-																<li class="paginate_button next" aria-controls="dynamic-table"
-																	tabindex="0" id="dynamic-table_next"><a href="#">Next</a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-
-						<!--New row 2-->
+										
+					<sql:query var="result_lophoc" sql="select * from lophoc,khoahoc where 
+					lophoc.MaKhoa=khoahoc.MaKhoaHoc and khoahoc.MaKhoaHoc='${param.khoahoc}'" dataSource="${con}"/>
+						<c:forEach var="row" items="${result_lophoc.rows}">
+							<sql:query var="result_hocvien" sql="select * from hocvien where MaLop='${row.MaLop}'" dataSource="${con}"/>
 							<div class="row">
 									<div class="col-xs-12">
 										<div class="clearfix">
@@ -1145,30 +370,59 @@
 											</div>
 										</div>
 										<div class="table-header">
-											Lớp học 2
+											${row.MaLop}
 										</div>
 
 										<!-- div.table-responsive -->
 
 										<!-- div.dataTables_borderWrap -->
 										<div>
-											<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row"><div class="col-xs-6"><div class="dataTables_length" id="dynamic-table_length"><label>Display <select name="dynamic-table_length" aria-controls="dynamic-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records</label></div></div><div class="col-xs-6"><div id="dynamic-table_filter" class="dataTables_filter"><label>Lọc:<input type="search" class="form-control input-sm" placeholder="" aria-controls="dynamic-table"></label></div></div></div><table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+											<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+											<div class="row">
+											<div class="col-xs-6 pull-right">
+												<div id="dynamic-table_filter" class="dataTables_filter">
+													<label>Lọc:
+													<input type="search" class="form-control input-sm" placeholder="" aria-controls="dynamic-table">
+													</label>
+													</div>
+												</div>
+											</div>
+											<table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
 												<thead>
-													<tr role="row"><th class="center sorting_disabled" rowspan="1" colspan="1" aria-label="																																										
-														">
+													<tr role="row">
+													<th class="center sorting_disabled" rowspan="1" colspan="1" aria-label="">
 															
-														</th><th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">Mã học viên</th><th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">Tên học viên</th><th class="hidden-480 sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Clicks: activate to sort column ascending">Ngày sinh</th><th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="
-															
+														</th>
+														<th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">
+															Mã học viên
+														</th>
+														<th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">
+														Tên học viên
+														</th>
+														<th class="hidden-480 sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Clicks: activate to sort column ascending">
+														Email
+														</th>
+														<th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="	
 															Update
 														: activate to sort column ascending">
+															Số điện thoại
+														</th>
+														<th class="hidden-480 sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">
+														Nợ học phí
+														</th>
+														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="">
 															Địa chỉ
-														</th><th class="hidden-480 sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Số CMND</th><th class="sorting_disabled" rowspan="1" colspan="1" aria-label=""></th></tr>
+														</th>
+														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="">
+															Điểm
+														</th>
+														<th></th>
+														</tr>
 												</thead>
 
 												<tbody>
-													
-
-												<tr role="row" class="odd">
+												<c:forEach var="rows" items="${result_hocvien.rows }">
+													<tr role="row" class="odd">
 														<td class="center">
 															<label class="pos-rel">
 																<input type="checkbox" class="ace">
@@ -1177,14 +431,19 @@
 														</td>
 
 														<td>
-															<a href="#">1</a>
+															<a href="#">${rows.MaHocVien }</a>
 														</td>
-														<td>Học viên 1</td>
-														<td class="hidden-480">17/09/1996</td>
-														<td>Quận 9 TP.Hồ Chí Minh</td>
-
+														<td>${rows.Ten}</td>
+														<td class="hidden-480">${rows.Email}</td>
+														<td>${rows.Sodt}</td>
 														<td class="hidden-480">
-															45141324
+															${rows.NoHocPhi}
+														</td>
+														<td>
+															${rows.DiaChi}
+														</td>
+														<td>
+															${rows.Diem}
 														</td>
 
 														<td>
@@ -1236,619 +495,11 @@
 																</div>
 															</div>
 														</td>
-													</tr><tr role="row" class="even">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">2</a>
-														</td>
-														<td>Học viên 1</td>
-														<td class="hidden-480">16/09/1996</td>
-														<td>Thủ đức TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															876757658
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="odd">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">3</a>
-														</td>
-														<td>Học viên 3</td>
-														<td class="hidden-480">18/09/1996</td>
-														<td>Quận 4 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															87657579
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="even">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">4</a>
-														</td>
-														<td>Học viên 4</td>
-														<td class="hidden-480">19/09/1996</td>
-														<td>Quận 8 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															87765875
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="odd">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">5</a>
-														</td>
-														<td>Học viên 5</td>
-														<td class="hidden-480">20/09/1996</td>
-														<td>Quận 1 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															578967578
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="even">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">6</a>
-														</td>
-														<td>Học viên 6</td>
-														<td class="hidden-480">21/09/1996</td>
-														<td>Quận 2 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															876968768
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="odd">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">7</a>
-														</td>
-														<td>Học viên 7</td>
-														<td class="hidden-480">22/09/1996</td>
-														<td>Quận 3 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															876987697
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="even">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">8</a>
-														</td>
-														<td>Học viên 8</td>
-														<td class="hidden-480">23/09/1996</td>
-														<td>Quận 4 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															8769695967
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="odd">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">9</a>
-														</td>
-														<td>Học viên 9</td>
-														<td class="hidden-480">24/09/1996</td>
-														<td>Quận 5 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															87689768
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr><tr role="row" class="even">
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace">
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">10</a>
-														</td>
-														<td>Học viên 10</td>
-														<td class="hidden-480">30/09/1996</td>
-														<td>Quận 6 TP.Hồ Chí Minh</td>
-
-														<td class="hidden-480">
-															7697859876
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class=""></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr></tbody>
+													</tr>
+												</c:forEach>	
+
+												
+													</tbody>
 											</table>
 												<div class="row">
 													<div class="col-xs-6">
@@ -1874,8 +525,10 @@
 										</div>
 									</div>
 								</div>
+						</c:forEach>
 
-						<!--End row 2-->
+
+					
 						<div class="space-6">
 							
 						</div>
