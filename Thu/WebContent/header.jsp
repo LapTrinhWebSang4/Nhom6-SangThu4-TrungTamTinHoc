@@ -10,7 +10,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://localhost/ttth" user="root" password="1234" />
+	url="jdbc:mysql://localhost/ttth" user="root" password="kien2509" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 </head>
@@ -40,10 +40,10 @@
 					<!-- Left nav -->
 					<ul class="nav navbar-nav">
 
-						<li><a href="#" id="thongbaolink"><span
+						<li><a href="#" id="thongbaolink" class="scroll"><span
 								class="glyphicon glyphicon-pushpin"></span>Thông báo</a></li>
 
-						<li><a href="#" id="gioithieulink"><span
+						<li><a href="#" id="gioithieulink" class="scroll"><span
 								class="glyphicon glyphicon-info-sign"></span>Giới thiệu <span
 								class="caret"></span></a>
 							<ul class="dropdown-menu" id="sub1">
