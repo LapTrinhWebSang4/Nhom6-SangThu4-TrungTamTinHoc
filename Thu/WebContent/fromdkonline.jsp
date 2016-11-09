@@ -131,7 +131,9 @@ a>.glyphicon{
 	<script>
      $(document).ready(function() {
          $("#listmon").change(function() {
-             servletCall();
+             
+             $("#btn-submit").hide();
+        	 servletCall();
          });
 
      });
@@ -156,21 +158,41 @@ a>.glyphicon{
 		<form role="form" ng-app="myApp" ng-controller="validateCtrl" action="insertdbhocvien.jsp" method="post"
 					name="myForm" novalidate>
 <div class="jumbotron col-md-12">
-<% String monhoc = request.getParameter( "monhoc" ); %>
+<% String id = request.getParameter( "id" ); %>
 <% String loaimonhoc = request.getParameter( "loaimonhoc" ); %>
 				<div class="col-md-6">
-					<label>Môn học</label><select class="form-control" id="listmon"> <option></option>
+					<label>Môn học</label><select class="form-control" id="listmon">
+					
+					
+					
 					<sql:query dataSource="${snapshot}" var="result">
-SELECT * from khoahoc where MaLoaiKhoaHoc="<%=loaimonhoc %>";
+SELECT * from khoahoc where MaKhoaHoc="<%=id %>";
 </sql:query>
 <c:forEach var="row" items="${result.rows}">
 						<option value="<c:out value="${row.MaKhoaHoc}"/>"><c:out value="${row.TenKhoaHoc}"/></option>
 						
 						</c:forEach>
+					
+					<sql:query dataSource="${snapshot}" var="result">
+SELECT * from khoahoc where MaLoaiKhoaHoc="<%=loaimonhoc%>" && MaKhoaHoc!="<%=id %>";
+</sql:query>
+<c:forEach var="row" items="${result.rows}">
+						<option value="<c:out value="${row.MaKhoaHoc}"/>"><c:out value="${row.TenKhoaHoc}"/></option>
+						
+						</c:forEach>
+					
 					</select>
 				</div>
 				<div class="col-md-6">
 					<label>Lớp học</label><select class="form-control" id="listlop" name="listlop">
+						
+						<sql:query dataSource="${snapshot}" var="result">
+SELECT * from lophoc where MaKhoa="<%=id %>";
+</sql:query>
+<c:forEach var="row" items="${result.rows}">
+						<option value="<c:out value="${row.MaLop}"/>"><c:out value="${row.LichHoc}"/> room: <c:out value="${row.Phong}"/></option>
+						
+						</c:forEach>
 						
 					</select>
 				</div>
@@ -183,7 +205,7 @@ SELECT * from khoahoc where MaLoaiKhoaHoc="<%=loaimonhoc %>";
 							<div class="col-md-12">
 								<h3 align="center" style="color: #00ff00;">Thông tin cá
 									nhân</h3>
-								</span>
+								
 							</div>
 							<div class="form-group">
 

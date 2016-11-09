@@ -63,7 +63,7 @@ public class Loadmonhoc extends HttpServlet {
 				String info = rs.getString("GioiThieu");
 				//String safe = rs.getString("CheDoMienGiam");
 				String cost = rs.getString("HocPhi");
-				String link = "fromdkonline.jsp?loaimonhoc="+Tid;
+				String link = "fromdkonline.jsp?loaimonhoc="+Tid+"&id="+id;
 				out.println("<tr>"
 						+ "<td>"+ten
 						+ "<td>"+ id

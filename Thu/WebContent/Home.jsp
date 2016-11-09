@@ -25,7 +25,7 @@
 
 <style type="text/css">
 	body {
-	background-color: lightgrey;
+	background-color: lightblue;
 }
 	#custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(255, 255, 255, 1);
