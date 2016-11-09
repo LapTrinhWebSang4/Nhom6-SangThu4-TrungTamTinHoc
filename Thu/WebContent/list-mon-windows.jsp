@@ -147,7 +147,7 @@ a>.glyphicon {
      function servletCall() {
     	 var idmon = $('#monhoc').val();
          $.post(
-             "Loadmonhoc", 
+             "Loadmon", 
              {name : idmon}, //meaasge you want to send
              function(result) {
              $('#bodytable').html(result); //message you want to show

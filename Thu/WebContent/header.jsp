@@ -41,10 +41,10 @@
 					<!-- Left nav -->
 					<ul class="nav navbar-nav">
 
-						<li><a href="#" id="thongbaolink"><span
+						<li><a href="#" id="thongbaolink" class="scroll"><span
 								class="glyphicon glyphicon-pushpin"></span>Thông báo</a></li>
 
-						<li><a href="#" id="gioithieulink"><span
+						<li><a href="#" id="gioithieulink" class="scroll"><span
 								class="glyphicon glyphicon-info-sign"></span>Giới thiệu <span
 								class="caret"></span></a>
 							<ul class="dropdown-menu" id="sub1">

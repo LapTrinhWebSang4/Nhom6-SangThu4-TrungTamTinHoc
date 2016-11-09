@@ -20,7 +20,7 @@
  
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
      url="jdbc:mysql://localhost/ttth"
-     user="root"  password="1234"/>
+     user="root"  password="kien2509"/>
 
 
 <style type="text/css">
@@ -353,7 +353,7 @@ SELECT * from thongbao where LoaiThongBao = "Su kien";
 	        'slow');
 	}
 
-	$(".navbar-nav>li>a").click(function(e) { 
+	$(".navbar-nav>li>.scroll").click(function(e) { 
 	      // Prevent a page reload when a link is pressed
 	    e.preventDefault(); 
 	      // Call the scroll function

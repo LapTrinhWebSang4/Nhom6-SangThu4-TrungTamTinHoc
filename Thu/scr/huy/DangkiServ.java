@@ -1,4 +1,4 @@
-package kienpack;
+package huy;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,7 +32,8 @@ public class DangkiServ extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -60,7 +61,7 @@ public class DangkiServ extends HttpServlet {
 				
 				String id = rs.getString("MaLop");
 				
-				out.println("<option value="+id+">"+lich+" room: "+room+"</option>");
+				out.println("<option value="+id+">"+lich+" room: "+room+"<br></option>");
 			}
 
 		} catch (Exception e2) {

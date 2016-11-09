@@ -146,23 +146,7 @@ input:focus + .glyphicon{
 					<div class="panel-body">
 						<h3>Login</h3>
 						<div class="whole-form">
-					<form action="LoginServlet" method="post" role="form" >
-						<div class="form-group">
-							<div class="checkbox">
-										<label> 
-										<input type="checkbox" value="tvv" name="box"
-											checked="checked" id="box1"> Tư vấn viên 
-										</label> 
-										<label>
-											<input type="checkbox" value="qtnd" name="box" id="box2">
-												Người quản trị nội dung 
-										</label> 
-										<label> 
-										<input type="checkbox" value="qtv"
-											name="box" id="box3"> Quản trị viên
-											 </label>
-									</div>
-						</div>
+					<form action="HandleLogin.jsp" method="post" role="form" >
 						<div class="form-group">
 							<label for="">Tài khoản</label> 
 							<div class="inner-addon left-addon">
