@@ -169,16 +169,16 @@ a>.glyphicon {
 	<div class="container-fluid">
 
 
-		<nav class="navbar w3-light-grey">
-		<ul class="nav nav-tabs">
-			<li><a id="btn-list"><button class="btn btn-info">danh
+		
+		<ul class="nav nav-tabs" >
+			<li><a id="btn-list"><button class="btn btn-info">Danh
 						sách câu hỏi</button></a></li>
 			<li><a id="btn-send"><button class="btn btn-success">Đặt
 						câu hỏi</button></a></li>
 
 		</ul>
-		</nav>
-		<div class="jumbotron" id="send-q" style="display: none">
+		
+		<div class="jumbotron" id="send-q" style="display: none; background: white; border: 2px solid #1aa3ff;">
 			<form ng-app="myApp" ng-controller="validateCtrl" name="myForm"
 				action="insertdbcauhoi.jsp" method="post" novalidate>
 				<h2 style="color: blue;">Đặt câu hỏi</h2>
@@ -232,8 +232,8 @@ a>.glyphicon {
 
 
 
-				<input class="btn btn-success" data-toggle="modal" type="submit"
-					value="save" data-target="#myModal"
+				<input class="btn btn-success btn-block" data-toggle="modal" type="submit"
+					value="Gửi câu hỏi" data-target="#myModal"
 					ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
 myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.phone.$invalid || myForm.phone.$error.required || myForm.lable.$error.required || myForm.txtara.$error.required">
 

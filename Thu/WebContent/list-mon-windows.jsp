@@ -11,7 +11,7 @@
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/ttth" user="root" password="1234" />
 
-<title>Câu hỏi-tư vấn</title>
+<title>Đăng kí online</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.min.js"></script>
@@ -134,10 +134,10 @@ a>.glyphicon {
 <link rel="stylesheet" href="css/w3.css">
 </head>
 <body>
-<jsp:include page="header.jsp" />
+	<jsp:include page="header.jsp" />
 	<div class="container-fluid">
-		
-<script>
+
+		<script>
      $(document).ready(function() {
          $("#monhoc").change(function() {
              servletCall();
@@ -154,17 +154,19 @@ a>.glyphicon {
          });
      };
    </script>
-		<div class="jumbotron"  id="list-wins">
-			<table class="table table-condensed">
+		<div class="jumbotron" id="list-wins" Style=" border: 2px solid #1aa3ff; background: white;">
+			<table class="table table-condensed"
+				style="border-radius: 20px; padding: 100%; width: 100%; height: 100%; background: #ffff99">
 				<caption>
-				<h3 style="color: green;">Chọn loại khóa học</h3>
-				<select id="monhoc" class="form-control"><option></option>
-				<sql:query dataSource="${snapshot}" var="result">
+					<h3 style="color: green;">Chọn loại khóa học</h3>
+					<select id="monhoc" class="form-control" Style="border: 2px solid #1aa3ff;"><option></option>
+						<sql:query dataSource="${snapshot}" var="result">
 SELECT * from loaikhoahoc;
 </sql:query>
-					<c:forEach var="row" items="${result.rows}">
-				<option value=<c:out value="${row.MaLoaiKhoaHoc}"/>><c:out value="${row.TenLoaiKhoaHoc}"/></option>
-					</c:forEach>
+						<c:forEach var="row" items="${result.rows}">
+							<option value=<c:out value="${row.MaLoaiKhoaHoc}"/>><c:out
+									value="${row.TenLoaiKhoaHoc}" /></option>
+						</c:forEach>
 					</select>
 				</caption>
 				<thead>
@@ -180,39 +182,40 @@ SELECT * from loaikhoahoc;
 				</thead>
 				<tbody id="bodytable">
 
-					
+
 
 				</tbody>
 			</table>
-		</div></div>
-		<footer
-			style="background-color: #0082c8; color: white; padding-top: 25px;">
-		<div class="container">
+		</div>
+	</div>
+	<footer
+		style="background-color: #0082c8; color: white; padding-top: 25px;">
+	<div class="container">
 
-			<div class="bottom-footer"
-				style="border-top: 1px solid #b2b2b2; margin-top: 10px; padding-top: 10px; corlor: red;">
-				<div class="col-md-5">
-					<p>developed by G6</p>
-					<span class="glyphicon glyphicon-home"></span> Cơ sở chính: XX/XX,
-					đường ss, Q.qq, TH. HCM <br> <span
-						class="glyphicon glyphicon-phone-alt"></span> Đt: xx50 43x 8xx
-				</div>
-				<div class="col-md-7">
-					<ul class="footer-nav">
-						<li><a href="Home.jsp">Home</a></li>
-						<li><a href="giangvien.jsp">Contract</a></li>
-						<li><a href="thungo.jsp">About us</a></li>
-					</ul>
-				</div>
-
+		<div class="bottom-footer"
+			style="border-top: 1px solid #b2b2b2; margin-top: 10px; padding-top: 10px; corlor: red;">
+			<div class="col-md-5">
+				<p>developed by G6</p>
+				<span class="glyphicon glyphicon-home"></span> Cơ sở chính: XX/XX,
+				đường ss, Q.qq, TH. HCM <br> <span
+					class="glyphicon glyphicon-phone-alt"></span> Đt: xx50 43x 8xx
+			</div>
+			<div class="col-md-7">
+				<ul class="footer-nav">
+					<li><a href="Home.jsp">Home</a></li>
+					<li><a href="giangvien.jsp">Contract</a></li>
+					<li><a href="thungo.jsp">About us</a></li>
+				</ul>
 			</div>
 
 		</div>
-		</footer>
 
-		<script type="text/javascript" src="js/jsfornav2.js"></script>
+	</div>
+	</footer>
+
+	<script type="text/javascript" src="js/jsfornav2.js"></script>
 
 
-		<script type="text/javascript" src="js/jsfornav2-1.js"></script>
+	<script type="text/javascript" src="js/jsfornav2-1.js"></script>
 </body>
 </html>

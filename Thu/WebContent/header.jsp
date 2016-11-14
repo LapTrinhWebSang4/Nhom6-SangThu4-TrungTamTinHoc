@@ -13,6 +13,16 @@
 	url="jdbc:mysql://localhost/ttth" user="root" password="1234" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
+<style>
+body{
+	background-color:black;
+	background-image:url("element/window.png");
+	width:100%;
+	height:100%;
+	background-repeat:no-repeat;
+	
+}
+</style>
 </head>
 <body>
 
