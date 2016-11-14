@@ -4,13 +4,12 @@
 <html>
 <head>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
- 
+
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost/ttth"
-     user="root"  password="1234"/>
+	url="jdbc:mysql://localhost/ttth" user="root" password="1234" />
 
 <title>Câu hỏi-tư vấn</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -168,19 +167,20 @@ a>.glyphicon {
 	</div>
 	<jsp:include page="header.jsp" />
 	<div class="container-fluid">
-		
+
 
 		<nav class="navbar w3-light-grey">
 		<ul class="nav nav-tabs">
-			<li><a id="btn-send"><button class="btn btn-info active">Đặt
-						câu hỏi</button></a></li>
 			<li><a id="btn-list"><button class="btn btn-info">danh
 						sách câu hỏi</button></a></li>
+			<li><a id="btn-send"><button class="btn btn-success">Đặt
+						câu hỏi</button></a></li>
+
 		</ul>
 		</nav>
-		<div class="jumbotron" id="send-q">
-			<form ng-app="myApp" ng-controller="validateCtrl" name="myForm" action="insertdbcauhoi.jsp" method="post"
-				novalidate>
+		<div class="jumbotron" id="send-q" style="display: none">
+			<form ng-app="myApp" ng-controller="validateCtrl" name="myForm"
+				action="insertdbcauhoi.jsp" method="post" novalidate>
 				<h2 style="color: blue;">Đặt câu hỏi</h2>
 				<br>
 				<div class="col-md-12">
@@ -191,8 +191,8 @@ a>.glyphicon {
 						ng-show="myForm.user.$dirty && myForm.user.$invalid"> <span
 						ng-show="myForm.user.$error.required">Name is required.</span></span><br>
 				</div>
-				
-				
+
+
 				<div class="col-md-12">
 					<label for="name">Email</label> <input class="form-control"
 						type="email" name="email" ng-model="email" required> <span
@@ -210,7 +210,7 @@ a>.glyphicon {
 						<option>Chứng chỉ</option>
 					</select>
 				</div>
-				
+
 				<div class="col-md-12">
 					<label for="name">Tiêu đề</label> <input type="text"
 						class="form-control" id="tieude" placeholder="Tiêu đề"
@@ -232,8 +232,8 @@ a>.glyphicon {
 
 
 
-				<input class="btn btn-success" data-toggle="modal" type="submit" value="save"
-					data-target="#myModal"
+				<input class="btn btn-success" data-toggle="modal" type="submit"
+					value="save" data-target="#myModal"
 					ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
 myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.phone.$invalid || myForm.phone.$error.required || myForm.lable.$error.required || myForm.txtara.$error.required">
 
@@ -263,52 +263,85 @@ myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.ph
 			</form>
 		</div>
 
-		<div id="list-q" style="display: none;">
-			<div class="col-md-12" style="padding-top:10px;padding-left:1px">
+		<div id="list-q" style="display: 1;">
+			<div class="col-md-12" style="padding-top: 10px; padding-left: 1px">
 
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Câu hỏi</h3>
 					</div>
 					<div class="panel-body">
-						
+
 						<div class="panel-group" id="accordion" role="tablist"
 							aria-multiselectable="true">
-<sql:query dataSource="${snapshot}" var="result">
-SELECT * from cauhoi where TinhTrang=1;
+							<sql:query dataSource="${snapshot}" var="result">
+SELECT * from cauhoi where TinhTrang=1
+ORDER by Ngay DESC;
 </sql:query>
-<c:forEach var="row" items="${result.rows}">
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingTwo">
-									<h4 class="panel-title"
-										style="font: Arial Black; color: #800080;">
 
-										<a class="collapsed" role="button" data-toggle="collapse"
-											data-parent="#accordion" href="#<c:out value="${row.MaCauHoi}"/>"
-											aria-expanded="false" aria-controls="<c:out value="${row.MaCauHoi}"/>"><span
-											class="glyphicon glyphicon-question-sign" style="color: #800080;"></span>
-											<c:out value="${row.TieuDe}"/> [<c:out value="${row.Ngay}"/>]
-											<br>
-											Bởi: <c:out value="${row.TenNguoiHoi}"/>
-											</a>
-									</h4>
+							<%
+								int c1 = 0;
+							%>
+							<c:forEach var="row" items="${result.rows}">
+								<%
+									c1++;
+								%>
+							</c:forEach>
+							<c:set var="letters" scope="session" value="${result.rows}" />
+							<c:set var="totalCount1" scope="session" value="<%=c1%>" />
+							<c:set var="perPage1" scope="session" value="${6}" />
+							<c:set var="pageStart1" value="${param.start1}" />
+							<c:if test="${empty pageStart1 or pageStart1 < 0}">
+								<c:set var="pageStart1" value="0" />
+							</c:if>
+							<c:if test="${totalCount1 < pageStart1}">
+								<c:set var="pageStart1" value="${pageStart1 - perPage1}" />
+							</c:if>
+
+							<c:forEach var="row" items="${result.rows}" begin="${pageStart1}"
+								end="${pageStart1 + perPage1 - 1}">
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="headingTwo">
+										<h4 class="panel-title"
+											style="font: Arial Black; color: #800080;">
+
+											<a class="collapsed" role="button" data-toggle="collapse"
+												data-parent="#accordion"
+												href="#<c:out value="${row.MaCauHoi}"/>"
+												aria-expanded="false"
+												aria-controls="<c:out value="${row.MaCauHoi}"/>"><span
+												class="glyphicon glyphicon-question-sign"
+												style="color: #800080;"></span> <c:out value="${row.TieuDe}" />
+												[<c:out value="${row.Ngay}" />] <br> Bởi: <c:out
+													value="${row.TenNguoiHoi}" /> </a>
+										</h4>
+									</div>
+									<div id="<c:out value="${row.MaCauHoi}"/>"
+										class="panel-collapse collapse" role="tabpanel"
+										aria-labelledby="headingTwo">
+										<div class="panel-body">
+											Cau hoi:
+											<c:out value="${row.NoiDung}" />
+											<br>Tra Loi:
+											<c:out value="${row.TraLoi}" />
+										</div>
+									</div>
 								</div>
-								<div id="<c:out value="${row.MaCauHoi}"/>" class="panel-collapse collapse"
-									role="tabpanel" aria-labelledby="headingTwo">
-									<div class="panel-body">Cau hoi: <c:out value="${row.NoiDung}"/><br>Tra Loi: <c:out value="${row.TraLoi}"/></div>
-								</div>
-							</div></c:forEach>
-							
-							
+							</c:forEach>
+
+
 						</div>
 					</div>
 
 					<nav aria-label="...">
 					<ul class="pager">
-						<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>Mới
-								hơn</a></li>
-						<li class="next"><a href="#">Cũ hơn<span
-								aria-hidden="true">&rarr;</span></a></li>
+						<li class="previous"><a
+							href="?start1=${pageStart1 - perPage1}"><span
+								aria-hidden="true">&larr;</span>Mới hơn</a></li>
+						<li class="next"><a
+							href="?start1=${pageStart1 + perPage1}">Cũ
+								hơn<span aria-hidden="true">&rarr;</span>
+						</a></li>
 					</ul>
 					</nav>
 
@@ -346,7 +379,7 @@ SELECT * from cauhoi where TinhTrang=1;
 
 	</div>
 	</footer>
-	
+
 	<script type="text/javascript" src="js/jsfornav2.js"></script>
 
 

@@ -20,7 +20,7 @@
  
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
      url="jdbc:mysql://localhost/ttth"
-     user="root"  password="kien2509"/>
+     user="root"  password="1234"/>
 
 
 <style type="text/css">
@@ -221,9 +221,11 @@ a>.glyphicon{
 							
 							
 							<sql:query dataSource="${snapshot}" var="result">
-SELECT * from thongbao where LoaiThongBao = "Thong bao";
+SELECT * from thongbao where LoaiThongBao = "Thong bao"
+ORDER BY Ngay DESC;
 </sql:query>
-<c:forEach var="row" items="${result.rows}">
+
+<c:forEach var="row" items="${result.rows}" begin="0" end="5">
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingThree">
 									<h4 class="panel-title"
@@ -246,10 +248,8 @@ SELECT * from thongbao where LoaiThongBao = "Thong bao";
 
 					<nav aria-label="...">
 					<ul class="pager">
-						<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>Mới
-								hơn</a></li>
-						<li class="next"><a href="#">Cũ hơn<span
-								aria-hidden="true">&rarr;</span></a></li>
+						
+						<li class="next"><a href="thongbaoall.jsp">Xem tất cả</a></li>
 					</ul>
 					</nav>
 
@@ -277,7 +277,7 @@ SELECT * from thongbao where LoaiThongBao = "Thong bao";
 							<sql:query dataSource="${snapshot}" var="result">
 SELECT * from thongbao where LoaiThongBao = "Su kien";
 </sql:query>
-<c:forEach var="row" items="${result.rows}">
+<c:forEach var="row" items="${result.rows}" begin="0" end="5">
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingThree">
 									<h4 class="panel-title"
@@ -300,9 +300,8 @@ SELECT * from thongbao where LoaiThongBao = "Su kien";
 
 					<nav aria-label="...">
 					<ul class="pager">
-						<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>Mới
-								hơn</a></li>
-						<li class="next"><a href="#">Cũ hơn<span
+						
+						<li class="next"><a href="thongbaoall.jsp">Xem tất cả<span
 								aria-hidden="true">&rarr;</span></a></li>
 					</ul>
 					</nav>
