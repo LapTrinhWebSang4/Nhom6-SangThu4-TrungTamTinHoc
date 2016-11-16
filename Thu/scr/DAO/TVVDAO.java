@@ -111,14 +111,14 @@ public class TVVDAO {
 		
 	}
 	public static List<LopHoc> Getlophoclist(){
-		List<LopHoc> lstnienkhoa = new ArrayList<LopHoc>();
+		List<LopHoc> lstlophoc = new ArrayList<LopHoc>();
 		Connection conn = DatabaseManagement.getConnection();
 		try {
-			PreparedStatement pst = conn.prepareStatement("select * from nienkhoa");
+			PreparedStatement pst = conn.prepareStatement("select * from lophoc");
 			ResultSet rs;
 			rs = pst.executeQuery();
 			while(rs.next()){
-				lstnienkhoa.add( new LopHoc(rs.getString("MaLop"),
+				lstlophoc.add( new LopHoc(rs.getString("MaLop"),
 						rs.getDate("NgayHoc"),
 						rs.getInt("Phong"),
 						rs.getInt("SoHocVien"),
@@ -140,7 +140,7 @@ public class TVVDAO {
 			e.printStackTrace();
 		}
 		
-		return lstnienkhoa;
+		return lstlophoc;
 		
 	}
 	public static List<KhoaHoc> Getkhoahoclist(){

@@ -1,9 +1,28 @@
 package Model;
-
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
+import java.util.List;
 
-public class TaiKhoan {
+import javax.servlet.AsyncContext;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+
+import Controller.HandleLogin;
+public class TaiKhoan{
 	String Taikhoan;
+	String MatKhau;
+	String TenThanhVien;
+	int Sodt;
+	String Email;
+	java.sql.Date NgaySinh;
+	java.sql.Date NgayDangNhapGanNhat;
+	String DiaChi;
+	int SoCMND;
+	String Quyen;
+	String GioiThieu;
+	//Constructor
 	public TaiKhoan(String taikhoan, String matKhau, String tenThanhVien, int sodt, String email, Date ngaySinh,
 			Date ngayDangNhapGanNhat, String diaChi, int soCMND, String quyen, String gioiThieu) {
 		super();
@@ -19,18 +38,13 @@ public class TaiKhoan {
 		Quyen = quyen;
 		GioiThieu = gioiThieu;
 	}
-	String MatKhau;
-	String TenThanhVien;
-	int Sodt;
-	String Email;
-	java.sql.Date NgaySinh;
-	java.sql.Date NgayDangNhapGanNhat;
-	String DiaChi;
-	int SoCMND;
-	String Quyen;
-	String GioiThieu;
-	//Constructor
-	
+	public TaiKhoan(String taikhoan, String matKhau, String tenThanhVien, String email) {
+		super();
+		Taikhoan = taikhoan;
+		MatKhau = matKhau;
+		TenThanhVien = tenThanhVien;
+		Email = email;
+	}
 	//Properties
 	public String getTaikhoan() {
 		return Taikhoan;

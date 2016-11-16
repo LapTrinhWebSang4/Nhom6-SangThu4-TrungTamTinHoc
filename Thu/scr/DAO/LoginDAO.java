@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.ServletContext;
+
 public class LoginDAO {
+	
 	 public static boolean validate(String name, String pass,String quyen) {        
 	        boolean status = false;
 	        Connection conn = null;

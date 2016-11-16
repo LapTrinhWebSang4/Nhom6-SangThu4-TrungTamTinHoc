@@ -82,13 +82,10 @@ img{
 body{
 	background-color:lightgrey;
 	background-image:url("Asset/tntt.jpg");
-	width:100%;
-	height:100%;
 	background-repeat:no-repeat;
 	z-index:-1;
 	 rgba(255,255,255,0.4);
-	 background-position: 50% 60%; 
-	 position:relative;
+	 background-position:center; 
 	 opactity:.1;
 }
 
@@ -146,7 +143,7 @@ input:focus + .glyphicon{
 					<div class="panel-body">
 						<h3>Login</h3>
 						<div class="whole-form">
-					<form action="HandleLogin.jsp" method="post" role="form" >
+					<form action="HandleLogin" method="post" role="form" >
 						<div class="form-group">
 							<label for="">Tài khoản</label> 
 							<div class="inner-addon left-addon">
