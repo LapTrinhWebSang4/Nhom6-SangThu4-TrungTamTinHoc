@@ -21,6 +21,13 @@ body {
 	background-color: lightgrey;
 }
 
+#list-wins {
+	border: 2px solid #1aa3ff;
+	background: white;
+	background-image: url('element/bookpen.jpg');
+	background-position: center;
+}
+
 #custom-bootstrap-menu.navbar-default .navbar-brand {
 	color: rgba(255, 255, 255, 1);
 }
@@ -138,28 +145,39 @@ a>.glyphicon {
 	<div class="container-fluid">
 
 		<script>
-     $(document).ready(function() {
-         $("#monhoc").change(function() {
-             servletCall();
-         });
+			$(document).ready(function() {
+				$("#monhoc").change(function() {
+					servletCall();
+				});
 
-     });
-     function servletCall() {
-    	 var idmon = $('#monhoc').val();
-         $.post(
-             "Loadmon", 
-             {name : idmon}, //meaasge you want to send
-             function(result) {
-             $('#bodytable').html(result); //message you want to show
-         });
-     };
-   </script>
-		<div class="jumbotron" id="list-wins" Style=" border: 2px solid #1aa3ff; background: white;">
+			});
+			function servletCall() {
+				var idmon = $('#monhoc').val();
+				$.post("Loadmon", {
+					name : idmon
+				}, //meaasge you want to send
+				function(result) {
+					$('#bodytable').html(result); //message you want to show
+				});
+			};
+			function callS(id) {
+				
+				$.post("Load_info_monhoc", {
+					name : id
+				}, //meaasge you want to send
+				function(result) {
+					$('#info_m').html(result); //message you want to show
+				});
+			};
+		</script>
+		<div class="jumbotron" id="list-wins">
 			<table class="table table-condensed"
-				style="border-radius: 20px; padding: 100%; width: 100%; height: 100%; background: #ffff99">
+				style="border-radius: 20px; padding: 100%; width: 100%; height: 100%;">
 				<caption>
 					<h3 style="color: green;">Chọn loại khóa học</h3>
-					<select id="monhoc" class="form-control" Style="border: 2px solid #1aa3ff;"><option></option>
+					<select id="monhoc" class="form-control"
+						Style="border: 2px solid #1aa3ff;"><option>
+						<option value="ALLALL">Tất cả</option>
 						<sql:query dataSource="${snapshot}" var="result">
 SELECT * from loaikhoahoc;
 </sql:query>
@@ -175,9 +193,8 @@ SELECT * from loaikhoahoc;
 						<th>Mã học phần</th>
 						<th>Ngày khai giảng</th>
 						<th>Thông tin
-						<th>Học phí
-						<th>Chính sách ưu đãi</th>
-						<th></th>
+						<th>Học phí <!--<th>Chính sách ưu đãi</th>-->
+						<th>Đăng kí</th>
 					</tr>
 				</thead>
 				<tbody id="bodytable">
@@ -188,12 +205,17 @@ SELECT * from loaikhoahoc;
 			</table>
 		</div>
 	</div>
+	
+	
+	
+	
+	
 	<footer
 		style="background-color: #0082c8; color: white; padding-top: 25px;">
 	<div class="container">
 
 		<div class="bottom-footer"
-			style="border-top: 1px solid #b2b2b2; margin-top: 10px; padding-top: 10px; corlor: red;">
+			style="border-top: 1px solid #b2b2b2; margin-top: 20px; padding-top: 10px; corlor: red;">
 			<div class="col-md-5">
 				<p>developed by G6</p>
 				<span class="glyphicon glyphicon-home"></span> Cơ sở chính: XX/XX,

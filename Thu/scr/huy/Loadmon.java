@@ -16,17 +16,18 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Loadmon
  */
+
 @WebServlet("/Loadmon")
 public class Loadmon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Loadmon() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Loadmon() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,11 +40,13 @@ public class Loadmon extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-PrintWriter out = response.getWriter();
-		
+		PrintWriter out = response.getWriter();
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 
 		try {
-			
+
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/ttth", "root", "1234");
@@ -51,9 +54,11 @@ PrintWriter out = response.getWriter();
 			Statement stmt = conn.createStatement();
 			String sql;
 			String name = request.getParameter("name");
-			
-			sql = "SELECT * FROM khoahoc where MaLoaiKhoaHoc='"+name+"'";
-			
+			String al ="ALLALL";
+			if(name.equals(al)){sql = "SELECT * FROM khoahoc";}
+			else
+				sql = "SELECT * FROM khoahoc where MaLoaiKhoaHoc='"+name+"'";
+
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				String ten = rs.getString("TenKhoaHoc");
@@ -64,19 +69,43 @@ PrintWriter out = response.getWriter();
 				//String safe = rs.getString("CheDoMienGiam");
 				String cost = rs.getString("HocPhi");
 				String link = "fromdkonline.jsp?loaimonhoc="+Tid+"&id="+id;
+
 				out.println("<tr>"
 						+ "<td>"+ten
 						+ "<td>"+ id
 						+ "<td>"+ date
-						+ "<td>"+ info
+						+ "<td>"
+						+ ""
+						+ "<input class='btn btn-info' data-toggle='modal' type='submit'"
+						+"value='info' data-target='#myModal"+id+"''>"
+						+"<div class='modal fade' id='myModal"+id+"' tabindex='-1' role='dialog'"
+						+"aria-labelledby='' aria-hidden='false'>"
+						+"<div class='modal-dialog'>"
+						+"<div class='modal-content'>"
+						+"<div class='modal-header'>"
+						+"<button type='button' class='close' data-dismiss='modal'"
+						+"aria-hidden='true'>&times;</button>"
+						+"<h2 class='modal-title' id='myModalLabel' align='center'>Thông tin khóa học</h2>"
+						+"</div>"
+						+"<div>"
+						+""+info+""							
+						+"</div>"
+						+"<div class='modal-footer'>"
+						+"<button type='button' class='btn btn-block btn-success'"
+						+"data-dismiss='modal'>OK</button>"
+						+"</div>"
+						+"</div>"						
+						+"</div>"
+						+"</div>"
+						+"</td>"
 						+ "<td>"+cost
 						//+ "<td>"+ safe
-						+ "<td> <a href="+link+"><button class='btn btn-success'>sign</button></a>"
+						+ "<td> <a href="+link+"><button class='btn btn-success'><span class='glyphicon glyphicon-pencil'/></button></a>"
 						+ "</tr>");
 			}
 
 		} catch (Exception e2) {
-			
+
 			System.out.println(e2);
 		}
 
