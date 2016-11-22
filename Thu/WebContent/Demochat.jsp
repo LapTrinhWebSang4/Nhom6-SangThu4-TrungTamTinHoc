@@ -42,7 +42,9 @@ input:checked ~ .portfolio {
 input:checked ~ label {
 	left: 0;
 }
-
+p{
+	word-wrap: break-word;
+}
 label {
 	z-index: 2;
 	position: absolute;
@@ -174,64 +176,8 @@ label {
 			</div>
 			<div class="panel-body" id="hide-element">
 				<ul class="chat">
-					<li class="left clearfix"><span class="chat-img pull-left">
-							<img src="http://placehold.it/50/55C1E7/fff&amp;text=U"
-							alt="User Avatar" class="img-circle">
-					</span>
-						<div class="chat-body clearfix">
-							<div class="">
-								<strong class="primary-font">Jack Sparrow</strong> <small
-									class="pull-right text-muted"> <span
-									class="glyphicon glyphicon-time"></span>12 mins ago
-								</small>
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Curabitur bibendum ornare dolor, quis ullamcorper ligula
-								sodales.</p>
-						</div></li>
-					<li class="right clearfix"><span class="chat-img pull-right">
-							<img src="http://placehold.it/50/FA6F57/fff&amp;text=ME"
-							alt="User Avatar" class="img-circle">
-					</span>
-						<div class="chat-body clearfix">
-							<div class="">
-								<small class=" text-muted"><span
-									class="glyphicon glyphicon-time"></span>13 mins ago</small> <strong
-									class="pull-right primary-font">Bhaumik Patel</strong>
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Curabitur bibendum ornare dolor, quis ullamcorper ligula
-								sodales.</p>
-						</div></li>
-					<li class="left clearfix"><span class="chat-img pull-left">
-							<img src="http://placehold.it/50/55C1E7/fff&amp;text=U"
-							alt="User Avatar" class="img-circle">
-					</span>
-						<div class="chat-body clearfix">
-							<div class="">
-								<strong class="primary-font">Jack Sparrow</strong> <small
-									class="pull-right text-muted"> <span
-									class="glyphicon glyphicon-time"></span>14 mins ago
-								</small>
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Curabitur bibendum ornare dolor, quis ullamcorper ligula
-								sodales.</p>
-						</div></li>
-					<li class="right clearfix"><span class="chat-img pull-right">
-							<img src="http://placehold.it/50/FA6F57/fff&amp;text=ME"
-							alt="User Avatar" class="img-circle">
-					</span>
-						<div class="chat-body clearfix">
-							<div class="">
-								<small class=" text-muted"><span
-									class="glyphicon glyphicon-time"></span>15 mins ago</small> <strong
-									class="pull-right primary-font">Bhaumik Patel</strong>
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Curabitur bibendum ornare dolor, quis ullamcorper ligula
-								sodales.</p>
-						</div></li>
+					
+					
 				</ul>
 			</div>
 			<div class="panel-footer" id="hide-element">
@@ -257,7 +203,7 @@ label {
 	</script>
 	<script src="assets/js/bootstrap.min.js"></script>
 
-	
+
 
 	<script type="text/javascript">
 	populateFriendList();
@@ -273,9 +219,11 @@ label {
 			  if(response ==""){
 				  
 			  }else{
-				  var users = response.split(",");
+				  var users = JSON.parse(response);
+				  
 				  for(var i=0;i<users.length;i++){
-						 $(".list-user-online").append("<li>"+users[i]+"</li>");	  
+					  	var str = users[i].TenThanhVien.replace(/\s/g,''); 
+						 $(".list-user-online").append("<li id='"+str+"' onclick='GetPeerID(this.id)'>"+users[i].TenThanhVien+"</li>");	  
 				  }
 				  
 			  }
@@ -296,6 +244,11 @@ label {
 
 
 	<script type="text/javascript">
+	var today = new Date();
+	var hour = today.getHours();
+	var minute = today.getMinutes();
+	var second = today.getSeconds();
+	var today = hour+":"+minute+":"+second;
 		var peer = new Peer({
 			key : 'nw6fe5gqssbutyb9',
 			debug : 3,
@@ -310,82 +263,93 @@ label {
 		peer.on('open', function(id) {
 			console.log(id +" has connected");
 		});
-		peer.on('connection', connect);
-		peer.on('error', function(err) {
-		  console.log(err);
-		})
-		
-
-		function connect(c) {
-			// Handle a chat connection.
+		peer.on('connection',function(c){
+			console.log("deo vao duoc day");
 			if (c.label === 'chat') {
-				var header = $('<h1></h1>').html(
-						'Chat with <strong>' + c.peer + '</strong>');
-				var messages = $('<div><em>Peer connected.</em></div>')
-						.addClass('messages');
-				$(".chat").append(header);
-				$(".chat").append(messages);
-				
 				c.on('data', function(data) {
-					$(".chat").append("<li class='left clearfix'></li>");
-					$(".left .clearfix").append("<span class='chat-img pull-left'></span>");
-					$(".chat-img .pull-left").append("<img src='http://placehold.it/50/55C1E7/fff&amp;text=U' alt='User Avatar' class='img-circle'>");
-					$(".left .clearfix").append("<div class='chat-body clearfix'></div>");
-					$(".chat-body .clearfix").append("<p>"+data+"</p>")
+					console.log("vao duoc on data roi");
+					var chatbody = $("<li class='clearfix'>"
+							+"<div class='chat-body clearfix'><div class=''>"
+					+"<strong class='primary-font pull-right'>"+c.peer+"</strong><small class='text-muted'><span class='glyphicon "
+					+"glyphicon-time'></span>"+today+"</small></div><p>"+data+"</p></div></li>");
+					$(".chat").append(chatbody);
+					
 				});
 				c.on('close', function() {
 					alert(c.peer + ' has left the chat.');
-					delete c.peer;
 				});
-			}
+			}	
+		});
+			
+		
+		peer.on('error', function(err) {
+		  console.log(err);
+		});
+		
+
+		function connect(c) {
+			console.log("deo vao duoc day");
+			if (c.label === 'chat') {
+				c.on('data', function(data) {
+					console.log("vao duoc on data roi");
+					var chatbody = $("<li class='clearfix'>"
+							+"<div class='chat-body clearfix'><div class=''>"
+					+"<strong class='primary-font pull-right'>"+c.peer+"</strong><small class='text-muted'><span class='glyphicon "
+					+"glyphicon-time'></span>"+today+"</small></div><p>"+data+"</p></div></li>");
+					$(".chat").append(chatbody);
+					
+				});
+				c.on('close', function() {
+					alert(c.peer + ' has left the chat.');
+				});
+			}	
 		}
-		$(".list-user-online li").click(function(peerid){
-			var requestedPeer = peerid;
-			var c = peer.connect(requestedPeer,{
+		function GetPeerID(peerid){
+			console.log("chat voi  "+peerid);
+			var c = peer.connect(peerid,{
 				label:'chat',
 				serialization: 'none',
 		        metadata: {message: 'hi i want to chat with you!'}
 			});
 			c.on('open', function() {
 		        connect(c);
-		      });	
+		      });
 			c.on('error', function(err) { alert(err); });
-		});
-		$("#btn-chat").submit(function(e){
+			$(".box-chat").attr("id",peerid);
+		};
+		$("#btn-chat").click(function(e){
 			e.preventDefault();
 		    // For each active connection, send the message.
-		    var msg = $('#text').val();
-		    eachActiveConnection(function(c, $c){
+		    var msg = $('#btn-input').val();
+			var messages = $('<div><em>Peer connected.</em></div>')
+					.addClass('messages');
+			var chatbody = $("<li class='clearfix'>"
+					+"<div class='chat-body clearfix'><div class=''>"
+			+"<small class='pull-right text-muted'><span class='glyphicon "
+			+"glyphicon-time'></span>"+today+"</small><strong class='primary-font'>me</strong></div><p>"+msg+"</p></div></li>");
+			
+		    eachActiveConnection(function(c){
 		    	if (c.label === 'chat') {
-		        c.send(msg);
-		        $c.find('.chat').append("<li class='right clearfix'>"
-		        		+"<img src='http://placehold.it/50/FA6F57/fff&amp;text=ME'"
-							+"alt='User Avatar' class='img-circle'>"
-					+"</span>"
-						+"<div class='chat-body clearfix'>"
-							+"<p>"+msg+"</p>"
-						+"</div></li>");
-		      }
+			        c.send(msg);
+			        $('.chat').append(chatbody);
+			      }
 		    $('#btn-input').val('');
 		    $('#btn-input').focus();
 		    });
 		    
 		});
-		
 		 function eachActiveConnection(fn) {
-			    var actives = $('.active');
-			    var checkedIds = {};
-			    actives.each(function() {
-			      var peerId = $(this).attr('id');
-			      if (!checkedIds[peerId]) {
-			        var conns = peer.connections[peerId];
+			 var pid = $('.box-chat').attr('id');
+				console.log("bede hehe " +pid);
+				var checkedIds = {};
+				if(!checkedIds[pid]){
+					var conns = peer.connections[pid];
 			        for (var i = 0, ii = conns.length; i < ii; i += 1) {
 			          var conn = conns[i];
-			          fn(conn, $(this));
+			          fn(conn);
 			        }
-			      }
-			      checkedIds[peerId] = 1;
-			    });
+				}
+				checkedIds[pid] = 1;
 			  }
 		</script>
 </body>
