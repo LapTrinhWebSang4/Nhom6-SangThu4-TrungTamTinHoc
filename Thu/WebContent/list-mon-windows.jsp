@@ -207,29 +207,7 @@ SELECT * from loaikhoahoc;
 	</div>
 	
 	
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-					aria-labelledby="" aria-hidden="false">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true">&times;</button>
-								<h2 class="modal-title" id="myModalLabel" align="center">Thông tin khóa học</h2>
-							</div>
-							<div name="info_m" id="info_m">
-							
-							
-							</div>
-							<div class="modal-footer">
-
-								<button type="button" class="btn btn-block btn-success"
-									data-dismiss="modal">OK</button>
-
-							</div>
-						</div>
-						
-					</div>
-				</div>
+	
 	
 	
 	<footer
