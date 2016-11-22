@@ -1,7 +1,6 @@
 package Controller;
 
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,20 +13,19 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import DAO.TVVDAO;
-import Model.KhoaHoc;
 import Model.LoaiKhoaHoc;
-import Model.LopHoc;
-import Model.NienKhoa;
+
 /**
- * Servlet implementation class FilterBox
+ * Servlet implementation class FilterBox_LoaiKhoaHoc
  */
-public class FilterBox extends HttpServlet {
+@WebServlet("/FilterBox_LoaiKhoaHoc")
+public class FilterBox_LoaiKhoaHoc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FilterBox() {
+    public FilterBox_LoaiKhoaHoc() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,12 +34,11 @@ public class FilterBox extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		GsonBuilder builder = new GsonBuilder();
 		Gson gson = builder.create();		
 		response.setCharacterEncoding("UTF-8");
-		List<KhoaHoc> lstkh = TVVDAO.Getkhoahoclist();
-		response.getWriter().write(gson.toJson(lstkh));
+		List<LoaiKhoaHoc> lstlkh = TVVDAO.Getloaikhoahoclist();
+		response.getWriter().write(gson.toJson(lstlkh));
 	}
 
 	/**

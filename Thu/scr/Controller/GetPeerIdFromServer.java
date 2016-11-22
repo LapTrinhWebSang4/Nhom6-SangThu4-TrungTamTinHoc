@@ -1,33 +1,26 @@
 package Controller;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import Model.TaiKhoan;
 
-import DAO.TVVDAO;
-import Model.KhoaHoc;
-import Model.LoaiKhoaHoc;
-import Model.LopHoc;
-import Model.NienKhoa;
 /**
- * Servlet implementation class FilterBox
+ * Servlet implementation class GetPeerIdFromServer
  */
-public class FilterBox extends HttpServlet {
+@WebServlet("/GetPeerIdFromServer")
+public class GetPeerIdFromServer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FilterBox() {
+    public GetPeerIdFromServer() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,12 +29,11 @@ public class FilterBox extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		GsonBuilder builder = new GsonBuilder();
-		Gson gson = builder.create();		
-		response.setCharacterEncoding("UTF-8");
-		List<KhoaHoc> lstkh = TVVDAO.Getkhoahoclist();
-		response.getWriter().write(gson.toJson(lstkh));
+		HttpSession session = request.getSession(false);
+		TaiKhoan tk = (TaiKhoan)session.getAttribute("taikhoan");
+		String peerid = tk.getTaikhoan();
+		response.getWriter().write(peerid);
+	
 	}
 
 	/**
