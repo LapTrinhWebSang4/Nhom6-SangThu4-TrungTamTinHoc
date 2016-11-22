@@ -16,10 +16,10 @@
 <style>
 body{
 	background-color:black;
-	background-image:url("element/window.png");
+	background-image:url("element/daylight.png");
 	width:100%;
 	height:100%;
-	background-repeat:no-repeat;
+	
 	
 }
 </style>
@@ -51,7 +51,7 @@ body{
 					<!-- Left nav -->
 					<ul class="nav navbar-nav">
 
-						<li><a href="#" id="thongbaolink" class="scroll"><span
+						<li><a href="thongbaoall.jsp" id="thongbaolink" class="scroll"><span
 								class="glyphicon glyphicon-pushpin"></span>Thông báo</a></li>
 
 						<li><a href="#" id="gioithieulink" class="scroll"><span
@@ -78,7 +78,7 @@ SELECT * from khoahoc;
 								</c:forEach>
 
 							</ul></li>
-						<li><a href=""><span class="glyphicon glyphicon-list-alt"></span>Xem
+						<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Xem
 								điểm <span class="caret"></span></a>
 							<ul class="dropdown-menu" id="sub1">
 								<sql:query dataSource="${snapshot}" var="result">

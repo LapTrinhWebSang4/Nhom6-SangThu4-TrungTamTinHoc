@@ -26,6 +26,13 @@
 <style type="text/css">
 	body {
 	background-color: lightgrey;
+	
+}
+#tablediem{
+	border: 2px solid #1aa3ff;
+	background: white;
+	background-image: url('element/bookpen.jpg');
+	background-position: center;
 }
 	#custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(255, 255, 255, 1);
@@ -128,7 +135,7 @@ a>.glyphicon{
   </div>
 
   <!-- Table -->
-  <table class="table">
+  <table class="table" id="tablediem">
     <thead>
     <tr>
     <td>Mã học viên</td>
@@ -158,7 +165,7 @@ SELECT * from hocvien WHERE MaLop="<%=classroom %>" && Diem != "NULL";
 </div>
 
 	<footer
-		style="background-color: #0082c8; color: white; padding-top: 25px;">
+		style="background-color: #0082c8; color: white; padding-top: 25px; margin-top: 500px;">
 	<div class="container">
 
 		<div class="bottom-footer"

@@ -14,16 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Loadmon
+ * Servlet implementation class Load_info_monhoc
  */
-@WebServlet("/Loadmon")
-public class Loadmon extends HttpServlet {
+@WebServlet("/Load_info_monhoc")
+public class Load_info_monhoc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Loadmon() {
+    public Load_info_monhoc() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -51,31 +51,19 @@ PrintWriter out = response.getWriter();
 			Statement stmt = conn.createStatement();
 			String sql;
 			String name = request.getParameter("name");
-			String al ="ALLALL";
-			if(name.equals(al)){sql = "SELECT * FROM khoahoc";}
-			else
-				sql = "SELECT * FROM khoahoc where MaLoaiKhoaHoc='"+name+"'";
+			
+			
+				sql = "SELECT * FROM khoahoc where MaKhoaHoc='"+name+"'";
 			
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
-				String ten = rs.getString("TenKhoaHoc");
-				String id = rs.getString("MaKhoaHoc");
-				String Tid = rs.getString("MaLoaiKhoaHoc");
-				String date = "Load_info_monhoc?name="+id;
 				String info = rs.getString("GioiThieu");
-				//String safe = rs.getString("CheDoMienGiam");
-				String cost = rs.getString("HocPhi");
-				String link = "fromdkonline.jsp?loaimonhoc="+Tid+"&id="+id;
+				String ten = rs.getString("TenKhoaHoc");
 				
-				out.println("<tr>"
-						+ "<td>"+ten
-						+ "<td>"+ id
-						+ "<td>"+ date
-						+ "<td><a hred="+info+">detail</a>"
-						+ "<td>"+cost
-						//+ "<td>"+ safe
-						+ "<td> <a href="+link+"><button class='btn btn-success'><span class='glyphicon glyphicon-pencil'/></button></a>"
-						+ "</tr>");
+				out.println("<h3>"
+						+ ten
+						+ "</h3>"
+						+ "<P>"+info);
 			}
 
 		} catch (Exception e2) {

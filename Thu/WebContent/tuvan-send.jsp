@@ -170,7 +170,7 @@ a>.glyphicon {
 
 
 		
-		<ul class="nav nav-tabs" >
+		<ul class="nav nav-tabs" style="" >
 			<li><a id="btn-list"><button class="btn btn-info">Danh
 						sách câu hỏi</button></a></li>
 			<li><a id="btn-send"><button class="btn btn-success">Đặt
@@ -178,14 +178,14 @@ a>.glyphicon {
 
 		</ul>
 		
-		<div class="jumbotron" id="send-q" style="display: none; background: white; border: 2px solid #1aa3ff;">
+		<div class="jumbotron" id="send-q" style="display: none; background: white; border: 2px solid #1aa3ff; border: 10px solid transparent; padding: 15px; -webkit-border-image: url(element/border11.png) 30 stretch; -o-border-image: url(element/border11.png) 30 stretch; border-image: url(element/border11.png) 30 stretch;">
 			<form ng-app="myApp" ng-controller="validateCtrl" name="myForm"
 				action="insertdbcauhoi.jsp" method="post" novalidate>
 				<h2 style="color: blue;">Đặt câu hỏi</h2>
 				<br>
-				<div class="col-md-12">
+				<div class="col-md-6">
 					<label for="name">Họ tên</label> <input type="text"
-						class="form-control input-lg" placeholder="Nhập họ tên"
+						class="form-control" placeholder="Nhập họ tên"
 						name="user" ng-model="user" required><span
 						style="color: red"
 						ng-show="myForm.user.$dirty && myForm.user.$invalid"> <span
@@ -193,7 +193,7 @@ a>.glyphicon {
 				</div>
 
 
-				<div class="col-md-12">
+				<div class="col-md-6">
 					<label for="name">Email</label> <input class="form-control"
 						type="email" name="email" ng-model="email" required> <span
 						style="color: red"
@@ -203,7 +203,7 @@ a>.glyphicon {
 					</span>
 				</div>
 
-				<div class="col-md-12">
+				<div class="col-md-6">
 					<label>Lĩnh vực</label><select class="form-control" name="linhvuc">
 						<option>Chế độ Chính sách - Học bổng</option>
 						<option>Học phí và kỷ luật về HP</option>
@@ -211,7 +211,7 @@ a>.glyphicon {
 					</select>
 				</div>
 
-				<div class="col-md-12">
+				<div class="col-md-6">
 					<label for="name">Tiêu đề</label> <input type="text"
 						class="form-control" id="tieude" placeholder="Tiêu đề"
 						name="lable" ng-model="lable" required> <span
@@ -220,7 +220,7 @@ a>.glyphicon {
 						ng-show="myForm.lable.$error.required">Lable is required.</span></span>
 				</div>
 
-				<div class="col-md-12">
+				<div class="col-md-6">
 					<label for="name">Nội dung</label>
 					<textarea class="form-control" rows="6" name="txtara"
 						ng-model="txtara" required></textarea>
@@ -230,7 +230,7 @@ a>.glyphicon {
 							required.</span></span>
 				</div>
 
-
+				<h4 align="center">*************************</h4>
 
 				<input class="btn btn-success btn-block" data-toggle="modal" type="submit"
 					value="Gửi câu hỏi" data-target="#myModal"

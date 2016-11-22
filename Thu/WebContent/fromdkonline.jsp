@@ -48,7 +48,7 @@ body {
 	#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
 	color: rgba(255, 255, 255, 1);
 	background-color: rgba(51, 122, 183, 1);
-}
+}xax
 
 #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
 	#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
@@ -163,9 +163,11 @@ a>.glyphicon {
    </script>
 
 	<div class="container"
-		style="border: 10px solid transparent; padding: 15px; -webkit-border-image: url(element/border.png) 20% round; -o-border-image: url(element/border.png) 20% round; border-image: url(element/border.png) 20% round;">
+		style="border: 10px solid transparent; padding: 15px; -webkit-border-image: url(element/border11.png) 30 stretch; -o-border-image: url(element/border11.png) 30 stretch; border-image: url(element/border11.png) 30 stretch;">
 		<div class="panel panel-default"
-			style="border-radius: 25px; border:6px solid #88ff4d; padding: 20px; width: 100%; height: 100%;">
+			style="border-radius: 25px; border:6px solid #88ff4d; padding: 20px; width: 100%; height: 100%; 
+			
+			">
 			<form role="form" ng-app="myApp" ng-controller="validateCtrl"
 				action="insertdbhocvien.jsp" method="post" name="myForm" novalidate>
 				<div class="col-md-12">
@@ -278,7 +280,7 @@ SELECT * from lophoc where MaKhoa="<%=id %>";
 
 
 				
-<div class="container" style="display: 1;" id="btn-submit">
+<div class="container" style="display: none;" id="btn-submit">
 					<button class="btn btn-success" data-toggle="modal"
 						data-target="#myModal"
 						ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
