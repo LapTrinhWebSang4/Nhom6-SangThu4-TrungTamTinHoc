@@ -1,8 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-import javax.mail.internet.InternetAddress;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,18 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.SendEmail;
-
+import DAO.TVVDAO;
 /**
- * Servlet implementation class TestSend
+ * Servlet implementation class UpdateCauHoi
  */
-@WebServlet("/TestSend")
-public class TestSend extends HttpServlet {
+@WebServlet("/UpdateCauHoi")
+public class UpdateCauHoi extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TestSend() {
+    public UpdateCauHoi() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,23 +30,23 @@ public class TestSend extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String addresses[] ={"lkient2111@gmail.com","ltkien2111@gmail.com"};
-		boolean flag = SendEmail.sendMailToMany("dczsc", "zxczxc","lkient2111@gmail.com","kien2509",
-				addresses);
-		response.setContentType("text/html");
-		if(flag){
-			response.getWriter().write("success");
-		}else{
-			response.getWriter().write("fail");
-		}
+		doPost(request,response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		try{
+			request.setCharacterEncoding("UTF-8");
+			String MaCauHoi = request.getParameter("macauhoi");	
+			String message = request.getParameter("traloi");
+			System.out.println(message);
+			TVVDAO.updateCauHoi(Integer.parseInt(MaCauHoi), message);
+			response.sendRedirect("static-dashboard.jsp");
+		}catch(Exception ex){
+			response.getWriter().print("<a href='static-dashboard.jsp'>Không sửa được</a>");
+		}
+	} 
 
 }

@@ -54,6 +54,8 @@ function connect(c) {
     });
     $('.filler').hide();
     $('#connections').append(chatbox);
+    
+    
     c.on('data', function(data) {
       messages.append('<div><span class="peer">' + c.peer + '</span>: ' + data +
         '</div>');

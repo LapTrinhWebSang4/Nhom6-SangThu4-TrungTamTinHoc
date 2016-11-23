@@ -64,10 +64,20 @@ public class HandleLogin extends HttpServlet {
 			rs = (ResultSet) pst.executeQuery();
 			if(rs.next()){
 				quyen= rs.getString("Quyen"); 
-				TaiKhoan tk = new TaiKhoan(rs.getString("Taikhoan"),rs.getString("MatKhau"),
-						rs.getString("TenThanhVien"),rs.getString("Email"));
+				TaiKhoan tk = new TaiKhoan(rs.getString("Taikhoan"),
+						rs.getString("MatKhau"),
+						rs.getString("TenThanhVien"),
+						rs.getInt("Sodt"),
+						rs.getString("Email"),
+						rs.getDate("NgaySinh"),
+						rs.getDate("NgayDangNhapGanNhat"),
+						rs.getString("DiaChi"),
+						rs.getInt("SoCMND"),
+						rs.getString("Quyen"),
+						rs.getString("GioiThieu"));
 				HttpSession session = request.getSession(true);
-				session.setAttribute("taikhoan",tk);	
+				session.setAttribute("taikhoan",tk);
+				session.setAttribute("peerid",userid);
 				OnlineUser.add(tk);
 				appScope.setAttribute(CLIENTS, OnlineUser);
 				if(quyen.equals("tvv")){

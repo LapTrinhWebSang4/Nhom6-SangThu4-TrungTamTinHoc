@@ -175,25 +175,37 @@ public class TVVDAO {
 		
 		return  lstkhoahoc;
 	}
-	public static boolean updateCauHoi(String id,String Content){
+	public static void updateCauHoi(int id,String Content){
 		try{
 			Connection con = DatabaseManagement.getConnection();
 			PreparedStatement pst = con.prepareStatement("update cauhoi set NoiDung=? where MaCauHoi=?");
 			pst.setString(1, Content);
-			pst.setString(2, id);
-			ResultSet rs = pst.executeQuery();	
-			if(rs!=null){
-				rs.close();
-			}
+			pst.setInt(2, id);
+			pst.executeUpdate();	
 			if(pst!=null){
 				pst.close();
 			}
 			if(con!=null){
 				con.close();
 			}
-			return true;
 		}catch(SQLException e){
-			return false;
+			e.printStackTrace();
+		}		
+	}
+	public static void deleteCauHoi(int id){
+		try{
+			Connection con = DatabaseManagement.getConnection();
+			PreparedStatement pst = con.prepareStatement("delete from cauhoi where MaCauHoi=?");
+			pst.setInt(1, id);
+			pst.executeUpdate();
+			if(pst!=null){
+				pst.close();
+			}
+			if(con!=null){
+				con.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
 		}		
 	}
 	public static boolean ChangeProfile(TaiKhoan tk){
