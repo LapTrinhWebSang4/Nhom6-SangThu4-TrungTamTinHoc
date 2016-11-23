@@ -127,16 +127,7 @@ a>.glyphicon {
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script>
-	var app = angular.module('myApp', []);
-	app.controller('validateCtrl', function($scope) {
-		$scope.user = 'John';
-		$scope.email = 'Example@gmail.com';
-		$scope.phone = '09';
-		$scope.lable = 'lable';
-		$scope.txtara = 'your question';
-	});
-</script>
+
 
 <link rel="stylesheet" href="css/w3.css">
 </head>

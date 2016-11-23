@@ -128,12 +128,12 @@ a>.glyphicon{
 	<jsp:include page="header.jsp" />
 	
 		<% String classroom = request.getParameter( "classes" ); %>
-<div class="panel panel-default">
+<div class="panel panel-default" style="background-color: lightyellow;">
   <!-- Default panel contents -->
-  <div class="panel-heading">Lớp <%=classroom %></div>
+  <div class="panel-heading"><h5 align="center" style="color: blue;">Lớp <%=classroom %></h5></div>
   <div class="panel-body">
   </div>
-
+<div class="container">
   <!-- Table -->
   <table class="table" id="tablediem">
     <thead>
@@ -161,7 +161,7 @@ SELECT * from hocvien WHERE MaLop="<%=classroom %>" && Diem != "NULL";
     </c:forEach>
     
     </tbody>
-  </table>
+  </table></div>
 </div>
 
 	<footer

@@ -158,38 +158,31 @@ a>.glyphicon{
 		<div id="carousel-example-generic" class="carousel slide"
 			data-ride="carousel">
 			<!-- Indicators -->
+			<%int i =0; %>
+			<sql:query dataSource="${snapshot}" var="result">
+SELECT MaThongBao from thongbao where LoaiThongBao= "slide";
+</sql:query>
 			<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class=""></li>
-				<li data-target="#myCarousel" data-slide-to="1" class=""></li>
-				<li data-target="#myCarousel" data-slide-to="2" class=""></li>
-				<li data-target="#myCarousel" data-slide-to="3" class="active"></li>
+			<c:forEach var="row" items="${result.rows}">
+				<li data-target="#myCarousel" data-slide-to="<%=i %>" class=""></li>
+				<%i++; %></c:forEach>
 			</ol>
 
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
-				<div class="item">
-					<a href="list-mon-windows.jsp"> <img src="Hinh/android.png"
-						alt="Chania" width="100%" height="500">
-					</a>
-				</div>
-
-				<div class="item">
-					<a href="list-mon-windows.jsp"> <img src="Hinh/ios.jpg"
-						alt="Chania" width="100%" height="500">
-					</a>
-				</div>
-
-				<div class="item">
-					<a href="list-mon-windows.jsp"> <img src="Hinh/web.png"
-						alt="Flower" width="100%" height="500">
-					</a>
-				</div>
-
+			<c:forEach var="row" items="${result.rows}" begin="0" end="0">
 				<div class="item active">
-					<a href="list-mon-windows.jsp"> <img src="Hinh/pts.jpg"
-						alt="Flower" width="100%" height="500">
+					<a href="#"> <img src="${pageContext.servletContext.contextPath }/Photoserv?id=${row.MaThongBao}"
+						alt="Chania" width="100%" height="250">
 					</a>
-				</div>
+				</div></c:forEach>
+				<c:forEach var="row" items="${result.rows}" begin="1" >
+				<div class="item">
+					<a href="#"> <img src="${pageContext.servletContext.contextPath }/Photoserv?id=${row.MaThongBao}"
+						alt="Chania" width="100%" height="250">
+					</a>
+				</div></c:forEach>
+				
 			</div>
 
 			<!-- Controls -->

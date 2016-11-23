@@ -48,7 +48,9 @@ body {
 	#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
 	color: rgba(255, 255, 255, 1);
 	background-color: rgba(51, 122, 183, 1);
-}xax
+}
+
+xax
 
 #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
 	#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
@@ -137,49 +139,62 @@ a>.glyphicon {
 	<jsp:include page="header.jsp" />
 
 	<script>
-     $(document).ready(function() {
-         $("#listmon").change(function() {
-             
-             $("#btn-submit").hide();
-        	 servletCall();
-         });
+		$(document).ready(function() {
+			$("#listmon").change(function() {
 
-     });
-     function servletCall() {
-    	 var fullname = $('#listmon').val();
-         $.post(
-             "DangkiServ",
-             {name : fullname}, //meaasge you want to send
-             function(result) {
-             $('#listlop').html(result); //message you want to show
-         });
-         $(document).ready(function() {
-             $("#listlop").click(function() {
-     			$("#btn-submit").show();
-             });
+				$("#btn-submit").hide();
+				servletCall();
+				servletCall2();
+			});
 
-         });
-     };
-   </script>
+		});
+		function servletCall() {
+			var fullname = $('#listmon').val();
+			$.post("DangkiServ", {
+				name : fullname
+			}, //meaasge you want to send
+			function(result) {
+				$('#listlop').html(result); //message you want to show
+			});
+			$(document).ready(function() {
+				$("#listlop").click(function() {
+					$("#btn-submit").show();
+				});
+
+			});
+		};
+		function servletCall2() {
+			var fullname = $('#listmon').val();
+			$.post("Hocphi", {
+				name : fullname
+			}, //meaasge you want to send
+			function(result) {
+				$('#cost_hoc').html(result); //message you want to show
+			});
+
+		};
+	</script>
 
 	<div class="container"
 		style="border: 10px solid transparent; padding: 15px; -webkit-border-image: url(element/border11.png) 30 stretch; -o-border-image: url(element/border11.png) 30 stretch; border-image: url(element/border11.png) 30 stretch;">
 		<div class="panel panel-default"
-			style="border-radius: 25px; border:6px solid #88ff4d; padding: 20px; width: 100%; height: 100%; 
-			
-			">
+			style="border-radius: 25px; border: 6px solid #88ff4d; padding: 20px; width: 100%; height: 100%;">
 			<form role="form" ng-app="myApp" ng-controller="validateCtrl"
 				action="insertdbhocvien.jsp" method="post" name="myForm" novalidate>
 				<div class="col-md-12">
-					<% String id = request.getParameter( "id" ); %>
-					<% String loaimonhoc = request.getParameter( "loaimonhoc" ); %>
+					<%
+						String id = request.getParameter("id");
+					%>
+					<%
+						String loaimonhoc = request.getParameter("loaimonhoc");
+					%>
 					<div class="col-md-6">
 						<label>Môn học</label><select class="form-control" id="listmon">
 
 
 
 							<sql:query dataSource="${snapshot}" var="result">
-SELECT * from khoahoc where MaKhoaHoc="<%=id %>";
+SELECT * from khoahoc where MaKhoaHoc="<%=id%>";
 </sql:query>
 							<c:forEach var="row" items="${result.rows}">
 								<option value="<c:out value="${row.MaKhoaHoc}"/>"><c:out
@@ -188,7 +203,7 @@ SELECT * from khoahoc where MaKhoaHoc="<%=id %>";
 							</c:forEach>
 
 							<sql:query dataSource="${snapshot}" var="result">
-SELECT * from khoahoc where MaLoaiKhoaHoc="<%=loaimonhoc%>" && MaKhoaHoc!="<%=id %>";
+SELECT * from khoahoc where MaLoaiKhoaHoc="<%=loaimonhoc%>" && MaKhoaHoc!="<%=id%>";
 </sql:query>
 							<c:forEach var="row" items="${result.rows}">
 								<option value="<c:out value="${row.MaKhoaHoc}"/>"><c:out
@@ -198,12 +213,13 @@ SELECT * from khoahoc where MaLoaiKhoaHoc="<%=loaimonhoc%>" && MaKhoaHoc!="<%=id
 
 						</select>
 					</div>
+
 					<div class="col-md-6">
 						<label>Lớp học</label><select class="form-control" id="listlop"
 							name="listlop">
 
 							<sql:query dataSource="${snapshot}" var="result">
-SELECT * from lophoc where MaKhoa="<%=id %>";
+SELECT * from lophoc where MaKhoa="<%=id%>";
 </sql:query>
 							<c:forEach var="row" items="${result.rows}">
 								<option value="<c:out value="${row.MaLop}"/>"><c:out
@@ -213,6 +229,18 @@ SELECT * from lophoc where MaKhoa="<%=id %>";
 							</c:forEach>
 
 						</select>
+					</div>
+					<div class="col-md-6" id="cost_hoc">
+						<sql:query dataSource="${snapshot}" var="result">
+SELECT * from khoahoc where MaKhoaHoc="<%=id%>";
+</sql:query>
+						<c:forEach var="row" items="${result.rows}">
+							<label>Học phí:</label>
+							<input id="hocphi" name="hocphi"
+								value="${row.HocPhi}" style="display: none;">
+							<input class="form-control"
+								value="${row.HocPhi}" disabled="disabled">
+						</c:forEach>
 					</div>
 				</div>
 
@@ -259,6 +287,18 @@ SELECT * from lophoc where MaKhoa="<%=id %>";
 								ng-show="myForm.phone.$error.required">phone number is
 									required.</span>
 						</div>
+						<div class="col-md-6">
+							<label for="sdt" style="color: #00ff00;">Đối tượng</label> <select
+								class="form-control" name="doituong">
+								<sql:query dataSource="${snapshot}" var="result">
+SELECT * from miengiam;
+</sql:query>
+								<c:forEach var="row" items="${result.rows}">
+									<option value="${row.MaMienGiam}"><c:out
+											value="${row.DoiTuong}" />
+								</c:forEach>
+							</select>
+						</div>
 
 						</row>
 						<row>
@@ -279,8 +319,8 @@ SELECT * from lophoc where MaKhoa="<%=id %>";
 				</div>
 
 
-				
-<div class="container" style="display: none;" id="btn-submit">
+
+				<div class="container" style="display: none;" id="btn-submit">
 					<button class="btn btn-success" data-toggle="modal"
 						data-target="#myModal"
 						ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
@@ -314,7 +354,7 @@ myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.ph
 
 
 			</form>
-			
+
 		</div>
 	</div>
 	<footer

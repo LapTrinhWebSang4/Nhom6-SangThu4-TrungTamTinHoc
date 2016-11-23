@@ -76,8 +76,8 @@ public class Loadmon extends HttpServlet {
 						+ "<td>"+ date
 						+ "<td>"
 						+ ""
-						+ "<input class='btn btn-info' data-toggle='modal' type='submit'"
-						+"value='info' data-target='#myModal"+id+"''>"
+						+ "<a data-toggle='modal'"
+						+"value='info' data-target='#myModal"+id+"''><strong>Detail</strong></a>"
 						+"<div class='modal fade' id='myModal"+id+"' tabindex='-1' role='dialog'"
 						+"aria-labelledby='' aria-hidden='false'>"
 						+"<div class='modal-dialog'>"
@@ -88,6 +88,7 @@ public class Loadmon extends HttpServlet {
 						+"<h2 class='modal-title' id='myModalLabel' align='center'>Thông tin khóa học</h2>"
 						+"</div>"
 						+"<div>"
+						+ "<h4 style='color: blue;' align='center'>"+ten+"</h4>"
 						+""+info+""							
 						+"</div>"
 						+"<div class='modal-footer'>"
