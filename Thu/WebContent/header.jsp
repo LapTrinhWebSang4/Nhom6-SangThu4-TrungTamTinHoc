@@ -73,8 +73,9 @@ SELECT * from khoahoc;
 </sql:query>
 								<c:forEach var="row" items="${result.rows}">
 									<li><a href="fromdkonline.jsp?loaimonhoc=<c:out value="${row.MaLoaiKhoaHoc}" />">
-									<c:out value="${row.TenKhoaHoc}" /> [<c:out
-												value="${row.NgayKhaiGiang}" />]</a></li>
+									<c:out value="${row.TenKhoaHoc}" /> 
+									<br>[<c:out
+												value="${row.NgayKhaiGiang}" />]</br></a></li>
 
 								</c:forEach>
 

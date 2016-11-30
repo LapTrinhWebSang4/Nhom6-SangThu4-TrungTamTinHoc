@@ -19,6 +19,7 @@
 <style type="text/css">
 body {
 	background-color: lightgrey;
+	
 }
 
 #list-wins {
@@ -161,7 +162,7 @@ a>.glyphicon {
 				});
 			};
 		</script>
-		<div class="jumbotron" id="list-wins">
+		<div class="jumbotron" id="list-wins" style="min-height: 400px;">
 			<table class="table table-condensed"
 				style="border-radius: 20px; padding: 100%; width: 100%; height: 100%;">
 				<caption>

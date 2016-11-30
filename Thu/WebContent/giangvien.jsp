@@ -12,7 +12,7 @@
      url="jdbc:mysql://localhost/ttth"
      user="root"  password="1234"/>
 <meta charset="UTF-8">
-<title>Chức năng- nhiệm vụ</title>
+<title>Đội ngủ giảng viên</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.min.js"></script>
@@ -136,16 +136,16 @@ SELECT * from giangvien;
 </sql:query>
 <c:forEach var="row" items="${result.rows}">
 		<div class="container">
-			<div class="jumbotron">
+			<div class="jumbotron" style="background-color: white; border-radius: 25px; border: 6px solid green;">
 				<ul class="nav nav-tabs">
 					<li><img src="element/per01.jpg" class="img-circle"
 						align="bottom"></li>
 					<li><div>
-							<label>Họ tên</label>
+							<label><h3 style="color: blue;">Họ tên</h3></label>
 							<h4><c:out value="${row.TenGiangVien}"/></h4>
-							<label>Email</label>
+							<label><h3 style="color: blue;">Email</h3></label>
 							<h4><c:out value="${row.Email}"/></h4>
-							<label>Số đt</label>
+							<label><h3 style="color: blue;">Số điện thoại</h3></label>
 							<h4><c:out value="${row.Sodt}"/></h4>
 							<h5><c:out value="${row.GioiThieu}"/></h5>
 						</div></li>

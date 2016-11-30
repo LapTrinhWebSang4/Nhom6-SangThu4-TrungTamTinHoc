@@ -263,7 +263,7 @@ myForm.email.$dirty && myForm.email.$invalid || myForm.phone.$dirty && myForm.ph
 			</form>
 		</div>
 
-		<div id="list-q" style="display: 1;">
+		<div id="list-q" style="display: 1; min-height: 400px;">
 			<div class="col-md-12" style="padding-top: 10px; padding-left: 1px">
 
 				<div class="panel panel-primary">

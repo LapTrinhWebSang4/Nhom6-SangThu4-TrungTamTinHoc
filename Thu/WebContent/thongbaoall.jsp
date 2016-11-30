@@ -130,7 +130,7 @@ a>.glyphicon{
 						<div class="panel-group" id="accordion" role="tablist"
 							aria-multiselectable="true">
 							<sql:query dataSource="${snapshot}" var="result">
-SELECT * from thongbao
+SELECT * from thongbao where LoaiThongBao != "slide"
 ORDER by Ngay DESC;
 </sql:query>
 
