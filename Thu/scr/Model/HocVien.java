@@ -1,15 +1,34 @@
 package Model;
 
+import com.itextpdf.text.pdf.PdfPCell;
+
 public class HocVien {
 	String MaHocVien;
 	String lophoc;
-	
+	String MaMienGiam;
+	public String getMaMienGiam() {
+		return MaMienGiam;
+	}
+	public void setMaMienGiam(String maMienGiam) {
+		MaMienGiam = maMienGiam;
+	}
 	String Ten;
 	String Email;
 	int Sodt;
 	double NoHocPhi;
 	String DiaChi;
 	double Diem;
+	public HocVien(String MaHocVien,String lophoc,String Ten,String Email,int Sodt,double NoHocPhi,String DiaChi,String MaMienGiam,double Diem){
+		this.MaHocVien=MaHocVien;
+		this.lophoc = lophoc;
+		this.Ten = Ten;
+		this.Email=Email;
+		this.Sodt=Sodt;
+		this.NoHocPhi=NoHocPhi;
+		this.DiaChi=DiaChi;
+		this.MaMienGiam = MaMienGiam;
+		this.Diem = Diem;
+	}
 	public String getLophoc() {
 		return lophoc;
 	}
@@ -52,7 +71,7 @@ public class HocVien {
 	public void setDiaChi(String diaChi) {
 		DiaChi = diaChi;
 	}
-	public double getDiem() {
+	public Double getDiem() {
 		return Diem;
 	}
 	public void setDiem(double diem) {

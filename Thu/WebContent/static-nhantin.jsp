@@ -64,214 +64,13 @@
 
 
 
+		<jsp:include page="Sidebar.jsp" />
 
 
 
 
 
 
-
-		<div class="main-container ace-save-state" id="main-container">
-			<script type="text/javascript">
-				try{ace.settings.loadState('main-container')}catch(e){}
-			</script>
-
-			<div id="sidebar" class="sidebar                  responsive                    ace-save-state">
-				<script type="text/javascript">
-					try{ace.settings.loadState('sidebar')}catch(e){}
-				</script>
-
-				
-
-				<ul class="nav nav-list">
-					<li class="">
-						<a href="static-dashboard.jsp">
-							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Dashboard </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								Danh sách khóa học
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="" data-toggle="modal" data-target="#myModal1">
-									<span class="glyphicon glyphicon-plus"></span>
-									<i class="menu-icon fa fa-caret-right"></i>
-									Thêm khóa học
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="static-chitietkhoahoc.jsp">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 1
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 2
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 3
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 4
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 5
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 6
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Khóa học 7
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Danh sách học viên </span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="static-danhsachhocvien.jsp">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 1
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 2
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 3
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Danh sách học viên khóa 4
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="static-guimail.jsp">
-							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> Gửi mail </span>
-
-							<b class="arrow"></b>
-						</a>					
-					</li>
-
-					<li class="">
-						<a href="static-thongtincanhan.jsp">
-							<i class="menu-icon fa fa-list-alt"></i>
-							<span class="menu-text"> Thông tin cá nhân </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="active">
-						<a href="static-nhantin.jsp">
-							<i class="menu-icon fa fa-envelope"></i>
-							<span class="menu-text"> Tin nhắn </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-			
-					<li class="">
-						<a href="static-login.jsp">
-							<i class="menu-icon fa fa-sign-out"></i>
-							<span class="menu-text"> Thoát </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					
-						
-					</li>
-				</ul><!-- /.nav-list -->
-
-				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-				</div>
-			</div>
 			<div class="main-content">
 				<div class="main-content-inner">
 					<div class="row">
@@ -1116,6 +915,8 @@
 							}
 							
 						});
+						var activenode = $("a[href='static-nhantin.jsp']").parent();
+						activenode.addClass('active');	
 					}
 					);
 			

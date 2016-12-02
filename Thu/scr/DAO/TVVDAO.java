@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;import java.util.Map;
 
 import Model.CauHoi;
+import Model.HocVien;
 import Model.KhoaHoc;
 import Model.LoaiKhoaHoc;
 import Model.LopHoc;
@@ -108,6 +109,42 @@ public class TVVDAO {
 		}
 		
 		return lstnienkhoa;
+		
+	}
+	public static List<HocVien> GethocvienToExport(String MaLopHoc){
+		List<HocVien> lsthocvien = new ArrayList<HocVien>();
+		Connection conn = DatabaseManagement.getConnection();
+		try {
+			PreparedStatement pst = conn.prepareStatement("select * from hocvien where MaLop=?");
+			pst.setString(1,MaLopHoc);
+			ResultSet rs;
+			rs = pst.executeQuery();
+			while(rs.next()){
+				lsthocvien.add( new HocVien(rs.getString("MaHocVien"),
+						rs.getString("MaLop"),
+						rs.getString("Ten"),
+						rs.getString("Email"),
+						rs.getInt("Sodt"),
+						rs.getDouble("NoHocPhi"),
+						rs.getString("DiaChi"),
+						rs.getString("MaMienGiam"),
+						rs.getDouble("Diem")));
+			}
+			if(rs!=null){
+				rs.close();
+			}
+			if(pst!=null){
+				pst.close();
+			}
+			if(conn!=null){
+				conn.close();
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return lsthocvien;
 		
 	}
 	public static List<LopHoc> Getlophoclist(){

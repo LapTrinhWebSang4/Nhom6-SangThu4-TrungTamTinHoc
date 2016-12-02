@@ -18,20 +18,12 @@
     <param-value>jdbc:mysql://localhost/ttth</param-value>
   </context-param>
   <servlet>
-    <servlet-name>login</servlet-name>
-    <servlet-class>kienpack.LoginServlet</servlet-class>
+    <servlet-name>PDF</servlet-name>
+    <servlet-class>Controller.ExportToPDF</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>login</servlet-name>
-    <url-pattern>/loginServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>SendEmail</servlet-name>
-    <servlet-class>kienpack.SendEmail</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SendEmail</servlet-name>
-    <url-pattern>/SendEmail</url-pattern>
+    <servlet-name>PDF</servlet-name>
+    <url-pattern>/ExportPDF</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>HandleLogin</servlet-name>

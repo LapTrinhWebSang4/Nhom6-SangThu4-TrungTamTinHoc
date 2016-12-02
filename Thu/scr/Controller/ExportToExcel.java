@@ -1,0 +1,74 @@
+package Controller;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import DAO.TVVDAO;
+import Model.LopHoc;
+import Model.HocVien;
+/**
+ * Servlet implementation class ExportToExcel
+ */
+@WebServlet("/ExportToExcel")
+public class ExportToExcel extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ExportToExcel() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String lophoc = request.getParameter("lophoc");
+		List<HocVien> lst = TVVDAO.GethocvienToExport(lophoc);
+		response.setHeader("Content-Type", "application/octet-stream");
+		response.setHeader("Content-Disposition", "attachment; filename="+lophoc+".csv");
+		ArrayList<String> rows = new ArrayList<String>();
+		rows.add("Danh sách lớp học :"+lophoc);
+		rows.add("\n");		
+        rows.add("MaHocVien,LopHoc,Ten,Email,Sodt,NoHocPhi,DiaChi,MaMienGiam,Diem");       
+        rows.add("\n");
+        for (HocVien hv:lst) {
+            rows.add(hv.getMaHocVien()+","+hv.getLophoc()+","+hv.getTen()+","+hv.getEmail()
+            +","+hv.getSodt()+","+hv.getNoHocPhi()+","+hv.getDiaChi()+","+hv.getMaMienGiam()
+            +","+hv.getDiem());
+            rows.add("\n");
+        }
+
+        Iterator iter = (Iterator) rows.iterator();
+        while (iter.hasNext()){
+            String outputString = (String) iter.next();
+            response.getOutputStream().print(outputString);
+        }
+
+        response.getOutputStream().flush();
+		
+		
+	}
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

@@ -94,203 +94,12 @@
 
 
 
+		<jsp:include page="Sidebar.jsp" />
 
 
 
 
 
-
-
-
-		<div class="main-container ace-save-state" id="main-container">
-			<script type="text/javascript">
-				try{ace.settings.loadState('main-container')}catch(e){}
-			</script>
-
-			<div id="sidebar" class="sidebar                  responsive                    ace-save-state">
-				<script type="text/javascript">
-					try{ace.settings.loadState('sidebar')}catch(e){}
-				</script>
-
-				<ul class="nav nav-list">
-					<li class="">
-						<a href="static-dashboard.jsp">
-							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Dashboard </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li>
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text">
-								Danh sách khóa học
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-						<sql:query var="result_nienkhoa" sql="select * from nienkhoa"
-							dataSource="${con }" />
-							<c:forEach var="rowsss" items="${result_nienkhoa.rows }">
-								<ul class="submenu nav-show">
-						
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>
-
-									${rowsss.ThoiGian}
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-								<sql:query var="result_loaikhoahoc" sql="select * from loaikhoahoc where MaNienKhoa=${rowsss.MaNienKhoa}"
-								dataSource="${con }" />
-								<c:forEach var="row_loaikhoahoc" items="${result_loaikhoahoc.rows }">
-									<ul class="submenu nav-hide" style="display: none;">									
-									<li class="">
-										<a href="#" class="dropdown-toggle">
-											<i class="menu-icon fa fa-pencil orange"></i>
-
-											${row_loaikhoahoc.TenLoaiKhoaHoc }
-											<b class="arrow fa fa-angle-down"></b>
-										</a>
-
-										<b class="arrow"></b>
-										<sql:query var="result_khoahoc" sql="select * from khoahoc where MaLoaiKhoaHoc='${row_loaikhoahoc.MaLoaiKhoaHoc}'"
-								dataSource="${con }" />
-										<c:forEach var="row_khoahoc" items="${result_khoahoc.rows }">
-											<ul class="submenu">
-											<li class="">
-												<a href="static-chitietkhoahoc.jsp?khoahoc=${row_khoahoc.MaKhoaHoc}">
-													<i class="menu-icon fa fa-plus purple"></i>
-													${row_khoahoc.TenKhoaHoc }
-												</a>
-
-												<b class="arrow"></b>
-											</li>											
-										</ul>
-										</c:forEach>
-									</li>
-								</ul>
-								</c:forEach>
-								
-							</li>
-						</ul>
-							</c:forEach>
-						
-					</li>
-
-					<li>
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								Danh sách học viên
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-						<sql:query var="result_nienkhoa" sql="select * from nienkhoa"
-							dataSource="${con }" />
-							<c:forEach var="rowsss" items="${result_nienkhoa.rows }">
-								<ul class="submenu nav-show">
-						
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>
-
-									${rowsss.ThoiGian}
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-								<sql:query var="result_loaikhoahoc" sql="select * from loaikhoahoc where MaNienKhoa=${rowsss.MaNienKhoa}"
-								dataSource="${con }" />
-								<c:forEach var="row_loaikhoahoc" items="${result_loaikhoahoc.rows }">
-									<ul class="submenu nav-hide" style="display: none;">									
-									<li class="">
-										<a href="#" class="dropdown-toggle">
-											<i class="menu-icon fa fa-pencil orange"></i>
-
-											${row_loaikhoahoc.TenLoaiKhoaHoc }
-											<b class="arrow fa fa-angle-down"></b>
-										</a>
-
-										<b class="arrow"></b>
-										<sql:query var="result_khoahoc" sql="select * from khoahoc where MaLoaiKhoaHoc='${row_loaikhoahoc.MaLoaiKhoaHoc}'"
-								dataSource="${con }" />
-										<c:forEach var="row_khoahoc" items="${result_khoahoc.rows }">
-											<ul class="submenu">
-											<li class="">
-												<a href="static-danhsachhocvien.jsp?khoahoc=${row_khoahoc.MaKhoaHoc}">
-													<i class="menu-icon fa fa-plus purple"></i>
-													${row_khoahoc.TenKhoaHoc }
-												</a>
-
-												<b class="arrow"></b>
-											</li>											
-										</ul>
-										</c:forEach>
-									</li>
-								</ul>
-								</c:forEach>
-								
-							</li>
-						</ul>
-							</c:forEach>
-						
-					</li>
-
-					<li class="">
-						<a href="static-guimail.jsp">
-							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> Gửi mail </span>
-
-							<b class="arrow"></b>
-						</a>					
-					</li>
-
-					<li class="">
-						<a href="static-thongtincanhan.jsp">
-							<i class="menu-icon fa fa-list-alt"></i>
-							<span class="menu-text"> Thông tin cá nhân </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
-						<a href="static-nhantin.jsp">
-							<i class="menu-icon fa fa-envelope"></i>
-							<span class="menu-text"> Tin nhắn </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-			
-					<li class="">
-						<a href="logout.jsp">
-							<i class="menu-icon fa fa-sign-out"></i>
-							<span class="menu-text"> Thoát </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					
-						
-					</li>
-				</ul><!-- /.nav-list -->
-
-				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-				</div>
-			</div>
 
 			<div class="main-content" >
 				<div style="padding-left: 20px;padding-right: 20px;">
@@ -315,7 +124,7 @@
 					</li>
 					
 					<li><a href="tuvan-send.jsp">Tư vấn-hỏi đáp</a></li>
-					<li><a href="static-login.jsp">Đăng xuất</a></li>
+					<li><a href="HandleLogout">Đăng xuất</a></li>
 				</ul>						
 				</div>				
 					</div>
@@ -329,11 +138,11 @@
 										<div class="clearfix">
 												<div class="pull-right tableTools-container">
 												<div class="dt-buttons btn-overlap btn-group">
-													<a
+													<a 
 														class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-bold"
 														tabindex="0" aria-controls="dynamic-table" data-original-title=""
 														title=""><span><i class="fa fa-copy bigger-110 pink"></i>
-															<span class="hidden">Copy to clipboard</span></span></a><a
+															<span class="hidden">Copy to clipboard</span></span></a><a href="ExportToExcel?lophoc=${row.MaLop }"
 														class="dt-button buttons-excel buttons-flash btn btn-white btn-primary btn-bold"
 														tabindex="0" aria-controls="dynamic-table"><span><i
 															class="fa fa-file-excel-o bigger-110 green"></i> <span
@@ -341,30 +150,16 @@
 													<div
 															style="position: absolute; left: 0px; top: 0px; width: 39px; height: 35px; z-index: 99;"
 															data-original-title="" title="">
-															<embed id="ZeroClipboard_TableToolsMovie_1"
-																src="assets/swf/flashExport.swf" loop="false" menu="false"
-																quality="best" bgcolor="#ffffff" width="39" height="35"
-																name="ZeroClipboard_TableToolsMovie_1" align="middle"
-																allowscriptaccess="always" allowfullscreen="false"
-																type="application/x-shockwave-flash"
-																pluginspage="http://www.macromedia.com/go/getflashplayer"
-																flashvars="id=1&amp;width=39&amp;height=35" wmode="transparent">
-														</div></a><a
+															
+														</div></a><a href="ExportToPDF?lophoc=${row.MaLop }"
 														class="dt-button buttons-pdf buttons-flash btn btn-white btn-primary btn-bold"
 														tabindex="0" aria-controls="dynamic-table"><span><i
-															class="fa fa-file-pdf-o bigger-110 red"></i> <span class="hidden">Export
+															class="fa fa-file-pdf-o bigger-110 red"></i> <span class="hidden">Export 
 																to PDF</span></span>
 													<div
 															style="position: absolute; left: 0px; top: 0px; width: 39px; height: 35px; z-index: 99;"
 															data-original-title="" title="">
-															<embed id="ZeroClipboard_TableToolsMovie_2"
-																src="assets/swf/flashExport.swf" loop="false" menu="false"
-																quality="best" bgcolor="#ffffff" width="39" height="35"
-																name="ZeroClipboard_TableToolsMovie_2" align="middle"
-																allowscriptaccess="always" allowfullscreen="false"
-																type="application/x-shockwave-flash"
-																pluginspage="http://www.macromedia.com/go/getflashplayer"
-																flashvars="id=2&amp;width=39&amp;height=35" wmode="transparent">
+															
 														</div></a>
 												</div>
 											</div>
