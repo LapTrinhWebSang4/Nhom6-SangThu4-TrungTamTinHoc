@@ -39,7 +39,8 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="Asset/box-github.css">
-<script type="text/javascript" src="js/angular.min.js"></script>
+
+
 
 <style type="text/css">
 fieldset .divider, .panel-body .divider {
@@ -72,7 +73,7 @@ li>div {
 </style>
 
 </head>
-<body class="no-skin" >
+<body class="no-skin">
 
 	<!-- SQL statement -->
 	<sql:setDataSource var="con" driver="com.mysql.jdbc.Driver"
@@ -101,7 +102,7 @@ li>div {
 
 
 
-	<div class="main-container ace-save-state" id="main-container" >
+	<div class="main-container ace-save-state" id="main-container">
 		<script type="text/javascript">
 			try {
 				ace.settings.loadState('main-container')
@@ -247,7 +248,17 @@ li>div {
 									<div class="divider"></div>
 
 									<!-- Text input-->
-
+									<div class="form-group">
+										<label class="col-md-4 control-label">Mã Niên khóa</label>
+										<div class="col-md-6 inputGroupContainer">
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="glyphicon glyphicon-qrcode"></i></span> <input
+													name="last_name" placeholder="Niên khóa"
+													class="form-control" type="text">
+											</div>
+										</div>
+									</div>
 									<div class="form-group">
 										<label class="col-md-4 control-label">Niên khóa</label>
 										<div class="col-md-6 inputGroupContainer">
@@ -285,14 +296,24 @@ li>div {
 										<div class="col-md-6 selectContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-list"></i></span> <select name="state"
+													class="glyphicon glyphicon-qrcode"></i></span> <select name="state"
 													class="form-control selectpicker">
 													<option value=" ">Please select semester</option>
 												</select>
 											</div>
 										</div>
 									</div>
-
+									<div class="form-group">
+										<label class="col-md-4 control-label">Mã loại khóa học</label>
+										<div class="col-md-6 inputGroupContainer">
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="glyphicon glyphicon-barcode"></i></span> <input
+													name="last_name" placeholder="Niên khóa"
+													class="form-control" type="text">
+											</div>
+										</div>
+									</div>
 									<div class="form-group">
 										<label class="col-md-4 control-label">Tên loại khóa
 											học</label>
@@ -305,39 +326,68 @@ li>div {
 											</div>
 										</div>
 									</div>
+									<div class="form-group">
+										<label class="col-md-4 control-label"></label>
+										<div class="col-md-6">
+											<button type="submit" class="btn btn-warning">
+												Send <span class="glyphicon glyphicon-send"></span>
+											</button>
+										</div>
+									</div>
 
 								</fieldset>
 							</form>
-							<form class="well form-horizontal" action=" " method="post"
-								id="contact_form">
+							<form class="well form-horizontal" action="AjaxInSert" method="post" enctype="multipart/form-data"
+								id="course-form">
 								<fieldset>
 
 									<!-- Form Name -->
 									<legend>New Course</legend>
 									<div class="divider"></div>
-
-									<!-- Text input-->
 									<div class="form-group">
-										<label class="col-md-4 control-label">Tên loại khóa
-											học</label>
+										<label class="col-md-4 control-label">Mã niên khóa</label>
 										<div class="col-md-6 selectContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-list"></i></span> <select name="state"
+													class="glyphicon glyphicon-qrcode"></i></span> <select name="state"
 													class="form-control selectpicker">
 													<option value=" ">Please select</option>
 												</select>
 											</div>
 										</div>
 									</div>
-
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label">Mã loại khóa
+											học</label>
+										<div class="col-md-6 selectContainer">
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="glyphicon glyphicon-list"></i></span> <select name="MaLoaiKhoaHoc"
+													class="form-control selectpicker">
+													<option value="mlkh10001">mlkh10001</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-4 control-label">Mã khóa học</label>
+										<div class="col-md-6 inputGroupContainer">
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="glyphicon glyphicon-calendar"></i></span> <input
+													name="MaKhoaHoc" placeholder="Tên khóa học"
+													class="form-control" type="text">
+											</div>
+										</div>
+									</div>
 									<div class="form-group">
 										<label class="col-md-4 control-label">Tên khóa học</label>
 										<div class="col-md-6 inputGroupContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i
 													class="glyphicon glyphicon-calendar"></i></span> <input
-													name="last_name" placeholder="Tên khóa học"
+													name="TenKhoaHoc" placeholder="Tên khóa học"
 													class="form-control" type="text">
 											</div>
 										</div>
@@ -350,7 +400,7 @@ li>div {
 											<div class="input-group">
 												<span class="input-group-addon"><i
 													class="glyphicon glyphicon-calendar"></i></span> <input
-													name="last_name" placeholder="Ngày khai giảng"
+													name="date" placeholder="Ngày khai giảng"
 													class="form-control" type="text">
 											</div>
 										</div>
@@ -363,7 +413,7 @@ li>div {
 											<div class="input-group">
 												<span class="input-group-addon"><i
 													class="glyphicon glyphicon-calendar"></i></span> <input
-													name="last_name" placeholder="Học phí" class="form-control"
+													name="HocPhi" placeholder="Học phí" class="form-control"
 													type="text">
 											</div>
 										</div>
@@ -376,12 +426,32 @@ li>div {
 											<div class="input-group">
 												<span class="input-group-addon"><i
 													class="glyphicon glyphicon-pencil"></i></span>
-												<textarea class="form-control" name="comment" rows="6"
+												<textarea class="form-control" name="GioiThieu" rows="6"
 													placeholder="Giới thiệu"></textarea>
 											</div>
 										</div>
 									</div>
 
+									<div class="form-group">
+										<label class="col-md-4 control-label">Attachment</label>
+										<div class="col-md-6 inputGroupContainer">
+											<div class="input-group">
+												<label class="input-group-btn"> <span
+													class="btn glyphicon glyphicon-open"><input
+														type="file" style="display: none;" name="attachment">
+												</span>
+												</label> <input type="text" class="form-control" name="filetext" id="filetext" readonly>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-4 control-label"></label>
+										<div class="col-md-6">
+											<button type="submit" class="btn btn-warning" id="course-submit">
+												Send <span class="glyphicon glyphicon-send"></span>
+											</button>
+										</div>
+									</div>
 								</fieldset>
 							</form>
 
@@ -392,84 +462,93 @@ li>div {
 							<div class="boxed-group flush repos user-repos js-repo-filter"
 								id="your_repos" role="navigation">
 								<div class="boxed-group-action">
-									<a href="/new" class="btn btn-sm btn-success">
-										New repository </a>
+									<a href="/new" class="btn btn-sm btn-success"> New
+										repository </a>
 								</div>
 								<h3>
 									Your repositories <span class="counter">5</span>
 								</h3>
-								<div class="boxed-group-inner"  >
+								<div class="boxed-group-inner">
 									<div class="filter-repos filter-bar" role="search">
 										<input type="text" id="your-repos-filter"
 											class="form-control input-sm input-block js-filterable-field"
 											placeholder="Find a repository…"
-											aria-label="Find a repository…" tabindex="2" ng-model="khoahoc">
+											aria-label="Find a repository…" tabindex="2"
+											ng-model="khoahoc">
 										<ul class="repo-filterer">
 											<li><button type="button" onclick="OpenTab(id)"
-													id="_nienkhoa" class="btn-link repo-filter text-small text-gray js-repo-filter-tab filter-selected">Niên
+													id="_nienkhoa"
+													class="btn-link repo-filter text-small text-gray js-repo-filter-tab filter-selected">Niên
 													khóa</button></li>
 											<li><button type="button" onclick="OpenTab(id)"
-													id="_loaikhoahoc" class="btn-link repo-filter text-small text-gray js-repo-filter-tab">Loại
+													id="_loaikhoahoc"
+													class="btn-link repo-filter text-small text-gray js-repo-filter-tab">Loại
 													khóa học</button></li>
 											<li><button type="button" onclick="OpenTab(id)"
-													id="_khoahoc" class="btn-link repo-filter text-small text-gray js-repo-filter-tab">Khóa
+													id="_khoahoc"
+													class="btn-link repo-filter text-small text-gray js-repo-filter-tab">Khóa
 													học</button></li>
 											<li><button type="button" onclick="OpenTab(id)"
-													id="_lophoc" class="btn-link repo-filter text-small text-gray js-repo-filter-tab">Lớp
-													học</button></li>						
+													id="_lophoc"
+													class="btn-link repo-filter text-small text-gray js-repo-filter-tab">Lớp
+													học</button></li>
 										</ul>
 									</div>
-									<ul id="repo_listing_khoahoc" class="mini-repo-list js-repo-list"  ng-controller="myController">
-										<li class="public source"  ng-repeat="x in names | filter : khoahoc"><a
-											class="mini-repo-list-item css-truncate" href="">
-												<svg aria-hidden="true"
-													class="octicon octicon-repo repo-icon" height="16"
-													version="1.1" viewBox="0 0 12 16" width="12"> <path
+									<ul id="repo_listing_khoahoc"
+										class="mini-repo-list js-repo-list"
+										ng-controller="myController">
+										<li class="public source" ng-repeat="x in names"><a
+											class="mini-repo-list-item css-truncate" href=""> <svg
+													aria-hidden="true" class="octicon octicon-repo repo-icon"
+													height="16" version="1.1" viewBox="0 0 12 16" width="12">
+												<path
 													d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
-												<span class="repo-and-owner css-truncate-target">
-													<span class="repo">{{x.TenKhoaHoc}}</span>
-												</span>
-											</a>
-										</li>								
+												<span class="repo-and-owner css-truncate-target"> <span
+													class="repo">{{x.TenKhoaHoc}}</span>
+											</span>
+										</a></li>
 									</ul>
-									<ul id="repo_listing_lophoc" class="mini-repo-list js-repo-list"  ng-controller="myController">
-										<li class="public source" ng-repeat="x in names | filter : lophoc"><a
-											class="mini-repo-list-item css-truncate" href="">
-												<svg aria-hidden="true"
-													class="octicon octicon-repo repo-icon" height="16"
-													version="1.1" viewBox="0 0 12 16" width="12"> <path
+									<ul id="repo_listing_lophoc"
+										class="mini-repo-list js-repo-list"
+										ng-controller="myController_lophoc">
+										<li class="public source" ng-repeat="x in names"><a
+											class="mini-repo-list-item css-truncate" href=""> <svg
+													aria-hidden="true" class="octicon octicon-repo repo-icon"
+													height="16" version="1.1" viewBox="0 0 12 16" width="12">
+												<path
 													d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
-												<span class="repo-and-owner css-truncate-target">
-													<span class="repo">{{x.MaLop}}</span>
-												</span>
-											</a>
-										</li>								
+												<span class="repo-and-owner css-truncate-target"> <span
+													class="repo">{{x.MaLop}}</span>
+											</span>
+										</a></li>
 									</ul>
-									<ul id="repo_listing_loaikhoahoc" class="mini-repo-list js-repo-list" ng-controller="myController" >
-										<li class="public source" ng-repeat="x in names | filter : loaikhoahoc"><a
-											class="mini-repo-list-item css-truncate" href="">
-												<svg aria-hidden="true"
-													class="octicon octicon-repo repo-icon" height="16"
-													version="1.1" viewBox="0 0 12 16" width="12"> <path
+									<ul id="repo_listing_loaikhoahoc"
+										class="mini-repo-list js-repo-list"
+										ng-controller="myController_loaikhoahoc">
+										<li class="public source" ng-repeat="x in names"><a
+											class="mini-repo-list-item css-truncate" href=""> <svg
+													aria-hidden="true" class="octicon octicon-repo repo-icon"
+													height="16" version="1.1" viewBox="0 0 12 16" width="12">
+												<path
 													d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
-												<span class="repo-and-owner css-truncate-target">
-													<span class="repo">{{x.TenLoaiKhoaHoc}}</span>
-												</span>
-											</a>
-										</li>								
+												<span class="repo-and-owner css-truncate-target"> <span
+													class="repo">{{x.TenLoaiKhoaHoc}}</span>
+											</span>
+										</a></li>
 									</ul>
-									<ul id="repo_listing_nienkhoa" class="mini-repo-list js-repo-list"  ng-controller="myController">
-										<li class="public source" ng-repeat="x in names | filter : nienkhoa"><a
-											class="mini-repo-list-item css-truncate" href="">
-												<svg aria-hidden="true"
-													class="octicon octicon-repo repo-icon" height="16"
-													version="1.1" viewBox="0 0 12 16" width="12"> <path
+									<ul id="repo_listing_nienkhoa"
+										class="mini-repo-list js-repo-list"
+										ng-controller="myController_nienkhoa">
+										<li class="public source" ng-repeat="x in names"><a
+											class="mini-repo-list-item css-truncate" href=""> <svg
+													aria-hidden="true" class="octicon octicon-repo repo-icon"
+													height="16" version="1.1" viewBox="0 0 12 16" width="12">
+												<path
 													d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
-												<span class="repo-and-owner css-truncate-target">
-													<span class="repo">{{x.ThoiGian}}</span>
-												</span>
-											</a>
-										</li>								
+												<span class="repo-and-owner css-truncate-target"> <span
+													class="repo">{{x.ThoiGian}}</span>
+											</span>
+										</a></li>
 									</ul>
 
 								</div>
@@ -492,12 +571,10 @@ li>div {
 
 
 	<!--Script-->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script src="assets/js/ace-elements.min.js"></script>
-	<script src="assets/js/ace.min.js"></script>	
+	<script src="assets/js/ace.min.js"></script>
 
 	<script type="text/javascript">
 		if ('ontouchstart' in document.documentElement)
@@ -505,8 +582,34 @@ li>div {
 					.write("<script src='assets/js/jquery.mobile.custom.min.js'>"
 							+ "<"+"/script>");
 	</script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 	
 	<script type="text/javascript">
+	$("#course-submit").click(function(){
+		$("#course-form").submit();
+	});
+	$(document).ready(function(){
+	      var date_input=$('input[name="date"]'); //our date input has the name "date"
+	      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+	      var options={
+	        format: 'yyyy-mm-dd',
+	        container: container,
+	        todayHighlight: true,
+	        autoclose: true,
+	      };
+	      date_input.datepicker(options);
+	    })
+	$(document).on('change', ':file', function() {
+	    var input = $(this),
+	        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+	        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+	        console.log(label);
+	        $("#filetext").val(label);
+	    input.trigger('fileselect', [numFiles, label]);
+	});
+	
 		OpenTab("_nienkhoa");
 		
 		
@@ -517,24 +620,44 @@ li>div {
 		}
 		$(".btn-link").click(function(){
 			$(".btn-link").removeClass("filter-selected");
-			$(this).addClass("filter-selected");		
-			
+			$(this).addClass("filter-selected");	
 		});
-		$.ajax(function(){
-			data:$("")
-			
-		});
-		var app = angular.module('myApp',[]);
-		app.controller('myController',function($scope,$http){
-			$http.get("FilterBox")
-			.success(function(data){
-				$scope.names=data;
-			}).error(function(){
-				alert("unexpected error");
-			});
-		});
-		//Angular section
 		
+		
+		//Angular section
+		var app = angular.module('myApp',[]);
+			app.controller('myController',function($scope,$http){
+				$http.get("FilterBox")
+				.success(function(data){
+					$scope.names=data;
+				}).error(function(){
+					alert("unexpected error");
+				});
+			});
+			app.controller('myController_nienkhoa',function($scope,$http){
+				$http.get("FilterBox_NienKhoa")
+				.success(function(data){
+					$scope.names=data;
+				}).error(function(){
+					alert("unexpected error");
+				});
+			});
+			app.controller('myController_loaikhoahoc',function($scope,$http){
+				$http.get("FilterBox_LoaiKhoaHoc")
+				.success(function(data){
+					$scope.names=data;
+				}).error(function(){
+					alert("unexpected error");
+				});
+			});
+			app.controller('myController_lophoc',function($scope,$http){
+				$http.get("FilterBox_LopHoc")
+				.success(function(data){
+					$scope.names=data;
+				}).error(function(){
+					alert("unexpected error");
+				});
+			});
 	</script>
 
 	<!--End Script-->

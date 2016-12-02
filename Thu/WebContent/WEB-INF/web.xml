@@ -40,7 +40,7 @@
     <description>Location to store uploaded file</description>
     <param-name>file-upload</param-name>
     <param-value>
-         c:\apache-tomcat-8.0.38\webapps\data\
+         C:\apache-tomcat-8.0.39\wtpwebapps\Thu\UploadFile\
      </param-value>
   </context-param>
 </web-app>

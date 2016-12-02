@@ -66,7 +66,6 @@ public class HandleSendEmail extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		isMultipart = ServletFileUpload.isMultipartContent(request);
-		java.io.PrintWriter out = response.getWriter( );
 		HttpSession session = request.getSession(false);
 		TaiKhoan tk = (TaiKhoan)session.getAttribute("taikhoan");
 		String user = tk.getEmail();

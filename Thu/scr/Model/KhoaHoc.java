@@ -10,8 +10,11 @@ public class KhoaHoc {
 	String GioiThieu;
 	double HocPhi;
 	String MaLoaiKhoaHoc;
+	String Url;
+	
+	byte[] Hinh;
 	public KhoaHoc(String maKhoaHoc, String tenKhoaHoc, Date ngayKhaiGiang, String gioiThieu, double hocPhi,
-			String maLoaiKhoaHoc) {
+			String maLoaiKhoaHoc,String url) {
 		super();
 		MaKhoaHoc = maKhoaHoc;
 		TenKhoaHoc = tenKhoaHoc;
@@ -19,9 +22,10 @@ public class KhoaHoc {
 		GioiThieu = gioiThieu;
 		HocPhi = hocPhi;
 		MaLoaiKhoaHoc = maLoaiKhoaHoc;
+		Url=url;
 	}
 	
-	byte[] Hinh;
+	
 	//Constructor
 	public KhoaHoc(String maKhoaHoc, String tenKhoaHoc, Date ngayKhaiGiang, String gioiThieu, double hocPhi,
 			byte[] hinh, String maLoaiKhoaHoc) {
@@ -35,7 +39,14 @@ public class KhoaHoc {
 		MaLoaiKhoaHoc = maLoaiKhoaHoc;
 	}
 	
-	
+	public String getUrl() {
+		return Url;
+	}
+
+
+	public void setUrl(String url) {
+		Url = url;
+	}
 	//Properties
 	public String getMaKhoaHoc() {
 		return MaKhoaHoc;

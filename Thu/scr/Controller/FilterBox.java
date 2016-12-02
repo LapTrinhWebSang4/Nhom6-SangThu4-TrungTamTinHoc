@@ -21,6 +21,7 @@ import Model.NienKhoa;
 /**
  * Servlet implementation class FilterBox
  */
+@WebServlet("/FilterBox")
 public class FilterBox extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

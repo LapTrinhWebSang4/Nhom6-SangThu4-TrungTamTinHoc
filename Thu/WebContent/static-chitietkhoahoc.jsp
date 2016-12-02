@@ -141,8 +141,10 @@
 								<div class="widget-main no-padding">
 									<div class="jumbotron">
 									<div class="row">								
-										<div class="col-md-6">
-											<img class="img-responsive img-thumbnail" src="${pageContext.servletContext.contextPath }/RetrieveImage?khoahoc=${row_khoahoc.MaKhoaHoc}"></img>
+										<div class="col-md-6"><a href="${pageContext.servletContext.contextPath }/DownloadFile?filename=${row_khoahoc.url}">
+										<img class="img-responsive img-thumbnail" src="${pageContext.servletContext.contextPath }/RetrieveImage?khoahoc=${row_khoahoc.MaKhoaHoc}"></img>
+										</a>
+											
 										</div>																
 										<div class="col-md-6">
 											<h2>Giới Thiệu</h2>

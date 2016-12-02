@@ -37,27 +37,29 @@ public class ExportToExcel extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String lophoc = request.getParameter("lophoc");
 		List<HocVien> lst = TVVDAO.GethocvienToExport(lophoc);
-		response.setHeader("Content-Type", "application/octet-stream");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		response.setHeader("Content-Type", "text/csv");
 		response.setHeader("Content-Disposition", "attachment; filename="+lophoc+".csv");
 		ArrayList<String> rows = new ArrayList<String>();
-		rows.add("Danh sách lớp học :"+lophoc);
 		rows.add("\n");		
         rows.add("MaHocVien,LopHoc,Ten,Email,Sodt,NoHocPhi,DiaChi,MaMienGiam,Diem");       
         rows.add("\n");
         for (HocVien hv:lst) {
             rows.add(hv.getMaHocVien()+","+hv.getLophoc()+","+hv.getTen()+","+hv.getEmail()
-            +","+hv.getSodt()+","+hv.getNoHocPhi()+","+hv.getDiaChi()+","+hv.getMaMienGiam()
-            +","+hv.getDiem());
+            +","+String.valueOf(hv.getSodt())+","+String.valueOf(hv.getNoHocPhi())+","+hv.getDiaChi()+","+hv.getMaMienGiam()
+            +","+String.valueOf(hv.getDiem()));
             rows.add("\n");
         }
 
         Iterator iter = (Iterator) rows.iterator();
         while (iter.hasNext()){
             String outputString = (String) iter.next();
-            response.getOutputStream().print(outputString);
+            response.getWriter().print(outputString);
         }
 
-        response.getOutputStream().flush();
+        response.getWriter().flush();
 		
 		
 	}
