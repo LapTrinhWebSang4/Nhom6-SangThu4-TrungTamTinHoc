@@ -90,192 +90,181 @@
 
 
 
-<jsp:include page="Sidebar.jsp"/>
+	<jsp:include page="Sidebar.jsp" />
 
 
 
 
-		<div class="main-content">
-			<div class="main-content-inner">
-				<div class="row">
-					<div class="container-fluid">
-						<ul class="nav nav-justified w3-pale-blue">
-							<li><a href="Home.jsp">Trang chủ</a></li>
-							<li><a href="thongbao.jsp">Thông báo</a></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#">Giới thiệu<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="thungo.jsp">Thư ngỏ</a></li>
-									<li><a href="giangvien.jsp">Đội ngủ giản viên</a></li>
-									<li><a href="nhiemvu.jsp">Chức năng nhiệm vụ</a></li>
-								</ul></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#">Lịch khai giảng<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="Dangkiwindows-win.jsp">Windows 1 tháng 10</a></li>
-									<li><a href="Dangkiandroid-cban.jsp">Android 1 tháng
-											10</a></li>
-								</ul></li>
+	<div class="main-content">
+		<div class="main-content-inner">
 
-							<li><a href="tuvan-send.jsp">Tư vấn-hỏi đáp</a></li>
-							<li><a href="static-login.jsp">Đăng xuất</a></li>
-						</ul>
+			<div class="row"
+				style="padding-top: 10px; padding-left: 30px; padding-right: 20px;">
+				<div class="message-container">
+					<div id="id-message-new-navbar" class="message-navbar clearfix"
+						style="height: 60px; border: solid 1px #a3eaf0">
+						<div>
+							<div class="messagebar-item-left">
+								<a href="#" class="btn-back-message-list"> <i
+									class="ace-icon fa fa-arrow-left bigger-110 middle blue"></i> <b
+									class="middle bigger-110">Back</b>
+								</a>
+							</div>
+
+							<div class="messagebar-item-right">
+								<span class="inline btn-send-message">
+									<button type="submit" id="btn-send"
+										class="btn btn-sm btn-primary no-border btn-white btn-round">
+										<span class="bigger-110">Send</span> <i
+											class="ace-icon fa fa-arrow-right icon-on-right"></i>
+									</button>
+								</span>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="row"
-					style="padding-top: 10px; padding-left: 30px; padding-right: 20px;">
-					<div class="message-container">
-						<div id="id-message-new-navbar" class="message-navbar clearfix"
-							style="height: 60px; border: solid 1px #a3eaf0">
-							<div>
-								<div class="messagebar-item-left">
-									<a href="#" class="btn-back-message-list"> <i
-										class="ace-icon fa fa-arrow-left bigger-110 middle blue"></i>
-										<b class="middle bigger-110">Back</b>
-									</a>
+					<form id="id-message-form" method="post" action="HandleSendEmail"
+						enctype="multipart/form-data"
+						class="form-horizontal message-form border col-xs-12"
+						style="border: solid 1px #a3eaf0">
+						<div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									for="form-field-recipient">To:</label>
+
+								<div class="col-sm-9">
+									<span class="input-icon"> <input type="email"
+										name="recipient" id="form-field-recipient" placeholder="" />
+										<i class="ace-icon fa fa-user"></i>
+									</span><a data-toggle="modal" data-target="#myModal2"><i
+										class="ace-icon fa fa-list"></i></a>
 								</div>
 
-								<div class="messagebar-item-right">
-									<span class="inline btn-send-message">
-										<button type="submit" id="btn-send"
-											class="btn btn-sm btn-primary no-border btn-white btn-round">
-											<span class="bigger-110">Send</span> <i
-												class="ace-icon fa fa-arrow-right icon-on-right"></i>
-										</button>
+							</div>
+
+							<div class="hr hr-18 dotted"></div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									for="form-field-subject">Subject:</label>
+
+								<div class="col-sm-6 col-xs-12">
+									<span class="input-icon block col-xs-12 no-padding"> <input
+										maxlength="100" type="text" class="col-xs-12" name="subject"
+										id="form-field-subject" placeholder="Subject" /> <i
+										class="ace-icon fa fa-comment-o"></i>
 									</span>
 								</div>
 							</div>
-						</div>
-						<form id="id-message-form" method="post" action="HandleSendEmail" enctype="multipart/form-data"
-							class="form-horizontal message-form border col-xs-12"
-							style="border: solid 1px #a3eaf0">
-							<div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-recipient">To:</label>
 
-									<div class="col-sm-9">
-										<span class="input-icon"> <input type="email"
-											name="recipient" id="form-field-recipient"
-											placeholder="" /> <i class="ace-icon fa fa-user"></i>
-										</span><a data-toggle="modal" data-target="#myModal2"><i
-											class="ace-icon fa fa-list"></i></a>
-									</div>
+							<div class="hr hr-18 dotted"></div>
 
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right">
+									<span class="inline space-24 hidden-480"></span> Message:
+								</label>
+
+								<div class="col-sm-9">
+									<textarea name="message" id="input" class="form-control"
+										rows="7" required="required"></textarea>
 								</div>
+							</div>
 
-								<div class="hr hr-18 dotted"></div>
+							<div class="hr hr-18 dotted"></div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									for="form-field-subject">Google Password:</label>
 
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-subject">Subject:</label>
-
-									<div class="col-sm-6 col-xs-12">
-										<span class="input-icon block col-xs-12 no-padding"> <input
-											maxlength="100" type="text" class="col-xs-12" name="subject"
-											id="form-field-subject" placeholder="Subject" /> <i
-											class="ace-icon fa fa-comment-o"></i>
-										</span>
-									</div>
+								<div class="col-sm-6 col-xs-12">
+									<span class="input-icon block col-xs-12 no-padding"> <input
+										maxlength="100" type="password" class="col-xs-12"
+										name="googlepass" id="form-field-password"
+										placeholder="Password" /> <i class="ace-icon fa fa-key"></i>
+									</span>
 								</div>
-
-								<div class="hr hr-18 dotted"></div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right">
-										<span class="inline space-24 hidden-480"></span> Message:
-									</label>
-
-									<div class="col-sm-9">
-										<textarea name="message" id="input" class="form-control"
-											rows="7" required="required"></textarea>
-									</div>
-								</div>
-
-								<div class="hr hr-18 dotted"></div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-subject">Google Password:</label>
-
-									<div class="col-sm-6 col-xs-12">
-										<span class="input-icon block col-xs-12 no-padding"> <input
-											maxlength="100" type="password" class="col-xs-12" name="googlepass"
-											id="form-field-password" placeholder="Password" /> <i
-											class="ace-icon fa fa-key"></i>
-										</span>
-									</div>
-								</div>
-								<div class="form-group no-margin-bottom">
+							</div>
+							<div class="form-group no-margin-bottom">
 
 
-									<label class="col-sm-3 control-label no-padding-right">Attachments:</label>
+								<label class="col-sm-3 control-label no-padding-right">Attachments:</label>
 
-									<div class="col-sm-9">
-										<div id="form-attachments">
-											<div class="form-group file-input-container">
-												<div class="col-sm-7">
-													<label class="ace-file-input width-90 inline"><input
-														type="file" name="attachment"><span
-															class="ace-file-container" data-title="Choose"><span
-																class="ace-file-name" data-title="No File ..."><i
-																	class=" ace-icon fa fa-upload"></i></span></span><a class="remove"
-															href="#"><i class=" ace-icon fa fa-times"></i></a></label>
-												</div>
+								<div class="col-sm-9">
+									<div id="form-attachments">
+										<div class="form-group file-input-container">
+											<div class="col-sm-7">
+												<label class="ace-file-input width-90 inline"><input
+													type="file" name="attachment"><span
+														class="ace-file-container" data-title="Choose"><span
+															class="ace-file-name" data-title="No File ..."><i
+																class=" ace-icon fa fa-upload"></i></span></span><a class="remove"
+														href="#"><i class=" ace-icon fa fa-times"></i></a></label>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="space"></div>
 							</div>
-						</form>
-					</div>
-					<!--End message container-->
+							<div class="space"></div>
+						</div>
+					</form>
 				</div>
+				<!--End message container-->
 			</div>
-			<!--end message content inner-->
-
-			<!-- Begin SQL site -->
-			<sql:query var="khoahoc_result" sql="select * from khoahoc"
-				dataSource="${con}">
-			</sql:query>
-			<!-- End SQL site -->
-			<!-- Modal 2-->
-			<div id="myModal2" class="modal fade" role="dialog">
-				<div class="modal-dialog">
-
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Chọn danh sách học viên</h4>
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="email">Khóa học :</label> <select id="combo-khoahoc"
-									class="form-control">
-									<c:forEach var="row_khoahoc" items="${khoahoc_result.rows}">
-										<option value="${row_khoahoc.TenKhoaHoc}">${row_khoahoc.TenKhoaHoc}</option>
-									</c:forEach>
-								</select>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-success" id="OKbtn">Xác
-								nhận</button>
-							<button type="button" class="btn btn-success" id="Close"
-								data-dismiss="modal">Close</button>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-
-
 		</div>
-		<!--End content-->
+		<!--end message content inner-->
+
+		<!-- Begin SQL site -->
+		<sql:query var="nienkhoa_result" sql="select * from nienkhoa"
+			dataSource="${con}">
+		</sql:query>
+		<!-- End SQL site -->
+		<!-- Modal 2-->
+		<div id="myModal2" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Chọn danh sách học viên</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="input_id">Niên khóa :</label> <select
+								name="MaNienKhoa" class="form-control selectpicker target"
+								id="modal-slt-nienkhoa"><option value="">Please
+									select another value</option>
+								<c:forEach var="row" items="${nienkhoa_result.rows }">
+									<option value="${row.MaNienKhoa}">${row.ThoiGian }</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="input_id">Loại khóa học :</label> <select
+								name="MaLoaiKhoaHoc" class="form-control selectpicker target"
+								id="modal-slt-loaikhoahoc"><option value="">Please select another value</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="input_id">Mã khóa học :</label> <select
+								name="MaKhoaHoc" class="form-control selectpicker target"
+								id="modal-slt-khoahoc"><option value="">Please select another value</option>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" id="OKbtn">Xác
+							nhận</button>
+						<button type="button" class="btn btn-success" id="Close"
+							data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+	</div>
+	<!--End content-->
 	</div>
 	<!-- /.main-container -->
 	<!--[if !IE]> -->
@@ -306,9 +295,63 @@
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">		
 		$("#OKbtn").click(function(){
-			$("#form-field-recipient").val($("#combo-khoahoc").val());
+			$("#form-field-recipient").val($("#modal-slt-khoahoc").val());
 			$('#Close').click();
 		});
+		$("#modal-slt-nienkhoa").change(
+				function() {
+					var value = $('#modal-slt-nienkhoa option:selected').val();
+					console.log(value);
+					$.ajax({
+						type : 'get',
+						dataType : "json",
+						url : 'GetDataForDropDown',
+						data : {
+							manienkhoa : value
+						},
+						success : function(data) {
+							$("#modal-slt-loaikhoahoc").empty();
+							$("#modal-slt-loaikhoahoc").append(
+									$("<option></option>").html("Please select value"));
+							for (var i = 0; i < data.length; i++) {
+								$("#modal-slt-loaikhoahoc").append(
+										$("<option></option>").val(
+												data[i].MaLoaiKhoaHoc).html(
+												data[i].TenLoaiKhoaHoc));
+							}
+						},
+						error : function() {
+							alert('k co du lieu');
+						}
+					});
+				});
+		$("#modal-slt-loaikhoahoc").change(
+				function() {
+					var value = $('#modal-slt-loaikhoahoc option:selected').val();
+					console.log(value);
+					$.ajax({
+						type : 'get',
+						dataType : "json",
+						url : 'GetDataForDropDownKhoaHoc',
+						data : {
+							MaLoaiKhoaHoc: value
+						},
+						success : function(data) {
+							$("#modal-slt-khoahoc").empty();
+							$("#modal-slt-khoahoc").append(
+									$("<option></option>").html("Please select value"));
+							for (var i = 0; i < data.length; i++) {
+								$("#modal-slt-khoahoc").append(
+										$("<option></option>").val(
+												data[i].MaKhoaHoc).html(
+												data[i].TenKhoaHoc));
+							}
+						},
+						error : function() {
+							alert('k co du lieu');
+						}
+					});
+				});
 		jQuery(function($) {
 
 			//handling tabs and loading/displaying relevant messages and forms

@@ -21,7 +21,6 @@ import Model.TaiKhoan;
 @WebListener
 public class ContextInitial implements ServletContextListener {
 
-	
    
     public ContextInitial() {
         

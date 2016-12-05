@@ -54,6 +54,70 @@ public class TVVDAO {
 		
 		return  lstcauhoi;
 	}
+	public static List<LoaiKhoaHoc> Getloaikhoahoclisttheomanienkhoa(String manienkhoa){
+		List<LoaiKhoaHoc> lstloaikhoahoc = new ArrayList<LoaiKhoaHoc>();
+		Connection conn = DatabaseManagement.getConnection();
+		try {
+			PreparedStatement pst = conn.prepareStatement("select * from loaikhoahoc where MaNienKhoa=?");
+			pst.setString(1, manienkhoa);
+			ResultSet rs;
+			rs = pst.executeQuery();
+			while(rs.next()){
+				lstloaikhoahoc.add( new LoaiKhoaHoc(rs.getString("MaLoaiKhoaHoc"),
+						rs.getString("TenLoaiKhoaHoc"),
+						rs.getString("MaNienKhoa")));
+			}
+			if(rs!=null){
+				rs.close();
+			}
+			if(pst!=null){
+				pst.close();
+			}
+			if(conn!=null){
+				conn.close();
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return lstloaikhoahoc;
+		
+	}
+	public static List<KhoaHoc> Getloaikhoahoclisttheomaloaikhoahoc(String maloaikhoahoc){
+		List<KhoaHoc> lstkhoahoc = new ArrayList<KhoaHoc>();
+		Connection conn = DatabaseManagement.getConnection();
+		try {
+			PreparedStatement pst = conn.prepareStatement("select * from khoahoc where MaLoaiKhoaHoc=?");
+			pst.setString(1,maloaikhoahoc);
+			ResultSet rs;
+			rs = pst.executeQuery();
+			while(rs.next()){
+				lstkhoahoc.add( new KhoaHoc(rs.getString("MaKhoaHoc"),
+						rs.getString("TenKhoaHoc"),
+						rs.getDate("NgayKhaiGiang"),
+						rs.getString("GioiThieu"),
+						rs.getDouble("HocPhi"),
+						rs.getBytes("Hinh"),
+						rs.getString("MaLoaiKhoaHoc")));
+			}
+			if(rs!=null){
+				rs.close();
+			}
+			if(pst!=null){
+				pst.close();
+			}
+			if(conn!=null){
+				conn.close();
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return lstkhoahoc;
+		
+	}
 	public static List<LoaiKhoaHoc> Getloaikhoahoclist(){
 		List<LoaiKhoaHoc> lstloaikhoahoc = new ArrayList<LoaiKhoaHoc>();
 		Connection conn = DatabaseManagement.getConnection();
@@ -216,7 +280,7 @@ public class TVVDAO {
 	public static void updateCauHoi(int id,String Content){
 		try{
 			Connection con = DatabaseManagement.getConnection();
-			PreparedStatement pst = con.prepareStatement("update cauhoi set NoiDung=? where MaCauHoi=?");
+			PreparedStatement pst = con.prepareStatement("update cauhoi set TraLoi=?,TinhTrang=true where MaCauHoi=?");
 			pst.setString(1, Content);
 			pst.setInt(2, id);
 			pst.executeUpdate();	
@@ -229,7 +293,7 @@ public class TVVDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}		
-	}
+	}	
 	public static void deleteCauHoi(int id){
 		try{
 			Connection con = DatabaseManagement.getConnection();
@@ -246,11 +310,28 @@ public class TVVDAO {
 			e.printStackTrace();
 		}		
 	}
-	public static boolean ChangeProfile(TaiKhoan tk){
+	
+	public static void deleteKhoaHoc(String MaKhoaHoc){
 		try{
 			Connection con = DatabaseManagement.getConnection();
-			PreparedStatement pst = con.prepareStatement("update taikhoan set TenNhanVien=?,Sodt=?,"
-					+ "Email=?,NgaySinh=?,DiaChi=?,SoCMND=?,GioiThieu=?");
+			PreparedStatement pst = con.prepareStatement("delete from khoahoc where MaKhoaHoc=?");
+			pst.setString(1, MaKhoaHoc);
+			pst.executeUpdate();
+			if(pst!=null){
+				pst.close();
+			}
+			if(con!=null){
+				con.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}		
+	}
+	public static boolean updateInfo(TaiKhoan tk){
+		try{
+			Connection con = DatabaseManagement.getConnection();
+			PreparedStatement pst = con.prepareStatement("update taikhoan set TenThanhVien=?,Sodt=?,"
+					+ "Email=?,NgaySinh=?,DiaChi=?,SoCMND=?,GioiThieu=? where Taikhoan=?");
 			pst.setString(1, tk.getTenThanhVien());
 			pst.setInt(2, tk.getSodt());
 			pst.setString(3, tk.getEmail());
@@ -258,9 +339,10 @@ public class TVVDAO {
 			pst.setString(5, tk.getDiaChi());
 			pst.setInt(6, tk.getSoCMND());
 			pst.setString(7, tk.getGioiThieu());
-			ResultSet rs = pst.executeQuery();	
-			if(rs!=null){
-				rs.close();
+			pst.setString(8, tk.getTaikhoan());
+			int value = pst.executeUpdate();	
+			if(value>=0){
+				return true;
 			}
 			if(pst!=null){
 				pst.close();
@@ -268,20 +350,43 @@ public class TVVDAO {
 			if(con!=null){
 				con.close();
 			}
-			return true;
+			return false;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return false;
+		}		
+	}
+	public static boolean updateNgayDangNhap(Date NgayDangNhapGanNhat,String TaiKhoan){
+		try{
+			Connection con = DatabaseManagement.getConnection();
+			PreparedStatement pst = con.prepareStatement("update taikhoan set NgayDangNhapGanNhat=? where Taikhoan=?");
+			pst.setDate(1,NgayDangNhapGanNhat);
+			pst.setString(2,TaiKhoan);			
+			int value = pst.executeUpdate();
+			if(value>=0){
+				return true;
+			}
+			if(pst!=null){
+				pst.close();
+			}
+			if(con!=null){
+				con.close();
+			}
+			return false;
 		}catch(SQLException e){
 			return false;
 		}		
 	}
-	public static boolean ChangePassWord(TaiKhoan tk){
+	public static boolean ChangePassWord(String taikhoan,String mkc,String mkm){
 		try{
 			Connection con = DatabaseManagement.getConnection();
-			PreparedStatement pst = con.prepareStatement("update taikhoan set MatKhau=? where Taikhoan=?");
-			pst.setString(1, tk.getMatKhau());
-			pst.setString(2, tk.getTaikhoan());
-			ResultSet rs = pst.executeQuery();
-			if(rs!=null){
-				rs.close();
+			PreparedStatement pst = con.prepareStatement("update taikhoan set MatKhau=? where Taikhoan=? and MatKhau=?");
+			pst.setString(1,mkm);
+			pst.setString(2,taikhoan);
+			pst.setString(3,mkc);
+			int value = pst.executeUpdate();
+			if(value>=0){
+				return true;
 			}
 			if(pst!=null){
 				pst.close();
@@ -289,7 +394,7 @@ public class TVVDAO {
 			if(con!=null){
 				con.close();
 			}
-			return true;
+			return false;
 		}catch(SQLException e){
 			return false;
 		}		
@@ -300,9 +405,9 @@ public class TVVDAO {
 			PreparedStatement pst = con.prepareStatement("insert into nienkhoa values (?,?)");
 			pst.setString(1,nk.getMaNienKhoa() );
 			pst.setString(2,nk.getThoiGian());
-			ResultSet rs = pst.executeQuery();
-			if(rs!=null){
-				rs.close();
+			int k = pst.executeUpdate();
+			if(k>=0){
+				return true;
 			}
 			if(pst!=null){
 				pst.close();
@@ -310,8 +415,9 @@ public class TVVDAO {
 			if(con!=null){
 				con.close();
 			}
-			return true;
+			return false;
 		}catch(SQLException e){
+			e.printStackTrace();
 			return false;
 		}		
 	}
@@ -322,9 +428,9 @@ public class TVVDAO {
 			pst.setString(1,lkh.getMaLoaiKhoaHoc() );
 			pst.setString(2,lkh.getTenLoaiKhoaHoc());
 			pst.setString(3,lkh.getNienkhoa());
-			ResultSet rs = pst.executeQuery();
-			if(rs!=null){
-				rs.close();
+			int k = pst.executeUpdate();
+			if(k>=0){
+				return true;
 			}
 			if(pst!=null){
 				pst.close();
@@ -332,7 +438,7 @@ public class TVVDAO {
 			if(con!=null){
 				con.close();
 			}
-			return true;
+			return false;
 		}catch(SQLException e){
 			return false;
 		}		
@@ -373,9 +479,9 @@ public class TVVDAO {
 			pst.setFloat(3,mg.getTienGiam());
 			pst.setString(4,mg.getMoTa());
 			pst.setString(5,mg.getMaKhoaHoc());
-			ResultSet rs = pst.executeQuery();
-			if(rs!=null){
-				rs.close();
+			int k = pst.executeUpdate();
+			if(k>=0){
+				return true;
 			}
 			if(pst!=null){
 				pst.close();
@@ -383,7 +489,7 @@ public class TVVDAO {
 			if(con!=null){
 				con.close();
 			}
-			return true;
+			return false;
 		}catch(SQLException e){
 			return false;
 		}		

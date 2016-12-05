@@ -33,10 +33,13 @@ public class DownloadFile extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String filename = request.getParameter("filename");
-		String filepath = "C:\\apache-tomcat-8.0.39\\wtpwebapps\\Thu\\UploadFile\\a0001-01.csv";
+		String filepath = "C:\\apache-tomcat-8.0.39\\wtpwebapps\\Thu\\UploadFile\\"+filename;
 		response.setContentType("application/octet-stream");
-		response.setHeader("Content-Disposition","attachment; filename=\""+ filepath + "\"");   
 		File fileToDownload = new File(filepath);
+		String headerKey = "Content-Disposition";
+        String headerValue = String.format("attachment; filename=\"%s\"", fileToDownload.getName());
+        response.setHeader(headerKey, headerValue);  
+		
 
 		InputStream in = null;
 		ServletOutputStream outs = response.getOutputStream();

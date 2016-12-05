@@ -80,8 +80,7 @@ public class HandleLogin extends HttpServlet {
 				session.setAttribute("peerid",userid);
 				OnlineUser.add(tk);
 				appScope.setAttribute(CLIENTS, OnlineUser);
-				if(quyen.equals("tvv")){
-					
+				if(quyen.equals("tvv")){				
 					response.sendRedirect("static-dashboard.jsp");
 				}else if(quyen.equals("qtnd")){
 					response.sendRedirect("QTNDPT.jsp");
@@ -92,6 +91,7 @@ public class HandleLogin extends HttpServlet {
 				out.println("Invalid password <a href='login.jsp'>try again</a>");
 			}
 		} catch (SQLException e) {
+			System.out.println("vao day ne");
 			e.printStackTrace();
 		}
 

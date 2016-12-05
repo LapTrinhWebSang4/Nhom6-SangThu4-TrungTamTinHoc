@@ -185,7 +185,7 @@ public class HandleSendEmail extends HttpServlet {
 				System.out.println("di vao neu ko co @");
 				Connection con = (Connection)DatabaseManagement.getConnection();
 				PreparedStatement pst = (PreparedStatement) con.prepareStatement("select email "
-						+ "from khoahoc,hocvien,lophoc where khoahoc.TenKhoaHoc=? and khoahoc.MaKhoaHoc"
+						+ "from khoahoc,hocvien,lophoc where khoahoc.MaKhoaHoc=? and khoahoc.MaKhoaHoc"
 						+ "=lophoc.MaKhoa and lophoc.MaLop=hocvien.MaLop");
 				pst.setString(1,recipient);
 				ResultSet rs = (ResultSet) pst.executeQuery();

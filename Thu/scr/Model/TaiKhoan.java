@@ -38,6 +38,17 @@ public class TaiKhoan{
 		Quyen = quyen;
 		GioiThieu = gioiThieu;
 	}
+	public TaiKhoan(String taikhoan, String tenThanhVien,int soCMND,String gioiThieu,String diaChi,int sodt, String email,Date ngaySinh) {
+		super();
+		Taikhoan = taikhoan;
+		TenThanhVien = tenThanhVien;
+		SoCMND = soCMND;
+		Sodt=sodt;
+		GioiThieu=gioiThieu;
+		DiaChi = diaChi;
+		Email = email;
+		NgaySinh = ngaySinh;
+	}
 	public TaiKhoan(String taikhoan, String matKhau, String tenThanhVien, String email) {
 		super();
 		Taikhoan = taikhoan;

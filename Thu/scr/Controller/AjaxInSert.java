@@ -87,18 +87,17 @@ public class AjaxInSert extends HttpServlet {
 						String fieldName = fi.getFieldName();				
 						String fileName = fi.getName();
 						String contentType = fi.getContentType();
-						System.out.println(fileName);
 						boolean isInMemory = fi.isInMemory();
 						long sizeInBytes = fi.getSize();
 						// Write the file
 						if( fileName.lastIndexOf("\\") >= 0 ){
 							file = new File( filePath + 
 									fileName.substring( fileName.lastIndexOf("\\"))) ;
-							url=fileName;							
+							url=fileName;						
 						}else{
 							file = new File( filePath + 
 									fileName.substring(fileName.lastIndexOf("\\")+1)) ;
-							url=fileName;							
+							url=fileName;				
 						}
 						fi.write( file ) ;
 						

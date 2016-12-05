@@ -4,6 +4,7 @@ var hour = today.getHours();
 var minute = today.getMinutes();
 var second = today.getSeconds();
 var today = hour+":"+minute+":"+second;
+var numofmess = 0;
 var peer = new Peer(
 			peerid,
 			{
@@ -18,26 +19,16 @@ var peer = new Peer(
 		
 		
 		peer.on('open', function(id) {
-			console.log(id +" has connected"+" "+peerid);
+			console.log(id +" has connected");
 		});
 		peer.on('connection',function(c){
+			myFunction();
 			var chatbox = $("<div class='box-chat' id='"+c.peer+"'>" +
 					"<div class='panel panel-default'>" +
-					"<div class='panel-heading'><span class='glyphicon glyphicon-comment'></span> Chat<div class='btn-group pull-right'>"+
-					"<button type='button' id='minimizebtn' onclick='minimizeclick()' class='btn btn-default btn-xs'>"+
-						"<span class='glyphicon glyphicon-minus'></span>"+
+					"<div class='panel-heading'><span class='glyphicon glyphicon-comment'></span> Chat<div class='btn-group pull-right'>"+						
+					"<button type='button' class='btn btn-default btn-xs' onclick='closefunc()'>"
+						+"<span class='glyphicon glyphicon-remove'></span>"+
 					"</button>"+
-					"<button type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown'>"
-						+"<span class='glyphicon glyphicon-chevron-down'></span>"+
-					"</button>"+
-					"<ul class='dropdown-menu slidedown'>"+
-						"<li><a href=''><span class='glyphicon glyphicon-refresh'> </span>Refresh</a></li>"+
-						"<li><a href=''><span class='glyphicon glyphicon-ok-sign'> </span>Available</a></li>"+
-						"<li><a href=''><span class='glyphicon glyphicon-remove'> </span>Busy</a></li>"+
-						"<li><a href=''><span class='glyphicon glyphicon-time'></span> Away</a></li>"+
-						"<li class='divider'></li>"+
-						"<li><a href=''><span class='glyphicon glyphicon-off'></span> Sign Out</a></li>"+
-					"</ul>"+
 				"</div></div>" +
 				
 					"<div class='panel-body'><ul class='chat'></ul></div>" +
@@ -48,6 +39,8 @@ var peer = new Peer(
 					"</div></div>");
 			
 			console.log("create box success");
+			numofmess++;
+			$("#numberofmessage").html(numofmess);
 			chatbox.on('click', function() {
 				$(".box-chat").removeClass("active");
 				$(".panel").removeClass("panel-primary");
@@ -58,7 +51,6 @@ var peer = new Peer(
 			    });
 			
 			if(!$("#"+c.peer).length){
-				console.log("them phat nua");
 				$(".chat-site").append(chatbox);
 				$("#"+c.peer+".chat").append("<p>Connected with "+c.peer+"</p>");
 			}
@@ -72,7 +64,12 @@ var peer = new Peer(
 					$("#"+c.peer).find(".chat").append(body);
 				});
 				c.on('close', function() {
-					alert(c.peer + ' has left the chat.');
+					numofmess--;
+					$("#numberofmessage").html(numofmess);
+					$("#"+c.peer).find(".chat").append("<li class='clearfix'>"
+					+"<div class='chat-body clearfix'><div class=''>"
+			+"<small class='pull-right text-muted'><span class='glyphicon "
+			+"glyphicon-time'></span>"+today+"</small><strong class='primary-font'></strong></div><p style='color:red;'>"+c.peer+" has disconnected!!!</p></div></li>");
 					delete connectedPeers[c.peer];
 				});
 			}
@@ -82,14 +79,10 @@ var peer = new Peer(
 		  console.log(err);
 		});
 		
-		var connectedPeers = {};
-		function connect(c) {
-			
-		}
+		var connectedPeers = {};		
 		
 		function chatclick(){
 		    // For each active connection, send the message.
-			
 			var active = $(".active");
 		    var msg = active.find("#btn-input").val();
 		    var chatbody = $("<li class='clearfix'>"
@@ -109,7 +102,6 @@ var peer = new Peer(
 		
 		function sendToEachOther(fn){
 			var pid = $('.box-chat.active').attr('id');
-			console.log("bede hehe " +pid);
 			var checkedIds = {};
 			if(!checkedIds[pid]){
 				var conns = peer.connections[pid];
@@ -125,7 +117,6 @@ var peer = new Peer(
 			    var checkedIds = {};
 			    actives.each(function() {
 			      var peerId = $(this).attr('id');
-			      console.log("day ne"+peerId);
 			      if (!checkedIds[peerId]) {
 			        var conns = peer.connections[peerId];
 			        for (var i = 0, ii = conns.length; i < ii; i += 1) {
@@ -142,4 +133,19 @@ var peer = new Peer(
 			    	chatclick();
 			    }
 			});
+		 function myFunction() {
+			    // Get the snackbar DIV
+			    var x = document.getElementById("snackbar");
+
+			    // Add the "show" class to DIV
+			    x.className = "show";
+			    $("#snackbar").addClass("show");
+			    // After 3 seconds, remove the show class from DIV
+			    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+			}
+		 function closefunc(){
+			 $(".box-chat.active").remove();
+		 }
+		 
+		 
 		 
