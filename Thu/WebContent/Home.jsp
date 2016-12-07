@@ -163,33 +163,8 @@ a>.glyphicon {
 
 			</div>
 		</div>
-		<!-- khoa hoc dac biet -->
-		<div class="container">
-			<sql:query dataSource="${snapshot}" var="result">
-SELECT * from khoahoc where db=  1;
-</sql:query>
-			<c:forEach var="row" items="${result.rows}">
-				
-				<a href="fromdkonline.jsp?loaimonhoc=${row.MaLoaiKhoaHoc}&id=${row.MaKhoaHoc}"> <img
-							src="${pageContext.servletContext.contextPath}/Photoserv?id=${row.MaKhoaHoc}&loai=khoahoc"
-							alt="Chania" width="100%" height="100">
-						</a>
-				<br>
-			</c:forEach>
-		</div>
-		<div class="container">
-			<sql:query dataSource="${snapshot}" var="result">
-SELECT * from thongbao;
-</sql:query>
-			<c:forEach var="row" items="${result.rows}">
-				
-				<a href="fromdkonline.jsp?"> <img
-							src="${pageContext.servletContext.contextPath}/Photoserv?id=${row.MaThongBao}&loai=thongbao"
-							alt="Chania" width="100%" height="100">
-						</a>
-				<br>
-			</c:forEach>
-		</div>
+
+
 		<div id="carousel-example-generic" class="carousel slide"
 			data-ride="carousel">
 			<!-- Indicators -->
@@ -240,7 +215,26 @@ SELECT MaThongBao from thongbao where LoaiThongBao= "slide";
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
+		<!-- khoa hoc dac biet -->
+		<div class="container">
+			<h3 style="color: red;" align="center">Các Khóa Học Hot Nhất
+				Hiện Nay</h3>
+			<sql:query dataSource="${snapshot}" var="result">
+SELECT * from khoahoc where db=  1;
+</sql:query>
+			<c:forEach var="row" items="${result.rows}">
 
+				<a
+					href="fromdkonline.jsp?loaimonhoc=${row.MaLoaiKhoaHoc}&id=${row.MaKhoaHoc}">
+					<img
+					src="${pageContext.servletContext.contextPath}/Photoserv?id=${row.MaKhoaHoc}&loai=khoahoc"
+					alt="Chania" width="90%" height="200">
+				</a>
+				<br>
+				<div class="container"
+					style="height: 20px; background-corlor: orange;"></div>
+			</c:forEach>
+		</div>
 		<div class="container" id="thongbao">
 			<div class="row">
 				<div class="col-md-6" style="padding-top: 10px; padding-left: 1px">
@@ -274,7 +268,8 @@ ORDER BY Ngay DESC;
 													aria-expanded="false"
 													aria-controls="<c:out value="${row.MaThongBao}"/>"><span
 													class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
-													<c:out value="${row.TieuDe}" /> [<c:out value="${row.Ngay}" />]</a>
+													<c:out value="${row.TieuDe}" /> [<c:out
+														value="${row.Ngay}" />]</a>
 											</h4>
 										</div>
 										<div id="<c:out value="${row.MaThongBao}"/>"
@@ -335,7 +330,8 @@ SELECT * from thongbao where LoaiThongBao = "Su kien";
 													aria-expanded="false"
 													aria-controls="<c:out value="${row.MaThongBao}"/>"><span
 													class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
-													<c:out value="${row.TieuDe}" /> [<c:out value="${row.Ngay}" />]</a>
+													<c:out value="${row.TieuDe}" /> [<c:out
+														value="${row.Ngay}" />]</a>
 											</h4>
 										</div>
 										<div id="<c:out value="${row.MaThongBao}"/>"
