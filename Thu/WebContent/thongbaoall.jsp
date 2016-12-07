@@ -123,7 +123,7 @@ a>.glyphicon{
 
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h3 class="panel-title">Câu hỏi</h3>
+						<h3 class="panel-title">_______________</h3>
 					</div>
 					<div class="panel-body">
 
@@ -173,6 +173,9 @@ ORDER by Ngay DESC;
 								<div id="<c:out value="${row.MaThongBao}"/>" class="panel-collapse collapse"
 									role="tabpanel" aria-labelledby="headingThree">
 									<div class="panel-body"><c:out value="${row.TomTat}"/></div>
+									<img
+							src="${pageContext.servletContext.contextPath }/Photoserv?id=${row.MaThongBao}"
+							alt="Chania" width="100%" height="250">
 									<a href="FormThongBao.jsp?mathongbao=${row.MaThongBao}"><strong style="color: blue;">Xem Chi tiết</strong></a>
 								</div>
 							</div>

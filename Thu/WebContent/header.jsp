@@ -10,7 +10,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://localhost/ttth" user="root" password="kien2509" />
+	url="jdbc:mysql://localhost/ttth" user="root" password="1234" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 <style>

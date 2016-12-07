@@ -34,17 +34,18 @@ public class Photoserv extends HttpServlet {
 		String connectionURL = "jdbc:mysql://localhost:3306/ttth";
 		java.sql.Connection con=null;
 		String id = request.getParameter("id");
+		String loai = request.getParameter("loai");
 		try{			
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			con=DriverManager.getConnection(connectionURL,"root","1234");			
 			Statement st1=con.createStatement();
-			ResultSet rs1 = st1.executeQuery("select Hinh from thongbao where MaThongBao ='"+id+"'");
+			ResultSet rs1 = st1.executeQuery("select Hinh from "+loai+" where Ma"+loai+" ='"+id+"'");
 			String imgLen="";
 			if(rs1.next()){
 				imgLen = rs1.getString(1);
 				System.out.println(imgLen.length());
 			}	
-			rs1 = st1.executeQuery("select Hinh from thongbao where MaThongBao='"+id+"'");
+			rs1 = st1.executeQuery("select Hinh from "+loai+" where Ma"+loai+"='"+id+"'");
 			if(rs1.next()){
 				int len = imgLen.length();
 				byte [] rb = new byte[len];

@@ -14,64 +14,71 @@
 <script src="js/bootstrap.min.js"></script>
 
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
- 
+
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost/ttth"
-     user="root"  password="1234"/>
+	url="jdbc:mysql://localhost/ttth" user="root" password="1234" />
 
 
 <style type="text/css">
-	body {
+body {
 	background-color: lightblue;
 }
-	#custom-bootstrap-menu.navbar-default .navbar-brand {
-    color: rgba(255, 255, 255, 1);
-}
-#custom-bootstrap-menu.navbar-default {
-    font-size: 14px;
-    background-color: rgba(0, 130, 200, 1);
-    border-width: 1px;
-    border-radius: 0px;
-}
-#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(0, 130, 200, 1);
-}
-#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
-#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(51, 122, 183, 1);
-}
-#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
-#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
-#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(51, 122, 183, 1);
-}
-#custom-bootstrap-menu.navbar-default .navbar-toggle {
-    border-color: #337ab7;
-}
-#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
-#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
-    background-color: #337ab7;
-}
-#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
-    background-color: white;
-}
-#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar
- {
-    background-color: #0082c8;
-}
-@media only screen and (min-width:200px)and (max-width:700px){
-	#sub1.dropdown-menu>li>a,#sub2.dropdown-menu>li>a,#sub3.dropdown-menu>li>a{
-	color:white;
-	}
-	
+
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+	color: rgba(255, 255, 255, 1);
 }
 
+#custom-bootstrap-menu.navbar-default {
+	font-size: 14px;
+	background-color: rgba(0, 130, 200, 1);
+	border-width: 1px;
+	border-radius: 0px;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(0, 130, 200, 1);
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+	#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(51, 122, 183, 1);
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+	#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+	#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(51, 122, 183, 1);
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+	border-color: #337ab7;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+	#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+	background-color: #337ab7;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+	background-color: white;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar {
+	background-color: #0082c8;
+}
+
+@media only screen and (min-width:200px)and (max-width:700px) {
+	#sub1.dropdown-menu>li>a, #sub2.dropdown-menu>li>a, #sub3.dropdown-menu>li>a
+		{
+		color: white;
+	}
+}
 
 .footer-nav {
 	text-align: right;
@@ -86,30 +93,31 @@
 	contain: '|';
 	padding: 0px 10px;
 }
-.navbar.navbar-default{
-	padding-top:0px;
+
+.navbar.navbar-default {
+	padding-top: 0px;
 }
 
-
-#header-img{
-	height:120px;	
-	z-index:3;
+#header-img {
+	height: 120px;
+	z-index: 3;
 }
 
+#login-form {
+	padding-bottom: 200px;
+}
 
+.footer-nav>li>a {
+	color: white;
+}
 
-#login-form{
-	padding-bottom:200px;
+a>.glyphicon {
+	padding-right: 10px;
 }
-.footer-nav>li>a{
-	color:white;
-}
-a>.glyphicon{
-	padding-right:10px;
-}
-#head-text{
-	color:#0082c8;
-	 text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px black;
+
+#head-text {
+	color: #0082c8;
+	text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px black;
 }
 </style>
 <link rel="stylesheet" href="css/w3.css">
@@ -117,11 +125,11 @@ a>.glyphicon{
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-		
-	
 
-	
-	
+
+
+
+
 	<div class="container" style="background-color: white;">
 		<div class="row">
 			<h2 class="text-center" id="head-text">&lt Giới thiệu &gt</h2>
@@ -130,59 +138,95 @@ a>.glyphicon{
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-md-9">
-					<img src="Hinh/ttth.jpg" class="img-rounded" alt="Cinque Terre"
-						width="100%">
-				</div>
-				<div class="col-md-3">
+						<img src="Hinh/ttth.jpg" class="img-rounded" alt="Cinque Terre"
+							width="100%">
+					</div>
+					<div class="col-md-3">
 
-					<marquee scrolldelay="6" scrollamount="2" id="banner"
-						direction="up" height="300px" style="height: 300px;">
-						<p style="font: Times New Roman; color: blue;">Information
-							technology (IT) is the application of computers and internet to
-							store, retrieve, transmit, and manipulate data, or information,
-							often in the context of a business or other enterprise. IT is
-							considered a subset of information and communications technology
-							(ICT). In 2012, Zuppo proposed an ICT hierarchy where each
-							hierarchy level "contain some degree of commonality in that they
-							are related to technologies that facilitate the transfer of
-							information and various types of electronically mediated
-							communications." Business/IT was one level of the ICT hierarchy</p>
-					</marquee>
+						<marquee scrolldelay="6" scrollamount="2" id="banner"
+							direction="up" height="300px" style="height: 300px;">
+							<p style="font: Times New Roman; color: blue;">Information
+								technology (IT) is the application of computers and internet to
+								store, retrieve, transmit, and manipulate data, or information,
+								often in the context of a business or other enterprise. IT is
+								considered a subset of information and communications technology
+								(ICT). In 2012, Zuppo proposed an ICT hierarchy where each
+								hierarchy level "contain some degree of commonality in that they
+								are related to technologies that facilitate the transfer of
+								information and various types of electronically mediated
+								communications." Business/IT was one level of the ICT hierarchy</p>
+						</marquee>
 
-				</div>
+					</div>
 				</div>
 
 
 			</div>
 		</div>
+		<!-- khoa hoc dac biet -->
+		<div class="container">
+			<sql:query dataSource="${snapshot}" var="result">
+SELECT * from khoahoc where db=  1;
+</sql:query>
+			<c:forEach var="row" items="${result.rows}">
+				
+				<a href="fromdkonline.jsp?loaimonhoc=${row.MaLoaiKhoaHoc}&id=${row.MaKhoaHoc}"> <img
+							src="${pageContext.servletContext.contextPath}/Photoserv?id=${row.MaKhoaHoc}&loai=khoahoc"
+							alt="Chania" width="100%" height="100">
+						</a>
+				<br>
+			</c:forEach>
+		</div>
+		<div class="container">
+			<sql:query dataSource="${snapshot}" var="result">
+SELECT * from thongbao;
+</sql:query>
+			<c:forEach var="row" items="${result.rows}">
+				
+				<a href="fromdkonline.jsp?"> <img
+							src="${pageContext.servletContext.contextPath}/Photoserv?id=${row.MaThongBao}&loai=thongbao"
+							alt="Chania" width="100%" height="100">
+						</a>
+				<br>
+			</c:forEach>
+		</div>
 		<div id="carousel-example-generic" class="carousel slide"
 			data-ride="carousel">
 			<!-- Indicators -->
-			<%int i =0; %>
+			<%
+				int i = 0;
+			%>
 			<sql:query dataSource="${snapshot}" var="result">
 SELECT MaThongBao from thongbao where LoaiThongBao= "slide";
 </sql:query>
 			<ol class="carousel-indicators">
-			<c:forEach var="row" items="${result.rows}">
-				<li data-target="#myCarousel" data-slide-to="<%=i %>" class=""></li>
-				<%i++; %></c:forEach>
+				<c:forEach var="row" items="${result.rows}">
+					<li data-target="#myCarousel" data-slide-to="<%=i%>" class=""></li>
+					<%
+						i++;
+					%>
+				</c:forEach>
 			</ol>
 
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
-			<c:forEach var="row" items="${result.rows}" begin="0" end="0">
-				<div class="item active">
-					<a href="#"> <img src="${pageContext.servletContext.contextPath }/Photoserv?id=${row.MaThongBao}"
-						alt="Chania" width="100%" height="250">
-					</a>
-				</div></c:forEach>
-				<c:forEach var="row" items="${result.rows}" begin="1" >
-				<div class="item">
-					<a href="#"> <img src="${pageContext.servletContext.contextPath }/Photoserv?id=${row.MaThongBao}"
-						alt="Chania" width="100%" height="250">
-					</a>
-				</div></c:forEach>
-				
+				<c:forEach var="row" items="${result.rows}" begin="0" end="0">
+					<div class="item active">
+						<a href="#"> <img
+							src="${pageContext.servletContext.contextPath }/Photoserv?id=${row.MaThongBao}&loai=thongbao"
+							alt="Chania" width="100%" height="250">
+						</a>
+					</div>
+				</c:forEach>
+				<c:forEach var="row" items="${result.rows}" begin="1">
+					<div class="item">
+						<a href="#"> <img
+							src="${pageContext.servletContext.contextPath }/Photoserv?id=${row.MaThongBao}&loai=thongbao"
+							alt="Chania" width="100%" height="250">
+						</a>
+					</div>
+				</c:forEach>
+
 			</div>
 
 			<!-- Controls -->
@@ -197,117 +241,133 @@ SELECT MaThongBao from thongbao where LoaiThongBao= "slide";
 			</a>
 		</div>
 
-		<div class="container" id="thongbao" >
+		<div class="container" id="thongbao">
 			<div class="row">
-				<div class="col-md-6" style="padding-top:10px;padding-left:1px">
+				<div class="col-md-6" style="padding-top: 10px; padding-left: 1px">
 
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Thông Báo</h3>
-					</div>
-					<div class="panel-body">
-						<div>
-							<img alt="" src="Hinh/THONGBAO.png" style="width: 100%; height: 250px;">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Thông Báo</h3>
 						</div>
-						<div class="panel-group" id="accordion" role="tablist"
-							aria-multiselectable="true">
-							
-							
-							<sql:query dataSource="${snapshot}" var="result">
+						<div class="panel-body">
+							<div>
+								<img alt="" src="Hinh/THONGBAO.png"
+									style="width: 100%; height: 250px;">
+							</div>
+							<div class="panel-group" id="accordion" role="tablist"
+								aria-multiselectable="true">
+
+
+								<sql:query dataSource="${snapshot}" var="result">
 SELECT * from thongbao where LoaiThongBao = "Thong bao"
 ORDER BY Ngay DESC;
 </sql:query>
 
-<c:forEach var="row" items="${result.rows}" begin="0" end="5">
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingThree">
-									<h4 class="panel-title"
-										style="font: Arial Black; color: #800080;">
-										<a class="collapsed" role="button" data-toggle="collapse"
-											data-parent="#accordion" href="#<c:out value="${row.MaThongBao}"/>"
-											aria-expanded="false" aria-controls="<c:out value="${row.MaThongBao}"/>"><span
-											class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
-											<c:out value="${row.TieuDe}"/> [<c:out value="${row.Ngay}"/>]</a>
-									</h4>
-								</div>
-								<div id="<c:out value="${row.MaThongBao}"/>" class="panel-collapse collapse"
-									role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body"><c:out value="${row.TomTat}"/></div>
-									<a href="FormThongBao.jsp?mathongbao=${row.MaThongBao}"><strong style="color: blue;">Xem Chi tiết</strong></a>
-								</div>
-							</div></c:forEach>
-							
-						</div>
-					</div>
+								<c:forEach var="row" items="${result.rows}" begin="0" end="5">
+									<div class="panel panel-default">
+										<div class="panel-heading" role="tab" id="headingThree">
+											<h4 class="panel-title"
+												style="font: Arial Black; color: #800080;">
+												<a class="collapsed" role="button" data-toggle="collapse"
+													data-parent="#accordion"
+													href="#<c:out value="${row.MaThongBao}"/>"
+													aria-expanded="false"
+													aria-controls="<c:out value="${row.MaThongBao}"/>"><span
+													class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
+													<c:out value="${row.TieuDe}" /> [<c:out value="${row.Ngay}" />]</a>
+											</h4>
+										</div>
+										<div id="<c:out value="${row.MaThongBao}"/>"
+											class="panel-collapse collapse" role="tabpanel"
+											aria-labelledby="headingThree">
+											<div class="panel-body">
+												<c:out value="${row.TomTat}" />
+											</div>
+											<a href="FormThongBao.jsp?mathongbao=${row.MaThongBao}"><strong
+												style="color: blue;">Xem Chi tiết</strong></a>
+										</div>
+									</div>
+								</c:forEach>
 
-					<nav aria-label="...">
-					<ul class="pager">
-						
-						<li class="next"><a href="thongbaoall.jsp">Xem tất cả</a></li>
-					</ul>
-					</nav>
+							</div>
+						</div>
+
+						<nav aria-label="...">
+						<ul class="pager">
+
+							<li class="next"><a href="thongbaoall.jsp">Xem tất cả</a></li>
+						</ul>
+						</nav>
+
+
+
+					</div>
 
 
 
 				</div>
+				<div class="col-md-6" style="padding-top: 10px;">
 
-
-
-			</div>
-			<div class="col-md-6" style="padding-top:10px;">
-
-				<div class="panel panel-default">
-					<div class="panel-heading" style="background-color:red">
-						<h3 class="panel-title">Sự kiện</h3>
-					</div>
-					<div class="panel-body">
-						<div>
-							<img alt="" src="Hinh/sukien.jpg" style="width: 100%; height: 250px">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: red">
+							<h3 class="panel-title">Sự kiện</h3>
 						</div>
-						<div class="panel-group" id="accordion" role="tablist"
-							aria-multiselectable="true">
-							
-							
-							<sql:query dataSource="${snapshot}" var="result">
+						<div class="panel-body">
+							<div>
+								<img alt="" src="Hinh/sukien.jpg"
+									style="width: 100%; height: 250px">
+							</div>
+							<div class="panel-group" id="accordion" role="tablist"
+								aria-multiselectable="true">
+
+
+								<sql:query dataSource="${snapshot}" var="result">
 SELECT * from thongbao where LoaiThongBao = "Su kien";
 </sql:query>
-<c:forEach var="row" items="${result.rows}" begin="0" end="5">
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingThree">
-									<h4 class="panel-title"
-										style="font: Arial Black; color: #800080;">
-										<a class="collapsed" role="button" data-toggle="collapse"
-											data-parent="#accordion" href="#<c:out value="${row.MaThongBao}"/>"
-											aria-expanded="false" aria-controls="<c:out value="${row.MaThongBao}"/>"><span
-											class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
-											<c:out value="${row.TieuDe}"/> [<c:out value="${row.Ngay}"/>]</a>
-									</h4>
-								</div>
-								<div id="<c:out value="${row.MaThongBao}"/>" class="panel-collapse collapse"
-									role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body"><c:out value="${row.TomTat}"/></div>
-									<a href="FormThongBao.jsp?mathongbao=${row.MaThongBao}"><strong style="color: blue;">Xem Chi tiết</strong></a>
-								</div>
-							</div></c:forEach>
-							
-						</div>
-					</div>
+								<c:forEach var="row" items="${result.rows}" begin="0" end="5">
+									<div class="panel panel-default">
+										<div class="panel-heading" role="tab" id="headingThree">
+											<h4 class="panel-title"
+												style="font: Arial Black; color: #800080;">
+												<a class="collapsed" role="button" data-toggle="collapse"
+													data-parent="#accordion"
+													href="#<c:out value="${row.MaThongBao}"/>"
+													aria-expanded="false"
+													aria-controls="<c:out value="${row.MaThongBao}"/>"><span
+													class="glyphicon glyphicon-pushpin" style="color: #800080;"></span>
+													<c:out value="${row.TieuDe}" /> [<c:out value="${row.Ngay}" />]</a>
+											</h4>
+										</div>
+										<div id="<c:out value="${row.MaThongBao}"/>"
+											class="panel-collapse collapse" role="tabpanel"
+											aria-labelledby="headingThree">
+											<div class="panel-body">
+												<c:out value="${row.TomTat}" />
+											</div>
+											<a href="FormThongBao.jsp?mathongbao=${row.MaThongBao}"><strong
+												style="color: blue;">Xem Chi tiết</strong></a>
+										</div>
+									</div>
+								</c:forEach>
 
-					<nav aria-label="...">
-					<ul class="pager">
-						
-						<li class="next"><a href="thongbaoall.jsp">Xem tất cả<span
-								aria-hidden="true">&rarr;</span></a></li>
-					</ul>
-					</nav>
+							</div>
+						</div>
+
+						<nav aria-label="...">
+						<ul class="pager">
+
+							<li class="next"><a href="thongbaoall.jsp">Xem tất cả<span
+									aria-hidden="true">&rarr;</span></a></li>
+						</ul>
+						</nav>
+
+
+
+					</div>
 
 
 
 				</div>
-
-
-
-			</div>
 			</div>
 		</div>
 
@@ -336,54 +396,54 @@ SELECT * from thongbao where LoaiThongBao = "Su kien";
 
 	</div>
 	</footer>
-	
+
 	<script type="text/javascript">
-	function goToByScroll(id){
-	      // Remove "link" from the ID
-	    id = id.replace("link", "");
-	      // Scroll
-	    $('html,body').animate({
-	        scrollTop: $("#"+id).offset().top},
-	        'slow');
-	}
+		function goToByScroll(id) {
+			// Remove "link" from the ID
+			id = id.replace("link", "");
+			// Scroll
+			$('html,body').animate({
+				scrollTop : $("#" + id).offset().top
+			}, 'slow');
+		}
 
-	$(".navbar-nav>li>.scroll").click(function(e) { 
-	      // Prevent a page reload when a link is pressed
-	    e.preventDefault(); 
-	      // Call the scroll function
-	    goToByScroll(this.id);           
-	});
-$(document).ready(function() {
-	  
-	  $(window).scroll(function () {
-	      //if you hard code, then use console
-	      //.log to determine when you want the 
-	      //nav bar to stick.  
-	      console.log($(window).scrollTop())
-	    if($(window).width()>800){
-	    	if ($(window).scrollTop() > 120) {
-	  	      $('.navbar-default').addClass('navbar-fixed-top');
-	  	    }
-	  	    if ($(window).scrollTop() < 121) {
-	  	      $('.navbar-default').removeClass('navbar-fixed-top');
-	  	    }
-	    }else{
-	    	if ($(window).scrollTop() > 120) {
-		  	      $('.navbar-default').addClass('navbar-fixed-top');
-		  	      
-		  	    }
-		  	    if ($(window).scrollTop() < 121) {
-		  	      $('.navbar-default').removeClass('navbar-fixed-top');
-		  	      
-		  	    }
-	    	
-	    }
-	  });
-	});
-</script>
-<script type="text/javascript" src="js/jsfornav2.js"></script>
+		$(".navbar-nav>li>.scroll").click(function(e) {
+			// Prevent a page reload when a link is pressed
+			e.preventDefault();
+			// Call the scroll function
+			goToByScroll(this.id);
+		});
+		$(document).ready(function() {
+
+			$(window).scroll(function() {
+				//if you hard code, then use console
+				//.log to determine when you want the 
+				//nav bar to stick.  
+				console.log($(window).scrollTop())
+				if ($(window).width() > 800) {
+					if ($(window).scrollTop() > 120) {
+						$('.navbar-default').addClass('navbar-fixed-top');
+					}
+					if ($(window).scrollTop() < 121) {
+						$('.navbar-default').removeClass('navbar-fixed-top');
+					}
+				} else {
+					if ($(window).scrollTop() > 120) {
+						$('.navbar-default').addClass('navbar-fixed-top');
+
+					}
+					if ($(window).scrollTop() < 121) {
+						$('.navbar-default').removeClass('navbar-fixed-top');
+
+					}
+
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript" src="js/jsfornav2.js"></script>
 
 
-<script type="text/javascript" src="js/jsfornav2-1.js"></script>
+	<script type="text/javascript" src="js/jsfornav2-1.js"></script>
 </body>
 </html>
