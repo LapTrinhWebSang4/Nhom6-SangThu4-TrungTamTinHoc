@@ -232,7 +232,8 @@ ORDER BY Ngay DESC;
 								</div>
 								<div id="<c:out value="${row.MaThongBao}"/>" class="panel-collapse collapse"
 									role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body"><c:out value="${row.NoiDung}"/></div>
+									<div class="panel-body"><c:out value="${row.TomTat}"/></div>
+									<a href="FormThongBao.jsp?mathongbao=${row.MaThongBao}"><strong style="color: blue;">Xem Chi tiết</strong></a>
 								</div>
 							</div></c:forEach>
 							
@@ -284,7 +285,8 @@ SELECT * from thongbao where LoaiThongBao = "Su kien";
 								</div>
 								<div id="<c:out value="${row.MaThongBao}"/>" class="panel-collapse collapse"
 									role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body"><c:out value="${row.NoiDung}"/></div>
+									<div class="panel-body"><c:out value="${row.TomTat}"/></div>
+									<a href="FormThongBao.jsp?mathongbao=${row.MaThongBao}"><strong style="color: blue;">Xem Chi tiết</strong></a>
 								</div>
 							</div></c:forEach>
 							

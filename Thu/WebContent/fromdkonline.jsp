@@ -305,10 +305,10 @@ SELECT * from miengiam;
 						<div class="col-md-8">
 							<label for="name" style="color: #00ff00;">Địa chỉ</label>
 							<textarea class="form-control" rows="3" cols="12" name="address"></textarea>
-							<button
+							<!-- <button
 								style="width: 50px; height: 30px; background-color: grey; color: white; float: right;">
 								<span class="glyphicon glyphicon-link"></span>
-							</button>
+							</button> -->
 						</div>
 
 						</row>

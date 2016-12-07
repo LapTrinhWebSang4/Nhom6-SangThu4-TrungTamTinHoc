@@ -118,7 +118,7 @@ a>.glyphicon{
 <body>
 	<jsp:include page="header.jsp" />
 	<div class="container">
-	<div id="list-q"">
+	<div id="list-q" style="min-height: 600px;">
 			<div class="col-md-12" style="padding-top: 10px; padding-left: 1px">
 
 				<div class="panel panel-primary">
@@ -172,7 +172,8 @@ ORDER by Ngay DESC;
 								</div>
 								<div id="<c:out value="${row.MaThongBao}"/>" class="panel-collapse collapse"
 									role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body"><c:out value="${row.NoiDung}"/></div>
+									<div class="panel-body"><c:out value="${row.TomTat}"/></div>
+									<a href="FormThongBao.jsp?mathongbao=${row.MaThongBao}"><strong style="color: blue;">Xem Chi tiết</strong></a>
 								</div>
 							</div>
 							</c:forEach>
