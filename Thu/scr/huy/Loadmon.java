@@ -66,6 +66,7 @@ public class Loadmon extends HttpServlet {
 				String Tid = rs.getString("MaLoaiKhoaHoc");
 				String date = rs.getString("NgayKhaiGiang");
 				String info = rs.getString("GioiThieu");
+				String urlink =rs.getString("url");
 				//String safe = rs.getString("CheDoMienGiam");
 				String cost = rs.getString("HocPhi");
 				String link = "fromdkonline.jsp?loaimonhoc="+Tid+"&id="+id;
@@ -90,7 +91,9 @@ public class Loadmon extends HttpServlet {
 						+"<div>"
 						+ "<h4 style='color: blue;' align='center'>"+ten+"</h4>"
 						+""+info+""							
-						+"</div>"
+						+"<br>"
+						+ "<a href='${pageContext.servletContext.contextPath }/DownloadFile?filename="+urlink+"'><h6 style='color: blue;'>Link kèm theo</h6></a>"
+						+ "</div>"
 						+"<div class='modal-footer'>"
 						+"<button type='button' class='btn btn-block btn-success'"
 						+"data-dismiss='modal'>OK</button>"

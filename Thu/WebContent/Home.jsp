@@ -215,24 +215,24 @@ SELECT MaThongBao from thongbao where LoaiThongBao= "slide";
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
+		<div class="container" style="height: 40px;"></div>
 		<!-- khoa hoc dac biet -->
 		<div class="container">
-			<h3 style="color: red;" align="center">Các Khóa Học Hot Nhất
-				Hiện Nay</h3>
+			<center><font face="Arial Black" size="8px" color="#ff8c1a">Các khóa học hot nhất hiện nay</font></center>
+			<div class="container" style="height: 20px;"></div>
 			<sql:query dataSource="${snapshot}" var="result">
 SELECT * from khoahoc where db=  1;
 </sql:query>
 			<c:forEach var="row" items="${result.rows}">
-
-				<a
-					href="fromdkonline.jsp?loaimonhoc=${row.MaLoaiKhoaHoc}&id=${row.MaKhoaHoc}">
-					<img
-					src="${pageContext.servletContext.contextPath}/Photoserv?id=${row.MaKhoaHoc}&loai=khoahoc"
-					alt="Chania" width="90%" height="200">
-				</a>
-				<br>
-				<div class="container"
-					style="height: 20px; background-corlor: orange;"></div>
+				<div class="col-md-6">
+					<a
+						href="fromdkonline.jsp?loaimonhoc=${row.MaLoaiKhoaHoc}&id=${row.MaKhoaHoc}">
+						<img
+						src="${pageContext.servletContext.contextPath}/Photoserv?id=${row.MaKhoaHoc}&loai=khoahoc"
+						alt="Chania" width="100%" height="200">
+					</a> <br>
+					<div class="container" style="height: 20px;"></div>
+				</div>
 			</c:forEach>
 		</div>
 		<div class="container" id="thongbao">
