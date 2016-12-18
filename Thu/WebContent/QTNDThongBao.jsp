@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
+   <%@taglib uri = "http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html ng-app>
 <head>
@@ -34,7 +37,6 @@
     	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     	<link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
-    	<link rel="stylesheet" type="text/css" href="Asset/headercss.css">
 
 		
 		 
@@ -74,7 +76,8 @@
 	</head>
 	<body ng-init="names=['Các thủ thuật máy tính hay ', 'Lịch Thi Khóa 8', 'Lịch Thi Khóa 7'];" class="no-skin">
 	<!--nav-->
-	
+	<sql:setDataSource var="con" driver ="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/ttth" user="root" password="123456"></sql:setDataSource>
+		<sql:query dataSource="${con }"  sql="select * from thongbao" var="result"></sql:query>
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<img src="Asset/header ttth.jpg" style="width: 100%;height: 120px">
 			<div class="navbar-container ace-save-state" id="navbar-container">
@@ -156,7 +159,7 @@
 						<b class="arrow"></b>
 					</li>
 					<li class="">
-						<a href="static-login.jsp">
+						<a href="login.jsp">
 							<i class="menu-icon fa fa-sign-out"></i>
 							<span class="menu-text"> Đăng xuất </span>
 						</a>
@@ -219,8 +222,9 @@
 													
 															
 														<th class="" tabindex="0" aria-controls="dynamic-table" r>Ngày Post </th>
+														<th class="" tabindex="0" aria-controls="dynamic-table"  > Loại </th>
 														<th class="" tabindex="0" aria-controls="dynamic-table"  > Tiêu Đề </th>
-														<th class="" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="">Chi Tiết </th>
+														<th class="" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="">Xem thông tin </th>
 														<th class="" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="">Lượt xem
 														</th>
 														<th class="" rowspan="1" colspan="1" aria-label="">
@@ -230,31 +234,39 @@
 
 												<tbody>
 
-													
+												<c:forEach var="col" items="${result.rows}">
 												<tr role="row" class="odd">
 														
 
 														<td>
-															17/09/2016
+															<c:out value="${col.Ngay}"></c:out>
 														</td>
 														<td>
-														Các thủ thuật máy tính hay 
+														<c:out value="${col.LoaiThongBao}"></c:out>
+														</td>
+														<td>
+														<c:out value="${col.TieuDe}"></c:out>
 														</td>
 														<td class="hidden-480">
-														<a href="#"> www.ttthhcmute.edu.vn/thuthuat </a>
+														
+															<a class="blue" href="FormThongBao.jsp?mathongbao=<c:out value="${col.MaThongBao}"/>">
+																	<i class="ace-icon fa fa-info-circle bigger-120"></i>
+																</a>
 														</td>
-														<td>25</td>
+														<td><c:out value="${col.LuotXem}"></c:out> </td>
 
 														
 
 														<td>
 															<div class="hidden-sm hidden-xs action-buttons">
 																
-																<a class="green" href="QTNDSua.jsp">
+																<a class="green" href="QTNDSua.jsp?MaThongBao=<c:out value="${col.MaThongBao}"/>">
 																	<i class="ace-icon fa fa-pencil bigger-150"></i>
 																</a>
 
-																<a class="red" href="#">
+																<%int bang=2; %>
+																<a class="red" href="javascript:confirmGo('Sure to delete this record?','delete.jsp?MaTB=<c:out value="${col.MaThongBao}"/>&bang=<%= bang %>')" MaTB="${col.MaThongBao}" >
+																	
 																	<i class="ace-icon fa fa-trash-o bigger-150"></i>
 																</a>
 															</div>
@@ -288,120 +300,8 @@
 															</div>
 														</td>
 													</tr>
-													<tr role="row" class="odd">
-														
-
-														<td>
-															17/09/2016
-														</td>
-														<td>
-														Lịch Thi Khóa 8
-														</td>
-														<td class="hidden-480">
-														<a href="#"> www.ttthhcmute.edu.vn/lichthi </a>
-														</td>
-														<td>50</td>
-
-														
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																
-																<a class="green" href="QTNDSua.jsp">
-																	<i class="ace-icon fa fa-pencil bigger-150"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-150"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
-													<tr role="row" class="odd">
-														
-
-														<td>
-															12/08/2016
-														</td>
-														<td>
-														Lịch Thi Khóa 7 
-														</td>
-														<td class="hidden-480">
-														<a href="#"> www.ttthhcmute.edu.vn/lichthikhoa7 </a>
-														</td>
-														<td>45</td>
-
-														
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																
-																<a class="green" href="QTNDSua.jsp">
-																	<i class="ace-icon fa fa-pencil bigger-150"></i>
-																</a>
-
-																<a class="red" href="QTNDSua.jsp">
-																	<i class="ace-icon fa fa-trash-o bigger-150"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
+													</c:forEach>
+													
 									</tbody>
 								</table>
 							</div>
@@ -450,10 +350,13 @@
     	<script type="text/javascript" src="js/bootstrap.min.js"></script>
     	<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
-		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-		</script>
-
+<script>
+            function confirmGo(m,u) {
+                if ( confirm(m) ) {
+                    window.location = u;
+                }
+            }
+        </script>
 		<!--End Script-->
 	</body>
 </html>

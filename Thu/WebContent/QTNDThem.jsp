@@ -103,7 +103,7 @@
 						class="menu-icon fa fa-user"></i> <span class="menu-text">
 							Thông tin cá nhân </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="static-login.jsp"> <i
+				<li class=""><a href="login.jsp"> <i
 						class="menu-icon fa fa-sign-out"></i> <span class="menu-text">
 							Đăng xuất </span>
 				</a> <b class="arrow"></b></li>
@@ -149,13 +149,13 @@
 
 							<li><a href="tuvan-send.jsp"><strong>Tư
 										vấn-hỏi đáp</strong></a></li>
-							<li><a href="static-login.jsp"><strong>Đăng xuất</strong></a></li>
+							<li><a href="login.jsp"><strong>Đăng xuất</strong></a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="page-content">
 				<div class="space-32"></div>
-					<div class="form-group" style="padding-top: 25px">
+					<form style="padding-top: 25px" action="InsertTB" method="post" enctype="multipart/form-data">
 						<div class="col-sm-12 ">
 
 							<div class="panel panel-primary">
@@ -166,61 +166,97 @@
 								</div>
 
 								<div class="col-md-13 well">
+								
+									<div class="col-md-7">
+									<div class="form-group">
+										<label for="inputlg">Mã Thông Báo: </label> <input
+											class="form-control" id="mathongbao" type="text" name="mathongbao" onkeyup="changetext()"
+											>
 
+									</div>
 									<div class="form-group">
 										<label for="inputlg">Tên Tiêu Đề: </label> <input
-											class="form-control" id="inputtd" type="text"
+											class="form-control" id="tieude" type="text" name="tieude"
 											placeholder="Tiêu đề bài báo...">
 
 									</div>
-
-
 									<div class="form-group">
-										<label for="inputlg">Nội Dung:</label>
-										<textarea class="form-control" rows="15" id="comment"></textarea>
+													<label for="inputlg">Loại Thông Báo</label> <select
+														class="form-control" name="box" id="box" >
+
+														<option>slide</option>
+														<option >Thong Bao</option>
+														<option>Su Kien</option>
+
+													</select>
+												</div>
+									<div class="form-group">
+										<label for="inputlg">Tóm Tắt:</label>
+										<textarea class="form-control" rows="6" id="tomtat" name="tomtat"></textarea>
 									</div>
+									</div>
+									<div class="col-md-5">
+									<img src="Hinh/THONGBAO.png" class="img-rounded" alt="" width="150" height="100" id="imgID">
+									<div class="fileUpload btn btn-default">
+										
+											<input id="uploadBtn" type="file" onchange="onFileSelected(event)" name="photo" class="upload">
+	
+											
+												
+											</div>
+										
+											
+										</div>
+									
+									
+								
+										
+									<div class="form-group" style="padding-top: 380px">
+									
+										<label for="inputlg">Nội Dung:</label>
+										<textarea class="form-control" rows="15" id="noidung" name="noidung"></textarea>
+									
 
-									<ul class="pagination">
-										<li><a href="#"> <i class="fa fa-bold"
-												aria-hidden="true"></i>
-										</a></li>
-										<li><a href="#"> <i class="fa fa-italic"
-												aria-hidden="true"></i>
-
-										</a></li>
-										<li><a href="#"> <i class="fa fa-underline"
-												aria-hidden="true"></i>
-										</a></li>
-										<li><a href="#"> <i class="fa fa-paint-brush"
-												aria-hidden="true"></i>
-										</a></li>
-										<li><a href="#"> <i class="fa fa-file-image-o"
-												aria-hidden="true"> </i>
-										</a></li>
-										<li><a href="#"> <i class="fa fa-file-video-o"
-												aria-hidden="true"></i>
-										</a></li>
-
-									</ul>
-
+									
+									
 
 									<div class="form-group"
 										style="text-align: left; padding-top: 10px; padding-bottom: 10px">
-										<a href="#" class="btn btn-success" role="button" id="btntao">
-											Tạo Thông báo </a> <a href="QTNDThongBao.jsp"
+										<button type="submit" class="btn btn-primary " id="taotb">
+											Tạo Thông báo </button> 
+											<a href="QTNDThongBao.jsp"
 											class="btn btn-danger" role="button"> Hủy bỏ </a>
 									</div>
+								
 								</div>
-
 							</div>
-						</div>
-					</div>
+								</div>
+							</div>
+					
+					</form>
+					
+					
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- /.main-container -->
+	<script type="text/javascript">
+		function onFileSelected(event) {
+			var selectedFile = event.target.files[0];
+			var reader = new FileReader();
 
+			var imgtag = document.getElementById("imgID");
+			imgtag.title = selectedFile.name;
+
+			reader.onload = function(event) {
+				imgtag.src = event.target.result;
+			};
+
+			reader.readAsDataURL(selectedFile);
+			
+		}
+	</script>
 
 
 
@@ -235,6 +271,31 @@
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 	<script type="text/javascript">
+	function changetext() {
+		var MaTB = $("#mathongbao").val();
+		$.get('LayTTTB',{MaTB: MaTB},function(response){
+			
+			if( response.MaThongBao == $("#mathongbao").val())
+				{
+				var div = $("#mathongbao").closest("div");
+				div.addClass("has-error")
+				alert(response.MaThongBao);
+				$("#no").remove();
+				div.append('<small class="form-text text-muted" id="no">Mã thông báo bị trùng vui lòng chọn mã khác</small>');
+				}
+			else {
+				
+				var div = $("#mathongbao").closest("div");
+				div.removeClass("has-error");
+				$("#no").remove();
+				
+				
+			}
+			
+			
+			
+		})
+	};
 		function validate(id)
 		{
 			if($("#"+id).val()==null || $("#"+id).val()=="")
@@ -250,32 +311,49 @@
 				return true;
 			}
 		}
-		function reset(){
-   		document.getElementById("inputtk").reset();
-   	}
+		
 		$(document).ready(
 				function()
 				{
 
-					$("#btntao").click(function()
+					$("#taotb").click(function()
 					{
 
-						if(!validate("inputtd"))
+						if(!validate("mathongbao"))
 						{
 							return false;
 						}
-						if(!validate("comment"))
+						if(!validate("tieude"))
+						{
+							return false;
+						}
+						if(!validate("noidung"))
+						{
+							return false;
+						}
+						if(!validate("tomtat"))
 						{
 							return false;
 						}
 						
-						$("#inputtd").val("");
-						$("#comment").val("");
+						
 						
 					});
-				}
-			);
+				});
 		</script>
+		<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script>
+  		tinymce.init({ 
+  			selector: "textarea[name='noidung']",
+  			plugins: ["link textcolor paste "],
+  		  menubar: "insert edit",
+  		  toolbar: ["link forecolor backcolor autolink paste alignleft aligncenter alignright"],
+  		default_link_target: "_blank"
+  			});
+  		
+  </script>
+
+
 	
 
 </body>

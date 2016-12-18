@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+	<%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
+   <%@taglib uri = "http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+   <%@ page import="Model.TaiKhoan" %>
+
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -55,7 +61,20 @@
 			</button>
 		</div>
 	</div>
+<%
+	session = request.getSession(false);
+	TaiKhoan tk = (TaiKhoan)session.getAttribute("taikhoan");
+	String tentaikhoan = tk.getTaikhoan();
+	String matkhau = tk.getMatKhau();	
+	String pk=tentaikhoan;
+	
+%>	
 
+
+
+
+<sql:setDataSource var="con" driver ="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/ttth" user="root" password="123456"></sql:setDataSource>
+		<sql:query dataSource="${con }"   var="result">select * from taikhoan where Taikhoan = "<%= pk %>" ;</sql:query>
 
 
 	<div class="main-container ace-save-state" id="main-container">
@@ -96,7 +115,7 @@
 						class="menu-icon fa fa-user"></i> <span class="menu-text">
 							Thông tin cá nhân </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="static-login.jsp"> <i
+				<li class=""><a href="login.jsp"> <i
 						class="menu-icon fa fa-sign-out"></i> <span class="menu-text">
 							Đăng xuất </span>
 				</a> <b class="arrow"></b></li>
@@ -113,39 +132,7 @@
 			</div>
 		</div>
 		<div class="main-content">
-		
-			<div class="main-content-inner">
-				<div class="row">
-					<div class="container-fluid">
-						<ul class="nav nav-justified w3-pale-blue">
-							<li><a href="Home.jsp"><strong>Trang chủ</strong></a></li>
-							<li><a href="thongbao.jsp"><strong>Thông báo</strong></a></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><strong>Giới thiệu</strong><span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="thungo.jsp"><strong>Thư ngỏ</strong></a></li>
-									<li><a href="giangvien.jsp"><strong>Đội ngủ
-												giản viên</strong></a></li>
-									<li><a href="nhiemvu.jsp"><strong>Chức năng
-												nhiệm vụ</strong></a></li>
-								</ul></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><strong>Lịch khai
-										giảng</strong><span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="Dangkiwindows-win.jsp"><strong>Windows
-												1 tháng 10</strong></a></li>
-									<li><a href="Dangkiandroid-cban.jsp"><strong>Android
-												1 tháng 10</strong></a></li>
-								</ul></li>
-
-							<li><a href="tuvan-send.jsp"><strong>Tư
-										vấn-hỏi đáp</strong></a></li>
-							<li><a href="static-login.jsp"><strong>Đăng xuất</strong></a></li>
-						</ul>
-					</div>
-				</div>
+			
 				<div class="page-content">
 				
 					<div class="page-header" >
@@ -174,12 +161,14 @@
 
 											</div>
 
-
+									<c:forEach var="col" items="${result.rows}">
 											<div class="profile-contact-info">
-												<div class="profile-contact-links align-centers">
-													<a href="#" class="btn btn-link"> <strong>Nguyen
-															Van T</strong>
+												<div class="profile-contact-links align-centers" >
+												
+													<a href="#" class="btn btn-link" > <strong><c:out
+												value="${col.TenThanhVien}" /></strong>
 													</a>
+													
 												</div>
 
 												<div class="space-6"></div>
@@ -190,88 +179,63 @@
 											<div class="hr hr12 dotted"></div>
 
 											<div class="clearfix">
-												<strong>Quản Trị Nôi Dung</strong>
+												<strong><c:out
+												value="${col.Quyen}" /></strong>
 											</div>
 
 											<div class="hr hr16 dotted"></div>
 										</div>
-
+									</c:forEach>
 										<div class="col-xs-12 col-sm-9">
 
 
 											
 
-											<div class="profile-user-info profile-user-info-striped">
+											
+
+
+
+
+
+
+
+													
+<c:forEach var="col" items="${result.rows}">
+<div class="profile-user-info profile-user-info-striped">
 												<div class="profile-info-row">
 													<div class="profile-info-name">Họ và tên:</div>
 
 													<div class="profile-info-value">
 														<div class="align-left">
-															<span class="editable editable-click" id="username">Nguyễn
-																Văn T </span> <a href="#" class="tooltip-success pull-right"
-																data-rel="tooltip" title="" data-original-title="Edit">
-																<span class="green"> <i
-																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-															</span>
-															</a>
+															<span class="editable editable-click" id="username"> </span> <c:out
+												value="${col.TenThanhVien}" />
 
 
 														</div>
-
-
-
-
-
-
-
-													</div>
+														</div>
 												</div>
-
 												<div class="profile-info-row">
 													<div class="profile-info-name">Địa chỉ</div>
 
 													<div class="profile-info-value">
 
 														<div class="align-left">
-															<span class="editable editable-click" id="country">Việt
-																Nam</span> <span class="editable editable-click" id="city">TP.Hồ
-																Chí Minh</span> <a href="#" class="tooltip-success pull-right"
-																data-rel="tooltip" title="" data-original-title="Edit">
-																<span class="green"> <i
-																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-															</span>
-															</a>
+															<span class="editable editable-click" id="diachi"><c:out
+												value="${col.DiaChi}" />
+													 
 														</div>
 													</div>
 												</div>
 
-												<div class="profile-info-row">
-													<div class="profile-info-name">Tuổi</div>
-
-													<div class="profile-info-value">
-														<div class="align-left">
-															<span class="editable editable-click" id="age">38</span>
-															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
-																title="" data-original-title="Edit"> <span
-																class="green"> <i
-																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-															</span>
-															</a>
-														</div>
-													</div>
-												</div>
+												
 												<div class="profile-info-row">
 													<div class="profile-info-name">Số CMND</div>
 
 													<div class="profile-info-value">
 														<div class="align-left">
-															<span class="editable editable-click" id="signup">07986878</span>
-															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
-																title="" data-original-title="Edit"> <span
-																class="green"> <i
-																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-															</span>
-															</a>
+															<span class="editable editable-click" id="signup"><c:out
+												value="${col.SoCMND}" /></span>
+															
 														</div>
 													</div>
 												</div>
@@ -280,13 +244,9 @@
 
 													<div class="profile-info-value">
 														<div class="align-left">
-															<span class="editable editable-click" id="signup">1996/06/20</span>
-															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
-																title="" data-original-title="Edit"> <span
-																class="green"> <i
-																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-															</span>
-															</a>
+															<span class="editable editable-click" id="signup"><c:out
+												value="${col.NgaySinh}" /></span>
+															
 														</div>
 													</div>
 												</div>
@@ -296,13 +256,10 @@
 
 													<div class="profile-info-value">
 														<div class="align-left">
-															<span class="editable editable-click" id="signup">2010/06/20</span>
-															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
-																title="" data-original-title="Edit"> <span
-																class="green"> <i
-																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-															</span>
-															</a>
+															<span class="editable editable-click" id="signup"><c:out
+												value="${col.Ngayvaolam}" /></span>
+															
+															
 														</div>
 													</div>
 												</div>
@@ -311,13 +268,10 @@
 
 													<div class="profile-info-value">
 														<div class="align-left">
-															<span class="editable editable-click" id="signup">2625634525</span>
-															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
-																title="" data-original-title="Edit"> <span
-																class="green"> <i
-																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-															</span>
-															</a>
+															<span class="editable editable-click" id="signup"><c:out
+												value="${col.Sodt}" /></span>
+															
+															
 														</div>
 													</div>
 												</div>
@@ -326,21 +280,99 @@
 
 													<div class="profile-info-value">
 														<div class="align-left">
-															<span class="editable editable-click" id="signup">NVT@gmail.com</span>
-															<a href="#" class="tooltip-success pull-right" data-rel="tooltip"
-																title="" data-original-title="Edit"> <span
-																class="green"> <i
-																	class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-															</span>
-															</a>
+															<span class="editable editable-click" id="signup"><c:out
+												value="${col.Email}" /></span>
+															
+															
 														</div>
 													</div>
 												</div>
 											</div>
-
+</c:forEach>
 											<div class="space-20"></div>
 											<div id="group-button" class="center">
-
+												<span class="green">
+												<button button type="button" class="btn btn-sm btn-success " data-toggle="modal" data-target="#my"> Sửa Thông Tin
+												 <i class="ace-icon fa fa-pencil-square-o max"></i>
+															</span>
+												</button>
+												<div class="modal fade" id="my" role="dialog">
+													    <div class="modal-dialog">
+													    
+													      <!-- Modal content-->
+													      <div class="modal-content">
+													        <div class="modal-header">
+													          <button type="button" class="close" data-dismiss="modal">&times;</button>
+													          <h4 style="color: #f5f7fa;font-size: 20px;"><strong>Thay Đổi Thông Tin</strong></h4>
+													        </div>
+													        <div class="modal-body">
+													        <c:forEach var="col" items="${result.rows}">
+													        
+													        <form class="form-horizontal" action="update.jsp" method="post">
+													        <div class="form-group">
+																    <label for="input1" class="col-sm-3 control-label">Họ Và Tên</label>
+																    <div class="col-sm-7">
+																      <input type="text" class="form-control" id="in1" value="${col.TenThanhVien}" name="name">
+																    </div>
+																  </div>
+													          <div class="form-group">
+																    <label for="input1" class="col-sm-3 control-label">Địa Chỉ</label>
+																    <div class="col-sm-7">
+																      <input type="text" class="form-control" id="in2" value="${col.DiaChi}" name="diachi">
+																    </div>
+																  </div>
+																  <div class="form-group">
+																    <label for="input2" class="col-sm-3 control-label">Số CMND </label>
+																    <div class="col-sm-7">
+																      <input type="text" class="form-control" id="in3" value="${col.SoCMND}" name="cmnd">
+																    </div>
+																  </div>
+																  <div class="form-group">
+																    <label for="input3" class="col-sm-3 control-label">Ngày Sinh </label>
+																    <div class="col-sm-7">
+																      <input type="text" class="form-control" id="in4" value="${col.NgaySinh}" name="ngaysinh">
+																    </div>
+																  </div>
+																  <div class="form-group">
+																    <label for="input3" class="col-sm-3 control-label">Số Điện Thoại</label>
+																    <div class="col-sm-7">
+																      <input type="text" class="form-control" id="in5" value="${col.SoDT}" name="sodt">
+																    </div>
+																  </div>
+																  
+																  <div class="form-group">
+																    <label for="input3" class="col-sm-3 control-label">Email</label>
+																    <div class="col-sm-7">
+																      <input type="text" class="form-control" id="in6" value="${col.Email}" name="email">
+																    </div>
+																  </div>
+																  <div class="hide">
+																    <label for="input3" class="col-sm-3 control-label">Số Điện Thoại</label>
+																    <div class="col-sm-7">
+																      <input type="text" class="form-control" id="in6" value="${col.Taikhoan}" name="id">
+																    </div>
+																  </div>
+																 <div class="hide">
+																    <label for="input1" class="col-sm-3 control-label"></label>
+																    <div class="col-sm-7">
+																      <input type="text" class="form-control" name="bang" value="${1}" >
+																    </div>
+																  </div>
+																 
+																  <input class="btn btn-info" type="submit" value="Xác nhận" id="submi"/>
+																  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+																  </form>
+																  </c:forEach>
+																  <div class="modal-footer">
+																  
+															        
+															      </div>
+													        </div>
+													        
+													      </div>
+													      
+													    </div>
+													  </div>
 												<button button type="button" class="btn btn-sm btn-success " data-toggle="modal" data-target="#myModal">Đổi
 													mật khẩu</button>
 													<div class="modal fade" id="myModal" role="dialog">
@@ -352,39 +384,52 @@
 													          <button type="button" class="close" data-dismiss="modal">&times;</button>
 													          <h4 style="color: #f5f7fa;font-size: 20px;"><strong>Đổi mật khẩu </strong></h4>
 													        </div>
-													        <div class="modal-body">
-													        <form class="form-horizontal">
+													       <div class="modal-body">
+													       
 													        
+													        <form class="form-horizontal" action="update.jsp" method="post">
+													        <div class="form-group">
+																    <label for="input1" class="col-sm-3 control-label">Mật khẩu cũ</label>
+																    <div class="col-sm-7">
+																      <input type="password" class="form-control" id="pass1" >
+																    </div>
+																  </div>
 													          <div class="form-group">
-																    <label for="input1" class="col-sm-3 control-label">Mật Khẩu cũ</label>
+																    <label for="input1" class="col-sm-3 control-label">Mật khẩu mới</label>
 																    <div class="col-sm-7">
-																      <input type="password" class="form-control" id="input1" >
+																      <input type="password" class="form-control" id="pass2"  name="matkhau">
 																    </div>
 																  </div>
 																  <div class="form-group">
-																    <label for="input2" class="col-sm-3 control-label">Mật Khẩu mới </label>
+																    <label for="input1" class="col-sm-3 control-label">Xác nhận mật khẩu</label>
 																    <div class="col-sm-7">
-																      <input type="password" class="form-control" id="input2" >
+																      <input type="password" class="form-control" id="pass3"  >
 																    </div>
 																  </div>
-																  <div class="form-group">
-																    <label for="input3" class="col-sm-3 control-label">Xác nhận mật khẩu mới </label>
+																  <div class="hide">
+																    
+																      <input type="text" class="form-control" name="id" value="<%= pk%>" >
+																    </div>
+																 <div class="hide">
+																    <label for="input1" class="col-sm-3 control-label"></label>
 																    <div class="col-sm-7">
-																      <input type="password" class="form-control" id="input3" >
+																      <input type="text" class="form-control" name="bang" value="${2}" >
 																    </div>
 																  </div>
+																  <input class="btn btn-info" type="submit" value="Xác nhận" id="submit"/>
+																  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 																  </form>
+																  
+																  
 													        </div>
-													        <div class="modal-footer">
-													        <button type="button" class="btn btn-info"  id="xn">Xác nhận</button>
-													          <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
-													        </div>
+													       
 													      </div>
 													      
 													    </div>
 													  </div>
 												<button type="button" class="btn btn-sm btn-success">Cập
 													nhật</button>
+													
 											</div>
 											<div class="hr hr2 hr-double"></div>
 
@@ -398,7 +443,11 @@
 						</div>
 					</div>
 				</div>
-
+			<div class="hide">
+				<input type="text" class="form-control" id="mk" value="<%= matkhau%>">
+					
+			</div>
+			
 			</div>
 			<!-- /.main-container -->
 
@@ -428,7 +477,42 @@
 					return true;
 				}
 			}
-			
+			function ktmkcu(id,id2)
+			{
+				if($("#"+id).val()!=$("#"+id2).val())
+				{
+					var div = $("#"+id).closest("div");
+					div.addClass(" has-error ")
+					
+					div.append('<small class="form-text text-muted" id="no1">Mật khẩu cũ không chính xác</small>');
+
+					
+					return false;
+				}else {
+					var div = $("#"+id).closest("div");
+					div.removeClass(" has-error ")
+					$("#no1").remove();
+					return true;
+				}
+				
+			}
+			function ktmkmoi(id1,id2)
+			{
+				if($("#"+id1).val()!=$("#"+id2).val())
+				{
+					var div = $("#"+id2).closest("div");
+					div.addClass(" has-error ")
+					$("#no").remove();
+					div.append('<small class="form-text text-muted" id="no">Mật khẩu xác nhận không trùng với mật khẩu mới</small>');
+					return false;
+				}
+				else {
+					var div = $("#"+id2).closest("div");
+					div.removeClass(" has-error ")
+					$("#no").remove();
+					return true;
+				}
+			}
 			$(document).ready(
 					function()
 					{
@@ -448,13 +532,73 @@
 							{
 								return false;
 							}
+							
+							
 							$("#input1").val("");
 							$("#input2").val("");
 							$("#input3").val("");
 							
 						});
+						$("#submi").click(function()
+								{
+							if(!validate("in1"))
+							{
+								return false;
+							}
+							if(!validate("in2"))
+							{
+								return false;
+							}
+							if(!validate("in3"))
+							{
+								return false;
+							}
+							if(!validate("in4"))
+							{
+								return false;
+							}
+							if(!validate("in5"))
+							{
+								return false;
+							}
+								});
+						
+						$("#submit").click(function()
+								{
+							if(!validate("pass1"))
+							{
+								
+								return false;
+							}
+							if(!validate("pass2"))
+							{
+								return false;
+							}
+							if(!validate("pass3"))
+							{
+								return false;
+							}
+							if(!ktmkcu("pass1","mk"))
+							{
+								return false;
+							}
+							if(!ktmkmoi("pass2","pass3"))
+							{
+								return false;
+							}
+							
+							
+								});
+					
 					}
 				);
 		</script>
+		<script>
+            function confirmGo(m,u) {
+                if ( confirm(m) ) {
+                    window.location = u;
+                }
+            }
+        </script>
 </body>
 </html>

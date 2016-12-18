@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,7 +43,13 @@
 </head>
 <body class="no-skin">
 	<!--nav-->
-
+	<sql:setDataSource var="dbsource" driver="com.mysql.jdbc.Driver"
+                           url="jdbc:mysql://localhost/ttth"
+                           user="root"  password="kien2509"/>
+                       
+		       <sql:query dataSource="${dbsource }"  var="result">SELECT * FROM thongbao
+		            WHERE MaThongBao =?;
+            <sql:param value='${param.MaThongBao}' /></sql:query>
 	<div id="navbar" class="navbar navbar-default          ace-save-state">
 		<img src="Asset/header ttth.jpg" style="width: 100%; height: 120px">
 		<div class="navbar-container ace-save-state" id="navbar-container">
@@ -103,7 +111,7 @@
 						class="menu-icon fa fa-user"></i> <span class="menu-text">
 							Thông tin cá nhân </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="static-login.jsp"> <i
+				<li class=""><a href="login.jsp"> <i
 						class="menu-icon fa fa-sign-out"></i> <span class="menu-text">
 							Đăng xuất </span>
 				</a> <b class="arrow"></b></li>
@@ -147,76 +155,140 @@
 								</ul></li>
 
 							<li><a href="tuvan-send.jsp">Tư vấn-hỏi đáp</a></li>
-							<li><a href="static-login.jsp">Đăng xuất</a></li>
+							<li><a href="login.jsp">Đăng xuất</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="page-content">
 				<div class="space-32"></div>
-			
-					<div class="form-group" style="padding-top: 25px">
+				<c:forEach var="col" items="${result.rows}">
+					<form style="padding-top: 25px" action="UpdateTB" method="post" enctype="multipart/form-data">
 						<div class="col-sm-12 ">
 
 							<div class="panel panel-primary">
 								<div class="panel-heading" style="color: #f6bb42">
 									<h3>
-										<Strong>Chỉnh sửa thông báo</Strong>
+										<Strong>Sửa Thông Báo</Strong>
 									</h3>
 								</div>
 
 								<div class="col-md-13 well">
-
+								
+									<div class="col-md-7">
 									<div class="form-group">
-										<label for="inputtd">Tên Tiêu Đề: </label> <input
-											class="form-control" id="inputtd" type="text" placeholder=""
-											value="Các thủ Thuật Máy Tính">
+										<label for="inputlg">Mã Thông Báo: </label> <input
+											class="form-control" id="mathongbao" type="text"  onkeyup="changetext()" disabled
+											value="${col.MaThongBao}">
 
 									</div>
+									<div class="hide">
+										 <input
+											class="form-control" id="mathongbao" type="text" name="mathongbao" " 
+											value="${col.MaThongBao}">
 
-
+									</div>
 									<div class="form-group">
+										<label for="inputlg">Tên Tiêu Đề: </label> <input
+											class="form-control" id="tieude" type="text" name="tieude"
+											value="${col.TieuDe}">
+
+									</div>
+									<c:if test="${col.LoaiThongBao =='SuKien'}">
+												<div class="form-group">
+													<label for="inputlg">Loại Thông Báo </label> <select
+														class="form-control" name="box" onchange="changefun();" id="box">
+
+														<option>slide</option>
+														<option selected="selected">SuKien</option>
+														<option>Thong Bao</option>
+
+													</select>
+
+
+
+												</div>
+												
+												
+												</c:if>
+												
+												<c:if test="${col.LoaiThongBao =='slide'}">
+												<div class="form-group">
+													<label for="inputlg">Loại Thông Báo </label> 
+													<select class="form-control" name="box" onchange="changefun();" id="box">
+
+														<option selected="selected">slide</option>
+														<option >Su Kien</option>
+														<option>Thong Bao</option>
+
+													</select>
+
+
+
+												</div>
+												
+												</c:if>
+												<c:if test="${col.LoaiThongBao =='ThongBao'}">
+												<div class="form-group">
+													<label for="inputlg">Loại Thông Báo</label>
+													 <select class="form-control" name="box" onchange="changefun();" id="box">
+
+														<option>slide</option>
+														<option >Su Kien</option>
+														<option selected="selected">ThongBao</option>
+
+													</select>
+
+
+
+												</div>
+												
+												</c:if>
+									<div class="form-group">
+										<label for="inputlg">Tóm Tắt:</label>
+										<textarea class="form-control" rows="6" id="tomtat" name="tomtat" ><c:out  value="${col.TomTat}" ></c:out></textarea>
+									</div>
+									</div>
+									<div class="col-md-5">
+									<img src="${pageContext.servletContext.contextPath }/GetImageThongBao?mathongbao=${col.MaThongBao}" class="img-rounded" alt="" width="150" height="100" id="imgID">
+									<div class="fileUpload btn btn-default">
+										
+											<input id="uploadBtn" type="file" onchange="onFileSelected(event)" name="photo" class="upload">
+	
+											
+												
+											</div>
+										
+											
+										</div>
+									
+									
+								
+										
+									<div class="form-group" style="padding-top: 380px">
+									
 										<label for="inputlg">Nội Dung:</label>
-										<textarea class="form-control" rows="15" id="comment">*Thủ Thuật 1 : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-*Thủ Thuật 2 : bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</textarea>
+										<textarea class="form-control" rows="15" id="noidung" name="noidung" ><c:out  value="${col.NoiDung}" ></c:out></textarea>
+									
 
-									</div>
-
-
-									<ul class="pagination">
-										<li><a href="#"> <i class="fa fa-bold"
-												aria-hidden="true"></i>
-										</a></li>
-										<li><a href="#"> <i class="fa fa-italic"
-												aria-hidden="true"></i>
-
-										</a></li>
-										<li><a href="#"> <i class="fa fa-underline"
-												aria-hidden="true"></i>
-										</a></li>
-										<li><a href="#"> <i class="fa fa-paint-brush"
-												aria-hidden="true"></i>
-										</a></li>
-										<li><a href="#"> <i class="fa fa-file-image-o"
-												aria-hidden="true"> </i>
-										</a></li>
-										<li><a href="#"> <i class="fa fa-file-video-o"
-												aria-hidden="true"></i>
-										</a></li>
-
-									</ul>
-
+									
+									
 
 									<div class="form-group"
 										style="text-align: left; padding-top: 10px; padding-bottom: 10px">
-										<a href="#" class="btn btn-success" role="button" id="btntao">
-											Hoàn Tất </a> <a href="QTNDThongBao.jsp" class="btn btn-danger"
-											role="button"> Hủy bỏ </a>
+										<button type="submit" class="btn btn-primary " id="taotb">
+											Hoàn Thành </button> 
+											<a href="QTNDThongBao.jsp"
+											class="btn btn-danger" role="button"> Hủy bỏ </a>
 									</div>
+								
 								</div>
-
 							</div>
-						</div>
-					</div>
+								</div>
+							</div>
+					
+					</form>
+					</c:forEach>
+					
 				</div>
 			</div>
 		</div>
@@ -236,6 +308,22 @@
 	<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
+		<script type="text/javascript">
+		function onFileSelected(event) {
+			var selectedFile = event.target.files[0];
+			var reader = new FileReader();
+
+			var imgtag = document.getElementById("imgID");
+			imgtag.title = selectedFile.name;
+
+			reader.onload = function(event) {
+				imgtag.src = event.target.result;
+			};
+
+			reader.readAsDataURL(selectedFile);
+			
+		}
+	</script>
 	<script type="text/javascript">
 		function validate(id)
 		{
@@ -281,5 +369,17 @@
 				}
 			);
 		</script>
+		<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script>
+  		tinymce.init({ 
+  			selector: "textarea",
+  			plugins: ["link textcolor paste "],
+  		  menubar: "insert edit",
+  		  toolbar: ["link forecolor backcolor autolink paste alignleft aligncenter alignright"],
+  		default_link_target: "_blank"
+  			});
+  		
+  </script>
+
 </body>
 </html>
