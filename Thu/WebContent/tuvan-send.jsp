@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://localhost/ttth" user="root" password="1234" />
+	url="jdbc:mysql://localhost/ttth" user="root" password="kien2509" />
 
 <title>Câu hỏi-tư vấn</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -116,6 +116,81 @@ a>.glyphicon {
 	color: #0082c8;
 	text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px black;
 }
+.chat {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.img-circle {
+	bottom: 0;
+}
+
+.chat li {
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li.left .chat-body {
+	margin-left: 60px;
+}
+
+.chat li.right .chat-body {
+	margin-right: 60px;
+}
+
+.img-circle {
+	bottom: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	outline: none;
+}
+
+.panel-header-closed-to-bottom {
+	bottom: 0 !important;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+.box-chat {
+	height: 400px;
+	width: 300px;
+	right: 60px;
+	bottom: -50px;
+	position: fixed;
+}
+
+.chat li .chat-body p {
+	margin: 0;
+	color: #777777;
+}
+
+.panel .slidedown .glyphicon, .chat .glyphicon {
+	margin-right: 5px;
+}
+
+.list-user-online {
+	list-style-type: none;
+	padding-left: 0;
+	margin-left: 0;
+	outline: none;
+	left: 0;
+}
+
+.list-user-online li {
+	color: white;
+}
+
+.list-user-online li a:hover {
+	background: #337ab7;
+	cursor: pointer;
+}
+
+.panel-body {
+	overflow-y: scroll;
+	height: 250px;
+}
 </style>
 
 <script
@@ -148,22 +223,8 @@ a>.glyphicon {
 <link rel="stylesheet" href="css/w3.css">
 </head>
 <body>
-	<div style="right: 0px; bottom: 125px; position: fixed;" id="icon-chat">
+	<div style="right: 0px; bottom: 125px; position: fixed;z-index:1000;" id="icon-chat">
 		<img src="element/chat.gif" height="100" width="100" />
-	</div>
-	<div
-		style="bottom: 40px; right: 50px; position: fixed; display: none; width: 170px; height: 240px;"
-		id="chat-box">
-		<div style="background-color: lightblue; height: 20px;">
-			<h4 align="center">Tư vấn</h4>
-		</div>
-		<div
-			style="background-color: white; height: 200px; border: solid 1px blue">
-			TTV: Xin chào, tôi có thể giúp gì cho bạn</div>
-
-		<input type="text" name="chat"
-			style="height: 20px; width: 170px; border: solid 1px blue;"
-			placeholder="chat" />
 	</div>
 	<jsp:include page="header.jsp" />
 	<div class="container-fluid">
@@ -355,6 +416,46 @@ ORDER by Ngay DESC;
 
 		</div>
 	</div>
+	<div class="box-chat" style="display:none;">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-comment"></span> Chat
+				<div class="btn-group pull-right">
+					<button type="button" id="callbtn" onclick="CallClick(this.id)"
+						class="btn btn-default btn-xs">
+						<span class="glyphicon glyphicon-phone-alt"></span>
+					</button>
+					<button type="button" id="minimizebtn"
+						class="btn btn-default btn-xs">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+					<button type="button"
+						class="btn btn-default btn-xs dropdown-toggle"
+						data-toggle="dropdown">
+						<span class="glyphicon glyphicon-chevron-down"></span>
+					</button>
+					<ul class="dropdown-menu slidedown list-user-online">
+						
+					</ul>
+				</div>
+			</div>
+			<div class="panel-body" id="hide-element">
+				<ul class="chat">
+					
+					
+				</ul>
+			</div>
+			<div class="panel-footer" id="hide-element">
+				<div class="input-group">
+					<input id="btn-input" type="text" class="form-control input-sm"
+						placeholder="Type your message here..."> <span
+						class="input-group-btn"> <input type="button" value="Send"
+						class="btn btn-warning btn-sm" id="btn-chat"> Send</input>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
 	<footer
 		style="background-color: #0082c8; color: white; padding-top: 25px;">
 	<div class="container">
@@ -379,10 +480,20 @@ ORDER by Ngay DESC;
 
 	</div>
 	</footer>
-
+	<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
 	<script type="text/javascript" src="js/jsfornav2.js"></script>
-
+	<script type="text/javascript" src="js/guestchat.js"></script>
 
 	<script type="text/javascript" src="js/jsfornav2-1.js"></script>
+	<script type="text/javascript">
+		$("#icon-chat").click(function(e){
+			e.preventDefault();
+			$(".box-chat").toggle("slow");
+		});
+		$("#minimizebtn").click(function(e){
+			e.preventDefault();
+			$(".box-chat").toggle("slow");
+		});
+	</script>
 </body>
 </html>

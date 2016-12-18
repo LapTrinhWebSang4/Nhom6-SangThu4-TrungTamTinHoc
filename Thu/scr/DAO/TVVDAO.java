@@ -277,6 +277,39 @@ public class TVVDAO {
 		
 		return  lstkhoahoc;
 	}
+	public static List<KhoaHoc> SearchKhoaHoc(String q){
+		List<KhoaHoc> lstkhoahoc = new ArrayList<KhoaHoc>();
+		Connection conn = DatabaseManagement.getConnection();
+		try {
+			PreparedStatement pst = conn.prepareStatement("select * from khoahoc where TenKhoaHoc like '%"+q+"%'");
+			ResultSet rs;
+			rs = pst.executeQuery();
+			while(rs.next()){
+				lstkhoahoc.add( new KhoaHoc(rs.getString("MaKhoaHoc"),
+						rs.getString("TenKhoaHoc"),
+						rs.getDate("NgayKhaiGiang"),
+						rs.getString("GioiThieu"),
+						rs.getDouble("HocPhi"),
+						rs.getString("MaLoaiKhoaHoc"),
+						rs.getString("url")));
+			}
+			if(rs!=null){
+				rs.close();
+			}
+			if(pst!=null){
+				pst.close();
+			}
+			if(conn!=null){
+				conn.close();
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		return  lstkhoahoc;
+	}
 	public static void updateCauHoi(int id,String Content){
 		try{
 			Connection con = DatabaseManagement.getConnection();
@@ -316,6 +349,22 @@ public class TVVDAO {
 			Connection con = DatabaseManagement.getConnection();
 			PreparedStatement pst = con.prepareStatement("delete from khoahoc where MaKhoaHoc=?");
 			pst.setString(1, MaKhoaHoc);
+			pst.executeUpdate();
+			if(pst!=null){
+				pst.close();
+			}
+			if(con!=null){
+				con.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}		
+	}
+	public static void deleteHocVien(String MaHocVien){
+		try{
+			Connection con = DatabaseManagement.getConnection();
+			PreparedStatement pst = con.prepareStatement("delete from hocvien where MaHocVien=?");
+			pst.setString(1, MaHocVien);
 			pst.executeUpdate();
 			if(pst!=null){
 				pst.close();
@@ -491,6 +540,33 @@ public class TVVDAO {
 			}
 			return false;
 		}catch(SQLException e){
+			return false;
+		}		
+	}public static boolean InsertLopHoc(LopHoc lh){
+		try{
+			Connection con = DatabaseManagement.getConnection();
+			PreparedStatement pst = con.prepareStatement("insert into lophoc values (?,?,?,?,?,?,?,?)");
+			pst.setString(1,lh.getMaLop());
+			pst.setDate(2,lh.getNgayHoc());
+			pst.setInt(3,lh.getPhong());
+			pst.setInt(4,lh.getSoHocVien());
+			pst.setString(5,lh.getTenMocHoc());
+			pst.setString(6,lh.getLichHoc());
+			pst.setString(7,lh.getKhoahoc());
+			pst.setString(8, lh.getGiangvien());
+			int k = pst.executeUpdate();
+			if(k>=0){
+				return true;
+			}
+			if(pst!=null){
+				pst.close();
+			}
+			if(con!=null){
+				con.close();
+			}
+			return false;
+		}catch(SQLException e){
+			e.printStackTrace();
 			return false;
 		}		
 	}

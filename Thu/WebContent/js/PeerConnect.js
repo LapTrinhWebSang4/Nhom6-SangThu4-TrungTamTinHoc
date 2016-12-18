@@ -147,5 +147,17 @@ var peer = new Peer(
 			 $(".box-chat.active").remove();
 		 }
 		 
+		 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+		 peer.on('call', function(call) {
+			 navigator.getUserMedia({video: false, audio: true}, function(stream) {
+		     call.answer(stream); // Answer the call with an A/V stream.
+		     call.on('stream', function(remoteStream) {
+		       console.log('nhan duoc cuoc goi');
+		     });
+		   }, function(err) {
+		     console.log('Failed to get local stream' ,err);
+		   });
+		 });
+		 
 		 
 		 

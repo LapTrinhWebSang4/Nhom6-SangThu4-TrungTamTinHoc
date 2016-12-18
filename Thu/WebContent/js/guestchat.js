@@ -17,6 +17,7 @@ populateFriendList();
 					  	var str = users[i].TenThanhVien.replace(/\s/g,''); 	
 						 $(".list-user-online").append("<li id='"+str+"' onclick='GetPeerID(this.id)'><a><span"+
 							"class='glyphicon glyphicon-user'></span>"+users[i].TenThanhVien+"</a></li>");
+						 
 				  }
 				  
 			  }
@@ -100,13 +101,21 @@ var today = new Date();
 			var c = peer.connect(peerid,{
 				label:'chat',
 				serialization: 'none',
-		        metadata: {message: 'hi i want to chat with you!'}
+		        metadata: {message: 'hi i want to chat with you!'}			
 			});
+			$(".box-chat").find(".chat").append("<li class='clearfix'>"
+					+"<div class='chat-body clearfix'><div class=''>"
+			+"<small class='pull-right text-muted'><span class='glyphicon "
+			+"glyphicon-time'></span>"+today+"</small><strong class='primary-font'></strong></div><p style='color:green;'>"+c.peer+" has connected!!!</p></div></li>");
 			c.on('open', function() {
-		        connect(c);
+		        connect(c);		        
 		      });
-			c.on('error', function(err) { alert(err); });
+			c.on('error', function(err) { $(".box-chat").find(".chat").append("<li class='clearfix'>"
+					+"<div class='chat-body clearfix'><div class=''>"
+					+"<small class='pull-right text-muted'><span class='glyphicon "
+					+"glyphicon-time'></span>"+today+"</small><strong class='primary-font'></strong></div><p style='color:red;'> Have problem when connect to user</p></div></li>"); });
 			$(".box-chat").attr("id",peerid);
+			$("#callbtn").attr('id',peerid);
 		};
 		$("#btn-chat").click(function(e){
 			e.preventDefault();
@@ -145,3 +154,22 @@ var today = new Date();
 				}
 				checkedIds[pid] = 1;
 			  }
+		 
+		 
+		 ////////
+		 //Call//
+		 ////////
+		 function CallClick(peerid){
+			 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+			 navigator.getUserMedia({video: false, audio: true}, function(stream) {
+			   var call = peer.call(peerid, stream);	   
+			   call.on('stream', function(remoteStream) {
+				   console.log("goi dien thoai");
+			   });
+			 }, function(err) {
+			   console.log('Failed to get local stream' ,err);
+			 });
+		 }
+		 
+		 
+	

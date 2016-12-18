@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="C:/Users/Kien Le/Desktop/java/library/itext-2.1.7.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Kien Le/Desktop/java/library/itextpdf-5.5.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Kien Le/Desktop/java/library/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kien Le/Desktop/java/library/json-simple-1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

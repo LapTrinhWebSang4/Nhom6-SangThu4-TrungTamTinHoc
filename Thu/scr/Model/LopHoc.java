@@ -10,6 +10,21 @@ public class LopHoc {
 	String TenMocHoc;
 	String LichHoc;
 	String khoahoc;
+	String giangvien;
+	
+
+	public LopHoc(String maLop, Date ngayHoc, int phong, int soHocVien, String tenMocHoc, String lichHoc,
+			String khoahoc,String giangvien) {
+		super();
+		MaLop = maLop;
+		NgayHoc = ngayHoc;
+		Phong = phong;
+		SoHocVien = soHocVien;
+		TenMocHoc = tenMocHoc;
+		LichHoc = lichHoc;
+		this.khoahoc = khoahoc;
+		this.giangvien = giangvien;
+	}
 	public LopHoc(String maLop, Date ngayHoc, int phong, int soHocVien, String tenMocHoc, String lichHoc,
 			String khoahoc) {
 		super();
@@ -21,7 +36,13 @@ public class LopHoc {
 		LichHoc = lichHoc;
 		this.khoahoc = khoahoc;
 	}
-	
+	public String getGiangvien() {
+		return giangvien;
+	}
+
+	public void setGiangvien(String giangvien) {
+		this.giangvien = giangvien;
+	}
 	public String getKhoahoc() {
 		return khoahoc;
 	}

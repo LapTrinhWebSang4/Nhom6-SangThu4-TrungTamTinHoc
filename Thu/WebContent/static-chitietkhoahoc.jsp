@@ -14,28 +14,12 @@
 				href="css/bootstrap-theme.min.css">
 				<link rel="stylesheet"
 					href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
-				<!-- text fonts -->
 				<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
-
-				<!-- ace styles -->
 				<link rel="stylesheet" href="assets/css/ace.min.css"
 					class="ace-main-stylesheet" id="main-ace-style" />
-
-				<!--[if lte IE 9]>
-			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
-		<![endif]-->
 				<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
 				<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
-
-				<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
-		<![endif]-->
-
-				<!-- inline styles related to this page -->
-
-				<!-- ace settings handler -->
 				<script src="assets/js/ace-extra.min.js"></script>
-
 				<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 					<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 						<link rel="stylesheet" type="text/css"
@@ -63,14 +47,38 @@ h2 {
 ul {
 	list-style-type: none;
 }
+
+#leftcolumn, #rightcolumn {
+	border: 1px solid white;
+	float: left;
+}
+
+a {
+	color: #0254EB
+}
+
+a:visited {
+	color: #0254EB
+}
+
+a.morelink {
+	text-decoration: none;
+	outline: none;
+}
+
+.morecontent span {
+	display: none;
+}
+
+.comment {
+	background-color: #f0f0f0;
+	margin: 10px;
+}
 </style>
 </head>
 <body class="no-skin">
 	<sql:setDataSource var="con" driver="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://Localhost/ttth" user="root" password="kien2509" />
-
-
-
 	<!--nav-->
 	<div id="navbar" class="navbar navbar-default          ace-save-state">
 		<div>
@@ -80,23 +88,14 @@ ul {
 			<button type="button" class="navbar-toggle menu-toggler pull-left"
 				id="menu-toggler" data-target="#sidebar">
 				<span class="sr-only">Toggle sidebar</span> <span class="icon-bar"></span>
-
 				<span class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
 		</div>
 	</div>
 	<!--end nav-->
-
-
 	<jsp:include page="Sidebar.jsp" />
-
-
-
 	<div class="main-content">
 		<div class="main-content-inner">
-
-
-
 			<!--Region Giới thiệu -->
 			<sql:query var="result_khoahoc"
 				sql="select * from khoahoc where MaKhoaHoc ='${param.khoahoc}'"
@@ -111,26 +110,20 @@ ul {
 									<h4 class="text-center">Giới thiệu khóa học</h4>
 									<i></i>
 								</h4>
-
 							</div>
-
 							<div class="widget-body">
 								<div class="widget-main no-padding">
 									<div class="jumbotron">
 										<div class="row">
-											<div class="col-md-6">
-												<a
-													href="${pageContext.servletContext.contextPath }/DownloadFile?filename=${row_khoahoc.url}">
+											<div id="" class="col-md-6">
+												<button onclick="DownloadAttach('${row_khoahoc.url}')">
 													<img class="img-responsive img-thumbnail"
-													src="${pageContext.servletContext.contextPath }/RetrieveImage?khoahoc=${row_khoahoc.MaKhoaHoc}"></img>
-												</a>
-
+														src="${pageContext.servletContext.contextPath}/RetrieveImage?khoahoc=${row_khoahoc.MaKhoaHoc}"></img>
+												</button>
 											</div>
-											<div class="col-md-6">
+											<div id="rightcolumn" class="col-md-6">
 												<h2>Giới Thiệu</h2>
-												<p>${row_khoahoc.GioiThieu}</p>
-
-
+												<p class="comment more">${row_khoahoc.GioiThieu}</p>
 											</div>
 										</div>
 										<div class="row">
@@ -169,7 +162,7 @@ ul {
 															<ul>
 																<c:forEach var="row_lichhoc"
 																	items="${result_lichhoc.rows}">
-																	<li>${row_lichhoc.MaLop}: ${row_lichhoc.LichHoc}</li>
+																	<li>${row_lichhoc.MaLop}:${row_lichhoc.LichHoc}</li>
 																</c:forEach>
 															</ul>
 														</div>
@@ -218,7 +211,6 @@ ul {
 
 
 
-
 	<!--Modal1-->
 	<form action="updateKhoaHoc" method="post"
 		enctype="multipart/form-data">
@@ -260,12 +252,17 @@ ul {
 										type="text" name="date" id="input_nkg" class="form-control "
 										value="${row.NgayKhaiGiang }">
 								</div>
-								<div class="form-group">
+								<div class="form-group" id="before-click-upload">
 									<label for="input_id">Hình :</label> <img
 										class="img-responsive img-thumbnail"
 										src="${pageContext.servletContext.contextPath }/RetrieveImage?khoahoc=${row.MaKhoaHoc}"
-										alt="" /> <input type="file" name="image" id="input_image"
-										class="form-control ">
+										alt="" id="imgID" />
+								</div>
+								<div class="form-group">
+									<div class="fileUpload">
+										<input id="" type="file" onchange="onFileSelected(event)"
+											name="image" class="form-control">
+									</div>
 								</div>
 								<div class="form-group">
 									<label for="input_id">Mã Loại :</label> <input type="text"
@@ -273,7 +270,7 @@ ul {
 										value="${row.MaLoaiKhoaHoc }">
 								</div>
 								<button type="submit" id="button-modal1" class="btn btn-primary"
-									style="text-align: center; width: 120px; margin-left: 450px; margin-top: 10px">Lưu</button>
+									style="text-align: center; width: 120px;">Lưu</button>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
@@ -304,7 +301,7 @@ ul {
 							<h4 class="modal-title">Xóa khóa học</h4>
 						</div>
 						<div class="modal-body" align="center">
-						<input type="hidden" value="${row.MaKhoaHoc}" name="MaKhoaHoc"></input>
+							<input type="hidden" value="${row.MaKhoaHoc}" name="MaKhoaHoc"></input>
 							Có chắc muốn xóa không?
 							<div align="center">
 								<button type="submit" class="btn btn-primary"
@@ -328,90 +325,137 @@ ul {
 
 
 	<!--Script-->
+	<script src="assets/js/jquery-2.1.4.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/bootstrap-tag.min.js"></script>
+	<script src="assets/js/jquery.hotkeys.index.min.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 	<script type="text/javascript">
-			function validateText(id){
-				if($("#"+id).val()==null||$("#"+id).val()==""){
-					var div =$("#"+id).closest("div");
-					div.removeClass("has-success");
-					$("#glypcn"+id).remove();
-					div.addClass("has-error has-feedback");
-					div.append('<span id="glypcn'+id+'"class="glyphicon glyphicon-remove form-control-feedback"></span>');
-					return false;
-				}
-				else{
-					var div = $("#"+id).closest("div");
-					div.removeClass("has-error");
-					div.addClass("has-success has-feedback");
-					$("#glypcn"+id).remove();
-					div.append('<span id="glypcn'+id+'"class="glyphicon glyphicon-ok form-control-feedback"></span>');
-					return true;
-				}
-			}
-			$(document).ready(
-					function() {
-						var date_input = $('input[name="date"]'); //our date input has the name "date"
-						var container = $('.bootstrap-iso form').length > 0 ? $(
-								'.bootstrap-iso form').parent() : "body";
-						var options = {
-							format : 'yyyy-mm-dd',
-							container : container,
-							todayHighlight : true,
-							autoclose : true,
-						};
-						date_input.datepicker(options);
+	$("input#SearchBox").autocomplete(
+			{
+				select : function(event, ui) {
+					$("input#SearchBox").val(ui.item.value);
+				},
+				width : 300,
+				max : 10,
+				delay : 100,
+				minLength : 1,
+				autoFocus : true,
+				cacheLength : 1,
+				scroll : true,
+				highlight : false,
+				source : function(request, response) {
+					$.ajax({
+						type : "GET",
+						url : "SearchCourse",
+						data : request,
+						contentType : 'application/json; charset=utf-8',
+						dataType : 'json',
+						success : function(data) {
+							console.log(data);
+							response(data);
+
+						},
+						error : function(xhr, status, err) {
+							alert('Error :' + err + ' status ' + status
+									+ ' xhr ' + xhr);
+						}
 					});
-			$(document).ready(
-					function(){
-						$("#button-modal1").click(function(){
-							if(!validateText("input_id")){
-								return false;
-							}
-							if(!validateText("input_tenkh")){
-								return false;
-							}
-							if(!validateText("input_nkg")){
-								return false;
-							}
-							if(!validateText("input_ml")){
-								return false;
-							}
-						});
-					}
-					);
-			$(document).ready(
-					function(){
-						$("#button-modal2").click(function(){
-							if(!validateText("input_id1")){
-								return false;
-							}
-							if(!validateText("input_tenkh1")){
-								return false;
-							}
-							if(!validateText("input_nkg1")){
-								return false;
-							}
-							if(!validateText("input_ml1")){
-								return false;
-							}
-						});
-					}
-					);
-			</script>
+				},
+			});
+	function validateText(id) { 
+		if ($("#" + id).val() == null || $("#" +id).val() == "") { 
+			var div = $("#" + id).closest("div");
+			div.removeClass("has-success"); $("#glypcn" + id).remove();
+			div.addClass("has-error has-feedback"); 
+			div .append('<span id="glypcn'+id+'"class="glyphicon glyphicon-remove form-control-feedback"></span>');
+			return false; 
+			} 
+		else { 
+			var div = $("#" + id).closest("div");
+			div.removeClass("has-error"); 
+			div.addClass("has-success has-feedback");
+			$("#glypcn" + id).remove(); 
+			div .append('<span id="glypcn'+id+'"class="glyphicon glyphicon-ok form-control-feedback"></span>'); 
+			return true; 
+			} 
+		} 
+	$(document).ready( function() { 
+		var date_input = $('input[name="date"]'); //our date input has the name "date" var
+		container = $('.bootstrap-iso form').length > 0 ? $( '.bootstrap-isoform').parent() : "body"; 
+		var options = { format : 'yyyy-mm-dd',
+		container : container, todayHighlight : true, autoclose : true, 
+		};
+	date_input.datepicker(options); }); 
+	$(document).ready(function() {
+	$("#button-modal1").click(function() { 
+		if (!validateText("input_id")) {
+	return false; 
+	} 
+		if (!validateText("input_tenkh")) { 
+			return false; 
+			} 
+		if(!validateText("input_nkg")) {
+			return false; 
+			} 
+		if(!validateText("input_ml")) {
+			return false; 
+			} 
+		}); 
+	});
+	$(document).ready(function() { 
+		$("#button-modal2").click(function() {
+	if (!validateText("input_id1")) { 
+		return false;
+		} 
+	if(!validateText("input_tenkh1")) { 
+		return false; 
+		} 
+	if(!validateText("input_nkg1")) {
+		return false;
+		}
+	if(!validateText("input_ml1")) { 
+		return false; 
+		}
+	}); 
+		}); 
+	function onFileSelected(event) { 
+		var selectedFile = event.target.files[0]; 
+		var reader = new FileReader(); 
+		var imgtag = document.getElementById("imgID"); imgtag.title = selectedFile.name;
+		reader.onload = function(event) { imgtag.src = event.target.result; };
+		reader.readAsDataURL(selectedFile); 
+		}
+
+
+	</script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 	<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+	function DownloadAttach(id){
+			console.log(id);
+		 window.location = "${pageContext.servletContext.contextPath}/DownloadFile?filename=" + id;
+	}
 	
-		</script>
-
+	</script>
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script>
+  		tinymce.init({ 
+  			selector: "textarea",
+  			plugins: ["link textcolor paste "],
+  		  menubar: "insert edit",
+  		  toolbar: ["link forecolor backcolor autolink paste alignleft aligncenter alignright"],
+  		default_link_target: "_blank"
+  			});
+  		
+  </script>
 
 
 
