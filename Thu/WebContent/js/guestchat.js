@@ -15,8 +15,8 @@ populateFriendList();
 				  
 				  for(var i=0;i<users.length;i++){
 					  	var str = users[i].TenThanhVien.replace(/\s/g,''); 	
-						 $(".list-user-online").append("<li id='"+str+"' onclick='GetPeerID(this.id)'><a><span"+
-							"class='glyphicon glyphicon-user'></span>"+users[i].TenThanhVien+"</a></li>");
+						 $(".list-user-online").append("<li id='"+str+"' onclick='GetPeerID(this.id)'><a>"+
+							users[i].TenThanhVien+"</a></li>");
 						 
 				  }
 				  
