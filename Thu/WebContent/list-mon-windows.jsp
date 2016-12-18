@@ -169,9 +169,8 @@ a>.glyphicon {
 					<h3 style="color: green;">Chọn loại khóa học</h3>
 					<select id="monhoc" class="form-control"
 						Style="border: 2px solid #1aa3ff;"><option>
-						<option value="ALLALL">Tất cả</option>
 						<sql:query dataSource="${snapshot}" var="result">
-SELECT * from loaikhoahoc;
+SELECT * FROM loaikhoahoc WHERE MaNienKhoa = (SELECT MAX(MaNienKhoa) FROM loaikhoahoc);
 </sql:query>
 						<c:forEach var="row" items="${result.rows}">
 							<option value=<c:out value="${row.MaLoaiKhoaHoc}"/>><c:out

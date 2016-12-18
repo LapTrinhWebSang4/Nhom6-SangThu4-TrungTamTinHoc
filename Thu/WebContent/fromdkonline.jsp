@@ -320,7 +320,7 @@ SELECT * from miengiam;
 
 
 
-				<div class="container" style="display: none;" id="btn-submit">
+				<div class="container" style="display: 1;" id="btn-submit">
 					<button class="btn btn-success" data-toggle="modal"
 						data-target="#myModal"
 						ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||

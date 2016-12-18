@@ -54,10 +54,7 @@ public class Loadmon extends HttpServlet {
 			Statement stmt = conn.createStatement();
 			String sql;
 			String name = request.getParameter("name");
-			String al ="ALLALL";
-			if(name.equals(al)){sql = "SELECT * FROM khoahoc";}
-			else
-				sql = "SELECT * FROM khoahoc where MaLoaiKhoaHoc='"+name+"'";
+			sql = "SELECT * FROM khoahoc where MaLoaiKhoaHoc='"+name+"'";
 
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
