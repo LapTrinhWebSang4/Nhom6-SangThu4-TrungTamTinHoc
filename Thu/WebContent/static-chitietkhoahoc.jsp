@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -117,9 +118,15 @@ a.morelink {
 										<div class="row">
 											<div id="" class="col-md-6">
 												<button onclick="DownloadAttach('${row_khoahoc.url}')">
-													<img class="img-responsive img-thumbnail"
+													<img class="img-responsive img-thumbnail" style="width:200%;height:100%"
 														src="${pageContext.servletContext.contextPath}/RetrieveImage?khoahoc=${row_khoahoc.MaKhoaHoc}"></img>
 												</button>
+												<c:if test="${row_khoahoc.url!=null}">
+													<div><span class="fa fa-folder fa-2x fa-fw"><a href="${pageContext.servletContext.contextPath}/DownloadFile?filename=${row_khoahoc.url}">${row_khoahoc.url }</a></span></div>
+												</c:if>
+												<c:if test="${row_khoahoc.url==null}">
+													<div><span class="fa fa-folder fa-2x fa-fw"></span> <span style="font-size:18px">No attachment for this course</span></div>
+												</c:if>
 											</div>
 											<div id="rightcolumn" class="col-md-6">
 												<h2>Giới Thiệu</h2>
@@ -149,8 +156,10 @@ a.morelink {
 														<ul>
 															<c:forEach var="row_miengiam"
 																items="${result_miengiam.rows }">
-																<li>Giảm ${row_miengiam.TienGiam*100} cho
+																<li><fmt:formatNumber type="percent" 
+           								 maxIntegerDigits="3" value="${row_miengiam.TienGiam}" /> cho
 																	${row_miengiam.DoiTuong}</li>
+																
 															</c:forEach>
 														</ul>
 
