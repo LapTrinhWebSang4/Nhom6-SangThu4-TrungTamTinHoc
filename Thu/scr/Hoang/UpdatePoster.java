@@ -1,15 +1,10 @@
 package Hoang;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -17,30 +12,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import Connection.DatabaseManagement;
 
-
-
 /**
- * Servlet implementation class InsertTB
+ * Servlet implementation class UpdatePoster
  */
-@WebServlet("/InsertTB")
+@WebServlet("/UpdatePoster")
 @MultipartConfig(maxFileSize = 16177215)
-public class InsertTB extends HttpServlet {
-
-    /**
-	 * 
-	 */
+public class UpdatePoster extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	public InsertTB() {
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public UpdatePoster() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -49,27 +36,31 @@ public class InsertTB extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		InputStream inputStream = null;
-		Part filePart = request.getPart("photo");
+		int i=0;
+	
 		
-		java.sql.Date today ;
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, 1);
-		java.util.Date utilDate = cal.getTime();
-		today = new java.sql.Date(utilDate.getTime());
-		String mathongbao = request.getParameter("mathongbao");
-		String tomtat = request.getParameter("tomtat");
-		String loaithongbao = request.getParameter("box");
-		String noidung = request.getParameter("noidung");
-		String tieude = request.getParameter("tieude");
+		
+		while(request.getParameter("makhoahoc"+i)!=null)
+		{
+		InputStream inputStream = null;
+		System.out.print("so:"+i);
+		Part filePart = request.getPart("photo"+i);
+		
+		
+		String makhoahoc = request.getParameter("makhoahoc"+i);
+		
+		String dacbiet = request.getParameter("se"+i);
+		
+		
 		if (filePart != null) {
 			// prints out some information for debugging
 			
@@ -84,27 +75,63 @@ public class InsertTB extends HttpServlet {
 		Connection con = DatabaseManagement.getConnection();
 		PreparedStatement pst;
 		try {
-			pst = con.prepareStatement("insert into thongbao values(?,?,?,?,?,?,?)");
-			System.out.println(mathongbao);
-			pst.setString(1,mathongbao);
-			System.out.println(today);
-			pst.setString(2,tieude);
-			pst.setString(3,loaithongbao);
-			pst.setDate(4,today);
+			if(filePart.getSize()!=0)
+			{
+			pst = con.prepareStatement("update khoahoc set Hinh=?, db=? where MaKhoaHoc=?");
+			System.out.println(dacbiet+"   "+makhoahoc);
 			
-			pst.setString(5,noidung);
-			pst.setBlob(6, inputStream,filePart.getSize());
-			pst.setString(7,tomtat);
+			pst.setBlob(1, inputStream,filePart.getSize());
+			if(dacbiet.equals("1"))
+			{
+				
+				pst.setBoolean(2,true);
+			}
+			else if(dacbiet.equals("0"))
+				{
+				pst.setBoolean(2,false);
+				}
+			
+				
+			
+			pst.setString(3,makhoahoc);
 			pst.executeUpdate();
-			System.out.println("sssss");
-			response.sendRedirect("QTNDThongBao.jsp");
-			System.out.println("ddddd");
+			}
+			else{
+				pst = con.prepareStatement("update khoahoc set db=? where MaKhoaHoc=?");
+				System.out.println(dacbiet+ "-- "+makhoahoc);
+				
+				if(dacbiet.equals("1"))
+				{
+					
+					pst.setBoolean(1,true);
+				}
+				else if(dacbiet.equals("0"))
+					{
+					pst.setBoolean(1,false);
+					}
+				
+				/*if(dacbiet=="1")
+				{
+					
+					pst.setBoolean(1,true);
+				}
+				else if(dacbiet=="0")
+					{
+					pst.setBoolean(1,false);
+					}*/
+				pst.setString(2,makhoahoc);
+				pst.executeUpdate();
+				System.out.println("ok");
+			}
+			i++;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			i++;
 		}
 		
-
+		}
+		response.sendRedirect("QTNDPT.jsp");
 		
 	}
 

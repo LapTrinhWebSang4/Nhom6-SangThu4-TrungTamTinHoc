@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -82,11 +85,11 @@
 						class="menu-icon fa fa-newspaper-o"></i> <span class="menu-text">
 							Gửi Mail </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="QuanTriNhanTin.jsp"> <i
+				<li class=""><a href="QuanTriCN.jsp"> <i
 						class="menu-icon fa fa fa-commenting-o"></i> <span
-						class="menu-text"> Tin nhắn </span>
+						class="menu-text"> Thông tin cá nhân </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="static-login.jsp"> <i
+				<li class=""><a href="login.jsp"> <i
 						class="menu-icon fa fa-sign-out"></i> <span class="menu-text">Đăng
 							xuất</span>
 				</a> <b class="arrow"></b></li>
@@ -132,7 +135,7 @@
 
 							<li><a href="tuvan-send.jsp"><strong>Tư
 										vấn-hỏi đáp</strong></a></li>
-							<li><a href="static-login.jsp"><strong>Đăng xuất</strong></a></li>
+							<li><a href="login.jsp"><strong>Đăng xuất</strong></a></li>
 						</ul>
 					</div>
 				</div>
@@ -150,30 +153,30 @@
 												<Strong>Thêm Thành Viên </Strong>
 											</h3>
 										</div>
-										<div class="form">
+										<form class="form-group" action="insert.jsp" method="post">
 											<div class="col-md-13 well">
 
 												<div class="form" id="1">
 													<label for="inputlg">Tên Tài Khoản </label> <input
-														class="form-control" id="inputtk" type="text"
-														placeholder="">
+														class="form-control" id="inputtk" type="text" name="id"
+														placeholder="id..." onkeyup="changetext()">
 												</div>
 
 												<div class="form-group">
 													<label for="inputlg">Mật Khầu </label> <input
-														class="form-control" id="inputmk" type="text"
-														placeholder="">
+														class="form-control" id="inputmk" type="text" name="matkhau"
+														placeholder="password...">
 												</div>
 
 												<div class="form-group">
 													<label for="inputlg">Tên Thành Viên </label> <input
-														class="form-control" id="inputtv" type="text"
+														class="form-control" id="inputtv" type="text" name="name"
 														placeholder="Nhập Tên ...">
 												</div>
 
 												<div class="form-group">
 													<label for="inputlg">Phân Quyền </label> <select
-														class="form-control" name="size">
+														class="form-control" name="size" id="box" onchange="changefun();">
 
 														<option>Quản Tri Nội Dung</option>
 														<option>Tư Vấn Viên</option>
@@ -184,15 +187,22 @@
 
 
 												</div>
-
+												<div class="hide">
+ 
+																      <input type="text" class="form-control" name="quyen" value="tvv" id="quyen">
+																   
+												</div>
 												<div class="form-group"
 													style="text-align: right; padding-top: 10px; padding-bottom: 10px">
-													<a href="#" class="btn btn-success" role="button"
-														id="btntao" onclick="reset()"> Tạo </a> <a
+													<input class="btn btn-info" type="submit" value="Tạo" id="submit"/><a
 														href="QuanTriVien.jsp" class="btn btn-danger" role="button">
 														Hủy Bỏ </a>
 												</div>
+												<div class="hide">
+												<input class="btn btn-info" type="text" value="0" id="kt"/>
+												</div>
 											</div>
+											</form>
 
 										</div>
 									</div>
@@ -219,7 +229,9 @@
 	<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
-
+<script type="text/javascript">
+			
+		</script>
 	<script type="text/javascript">
 		function validate(id)
 		{
@@ -243,11 +255,57 @@
 		function reset(){
    		document.getElementById("inputtk").reset();
    	}
+		function changefun() {
+	   		 var selectBox = document.getElementById("box");
+	   			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+	   			
+	   		   if(selectBox.selectedIndex==0)
+	   				{
+	   			   	$("#quyen").val("qtnd");
+	   				
+	   				}
+	   		   else if(selectBox.selectedIndex==1)
+	  				{$("#quyen").val("tvv");
+	  				
+	  				}
+	   		   else if(selectBox.selectedIndex==2)
+	  				{
+	   			   $("#quyen").val("qtv");
+	   			
+	  				}
+	   			alert($("#quyen").val());
+	   		   
+	   		   }
+		function changetext() {
+			var MaTK = $("#inputtk").val();
+			$.get('LayTT',{MaTK: MaTK},function(response){
+				
+				if( response.Taikhoan == $("#inputtk").val())
+					{
+					var div = $("#inputtk").closest("div");
+					div.addClass("has-error")
+					$("#kt").val("0");
+					$("#no").remove();
+					div.append('<small class="form-text text-muted" id="no">Tên tài khoản bị trùng , vui lòng chọn tên khác</small>');
+					}
+				else {
+					
+					var div = $("#inputtk").closest("div");
+					div.removeClass("has-error");
+					$("#no").remove();
+					$("#kt").val("1");
+					
+				}
+				
+				
+				
+			});
+	   		   }
 		$(document).ready(
 				function()
 				{
-
-					$("#btntao").click(function()
+					
+					$("#submit").click(function()
 					{
 
 						if(!validate("inputtk"))
@@ -262,10 +320,19 @@
 						{
 							return false;
 						}
-						$("#inputtk").val("");
-						$("#inputmk").val("");
-						$("#inputtv").val("");
 						
+						
+						
+						if($("#kt").val()=="0")
+							{
+							
+							return false;
+							}
+						else if($("#kt").val()=="1")
+						{
+							
+							return true;
+							}
 					});
 				}
 			);

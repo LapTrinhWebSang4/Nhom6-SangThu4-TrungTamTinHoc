@@ -114,7 +114,7 @@ public class sendsms {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "SUCCESS";
+		return codeResult;
 
 	}
 	

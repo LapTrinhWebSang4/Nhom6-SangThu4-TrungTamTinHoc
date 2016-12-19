@@ -44,6 +44,7 @@ public class UpdateTB extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		InputStream inputStream = null;
 		Part filePart = request.getPart("photo");
 		
@@ -69,16 +70,32 @@ public class UpdateTB extends HttpServlet {
 		Connection con = DatabaseManagement.getConnection();
 		PreparedStatement pst;
 		try {
-			pst = con.prepareStatement("update thongbao set TieuDe=? ,LoaiThongBao=?,TomTat=?,NoiDung=?,Hinh=? where MaThongBao=?");
+			if(filePart.getSize()==0)
+			{pst = con.prepareStatement("update thongbao set TieuDe=? ,LoaiThongBao=?,TomTat=?,NoiDung=? where MaThongBao=?");
 			
 			pst.setString(1,tieude);
 			pst.setString(2,loaithongbao);
 			
 			pst.setString(3,tomtat);
 			pst.setString(4,noidung);
-			pst.setBlob(5, inputStream,filePart.getSize());
-			pst.setString(6,mathongbao);
+			
+			pst.setString(5,mathongbao);
 			pst.executeUpdate();
+			response.sendRedirect("QTNDThongBao.jsp");
+			}
+			else{
+				pst = con.prepareStatement("update thongbao set TieuDe=? ,LoaiThongBao=?,TomTat=?,NoiDung=?,Hinh=? where MaThongBao=?");
+				
+				pst.setString(1,tieude);
+				pst.setString(2,loaithongbao);
+				
+				pst.setString(3,tomtat);
+				pst.setString(4,noidung);
+				pst.setBlob(5, inputStream,filePart.getSize());
+				pst.setString(6,mathongbao);
+				pst.executeUpdate();
+				response.sendRedirect("QTNDThongBao.jsp");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

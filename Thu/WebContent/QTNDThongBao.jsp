@@ -37,6 +37,7 @@
     	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     	<link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
+    	<link rel="stylesheet" type="text/css" href="Asset/headercss.css">
 
 		
 		 
@@ -74,7 +75,7 @@
 		  </style>
 		
 	</head>
-	<body ng-init="names=['Các thủ thuật máy tính hay ', 'Lịch Thi Khóa 8', 'Lịch Thi Khóa 7'];" class="no-skin">
+	<body  class="no-skin">
 	<!--nav-->
 	<sql:setDataSource var="con" driver ="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/ttth" user="root" password="123456"></sql:setDataSource>
 		<sql:query dataSource="${con }"  sql="select * from thongbao" var="result"></sql:query>
@@ -142,14 +143,8 @@
 
 						<b class="arrow"></b>
 					</li>
-					<li class="">
-						<a href="QTNDNhanTin.jsp">
-							<i class="menu-icon fa fa-commenting-o"></i>
-							<span class="menu-text"> Tin nhắn </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
+					
+					
 					<li class="">
 						<a href="QTNDCaNhan.jsp">
 							<i class="menu-icon fa fa-user"></i>
@@ -312,24 +307,7 @@
 							<i class="ace-icon fa fa-plus-square - 160"></i>
 							</button>
 							</a>
-							 <div class="well" style="margin-top: 20px; width: 200px; overflow: hidden;">
-							    <form class="form-search"> 
-							        <div class="input">
-							          <input type="text" ng-model="search" class="search-query" style="width: 110px">
-							          
-							          <button type="submit" class="btn btn-yellow"> 
-							          <i class="ace-icon fa fa-search bigger-120"></i>
-							          </button>
-							         
-							        </div>
-							        <ul class="nav nav-pills nav-stacked">
-							          <li ng-animate="'animate'" ng-repeat="name in names | filter:search">
-
-							            <a href="#"> {{name}} </a>
-							          </li> 
-							      </ul>
-							    </form>
-							  </div>
+							 
 							</div>
 					
 					</div>
@@ -350,6 +328,9 @@
     	<script type="text/javascript" src="js/bootstrap.min.js"></script>
     	<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
 <script>
             function confirmGo(m,u) {
                 if ( confirm(m) ) {

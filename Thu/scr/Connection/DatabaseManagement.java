@@ -2,7 +2,7 @@ package Connection;
 
 import java.sql.*;
 public class DatabaseManagement {
-	static final String password = "kien2509";
+	static final String password = "123456";
 	static final String username ="root";
 	static final String url = "jdbc:mysql://localhost:3306/";
 	static final String driver ="com.mysql.jdbc.Driver";

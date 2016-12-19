@@ -37,7 +37,7 @@ public class LayTTTB extends HttpServlet {
 		  Map <String, String> map = new LinkedHashMap<String, String>();
 		  DatabaseManagement db = new DatabaseManagement();
 		  java.sql.ResultSet rs = null;
-		  
+		  System.out.println(MaTB);
 		  try {
 			rs = db.getData("SELECT * FROM ttth.thongbao where MaThongBao='"+MaTB+"' ");
 			while (rs.next()) {

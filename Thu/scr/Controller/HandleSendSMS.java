@@ -35,8 +35,9 @@ public class HandleSendSMS extends HttpServlet {
 			sms.setPhone(PhoneNumber);
 			sms.setMessage(Message);
 			String something = sms.sendGetXML();
+			System.out.println(something+"ahihi");
 			String err="";
-			if(something=="100"){
+			if(something.equals("100")){
 				System.out.println("true");
 				err = "Đã gửi thành công";
 				request.getSession().setAttribute("errThanhCong", err);

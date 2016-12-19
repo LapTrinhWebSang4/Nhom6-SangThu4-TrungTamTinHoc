@@ -84,10 +84,7 @@
 						class="menu-icon fa fa-envelope"></i> <span class="menu-text">
 							Gửi Mail </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="QTNDNhanTin.jsp"> <i
-						class="menu-icon fa fa-commenting-o"></i> <span class="menu-text">
-							Tin nhắn </span>
-				</a> <b class="arrow"></b></li>
+			
 				<li class=""><a href="QTNDCaNhan.jsp"> <i
 						class="menu-icon fa fa-user"></i> <span class="menu-text">
 							Thông tin cá nhân </span>
@@ -154,8 +151,8 @@
 							<div style="padding-left: 20px; padding-right: 20px;">
 								<div class="message-container">
 
-									<form id="id-message-form"
-										class="form-horizontal message-form border col-xs-12"
+									<form id="id-message-form" class="form-horizontal message-form border col-xs-12"
+										action="TestSend" method="post"
 										style="border: solid 1px #a3eaf0">
 										<div>
 											<div class="form-group">
@@ -164,10 +161,8 @@
 
 												<div class="col-sm-9">
 													<span class="input-icon"> <input type="email"
-														name="recipient" id="form-field-recipient" data-value=""
-														value="" placeholder="" /> <i class="ace-icon fa fa-user"></i>
-													</span><a data-toggle="modal" data-target="#myModal2"><i
-														class="ace-icon fa fa-list"></i></a>
+														name="recipient" id="form-field-recipient"   name="recipient"/> <i class="ace-icon fa fa-user"></i>
+													</span>
 												</div>
 
 											</div>
@@ -182,7 +177,7 @@
 													<div class="input-icon block col-xs-12 no-padding">
 														<input maxlength="100" type="text" class="col-xs-12"
 															name="subject" id="form-field-subject"
-															placeholder="Subject" /> <i
+															name="subject" /> <i
 															class="ace-icon fa fa-comment-o"></i>
 													</div>
 												</div>
@@ -192,37 +187,19 @@
 
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right">
-													<span class="inline space-24 hidden-480"></span> Message:
+													<span class="inline space-24 hidden-480"></span> Message :
 												</label>
-
-												<div class="col-sm-9">
-													<div class="wysiwyg-editor"></div>
+													<div class="col-sm-6 col-xs-12">
+												<textarea rows="10" cols="56" name="content"></textarea> 
 												</div>
 											</div>
 
 											<div class="hr hr-18 dotted"></div>
 
-											<div class="form-group no-margin-bottom">
-												<label class="col-sm-3 control-label no-padding-right">Attachments:</label>
-
-												<div class="col-sm-9">
-													<div id="form-attachments">
-														<div class="form-group file-input-container">
-															<div class="col-sm-7">
-																<label class="ace-file-input width-90 inline"><input
-																	type="file" name="attachment[]"><span
-																	class="ace-file-container" data-title="Choose"><span
-																		class="ace-file-name" data-title="No File ..."><i
-																			class=" ace-icon fa fa-upload"></i></span></span><a class="remove"
-																	href="#"><i class=" ace-icon fa fa-times"></i></a></label>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
+											
 
 											<div class="align-right">
-												<button id="id-add-attachment" type="button"
+												<button id="id-add-attachment" type="submit"
 													class="btn btn-sm btn-success">
 													<i class="ace-icon fa fa-paper-plane-o bigger-140"></i>
 													SEND

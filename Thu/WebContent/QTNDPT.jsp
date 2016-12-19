@@ -11,7 +11,9 @@
 	href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 <!-- text fonts -->
 <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
-
+	<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+	<%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
+   <%@taglib uri = "http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <!-- ace styles -->
 <link rel="stylesheet" href="assets/css/ace.min.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
@@ -40,7 +42,7 @@
 </head>
 <body class="no-skin">
 	<!--nav-->
-
+	<sql:setDataSource var="con" driver ="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/ttth" user="root" password="123456"></sql:setDataSource>
 	<div id="navbar" class="navbar navbar-default          ace-save-state">
 		<img src="Asset/header ttth.jpg" style="width: 100%; height: 120px">
 		<div class="navbar-container ace-save-state" id="navbar-container">
@@ -54,7 +56,7 @@
 
 	<!--end nav-->
 
-
+<sql:query dataSource="${con }"  sql="select * from khoahoc" var="result"></sql:query>
 
 
 
@@ -94,10 +96,7 @@
 						class="menu-icon fa fa-envelope"></i> <span class="menu-text">
 							Gửi Mail </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="QTNDNhanTin.jsp"> <i
-						class="menu-icon fa fa-commenting-o"></i> <span class="menu-text">
-							Tin nhắn </span>
-				</a> <b class="arrow"></b></li>
+				
 				<li class=""><a href="QTNDCaNhan.jsp"> <i
 						class="menu-icon fa fa-user"></i> <span class="menu-text">
 							Thông tin cá nhân </span>
@@ -152,89 +151,95 @@
 						</ul>
 					</div>
 				</div>
+	<% int i=0; %>
+	<div class="space-32"></div>
+					<div class="space-32"></div>
+	<div style="padding-left: 20px;padding-right: 20px;">
+	<form action="UpdatePoster" method="Post" enctype="multipart/form-data">
+					<div class="row">
+						<div class="col-sm-11">
+				<div class="table-header">
+											<strong>POSTER KHÓA HỌC</strong>
+										</div>
 
-				<div class="page-content">
-					<div class="page-header">
-							<h1 style="color: #e9573f ">
-								<strong>Cài đặt Poster </strong>
-							</h1>
-						</div>
-					<div class="containter-fluid" id="manhinhchinh1">
+									
+											<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+											
+											<table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+												<thead>
+													
+															
+														<th class="" tabindex="0" aria-controls="dynamic-table" >Mã Khóa Học </th>
+														<th class="" tabindex="0" aria-controls="dynamic-table"  > Tên Khóa Học </th>
+														<th class="" tabindex="0" aria-controls="dynamic-table"  > Poster </th>
+														<th class="" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="">Đặc biệt </th>
+														
+														
+															
+														
+												</thead>
 
-						<div class="row">
+												<tbody>
 
-							<div class="col-md-8">
-								<div role="tabpanel">
-									<!-- Nav tabs -->
-									<ul class="nav nav-tabs" role="tablist">
-										<li role="presentation" class="active"><a href="#1"
-											aria-controls="1" role="tab" data-toggle="tab">1</a></li>
-										<li role="presentation"><a href="#2" aria-controls="2"
-											role="tab" data-toggle="tab">2</a></li>
-										<li role="presentation"><a href="#3" aria-controls="3"
-											role="tab" data-toggle="tab">3</a></li>
-										<li role="presentation"><a href="#4" aria-controls="4"
-											role="tab" data-toggle="tab">4</a></li>
-										<li role="presentation"><a href="#5" aria-controls="5"
-											role="tab" data-toggle="tab">5</a></li>
-									</ul>
+												<c:forEach var="col" items="${result.rows}">
+												<tr role="row" class="odd">
+														
 
-									<!-- Tab panes -->
-									<div class="tab-content">
-										<div role="tabpanel" class="tab-pane active" id="1">
-											<div>
-												<img src="Asset/android.png">
+														<td>
+															<c:out value="${col.MaKhoaHoc}"></c:out>
+															<div class="hide">
+															<input
+											class="form-control" id="${col.MaKhoaHoc}" type="text" name="makhoahoc<%=i %>" 
+											value="${col.MaKhoaHoc}">
 											</div>
-											<div></div>
-										</div>
-										<div role="tabpanel" class="tab-pane" id="2">
-											<div>
-												<img src="Asset/ios.jpg">
-											</div>
-										</div>
-										<div role="tabpanel" class="tab-pane" id="3">
-											<div>
-												<img src="Asset/pts.jpg">
-											</div>
-										</div>
-										<div role="tabpanel" class="tab-pane" id="4">
-											<div>
-												<img src="Asset/web.png">
-											</div>
-										</div>
-										<div role="tabpanel" class="tab-pane" id="5">
-											<div>
-												<img src="Asset/windowphone.png">
-											</div>
-										</div>
-									</div>
+														</td>
+														<td>
+														<c:out value="${col.TenKhoaHoc}"></c:out>
+														</td>
+														<td>
+														<img src="${pageContext.servletContext.contextPath }/GetImageKhoaHoc?makhoahoc=${col.Makhoahoc}" style="width:300px; height:auto;" id="img">
+														<div class="fileUpload btn btn-default">
+										
+															<input id="uploadBtn" type="file" onchange="onFileSelected(event)" name="photo<%=i %>" class="upload">
+			
+															</div>
+										
+														</td>
+														<td>
+														<c:if test="${col.db == true}">
+														  	
+														<select name="se<%=i %>" >  <option value="1"  selected >Dac Biet
+																	<option value="0">Thuong </select>
+														</c:if>
+														<c:if test="${col.db != true}">
+														  	<select name="se<%=i %>" >  <option value="1" >Dac Biet
+																	<option value="0" selected>Thuong </select>
+														
+														</c:if>
+														</td>
+
+														
+
+														<% i++; %>
+													</tr>
+												
+													</c:forEach>
+													
+									</tbody>
+								</table>
+								
 								</div>
-								<div class="space-12"></div>
-								<button type="button" class="btn btn-success">Post to
-									homepage</button>
-								<input type="checkbox" value=""> Đã đăng lên trang chủ
-							</div>
-							<div class="col-md-3">
-								<div class="form-group" style="padding-top: 215px">
-									<div class="panel panel-default">
-										<div class="form-group" style="padding-left: 10px">
-
-
-											<span><strong>Đổi poster</strong></span>
-											<div class="fileUpload btn btn-default">
-												<input id="uploadBtn" type="file" class="upload">
-
-											</div>
-										</div>
-									</div>
 								</div>
+								<div class="col-xs-1">
+							<a href="QTNDThem.jsp">
+							<button type="submit" class="btn btn btn-warning"><strong>Lưu</strong>
+							<i class="ace-icon fa fa-plus-square - 160"></i>
+							</button>
+							</a>
 							</div>
-						</div>
-					</div>
-
-
-
-				</div>
+								</div>
+								</form>
+								
 				<!--END PAGE CONTENT-->
 			</div>
 
@@ -246,7 +251,7 @@
 
 
 
-
+	
 
 	<!--Script-->
 	<script
@@ -258,5 +263,23 @@
 	<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
+		<script type="text/javascript">
+		function onFileSelected(event) {
+			
+			var selectedFile = event.target.files[0];
+			var reader = new FileReader();
+			
+			
+			var imgtag = document.getElementById("img");
+			imgtag.title = selectedFile.name;
+
+			reader.onload = function(event) {
+				imgtag.src = event.target.result;
+			};
+
+			reader.readAsDataURL(selectedFile);
+			
+		}
+	</script>
 </body>
 </html>

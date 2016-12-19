@@ -68,14 +68,14 @@
 	<div class="main-content">
 		<div class="main-content-inner">
 		
-			<c:if test="${errThatBai != null}">
+			<c:if test="${not empty errThatBai}">
 				<div class='alert alert-danger alert-dismissable'>
 	            			<span class='glyphicon glyphicon-certificate'></span>
 	            			<button type='button' class='close' data-dismiss='alert'
 	            				aria-hidden='true'>×</button>
 	            				${errThatBai}</div>
 			</c:if>
-			<c:if test="${errThanhCong != null}">
+			<c:if test="${not empty errThanhCong}">
 				<div class='alert alert-success alert-dismissable'>
 	            			<span class='glyphicon glyphicon-certificate'></span>
 	            			<button type='button' class='close' data-dismiss='alert'

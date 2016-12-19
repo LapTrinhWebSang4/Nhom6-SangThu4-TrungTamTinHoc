@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
+   <%@taglib uri = "http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ page import="Hoang.LayTT" %>
+<!DOCTYPE html >
 <html ng-app>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+ 
 		  <script src="http://code.angularjs.org/1.1.5/angular.js"></script>
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
@@ -15,7 +17,8 @@
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
 
 		<!-- ace styles -->
-		<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+		<link rel="stylesheet" href="assets/css/ace.min.css" 
+		class="ace-main-stylesheet" id="main-ace-style" />
 
 		<!--[if lte IE 9]>
 			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
@@ -31,7 +34,7 @@
 
 		<!-- ace settings handler -->
 		<script src="assets/js/ace-extra.min.js"></script>
-
+		<script src="js/bootstrap.js"></script>
     	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     	<link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
@@ -69,9 +72,11 @@
 					}
 		  </style>
 	</head>
-	<body ng-init="names=['Pham Van T', 'Nguyen Van T', 'Nguyen Thi T'];" class="no-skin" >
-	<!--nav-->
+	<body class="no-skin" >
 	
+	<!--nav-->
+	<sql:setDataSource var="con" driver ="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/ttth" user="root" password="123456"></sql:setDataSource>
+		<sql:query dataSource="${con }"  sql="select * from taikhoan" var="result"></sql:query>
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<img src="Asset/header ttth.jpg" style="width: 100%;height: 120px">
 			<div class="navbar-container ace-save-state" id="navbar-container">
@@ -102,20 +107,20 @@
 				<div class="space-32"></div>
 				<div class="space-32"></div>
 				<div class="space-32"></div>
-				<li class="#"><a href="QuanTriVien.jsp"> <i
+				<li class="active"><a href="QuanTriVien.jsp"> <i
 						class="menu-icon fa fa-picture-o"></i> <span class="menu-text">
 							Quản Lí Thành Viên </span>
 				</a> <b class="arrow"></b></li>
 
-				<li class="active"><a href="QuanTriMail.jsp"> <i
+				<li class=""><a href="QuanTriMail.jsp"> <i
 						class="menu-icon fa fa-envelope"></i> <span class="menu-text">
 							Gửi Mail </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="QuanTriNhanTin.jsp"> <i
+				<li class=""><a href="QuanTriCN.jsp"> <i
 						class="menu-icon fa fa fa-commenting-o"></i> <span
-						class="menu-text"> Tin nhắn </span>
+						class="menu-text"> Thông Tin Cá Nhân </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="static-login.jsp"> <i
+				<li class=""><a href="login.jsp"> <i
 						class="menu-icon fa fa-sign-out"></i> <span class="menu-text">
 							Đăng xuất </span>
 				</a> <b class="arrow"></b></li>
@@ -182,34 +187,182 @@
 														</th>
 														
 												</thead>
-
+											
 												<tbody>
 
-													
+												<%String matk=""; %>
+												<c:forEach var="col" items="${result.rows}">
 												<tr role="row" class="odd">
 														
 
 														<td>
-															qtnd0001
+															<c:out value="${col.Taikhoan}"></c:out>
 														</td>
 														<td>
-														<a href="#">	Phạm Văn P </a>
+														<a href="#" data-toggle="modal" data-target="#my" class="detail"  data-id="${col.Taikhoan}" id="data">	<c:out value="${col.Tenthanhvien}"></c:out> </a>
+														
+														<div class="modal fade " id="my" role="dialog">
+													    <div class="modal-dialog">
+													    
+													      <!-- Modal content-->
+													      <div class="modal-content">
+													        <div class="modal-header">
+													          <button type="button" class="close" data-dismiss="modal">&times;</button>
+													          <h4  style="color: #e9573f ">
+																			<strong>Thông tin cá nhân</strong>
+																		</h4>
+													        </div>
+													          <div class="modal-body">
+													        
+																
+													       <div class="page-content">
+				
+																
+																<div style="padding-left: 0px; padding-right: 0px;">
+																	<div class="row">
+																		<div class="col-xs-12">
+																			<!-- PAGE CONTENT BEGINS -->
+																			<div class="clearfix"></div>
+											
+																			<div class="hr dotted"></div>
+											
+																			<div>
+																				<div id="user-profile-1" class="user-profile row">
+																					<div class=" col-sm-3 center">
+																						<div>
+																							<span class="profile-picture"> <img id="avatar"
+																								class="editable img-responsive editable-click editable-empty"
+																								alt="Alex's Avatar"
+																								src="assets/images/avatars/profile-pic.jpg"></img>
+																							</span>
+																								
+																					
+																						</div>
+																					
+																					</div>
+																					<div class="col-xs-12 col-sm-9">
+																					<div class="profile-user-info profile-user-info-striped">
+																								<div class="profile-info-row">
+																									<div class="profile-info-name">Họ và tên:</div>
+												
+																									<div class="profile-info-value">
+																										<div class="align-left">
+																											<span class="editable editable-click" id="username"></span>
+												
+																										</div>
+																										</div>
+																								</div>
+																								<div class="profile-info-row">
+																									<div class="profile-info-name">Địa chỉ</div>
+												
+																									<div class="profile-info-value">
+												
+																										<div class="align-left">
+																											<span class="editable editable-click" id="diachi"></span>
+																									 
+																										</div>
+																									</div>
+																								</div>
+												
+																								
+																								<div class="profile-info-row">
+																									<div class="profile-info-name">Số CMND</div>
+												
+																									<div class="profile-info-value">
+																										<div class="align-left">
+																											<span class="editable editable-click" id="socmnd"></span>
+																											
+																										</div>
+																									</div>
+																								</div>
+																								<div class="profile-info-row">
+																									<div class="profile-info-name">Ngày sinh</div>
+												
+																									<div class="profile-info-value">
+																										<div class="align-left">
+																											<span class="editable editable-click" id="ngaysinh"></span>
+																											
+																										</div>
+																									</div>
+																								</div>
+												
+																								
+																								<div class="profile-info-row">
+																									<div class="profile-info-name">Số điện thoại</div>
+												
+																									<div class="profile-info-value">
+																										<div class="align-left">
+																											<span class="editable editable-click" id="sdt"><c:out
+																								value="${col.Sodt}" /></span>
+																											
+																											
+																										</div>
+																									</div>
+																								</div>
+																								<div class="profile-info-row">
+																									<div class="profile-info-name">Email</div>
+												
+																									<div class="profile-info-value">
+																										<div class="align-left">
+																											<span class="editable editable-click" id="email"></span>
+																											
+																											
+																										</div>
+																									</div>
+																								</div>
+																								<div class="profile-info-row">
+																									<div class="profile-info-name">Giới Thiệu</div>
+												
+																									<div class="profile-info-value">
+																										<div class="align-left">
+																											<span class="editable editable-click" id="gioithieu"></span>
+																											
+																											
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																							</div>
+																				</div>
+																			</div>
+																			</div>
+																	</div>
+																	</div>
+																	</div>
+																  
+																 </div>
+																 <div class="modal-footer">
+													        
+											
+													          <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
+													        	</div>
+													      </div>
+													      
+													    </div>
+													  </div>
 														</td>
 														<td class="hidden-480">
-														 Quản Trị Nội Dung 
+														 <c:out value="${col.Quyen}"></c:out>
 														</td>
-														<td>25/8/2016</td>
+														<td><c:out value="${col.NgayDangNhapGanNhat}"></c:out></td>
 
 														
 
 														<td>
 															<div class="hidden-sm hidden-xs action-buttons">
-																
-																<a class="green" href="suatv.html">
+																<c:if test="${col.Quyen=='qtv'}">
+																<a class="green" href=""/>
 																	<i class="ace-icon fa fa-pencil bigger-150"></i>
 																</a>
-
-																<a class="red" href="#">
+																</c:if>
+																<c:if test="${col.Quyen!='qtv'}">
+																<a class="green" href="SuaTV.jsp?Taikhoan=<c:out value="${col.Taikhoan}"/>" >
+																	<i class="ace-icon fa fa-pencil bigger-150"></i>
+																</a>
+																</c:if>
+																<%int bang=1; %>
+																<a class="red" href="javascript:confirmGo('Sure to delete this record?','delete.jsp?Taikhoan=<c:out value="${col.Taikhoan}"/>&bang=<%= bang %>')" Taikhoan="${col.Taikhoan}" >
+																	
 																	<i class="ace-icon fa fa-trash-o bigger-150"></i>
 																</a>
 															</div>
@@ -224,7 +377,7 @@
 																		
 
 																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
+																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit" >
 																				<span class="green">
 																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																				</span>
@@ -232,7 +385,7 @@
 																		</li>
 
 																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
+																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete" >
 																				<span class="red">
 																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
 																				</span>
@@ -243,148 +396,18 @@
 															</div>
 														</td>
 													</tr>
-													<tr role="row" class="odd">
-														
-
-														<td>
-															qtnd0002
-														</td>
-														<td>
-														<a href="#"> Nguyễn Văn T</a>
-														</td>
-														<td class="hidden-480">
-															Quản Tri Nội Dung  
-														</td>
-														<td>15/9/2016</td>
-
-														
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																
-																<a class="green" href="suatv.html">
-																	<i class="ace-icon fa fa-pencil bigger-150"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-150"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
-													<tr role="row" class="odd">
-														
-
-														<td>
-															tvv0001
-														</td>
-														<td>
-														<a href="#">Nguyen Thi T</a>
-														</td>
-														<td class="hidden-480">
-														 Tư Vấn Viên
-														</td>
-														<td>20/10/2016</td>
-
-														
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																
-																<a class="green" href="suatv.html">
-																	<i class="ace-icon fa fa-pencil bigger-150"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-150"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
+													</c:forEach>
 									</tbody>
 								</table>
 							</div>
 							</div>
 							<div class="col-md-3">
-							<a href="themtv.html">
+							<a href="ThemTV.jsp">
 							<button type="button" class="btn btn btn-warning"><strong>Thêm Thành Viên Mới </strong>
 							<i class="ace-icon fa fa-plus-square - 160"></i>
 							</button>
 							</a>
-							<div class="well" style="margin-top: 20px; width: 200px; overflow: hidden;">
-							    <form class="form-search"> 
-							        <div class="input">
-							          <input type="text" ng-model="search" class="search-query" style="width: 110px">
-							          
-							          <button type="submit" class="btn btn-yellow"> 
-							          <i class="ace-icon fa fa-search bigger-120"></i>
-							          </button>
-							         
-							        </div>
-							        <ul class="nav nav-pills nav-stacked">
-							          <li ng-animate="'animate'" ng-repeat="name in names | filter:search">
-
-							            <a href="#"> {{name}} </a>
-							          </li> 
-							      </ul>
-							    </form>
-							  </div>
+							
 							</div>
 					
 					</div>
@@ -392,7 +415,7 @@
 			</div>
 			</div>
 			</div>
-
+											
 		
 				
 		</div><!-- /.main-container -->
@@ -406,6 +429,36 @@
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
+		<script type="text/javascript">
+			$(".detail").click(function(){
+			
+				var MaTK = $(this).attr("data-id");
+				alert(MaTK);
+				$.get('LayTT',{MaTK: MaTK},function(response){
+					
+					
+					document.getElementById("username").innerHTML = response.TenThanhVien;
+					document.getElementById("email").innerHTML = response.Email;
+					document.getElementById("sdt").innerHTML = response.Sodt;
+					document.getElementById("diachi").innerHTML = response.DiaChi;
+					document.getElementById("socmnd").innerHTML = response.SoCMND;
+					document.getElementById("gioithieu").innerHTML = response.GioiThieu;
+					document.getElementById("ngaysinh").innerHTML = response.NgaySinh;
+					
+					
+					
+				});
+			});
+		</script>
+	
+      
+      	      		<script>
+            function confirmGo(m,u) {
+                if ( confirm(m) ) {
+                    window.location = u;
+                }
+            }
+        </script>
 
 		<!--End Script-->
 	</body>

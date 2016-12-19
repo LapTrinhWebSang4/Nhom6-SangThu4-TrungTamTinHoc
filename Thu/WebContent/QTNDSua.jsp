@@ -45,7 +45,7 @@
 	<!--nav-->
 	<sql:setDataSource var="dbsource" driver="com.mysql.jdbc.Driver"
                            url="jdbc:mysql://localhost/ttth"
-                           user="root"  password="kien2509"/>
+                           user="root"  password="123456"/>
                        
 		       <sql:query dataSource="${dbsource }"  var="result">SELECT * FROM thongbao
 		            WHERE MaThongBao =?;
@@ -103,10 +103,7 @@
 						class="menu-icon fa fa-envelope"></i> <span class="menu-text">
 							Gửi Mail </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="QTNDNhanTin.jsp"> <i
-						class="menu-icon fa fa-commenting-o"></i> <span class="menu-text">
-							Tin nhắn </span>
-				</a> <b class="arrow"></b></li>
+				
 				<li class=""><a href="QTNDCaNhan.jsp"> <i
 						class="menu-icon fa fa-user"></i> <span class="menu-text">
 							Thông tin cá nhân </span>
@@ -193,13 +190,13 @@
 											value="${col.TieuDe}">
 
 									</div>
-									<c:if test="${col.LoaiThongBao =='SuKien'}">
+									<c:if test="${col.LoaiThongBao =='Su Kien'}">
 												<div class="form-group">
 													<label for="inputlg">Loại Thông Báo </label> <select
 														class="form-control" name="box" onchange="changefun();" id="box">
 
 														<option>slide</option>
-														<option selected="selected">SuKien</option>
+														<option selected="selected">Su Kien</option>
 														<option>Thong Bao</option>
 
 													</select>
@@ -227,14 +224,14 @@
 												</div>
 												
 												</c:if>
-												<c:if test="${col.LoaiThongBao =='ThongBao'}">
+												<c:if test="${col.LoaiThongBao =='Thong Bao'}">
 												<div class="form-group">
 													<label for="inputlg">Loại Thông Báo</label>
 													 <select class="form-control" name="box" onchange="changefun();" id="box">
 
 														<option>slide</option>
 														<option >Su Kien</option>
-														<option selected="selected">ThongBao</option>
+														<option selected="selected">Thong Bao</option>
 
 													</select>
 
@@ -264,7 +261,7 @@
 									
 								
 										
-									<div class="form-group" style="padding-top: 380px">
+									<div class="form-group" style="padding-top: 500px">
 									
 										<label for="inputlg">Nội Dung:</label>
 										<textarea class="form-control" rows="15" id="noidung" name="noidung" ><c:out  value="${col.NoiDung}" ></c:out></textarea>

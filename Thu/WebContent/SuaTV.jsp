@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,7 +60,17 @@
 	</div>
 
 
+	<sql:setDataSource var="dbsource" driver="com.mysql.jdbc.Driver"
+                           url="jdbc:mysql://localhost/ttth"
+                           user="root"  password="123456"/>
+                       
+		       <sql:query dataSource="${dbsource }"  var="result">SELECT * FROM taikhoan
+		            WHERE Taikhoan=?;
+            <sql:param value='${param.Taikhoan}' /></sql:query>
+		        
 
+		       
+      
 	<div class="main-container ace-save-state" id="main-container">
 
 
@@ -85,11 +97,11 @@
 						class="menu-icon fa fa-newspaper-o"></i> <span class="menu-text">
 							Gửi Mail </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="QuanTriNhanTin.jsp"> <i
+				<li class=""><a href="QuanTriCN.jsp"> <i
 						class="menu-icon fa fa fa-commenting-o"></i> <span
-						class="menu-text"> Tin nhắn </span>
+						class="menu-text"> Thông tin cá nhân </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="static-login.jsp"> <i
+				<li class=""><a href="login.jsp"> <i
 						class="menu-icon fa fa-sign-out"></i> <span class="menu-text">Đăng
 							xuất</span>
 				</a> <b class="arrow"></b></li>
@@ -136,14 +148,14 @@
 
 							<li><a href="tuvan-send.jsp"><strong>Tư
 										vấn-hỏi đáp</strong></a></li>
-							<li><a href="static-login.jsp"><strong>Đăng xuất</strong></a></li>
+							<li><a href="login.jsp"><strong>Đăng xuất</strong></a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="page-content">
 				<div class="space-32"></div>
 				<div class="space-22"></div>
-					
+					<c:forEach var="col" items="${result.rows}">
 						<div class="form-group" style="padding-left: 50px">
 							<div class="col-md-11 ">
 								<div class="row">
@@ -155,32 +167,36 @@
 												<Strong>Sửa Đổi</Strong>
 											</h3>
 										</div>
-										<div class="form-group">
+										<form class="form-group" action="update.jsp" method="post">
 											<div class="col-md-13 well">
 
 												<div class="form-group">
 													<label for="inputlg">Tên Tài Khoản </label> <input
 														class="form-control" id="inputlg" type="text"
-														placeholder="qtv001" disabled>
+														value="${col.Taikhoan}"  disabled >
 												</div>
-
+												<div class="hide">
+													<label for="inputlg">Tên Tài Khoản </label> <input
+														class="form-control" id="inputlg" type="text"
+														value="${col.Taikhoan}" name="id"  >
+												</div>
 												<div class="form-group">
 													<label for="inputlg">Mật Khầu </label> <input
-														class="form-control" id="inputmk" type="text" value="123456789" >
+														class="form-control" id="inputmk" type="text" value="${col.Matkhau}" name="matkhau" >
 												</div>
 
 												<div class="form-group">
 													<label for="inputlg">Tên Thành Viên </label> <input
-														class="form-control" id="inputtv" type="text"
-														value="Nguyen Van T">
+														class="form-control" id="inputtv" type="text" name="name"
+														value="${col.TenThanhVien}">
 												</div>
-
+												<c:if test="${col.Quyen =='tvv'}">
 												<div class="form-group">
 													<label for="inputlg">Phân Quyền </label> <select
-														class="form-control" name="size">
+														class="form-control" name="size" onchange="changefun();" id="box">
 
-														<option>Quản Tri Nội Dung</option>
-														<option>Tư Vấn Viên</option>
+														<option>Quản Trị Nội Dung</option>
+														<option selected="selected">Tư Vấn Viên</option>
 														<option>Quản Trị</option>
 
 													</select>
@@ -188,21 +204,79 @@
 
 
 												</div>
+												<div class="hide">
+																    <label for="input1" class="col-sm-3 control-label"></label>
+																    <div class="col-sm-7">
+																      <input type="text" class="form-control" name="quyen" value="tvv" id="quyen">
+																    </div>
+												</div>
+												
+												</c:if>
+												
+												<c:if test="${col.Quyen == 'qtnd'}">
+												<div class="form-group">
+													<label for="inputlg">Phân Quyền </label> 
+													<select class="form-control" name="size" onchange="changefun();" id="box">
 
+														<option selected="selected">Quản Trị Nội Dung</option>
+														<option >Tư Vấn Viên</option>
+														<option>Quản Trị</option>
+
+													</select>
+
+
+
+												</div>
+												<div class="hide">
+																    <label for="input1" class="col-sm-3 control-label"></label>
+																    <div class="col-sm-7">
+																      <input type="text" class="form-control" name="quyen" value="qtnd" id="quyen">
+																    </div>
+												</div>
+												</c:if>
+												<c:if test="${col.Quyen == 'qtv'}">
+												<div class="form-group">
+													<label for="inputlg">Phân Quyền </label>
+													 <select class="form-control" name="size" onchange="changefun();" id="box">
+
+														<option>Quản Trị Nội Dung</option>
+														<option >Tư Vấn Viên</option>
+														<option selected="selected">Quản Trị</option>
+
+													</select>
+
+
+
+												</div>
+												<div class="hide">
+																    <label for="input1" class="col-sm-3 control-label"></label>
+																    <div class="col-sm-7">
+																      <input type="text" class="form-control" name="quyen" value="qtv" id="quyen" >
+																    </div>
+												</div>
+												</c:if>
+												<div class="hide">
+																    <label for="input1" class="col-sm-3 control-label"></label>
+																   
+																      <input type="text" class="form-control" name="bang" value="${3}" >
+																    
+																  </div>
+	
 												<div class="form-group"
 													style="text-align: right; padding-top: 10px; padding-bottom: 10px">
-													<a href="QuanTriVien.jsp" class="btn btn-success"
-														role="button"> Sửa </a> <a href="QuanTriVien.jsp"
+													<input class="btn btn-info" type="submit" value="Xác nhận" id="submit"/>
+													 <a href="QuanTriVien.jsp"
 														class="btn btn-danger" role="button"> Hủy Bỏ </a>
 												</div>
 											</div>
 
-										</div>
+										</form>
 									</div>
 								</div>
 							
 						</div>
 					</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -222,6 +296,7 @@
 	<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
+		
 	<script type="text/javascript">
 		function validate(id)
 		{
@@ -243,8 +318,29 @@
 			}
 		}
 		function reset(){
-   		document.getElementById("inputtk").reset();
-   	}
+   		document.getElementById("inputtk").reset();}
+   		function changefun() {
+   		 var selectBox = document.getElementById("box");
+   			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+   			
+   		   if(selectBox.selectedIndex==0)
+   				{
+   			   	$("#quyen").val("qtnd");
+   				alert($("#quyen").val());
+   				}
+   		   else if(selectBox.selectedIndex==1)
+  				{$("#quyen").val("tvv");
+  				alert($("#quyen").val());
+  				}
+   		   else if(selectBox.selectedIndex==2)
+  				{
+   			   $("#quyen").val("qtv");
+   			alert($("#quyen").val());
+  				}
+   		
+   		   
+   		   }
+   		
 		$(document).ready(
 				function()
 				{

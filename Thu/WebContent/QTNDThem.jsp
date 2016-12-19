@@ -95,10 +95,7 @@
 						class="menu-icon fa fa-envelope"></i> <span class="menu-text">
 							Gửi Mail </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="QTNDNhanTin.jsp"> <i
-						class="menu-icon fa fa-commenting-o"></i> <span class="menu-text">
-							Tin nhắn </span>
-				</a> <b class="arrow"></b></li>
+				
 				<li class=""><a href="QTNDCaNhan.jsp"> <i
 						class="menu-icon fa fa-user"></i> <span class="menu-text">
 							Thông tin cá nhân </span>
@@ -211,7 +208,7 @@
 									
 								
 										
-									<div class="form-group" style="padding-top: 380px">
+									<div class="form-group" style="padding-top: 500px">
 									
 										<label for="inputlg">Nội Dung:</label>
 										<textarea class="form-control" rows="15" id="noidung" name="noidung"></textarea>
@@ -248,7 +245,7 @@
 
 			var imgtag = document.getElementById("imgID");
 			imgtag.title = selectedFile.name;
-
+			
 			reader.onload = function(event) {
 				imgtag.src = event.target.result;
 			};
@@ -270,9 +267,11 @@
 	<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
+		
 	<script type="text/javascript">
 	function changetext() {
 		var MaTB = $("#mathongbao").val();
+		
 		$.get('LayTTTB',{MaTB: MaTB},function(response){
 			
 			if( response.MaThongBao == $("#mathongbao").val())
@@ -341,20 +340,7 @@
 					});
 				});
 		</script>
-		<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-	<script>
-  		tinymce.init({ 
-  			selector: "textarea[name='noidung']",
-  			plugins: ["link textcolor paste "],
-  		  menubar: "insert edit",
-  		  toolbar: ["link forecolor backcolor autolink paste alignleft aligncenter alignright"],
-  		default_link_target: "_blank"
-  			});
-  		
-  </script>
-
-
-	
+		
 
 </body>
 </html>
