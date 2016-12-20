@@ -32,32 +32,36 @@ public class DownloadFile extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String filename = request.getParameter("filename");
-		String filepath = "C:\\apache-tomcat-8.0.39\\wtpwebapps\\Thu\\UploadFile\\"+filename;
-		response.setContentType("application/octet-stream");
-		File fileToDownload = new File(filepath);
-		String headerKey = "Content-Disposition";
-        String headerValue = String.format("attachment; filename=\"%s\"", fileToDownload.getName());
-        response.setHeader(headerKey, headerValue);  
-		
+		try{
+			String filename = request.getParameter("filename");
+			String filepath = "C:\\apache-tomcat-8.0.39\\wtpwebapps\\Thu\\UploadFile\\"+filename;
+			response.setContentType("application/octet-stream");
+			File fileToDownload = new File(filepath);
+			String headerKey = "Content-Disposition";
+	        String headerValue = String.format("attachment; filename=\"%s\"", fileToDownload.getName());
+	        response.setHeader(headerKey, headerValue);  
+			
 
-		InputStream in = null;
-		ServletOutputStream outs = response.getOutputStream();
+			InputStream in = null;
+			ServletOutputStream outs = response.getOutputStream();
 
-		try {
-		in = new BufferedInputStream(new FileInputStream(fileToDownload));
-		int ch;
-		while ((ch = in.read()) != -1) {
-		outs.print((char) ch);
-		}
-		}
-		finally {
-		if (in != null) in.close(); // very important
-		}
+			try {
+			in = new BufferedInputStream(new FileInputStream(fileToDownload));
+			int ch;
+			while ((ch = in.read()) != -1) {
+			outs.print((char) ch);
+			}
+			}
+			finally {
+			if (in != null) in.close(); // very important
+			}
 
-		outs.flush();
-		outs.close();
-		in.close();
+			outs.flush();
+			outs.close();
+			in.close();
+		}catch(Exception e){
+			
+		}
 	}
 
 	/**

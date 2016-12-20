@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>Thu</display-name>
+  <display-name>TTTHSPKT</display-name>
   <context-param>
     <param-name>sqlpassword</param-name>
     <param-value>kien2509</param-value>
@@ -43,4 +43,12 @@
          C:\apache-tomcat-8.0.39\wtpwebapps\Thu\UploadFile\
      </param-value>
   </context-param>
+  <filter>
+    <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
+    <filter-class>Controller.AuthenticatedFilter</filter-class> <!-- mandatory -->
+  </filter>
+  <filter-mapping>
+    <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
+    <url-pattern>/static-dashboard.jsp</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+  </filter-mapping>
 </web-app>

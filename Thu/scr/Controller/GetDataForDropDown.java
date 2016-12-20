@@ -43,7 +43,7 @@ public class GetDataForDropDown extends HttpServlet {
 			List<LoaiKhoaHoc> lst = TVVDAO.Getloaikhoahoclisttheomanienkhoa(manienkhoa);
 			response.getWriter().write(gson.toJson(lst));
 		}catch(Exception e){
-			response.sendRedirect("NewNienKhoa.jsp");
+			
 		}
 	}
 

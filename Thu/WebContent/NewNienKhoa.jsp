@@ -77,7 +77,7 @@ li>div {
 
 	<!-- SQL statement -->
 	<sql:setDataSource var="con" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://Localhost/ttth" user="root" password="kien2509" />
+		url="jdbc:mysql://Localhost/ttth" user="root" password="1234" />
 	<!--nav-->
 	<div id="navbar" class="navbar navbar-default          ace-save-state">
 		<img src="Asset/header ttth.jpg" style="width: 100%; height: 120px">

@@ -50,7 +50,7 @@ public class RetrieveImage extends HttpServlet {
 	        stmt.close();
 	        con.close();	
 		}catch (Exception e){
-			e.printStackTrace();
+			
 		}
 	}
 

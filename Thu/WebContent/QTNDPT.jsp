@@ -42,7 +42,7 @@
 </head>
 <body class="no-skin">
 	<!--nav-->
-	<sql:setDataSource var="con" driver ="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/ttth" user="root" password="123456"></sql:setDataSource>
+	<sql:setDataSource var="con" driver ="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/ttth" user="root" password="1234"></sql:setDataSource>
 	<div id="navbar" class="navbar navbar-default          ace-save-state">
 		<img src="Asset/header ttth.jpg" style="width: 100%; height: 120px">
 		<div class="navbar-container ace-save-state" id="navbar-container">

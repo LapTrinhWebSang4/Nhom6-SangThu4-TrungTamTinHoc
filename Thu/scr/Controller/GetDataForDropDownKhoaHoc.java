@@ -44,7 +44,7 @@ public class GetDataForDropDownKhoaHoc extends HttpServlet {
 			List<KhoaHoc> lst = TVVDAO.Getloaikhoahoclisttheomaloaikhoahoc(maloaikhoahoc);
 			response.getWriter().write(gson.toJson(lst));
 		}catch(Exception e){
-			response.sendRedirect("NewNienKhoa.jsp");
+			
 		}
 	}
 

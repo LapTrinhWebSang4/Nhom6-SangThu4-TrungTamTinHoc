@@ -81,7 +81,7 @@
 
 	<jsp:include page="Sidebar.jsp" />
 	<sql:setDataSource var="con" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://Localhost/ttth" user="root" password="kien2509" />
+		url="jdbc:mysql://Localhost/ttth" user="root" password="1234" />
 	<sql:query var="result_taikhoan" dataSource="${con }">select * from taikhoan where Taikhoan='<%=TaiKhoan%>'</sql:query>
 
 

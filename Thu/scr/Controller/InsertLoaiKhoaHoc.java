@@ -43,13 +43,13 @@ public class InsertLoaiKhoaHoc extends HttpServlet {
 			boolean f = TVVDAO.InsertLoaiKhoaHoc(new LoaiKhoaHoc(MaLoaiKhoaHoc,TenLoaiKhoaHoc,NienKhoa));
 			if(f){
 				System.out.println("true");
-				response.sendRedirect("NewNienKhoa.jsp");
+				response.sendRedirect("QuanLyKhoaHoc.jsp");
 			}else{
 				System.out.println("fail");
-				response.sendRedirect("NewNienKhoa.jsp");
+				response.sendRedirect("QuanLyKhoaHoc.jsp");
 			}
 		}catch(Exception e){
-			response.sendRedirect("NewNienKhoa.jsp");
+			response.sendRedirect("QuanLyKhoaHoc.jsp");
 		}
 	}
 

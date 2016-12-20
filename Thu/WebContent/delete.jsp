@@ -17,7 +17,7 @@
     <body>
         <sql:setDataSource var="dbsource" driver="com.mysql.jdbc.Driver"
                            url="jdbc:mysql://localhost/ttth"
-                           user="root"  password="123456"/>
+                           user="root"  password="1234"/>
          <c:if test="${param.bang == 1}" >                  
 		        <sql:update dataSource="${dbsource}" var="count" >
 		            DELETE FROM taikhoan

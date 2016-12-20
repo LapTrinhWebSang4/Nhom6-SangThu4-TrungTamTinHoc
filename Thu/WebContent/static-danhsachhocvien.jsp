@@ -65,7 +65,7 @@
 
 	<!-- SQL statement -->
 	<sql:setDataSource var="con" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://Localhost/ttth" user="root" password="kien2509" />
+		url="jdbc:mysql://Localhost/ttth" user="root" password="1234" />
 	<!-- End SQL statement -->
 
 	<!--nav-->

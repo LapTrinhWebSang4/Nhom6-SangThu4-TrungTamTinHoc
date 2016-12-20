@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <sql:setDataSource var="con" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://Localhost/ttth" user="root" password="kien2509" />
+	url="jdbc:mysql://Localhost/ttth" user="root" password="1234" />
 <style>
 .left-addon .glyphicon {
 	left: 0px;

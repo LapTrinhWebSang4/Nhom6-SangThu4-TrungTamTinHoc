@@ -46,14 +46,13 @@ public class insertMienGiam extends HttpServlet {
 			boolean f = TVVDAO.InsertMienGiam(new MienGiam(MaMienGiam,DoiTuong,Float.valueOf(TienGiam),MoTa,MaKhoaHoc));
 			if(f){
 				System.out.println("them thanh cong");
-				response.sendRedirect("NewNienKhoa.jsp");
+				response.sendRedirect("QuanLyKhoaHoc.jsp");
 			}else{
 				System.out.println("them that bai");
-				response.sendRedirect("NewNienKhoa.jsp");
+				response.sendRedirect("QuanLyKhoaHoc.jsp");
 			}
 		}catch(Exception e){
-			response.sendRedirect("NewNienKhoa.jsp");
-			e.printStackTrace();
+			response.sendRedirect("QuanLyKhoaHoc.jsp");
 		}
 	}
 

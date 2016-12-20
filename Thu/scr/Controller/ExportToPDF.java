@@ -58,7 +58,7 @@ public class ExportToPDF extends HttpServlet {
 		        baos.writeTo(os);
 		        os.flush();
 		    } catch (Exception e1) {
-		        e1.printStackTrace();
+		        
 		    }
 	}
 
@@ -86,15 +86,15 @@ public class ExportToPDF extends HttpServlet {
         }
 
     } catch (FileNotFoundException e) {
-        e.printStackTrace();
+        
     } catch (IOException e) {
-        e.printStackTrace();
+        
     } finally {
         if (inputStream != null) {
             try {
                 inputStream.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                
             }
         }
     }

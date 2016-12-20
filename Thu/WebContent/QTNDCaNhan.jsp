@@ -73,7 +73,7 @@
 
 
 
-<sql:setDataSource var="con" driver ="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/ttth" user="root" password="123456"></sql:setDataSource>
+<sql:setDataSource var="con" driver ="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/ttth" user="root" password="1234"></sql:setDataSource>
 		<sql:query dataSource="${con }"   var="result">select * from taikhoan where Taikhoan = "<%= pk %>" ;</sql:query>
 
 

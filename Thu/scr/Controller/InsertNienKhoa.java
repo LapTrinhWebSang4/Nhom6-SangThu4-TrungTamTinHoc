@@ -42,13 +42,13 @@ public class InsertNienKhoa extends HttpServlet {
 			boolean f = TVVDAO.InsertNienKhoa(new NienKhoa(MaNienKhoa,ThoiGian));
 			if(f){
 				System.out.println("true");
-				response.sendRedirect("NewNienKhoa.jsp");
+				response.sendRedirect("QuanLyKhoaHoc.jsp");
 			}else{
 				System.out.println("fail");
-				response.sendRedirect("NewNienKhoa.jsp");
+				response.sendRedirect("QuanLyKhoaHoc.jsp");
 			}
 		}catch(Exception e){
-			response.sendRedirect("NewNienKhoa.jsp");
+			response.sendRedirect("QuanLyKhoaHoc.jsp");
 		}
 	}
 
