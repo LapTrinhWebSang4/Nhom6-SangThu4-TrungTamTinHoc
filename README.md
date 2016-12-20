@@ -1,2 +1,0 @@
-# staticjsp
-zxczxvxcz
