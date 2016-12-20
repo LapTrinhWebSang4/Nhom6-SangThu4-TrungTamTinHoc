@@ -51,4 +51,24 @@
     <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
     <url-pattern>/static-dashboard.jsp</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
   </filter-mapping>
+  <filter-mapping>
+    <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
+    <url-pattern>/static-guimail.jsp</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
+    <url-pattern>/QuanLyKhoaHoc.jsp</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
+    <url-pattern>/static-chitietkhoahoc.jsp</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
+    <url-pattern>/static-danhsachhocvien.jsp</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
+    <url-pattern>/static-thongtincanhan.jsp</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+  </filter-mapping>
 </web-app>
