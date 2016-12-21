@@ -41,14 +41,22 @@ public class TestSend extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		 String recipient = request.getParameter("recipient");
+		HttpSession session = request.getSession(true);
 	        String subject = request.getParameter("subject");
 	        String content = request.getParameter("content");
 	        boolean flag = SendEmail.sendMail(recipient, subject,content,"xuwoan123@gmail.com","Hoang123456");
 			response.setContentType("text/html");
 			if(flag){
-				response.getWriter().write("success");
+				
+				if(nao.equals("1"))
+					response.sendRedirect("QuanTriMail.jsp");
+				else 	response.sendRedirect("QTNDMail.jsp");
 			}else{
-				response.getWriter().write("fail");
+				
+				session.setAttribute("subscribed","b");
+				if(nao.equals("2"))
+					response.sendRedirect("QuanTriMail.jsp");
+				else response.sendRedirect("QTNDMail.jsp");
 			}
 	}
 
