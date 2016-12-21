@@ -77,7 +77,7 @@
 	</head>
 	<body  class="no-skin">
 	<!--nav-->
-	<sql:setDataSource var="con" driver ="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/ttth" user="root" password="1234"></sql:setDataSource>
+	<sql:setDataSource var="con" driver ="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/ttth" user="root" password="123456"></sql:setDataSource>
 		<sql:query dataSource="${con }"  sql="select * from thongbao" var="result"></sql:query>
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<img src="Asset/header ttth.jpg" style="width: 100%;height: 120px">
@@ -248,7 +248,7 @@
 																	<i class="ace-icon fa fa-info-circle bigger-120"></i>
 																</a>
 														</td>
-														<td><c:out value="${col.LuotXem}"></c:out> </td>
+														
 
 														
 
