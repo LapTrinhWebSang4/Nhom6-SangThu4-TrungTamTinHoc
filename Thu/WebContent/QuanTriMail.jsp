@@ -53,6 +53,15 @@
 	</div>
 
 
+<script type="text/javascript">
+	var Msg ='<%=session.getAttribute("subscribed")%>';
+	
+	if(Msg=="b"){
+		 
+		 alert("Gửi Mail thất bại !!!");
+		
+		 }
+</script>
 
 	<div class="main-container ace-save-state" id="main-container">
 
@@ -184,10 +193,16 @@
 													<span class="inline space-24 hidden-480"></span> Message :
 												</label>
 													<div class="col-sm-6 col-xs-12">
-												<textarea rows="10" cols="56" name="content"></textarea> 
+												<textarea rows="10" cols="60" name="content"></textarea> 
 												</div>
 											</div>
-
+											<div class="hide">
+												
+														<input maxlength="100" type="text" class="col-xs-12"
+														 id="form-field-subject"
+															name="loai"  value="1"/> 
+													
+											</div>
 											<div class="hr hr-18 dotted"></div>
 
 											
