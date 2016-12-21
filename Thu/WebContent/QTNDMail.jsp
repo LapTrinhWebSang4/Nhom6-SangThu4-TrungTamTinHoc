@@ -52,8 +52,7 @@
 		</div>
 	</div>
 
-
-
+	
 	<div class="main-container ace-save-state" id="main-container">
 
 
@@ -195,7 +194,13 @@
 											</div>
 
 											<div class="hr hr-18 dotted"></div>
-
+											<div class="hide">
+												
+														<input maxlength="100" type="text" class="col-xs-12"
+														 id="form-field-subject"
+															name="loai"  value="2"/> 
+													
+											</div>
 											
 
 											<div class="align-right">
