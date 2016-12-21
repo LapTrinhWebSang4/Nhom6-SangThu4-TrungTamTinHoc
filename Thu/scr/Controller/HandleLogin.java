@@ -106,11 +106,11 @@ public class HandleLogin extends HttpServlet {
 				}else if(quyen.equals("qtnd")){
 					response.sendRedirect("QTNDPT.jsp");
 					
-				}else{
+				}else if(quyen.equals("qtv")){
 					response.sendRedirect("QuanTriVien.jsp");
 					
 					
-				}
+				}else {out.println("Tai Khoan cua ban da bi khoa");}
 				
 			}else{
 				out.println("Invalid password <a href='login.jsp'>try again</a>");
