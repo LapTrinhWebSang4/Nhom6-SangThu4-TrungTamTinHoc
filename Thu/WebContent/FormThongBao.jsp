@@ -152,58 +152,14 @@ a>.glyphicon{
 </head>
 <body class= "no-skin">
 	
-		<div id="navbar" class="navbar navbar-default          ace-save-state">
-		<img src="Asset/header ttth.jpg" style="width: 100%; height: 120px">
-		<div class="navbar-container ace-save-state" id="navbar-container">
-			<button type="button" class="navbar-toggle menu-toggler pull-left"
-				id="menu-toggler" data-target="#sidebar">
-				<span class="sr-only">Toggle sidebar</span>
-
-			</button>
-		</div>
-	</div>
-
+<jsp:include page="header.jsp"/>
 
 
 	<div class="main-container ace-save-state" id="main-container">
 
 
 		
-		<div class="main-content">
-			<div class="main-content-inner">
-				<div class="row">
-					<div class="container-fluid">
-						<ul class="nav nav-justified w3-pale-blue">
-							<li><a href="Home.jsp"><strong>Trang chủ</strong></a></li>
-							<li><a href="thongbao.jsp"><strong>Thông báo</strong></a></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><strong>Giới thiệu</strong><span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="thungo.jsp"><strong>Thư ngỏ</strong></a></li>
-									<li><a href="giangvien.jsp"><strong>Đội ngủ
-												giản viên</strong></a></li>
-									<li><a href="nhiemvu.jsp"><strong>Chức năng
-												nhiệm vụ</strong></a></li>
-								</ul></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><strong>Lịch khai
-										giảng</strong><span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="Dangkiwindows-win.jsp"><strong>Windows
-												1 tháng 10</strong></a></li>
-									<li><a href="Dangkiandroid-cban.jsp"><strong>Android
-												1 tháng 10</strong></a></li>
-								</ul></li>
-
-							<li><a href="tuvan-send.jsp"><strong>Tư
-										vấn-hỏi đáp</strong></a></li>
-							<li><a href="static-login.jsp"><strong>Đăng xuất</strong></a></li>
-						</ul>
-					</div>
-				</div>
-				</div>
-				</div>
+		
 				<sql:setDataSource var="dbsource" driver="com.mysql.jdbc.Driver"
                            url="jdbc:mysql://localhost/ttth"
                            user="root"  password="1234"/>

@@ -187,7 +187,7 @@ SELECT MaThongBao from thongbao where LoaiThongBao= "slide";
 			<div class="carousel-inner" role="listbox">
 				<c:forEach var="row" items="${result.rows}" begin="0" end="0">
 					<div class="item active">
-						<a href="#"> <img
+						<a href="FormThongBao.jsp?mathongbao=${row.MaThongBao}"> <img
 							src="${pageContext.servletContext.contextPath }/Photoserv?id=${row.MaThongBao}&loai=thongbao"
 							alt="Chania" width="100%" height="250">
 						</a>
@@ -195,7 +195,7 @@ SELECT MaThongBao from thongbao where LoaiThongBao= "slide";
 				</c:forEach>
 				<c:forEach var="row" items="${result.rows}" begin="1">
 					<div class="item">
-						<a href="#"> <img
+						<a href="FormThongBao.jsp?mathongbao=${row.MaThongBao}"> <img
 							src="${pageContext.servletContext.contextPath }/Photoserv?id=${row.MaThongBao}&loai=thongbao"
 							alt="Chania" width="100%" height="250">
 						</a>

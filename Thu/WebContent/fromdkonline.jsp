@@ -19,6 +19,8 @@
 <link rel="stylesheet" type="text/css" href="css/cssfornav2.css">
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+
 
 
 
